@@ -17,4 +17,44 @@ public class CompradorController : Controller
     {
         return View();
     }
+    public IActionResult iniciarSesion(string estado){
+            ViewBag.estado=estado;
+
+        if (HttpContext.Session.GetString("usuario") != null)
+        {
+            return RedirectToAction("vistaUsuario");
+            }
+
+        return View();
+    }
+
+    public IActionResult comprobarDatos(string nombreUsuario, string password){
+       Comprador usu = UsuarioBD.levantarComprador(nombreUsuario,encriptar.HashearPassword(password));
+            if(usu != null){
+                HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usu));
+                return RedirectToAction("vistaUsuario");
+            }else{
+                return RedirectToAction("iniciarSesion",new{estado="error"});
+            }
+    }
+        public IActionResult cerrarSesion(){
+        HttpContext.Session.Remove("usuario");
+        return RedirectToAction("iniciarSesion");
+    }
+    public IActionResult registrarse(string estado){
+        ViewBag.estado=estado;
+        return View();
+    }
+
+      public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero){
+        if(UsuarioBD.yaExiste(nombreUsuario)){
+            return RedirectToAction("registrarse", new{ estado="errorUsuario"});
+        }else{
+            Comprador usu =new Comprador();
+            string passwordHasheada = encriptar.HashearPassword(password);
+            usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero);
+            UsuarioBD.agregarComprador(usu);
+            return RedirectToAction("registrarse",new{estado="funciono"});
+        }
+    }
 }
