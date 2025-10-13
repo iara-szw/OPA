@@ -14,7 +14,7 @@ static class UsuarioBD{
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "SELECT * FROM Integrantes WHERE Usuario=@pnombreUsuario AND Contraseña=@Contraseña";
+        string query = "SELECT * FROM Comprador WHERE Usuario=@pnombreUsuario AND Contraseña=@Contraseña";
         usu= connection.QueryFirstOrDefault<Comprador>(query,new{pnombreUsuario=nombreUsuario,Contraseña=password});
             
         }
@@ -25,10 +25,19 @@ static class UsuarioBD{
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "SELECT * FROM Integrantes WHERE Usuario=@Usuario";
+        string query = "SELECT * FROM Comprador WHERE Usuario=@Usuario";
         usu= connection.QueryFirstOrDefault<Comprador>(query,new{Usuario=NombreUsuario});
             
         }
         return usu!=null;
    }
+      public List<Estilo> levantarEstilos(int Idcomprador){
+    List<Estilo> estilos = new List<Estilo>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Estilo INNER JOIN EstiloxComprador AS EC ON EC.IdEstilo=Estilo.IdEstilo WHERE EC.idComprador=@pIdcomprador";
+        estilos= connection.Query<Estilo>(query,new{@pIdComprador=Idcomprador}).ToList();
+
+    }
+    return estilos;
+    }
 }
