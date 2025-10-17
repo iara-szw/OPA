@@ -1,6 +1,6 @@
 using Microsoft.Data.SqlClient;
 using Dapper;
-static class UsuarioBD{
+static class CompradorBD{
  
     public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
     public static void agregarComprador(Comprador usu){

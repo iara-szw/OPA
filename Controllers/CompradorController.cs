@@ -57,4 +57,22 @@ public class CompradorController : Controller
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }
+
+    public IActionResult vistaUsuario(){
+        Comprador Usu=HttpContext.Session.GetString("usuario");
+         if (Usu == null)
+        {
+            return RedirectToAction("iniciarSesion");
+        }
+
+        ViewBag.usu=Usu;
+        return View();
+    }
+
+  public IActionResult cargarMedidas(){
+        Comprador Usu=HttpContext.Session.GetString("usuario");
+        CompradorBD.cargarMedidas(Usu.usuario);
+        return View();
+        //Arreglar en BD todas las medidas posibles
+    }
 }

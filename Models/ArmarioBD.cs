@@ -12,7 +12,7 @@ static class ArmarioBD{
     }
     return patentes;
     }
-         public List<Prenda> levantarDeseados(int Idcomprador){
+    public List<Prenda> levantarDeseados(int Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="SELECT * FROM Prendas as PRE INNER JOIN Deseado as D ON PRE.IdPrenda=D.IdPrenda WHERE D.IdComprador=@pIdCompradores";

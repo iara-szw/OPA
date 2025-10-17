@@ -12,7 +12,9 @@
     public double MedidaTorso;
     public int MedioDePago;
 
-     public void crearComprador(string usuario,string nombre, string apellido, string contraseña,string telefono,string mail,int genero){
+    public bool esVendedor;
+
+     public void crearComprador(string usuario,string nombre, string apellido, string contraseña,string telefono,string mail,int genero, bool EsVendedor){
         Usuario=usuario;
         Nombre=nombre;
         Apellido=apellido;
@@ -20,5 +22,6 @@
         Telefono=telefono;
         Mail=mail;
         Genero=genero;
+        esVendedor=EsVendedor;
     }
  }

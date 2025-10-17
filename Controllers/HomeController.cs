@@ -17,4 +17,6 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    //- web con el catálogo de productos y carrito.
 }
