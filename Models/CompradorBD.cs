@@ -40,4 +40,22 @@ static class CompradorBD{
     }
     return estilos;
     }
+     public List<Color> levantarColores(int Idcomprador){
+    List<Color> color = new List<Color>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Color INNER JOIN ColorxComprador AS CC ON CC.IdColor=Color.IdColor WHERE CC.idComprador=@pIdcomprador";
+        color= connection.Query<Color>(query,new{@pIdComprador=Idcomprador}).ToList();
+
+    }
+    return color;
+    }
+     public List<string> levantarPrendas(int Idcomprador){
+    List<string> tipos = new List<string>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Tipos INNER JOIN TiposXComprador AS TC ON TC.IdTipo=Tipos.IdTipo WHERE TC.idComprador=@pIdcomprador";
+        tipos= connection.Query<string>(query,new{@pIdComprador=Idcomprador}).ToList();
+
+    }
+    return tipos;
+    }
 }

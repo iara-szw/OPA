@@ -28,7 +28,8 @@ public class ArmarioController : Controller
         ViewBag.recomendados=BD.levantarRecomendados(usu.IdComprador);
         ViewBag.deseados=ArmarioBD.levantarDeseados(usu.IdComprador);
         ViewBag.estilos=UsuarioBD.levantarEstilos(usu.IdComprador);
-        //Hacer lo mismo con colores y tipos de prendas
+        ViewBag.colores=UsuarioBD.levantarColores(usu.IdComprador);
+        ViewBag.prendas=UsuarioBD.levantarPrendas(usu.IdComprador);
         return View();
     }
 }

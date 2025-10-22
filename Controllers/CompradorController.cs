@@ -29,7 +29,7 @@ public class CompradorController : Controller
     }
 
     public IActionResult comprobarDatos(string nombreUsuario, string password){
-       Comprador usu = UsuarioBD.levantarComprador(nombreUsuario,encriptar.HashearPassword(password));
+       Comprador usu = CompradorBD.levantarComprador(nombreUsuario,encriptar.HashearPassword(password));
             if(usu != null){
                 HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usu));
                 return RedirectToAction("vistaUsuario");
@@ -46,14 +46,14 @@ public class CompradorController : Controller
         return View();
     }
 
-      public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero){
+      public CompradorBD registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero){
         if(UsuarioBD.yaExiste(nombreUsuario)){
             return RedirectToAction("registrarse", new{ estado="errorUsuario"});
         }else{
             Comprador usu =new Comprador();
             string passwordHasheada = encriptar.HashearPassword(password);
             usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero);
-            UsuarioBD.agregarComprador(usu);
+            CompradorBD.agregarComprador(usu);
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }
