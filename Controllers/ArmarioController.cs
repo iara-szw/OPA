@@ -32,4 +32,6 @@ public class ArmarioController : Controller
         ViewBag.prendas=UsuarioBD.levantarPrendas(usu.IdComprador);
         return View();
     }
+
+
 }

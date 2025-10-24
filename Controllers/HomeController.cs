@@ -17,7 +17,6 @@ public class HomeController : Controller
     {
         List<int> carrito=new Carrito();
         HttpContext.Session.SetString("carrito", Objeto.ListToString(carrito));
-        HttpContext.Session.SetString("carrito", Objeto.ObjectToString(carrito));
         ViewBag.Ropa=BD.levantarRopa(); //Esto seria para la linea de recomendados
         ViewBag.tiendas=BD.levantarTiendas();
         return View();

@@ -4,7 +4,7 @@ static class BD{
  
     public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
 
-     public List<Prenda> levantarRecomendados(int Idcomprador){
+     static public List<Prenda> levantarRecomendados(int Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="EXEC levantarRecomendados @idComprador";

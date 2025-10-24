@@ -1,0 +1,9 @@
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.csproj.AssemblyReference.cache
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.AssemblyInfoInputs.cache
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.AssemblyInfo.cs
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.csproj.CoreCompileInputs.cache
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.RazorAssemblyInfo.cache
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.RazorAssemblyInfo.cs
+C:\Users\49193480\Downloads\OPA\obj\Debug\net8.0\OPA.sourcelink.json
