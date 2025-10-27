@@ -15,22 +15,30 @@ public class CompraController : Controller
 
     public void GuardarCarrito(int idPrenda)
     {
-        List<int> prendas=Objetos.StringToList<int>(HttpContext.Session.GetString("carrito"));
-        prendas.add(idPrenda);
+        List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
+        if(prendas.Count() == 0){
+            List<int> ropa=new List<int>();
+            ropa.Add(idPrenda);
+            HttpContext.Session.SetString("carrito", Objeto.ListToString(ropa));
+            return;
+        }
+        prendas.Add(idPrenda);
         HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
+        return;
     }
     public IActionResult verCarrito(){
-        List<int> prendas=Objetos.StringToList<int>(HttpContext.Session.GetString("carrito"));
+        List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
         List<Prenda> Ropa=new List<Prenda>();
         foreach(int id in prendas){
-            Ropa.add(BD.levantarPrenda(id));
+            Ropa.Add(BD.levantarPrenda(id));
         }
         ViewBag.ropa=Ropa;
-        return view();
+        return View();
     }
     public void eliminarPrenda(int IdPrenda){
-        List<int> prendas=Objetos.StringToList<int>(HttpContext.Session.GetString("carrito"));
+        List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
         prendas.Remove(IdPrenda);
        HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
+       return;
     }
 }

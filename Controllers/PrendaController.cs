@@ -9,7 +9,7 @@ public class PrendaController : Controller
 
 
     public IActionResult agregarPrenda(int IdTienda, string Tipo,int IdPrenda, string Modelo, int IdTalle,string descripcion,double Precio, List<Estilo> estilos, int Temporada){
-        PrendaBD.agregarPrenda(IdTienda, Tipo,IdPrenda, Modelo, IdTalle,descripcion, Precio, List<Estilo> estilos,Temporada);
+        PrendaBD.agregarPrenda(IdTienda, Tipo,IdPrenda, Modelo, IdTalle,descripcion, Precio,estilos,Temporada);
         return RedirectToAction("vistaTienda","Tienda");
     }
 

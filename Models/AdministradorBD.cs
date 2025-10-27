@@ -23,12 +23,12 @@ static class AdministradorBD{
    }
 
 
-public static bool verPermisos(string usuario, int IdTienda){
+public static bool verPermisos(int IdTienda,string usuario ){
         bool permisos;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
         string query = "SELECT Permisos FROM Administrador WHERE Usuario=@pusuario AND IdTienda=@pIdTienda";
-        permisos= connection.QueryFirstOrDefault<Administrador>(query,new{pusuario=usuario,pIdTienda=IdTienda});
+        permisos= connection.QueryFirstOrDefault<bool>(query,new{pusuario=usuario,pIdTienda=IdTienda});
             
         }
         return permisos;

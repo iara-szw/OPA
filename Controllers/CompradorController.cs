@@ -46,20 +46,20 @@ public class CompradorController : Controller
         return View();
     }
 
-      public CompradorBD registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero){
-        if(UsuarioBD.yaExiste(nombreUsuario)){
-            return RedirectToAction("registrarse", new{ estado="errorUsuario"});
+      public Comprador registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
+        if(CompradorBD.yaExiste(nombreUsuario)){
+            return RedirectToAction("registrarse",new{estado="errorUsuario"});
         }else{
             Comprador usu =new Comprador();
             string passwordHasheada = encriptar.HashearPassword(password);
-            usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero);
+            usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero,esVendedor);
             CompradorBD.agregarComprador(usu);
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }
 
     public IActionResult vistaUsuario(){
-        Comprador Usu=HttpContext.Session.GetString("usuario");
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
          if (Usu == null)
         {
             return RedirectToAction("iniciarSesion");
@@ -69,9 +69,9 @@ public class CompradorController : Controller
         return View();
     }
 
-  public IActionResult cargarMedidas(){
-        Comprador Usu=HttpContext.Session.GetString("usuario");
-        CompradorBD.cargarMedidas(Usu.usuario);
+  public IActionResult cargarMedidas(double MedidaTorso, double MedidaCintura, double MedidaPierna, double MedidaHombros, double MedidaBrazos, double MedidaCadera){
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        CompradorBD.cargarMedidas(Usu.Usuario,MedidaTorso,MedidaCintura,MedidaPierna,MedidaHombros,MedidaBrazos,MedidaCadera);
         return View();
         //Arreglar en BD todas las medidas posibles
     }

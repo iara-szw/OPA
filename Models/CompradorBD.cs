@@ -3,14 +3,14 @@ using Dapper;
 static class CompradorBD{
  
     public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
-    static public static void agregarComprador(Comprador usu){
+    static public  void agregarComprador(Comprador usu){
 
         string query = "INSERT INTO Comprador (Usuario, Nombre, Apellido, Contraseña,Telefono,Mail,Genero) VALUES (@pUsuario, @pNombre, @pApellido, @pContraseña, @pTelefono, @pMail, @pGenero)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pUsuario=usu.Usuario, pNombre=usu.Nombre,pApellido=usu.Apellido, pContraseña=usu.Contraseña, pTelefono=usu.Telefono, pMail=usu.Mail, pGenero=usu.Genero});
         }
     }
-    static public static Comprador levantarComprador(string nombreUsuario, string password){
+    static public Comprador levantarComprador(string nombreUsuario, string password){
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
@@ -20,7 +20,7 @@ static class CompradorBD{
         }
         return usu;
    }
-    static public static bool yaExiste(string NombreUsuario){
+    static public  bool yaExiste(string NombreUsuario){
 
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
@@ -31,7 +31,7 @@ static class CompradorBD{
         }
         return usu!=null;
    }
-    static public List<Estilo> levantarEstilos(int Idcomprador){
+    static public List<Estilo> levantarEstilos(string Idcomprador){
     List<Estilo> estilos = new List<Estilo>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="SELECT * FROM Estilo INNER JOIN EstiloxComprador AS EC ON EC.IdEstilo=Estilo.IdEstilo WHERE EC.idComprador=@pIdcomprador";
@@ -40,7 +40,7 @@ static class CompradorBD{
     }
     return estilos;
     }
-    static public List<Color> levantarColores(int Idcomprador){
+    static public List<Color> levantarColores(string Idcomprador){
     List<Color> color = new List<Color>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="SELECT * FROM Color INNER JOIN ColorxComprador AS CC ON CC.IdColor=Color.IdColor WHERE CC.idComprador=@pIdcomprador";
@@ -49,7 +49,7 @@ static class CompradorBD{
     }
     return color;
     }
-    static public List<string> levantarPrendas(int Idcomprador){
+    static public List<string> levantarPrendas(string Idcomprador){
     List<string> tipos = new List<string>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="SELECT * FROM Tipos INNER JOIN TiposXComprador AS TC ON TC.IdTipo=Tipos.IdTipo WHERE TC.idComprador=@pIdcomprador";
@@ -57,5 +57,14 @@ static class CompradorBD{
 
     }
     return tipos;
+    }
+
+    static  public void cargarMedidas(string usuario,double MedidaTorso, double MedidaCintura, double MedidaPierna, double MedidaHombros, double MedidaBrazos, double MedidaCadera){
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "EXEC cargarMedidas @idUsuario,@MedidaTorso,@MedidaCintura,@MedidaPierna,@MedidaHombros,@MedidaBrazos,@MedidaCadera";
+        connection.Execute(query,new{@idUsuario=usuario,@MedidaTorso=MedidaTorso,@MedidaCintura=MedidaCintura,@MedidaPierna=MedidaPierna,@MedidaHombros=MedidaHombros,@MedidaBrazos=MedidaBrazos,@MedidaCadera=MedidaCadera});
+            
+        }
     }
 }

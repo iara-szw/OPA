@@ -19,17 +19,17 @@ public class ArmarioController : Controller
     }
 
     public IActionResult armario(){
-        Comprador usu=HttpContext.Session.GetString("usuario");
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         if(usu==null){
             ViewBag.estado="Tenes que iniciar sesión para ver tu armario";
             return View();
         }
-        ViewBag.poseidos=ArmarioBD.levantarPoseidos(usu.IdComprador);
-        ViewBag.recomendados=BD.levantarRecomendados(usu.IdComprador);
-        ViewBag.deseados=ArmarioBD.levantarDeseados(usu.IdComprador);
-        ViewBag.estilos=UsuarioBD.levantarEstilos(usu.IdComprador);
-        ViewBag.colores=UsuarioBD.levantarColores(usu.IdComprador);
-        ViewBag.prendas=UsuarioBD.levantarPrendas(usu.IdComprador);
+        ViewBag.poseidos=ArmarioBD.levantarPoseidos(usu.Usuario);
+        ViewBag.recomendados=BD.levantarRecomendados(usu.Usuario);
+        ViewBag.deseados=ArmarioBD.levantarDeseados(usu.Usuario);
+        ViewBag.estilos=CompradorBD.levantarEstilos(usu.Usuario);
+        ViewBag.colores=CompradorBD.levantarColores(usu.Usuario);
+        ViewBag.prendas=CompradorBD.levantarPrendas(usu.Usuario);
         return View();
     }
 

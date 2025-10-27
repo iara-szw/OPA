@@ -15,10 +15,16 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        List<int> carrito=new Carrito();
-        HttpContext.Session.SetString("carrito", Objeto.ListToString(carrito));
-        ViewBag.Ropa=BD.levantarRopa(); //Esto seria para la linea de recomendados
-        ViewBag.tiendas=BD.levantarTiendas();
+        string id="";
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(usu == null){
+            id="default";
+        }else{
+
+        }
+        id=usu.Usuario;
+        ViewBag.Ropa=BD.levantarRecomendados(id); //Esto seria para la linea de recomendados
+        ViewBag.tiendas=BD.levantarRecomendadosTienda(id);
         return View();
     }
     

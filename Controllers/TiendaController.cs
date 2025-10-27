@@ -14,7 +14,7 @@ public class TiendaController : Controller
     }
 
   public IActionResult verTiendasAdministrador(){
-        Comprador usu=HttpContext.Session.GetString("usuario");
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         if (usu != null)
         {
             ViewBag.tiendas=AdministradorBD.levantarAdministrador(usu.Usuario);
@@ -33,16 +33,24 @@ public class TiendaController : Controller
             HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
             return RedirectToAction("vistaTienda");
     }
+
+    public IActionResult nuevaTienda(){
+        return View();
+    }
     public IActionResult agregarTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto){
-        TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,FotoDePerfil,Contacto);
-        //return si funciono
+        int idNuevo=TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,FotoDePerfil,Contacto);
+        if (idNuevo == -1){
+            return RedirectToAction("nuevaTienda");
+        }
+        Tienda tiendaActual=TiendaBD.levantarTienda(idNuevo);
+        HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
         return View();
     }
 
     public IActionResult vistaTienda(){
-        Comprador usu=HttpContext.Session.GetString("usuario");
-        Tienda tienda=HttpContext.Session.GetString("tienda");
-        ViewBag.permisos=TiendaBD.verPermisos(tienda.IdTienda,usu.Usuario);
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+        ViewBag.permisos=AdministradorBD.verPermisos(tienda.IdTienda,usu.Usuario);
         ViewBag.tienda=tienda;
         ViewBag.productos=TiendaBD.levantarProductos(tienda.IdTienda);
         return View();
