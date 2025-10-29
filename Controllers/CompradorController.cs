@@ -46,7 +46,7 @@ public class CompradorController : Controller
         return View();
     }
 
-      public Comprador registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
+      public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
         if(CompradorBD.yaExiste(nombreUsuario)){
             return RedirectToAction("registrarse",new{estado="errorUsuario"});
         }else{

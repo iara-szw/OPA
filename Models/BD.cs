@@ -8,16 +8,16 @@ static class BD{
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
         string query="EXEC levantarRecomendados @idComprador";
-        prendas= connection.Query<Prenda>(query,new{@pIdCompradores=Idcomprador}).ToList();
+        prendas= connection.Query<Prenda>(query,new{@idComprador=Idcomprador}).ToList();
 
     }
     return prendas;
     }
-     static public List<Tienda> levantarRecomendadosTienda(string Idcomprador){
+     static public List<Tienda> levantarRecomendadosTienda(){
     List<Tienda> tiendas = new List<Tienda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
-        string query="EXEC levantarRecomendadosTienda @idComprador";
-        tiendas= connection.Query<Tienda>(query,new{@pIdCompradores=Idcomprador}).ToList();
+        string query="SELECT TOP 20 * FROM Tienda";
+        tiendas= connection.Query<Tienda>(query,new{}).ToList();
 
     }
     return tiendas;

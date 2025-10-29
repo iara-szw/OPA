@@ -5,5 +5,6 @@
     public int IdTalle;
     public string descripcion;
     public double Precio;
+    public string foto;
     //agregar temporada,en bd
  }

@@ -4,48 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OPA - Home</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <h1>OPA</h1>
-    </div>
-    <div class="iconos-header">
-      <a href="#" class="buscar">🔍</a>
-      <a href="#" class="carrito">🛒</a>
-      <a href="#" class="menu">☰</a>
-    </div>
-  </header>
+  
   <section class="banner">
     <h2>OPA</h2>
     <p>Somos ropa, única y personal.</p>
   </section>
   <section class="recomendado">
     <h3>Recomendado para vos ></h3>
-    <div class="logos-marcas">
-      <div class="marca">CARA CRUZ</div>
-      <div class="marca">RUMMEL</div>
-      <div class="marca">ZOOM</div>
-      <div class="marca">KEEP</div>
-      <div class="marca">STYLE</div>
+    <div class="ropaRecomendada">
+     @foreach(Prenda prendita in ViewBag.Ropa){
+      <div>
+      <img src="/img/@prendita.foto">
+        <h4>@prendita.Modelo</h4>
+        <p>@prendita.Precio</p>
+
+      </div>
+     }
     </div>
   </section>
   <section class="lanzamientos">
     <h3>Últimos lanzamientos ></h3>
-    <div class="productos">
-      <div class="producto">
-        <p>Remera Oversize Negra</p>
+    @foreach(Tienda tienda in ViewBag.tiendas){
+      <div>
+      <img src="/img/@tienda.FotoDePerfil">
+        <h4>@tienda.Nombre</h4>
+
       </div>
-      <div class="producto">
-        <p>Conjunto Gris</p>
-      </div>
-      <div class="producto">
-        <p>Remera Negra con Estampa</p>
-      </div>
-      <div class="producto">
-        <p>Hoodie HX Edition</p>
-      </div>
-    </div>
+    }
   </section>
   <section class="explorando">
     <h3>Seguí explorando</h3>
@@ -64,8 +53,8 @@
   <footer>
     <p>© 2025 OPA</p>
   </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
 </body>
 </html>
-
-
 

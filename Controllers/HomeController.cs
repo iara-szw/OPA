@@ -20,11 +20,11 @@ public class HomeController : Controller
         if(usu == null){
             id="default";
         }else{
+        id=usu.Usuario;
 
         }
-        id=usu.Usuario;
         ViewBag.Ropa=BD.levantarRecomendados(id); //Esto seria para la linea de recomendados
-        ViewBag.tiendas=BD.levantarRecomendadosTienda(id);
+        ViewBag.tiendas=BD.levantarRecomendadosTienda();
         return View();
     }
     

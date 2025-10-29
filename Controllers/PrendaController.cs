@@ -14,7 +14,12 @@ public class PrendaController : Controller
     }
 
     public IActionResult LevantarPrenda(int IdPrenda){
-        PrendaBD.agregarPrenda(IdPrenda);
+        PrendaBD.LevantarPrenda(IdPrenda);
+        return RedirectToAction("vistaPrenda","Home");
+    }
+
+    public IActionResult EliminarPrenda(int IdPrenda){
+        PrendaBD.eliminarPrenda(IdPrenda);
         return RedirectToAction("vistaPrenda","Home");
     }
 }
