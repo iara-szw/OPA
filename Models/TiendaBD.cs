@@ -15,12 +15,12 @@ static class TiendaBD{
         return tiendita;
     }
 
-    static public int crearTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto){
+    static public int crearTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto, string usuario){
         int id=-1;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "EXEC crearTienda @nombre, @ubicacion,@mail,@telefono,@descripcion,@fotoDePerfil,@Contacto";
-        id= connection.QueryFirstOrDefault<int>(query,new{nombre=Nombre,ubicacion=Ubicacion,mail=Mail,telefono=Telefono,descripcion=Descripcion,FotoDePerfil=FotoDePerfil,contacto=Contacto});
+        string query = "EXEC crearTienda @nombre, @ubicacion,@mail,@telefono,@descripcion,@fotoDePerfil,@Contacto, @Usuario";
+        id= connection.QueryFirstOrDefault<int>(query,new{nombre=Nombre,ubicacion=Ubicacion,mail=Mail,telefono=Telefono,descripcion=Descripcion,FotoDePerfil=FotoDePerfil,contacto=Contacto, Usuario=usuario});
             
         }
         return id;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OPA - Carrito</title>
+    <title>OPA - Home</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   </head>
@@ -13,19 +13,11 @@
       <h2>OPA</h2>
       <p>Somos ropa, única y personal.</p>
     </section>
-    <section class="Tu Carrito">
-      <h3>TU CARRITO</h3>
-<div>
-   @foreach (var Prenda in ((IEnumerable<Prenda>)ViewBag.poseidos).Take(3))
-{
-    <div class="imagenesCarrito">
-        <img src="@Prenda.foto" alt="@Prenda.Modelo"/>
-        <h5>@Prenda.Modelo</h5>
+    <section class="Entrega">
+    <h1>ENTREGA</h1>
+    <div>
+    
     </div>
-}
-</div>
-      <button onclick="">SEGUÍ EXPLORANDO</button>
-      <button onclick="">CONTINUAR</button>
     </section>
     <footer>
       <p>© 2025 OPA</p>

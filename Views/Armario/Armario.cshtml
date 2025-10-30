@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+don<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <select name="orden">
     <option>Ordenar por nombre</option>
     <option>Ordenar por fecha de compra</option>
-    //Agregar mas filtros para ordenar
+    <!---Agregar mas filtros para ordenar--->
     <input type="text" name="Buscar" placeholder="Buscar"/>
 @foreach (var Prenda in ((IEnumerable<Prenda>)ViewBag.poseidos).Take(12))
 {
@@ -28,7 +28,7 @@
         <h5>@Prenda.Modelo</h5>
     </div>
 }
-//linkear a tus prendas
+ <!---linkear a tus prendas-->
 <button onclick="">VER MÁS</button>
   </section>
 </body>
