@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="~/css/perfil.css" />
+</head>
+
+<body>
+<main class="perfil">
+
+    <h1>¡HOLA @ViewBag.usu.Nombre.ToUpper()!</h1>
+
+    <div class="perfil-grid">
+
+        <!-- Avatar -->
+        <div class="avatar">
+            <div class="foto">
+                @if(!string.IsNullOrEmpty(ViewBag.usu.FotoDePerfil))
+                {
+                    <img src="@ViewBag.usu.FotoDePerfil" class="foto-perfil" />
+                }
+            </div>
+        </div>
+        <!-- Información personal -->
+        <section class="info-card">
+            <h3>INFORMACIÓN PERSONAL</h3>
+
+            <div class="card">
+                <p><b>NOMBRE</b><br>@ViewBag.usu.Nombre @ViewBag.usu.Apellido</p>
+                <p><b>MAIL</b><br>@ViewBag.usu.Mail</p>
+                <p><b>TELEFONO</b><br>@ViewBag.usu.Telefono</p>
+                <p><b>CONTRASEÑA</b><br>********...</p>
+            </div>
+
+            <form action='@Url.Action("editarUsuario")' >
+                <button class="btn rosa">EDITAR DATOS</button>
+            </form>
+        </section>
+
+        <!-- Medidas -->
+        <section class="medidas-card">
+            <h3>MEDIDAS</h3>
+
+            <div class="card">
+                <p><b>Talle torso</b><br>@(ViewBag.usu.MedidaTorso == 0 ? "—" : ViewBag.usu.MedidaTorso.ToString())</p>
+                <p><b>Talle Piernas</b><br> coming soon </p>
+                <p><b>Talle Cintura</b><br> coming soon </p>
+                <p><b>Talle Calzado</b><br> coming soon </p>
+            </div>
+
+            <form action="/Home/editarMedidas">
+                <button class="btn negro">EDITAR DATOS</button>
+            </form>
+            <button class="btn blanco">VER TUTORIAL</button>
+        </section>
+
+    </div>
+
+    <div class="menu-links">
+        <form action='@Url.Action("Armario","Armario")' ><button class="link">Mi armario</button></form>
+        <form ><button class="link">Mi billetera</button></form>
+        <form ><button class="link">Necesito ayuda</button></form>
+        <form action='@Url.Action("cerrarSesion","Comprador")'><button class="link">Cerrar sesión</button></form>
+    </div>
+
+</main>
+
+</body>
+</html>

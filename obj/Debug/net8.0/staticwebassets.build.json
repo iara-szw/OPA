@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rYYuwodsm2H8p0h5f4BoeQJ3zDky2hLyewMgxvKEnTE=",
+  "Hash": "iHb3tg58LliYySfuNixv3EVL4p27I8iq3Tf/CtNRkLs=",
   "Source": "OPA",
   "BasePath": "_content/OPA",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\index.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
-      "RelativePath": "css/site.css",
+      "RelativePath": "css/index.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,7 +33,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
       "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\favicon.ico",

@@ -13,7 +13,7 @@
 
     public bool esVendedor;
 
-     public void crearComprador(string usuario,string nombre, string apellido, string contraseña,string telefono,string mail,int genero, bool EsVendedor){
+     public void crearComprador(string usuario,string contraseña,string nombre, string apellido,string telefono,string mail,int genero, bool EsVendedor){
         Usuario=usuario;
         Nombre=nombre;
         Apellido=apellido;

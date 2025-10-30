@@ -54,11 +54,16 @@ public class CompradorController : Controller
             string passwordHasheada = encriptar.HashearPassword(password);
             usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero,esVendedor);
            CompradorBD.agregarComprador(usu);
-                       Console.WriteLine($"{usu.Usuario}  {usu.Contraseña} {usu.Nombre} {usu.Apellido} {usu.Telefono} {usu.Mail} {usu.Genero} {usu.esVendedor}");
-
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }
+
+[HttpGet]
+public JsonResult validarUsuario(string username)
+{
+    bool existe = CompradorBD.yaExiste(username);
+    return Json(new { existe = existe });
+}
 
     public IActionResult vistaUsuario(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));

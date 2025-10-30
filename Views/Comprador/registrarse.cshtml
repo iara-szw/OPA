@@ -12,9 +12,9 @@
       <section>
         <div>
           <h2>Registrarse</h2>
-          <form action='@Url.Action("registrarNuevo")'>
+          <form id="formRegistro" method="POST" action='@Url.Action("registrarNuevo")'>
           <input type="text" name="nombreUsuario" id="usuario" placeholder="Nombre de usuario" required />
-          <h2 id="yaesta" style="display:none">Ese nombre de usuario ya esta en uso.</h2>
+
 
             <input type="password" name="password" placeholder="Contraseña" required />
             <input type="text" placeholder="Nombre" name="nombre" required />
@@ -29,35 +29,67 @@
              </select>
               <select name="esVendedor">
               <option disabled selected>¿Sos vendedor? esta opcion se puede cambiar en el futuro</option>
-              <option value='true'>Si</option>
-              <option value='false'>No</option>
+              <option value="true">Si</option>
+              <option value="false">No</option>
              </select>
-
+          <h2 id="yaesta" style="display:none">Ese nombre de usuario ya esta en uso.</h2>
             <input type="submit" value="Registrarse" />
-            <p>¿Ya tenés una cuenta?<a href="iniciarSesion.html">Iniciar sesión</a></p>
+            <p>¿Ya tenés una cuenta?<a href='@Url.Action("iniciarSesion")'>Iniciar sesión</a></p>
           </form>
           
         </div>
       </section>
     </main>
   </body>
-  <script>
-    const usuario = document.getElementById('usuario');
-    const valor=document.getElementById('usuario').innerHTML;
-        const error=document.getElementById('yaesta');
+<script>
+const form = document.getElementById("formRegistro");
+const inputUsuario = document.querySelector("input[name='nombreUsuario']");
+const errorUsuario = document.getElementById("yaesta");
 
-    var yaExiste="false";
-    document.getElementById('usuario').onkeydown = function(e){
-    if (event.key == 'Enter') {
-        event.preventDefault();
-        yaExiste = CompradorBD.yaExiste(valor);
-        Console.log("aca")
-        if(yaExiste){
-            yaesta.style.display="block";
-        }
+async function usuarioDisponible(username) {
+    const respuesta = await fetch(`/Comprador/validarUsuario?username=${encodeURIComponent(username)}`);
+    const data = await respuesta.json();
+    return !data.existe; 
+}
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); 
+    errorUsuario.style.display = "none";
+
+    const username = inputUsuario.value.trim();
+    const password = document.querySelector("input[name='password']").value;
+    const nombre = document.querySelector("input[name='nombre']").value;
+    const apellido = document.querySelector("input[name='apellido']").value;
+    const telefono = document.querySelector("input[name='telefono']").value;
+    const mail = document.querySelector("input[name='Mail']").value;
+    const genero = document.querySelector("select[name='Genero']").value;
+    const esVendedor = document.querySelector("select[name='esVendedor']").value;
+
+    if (!username || !password || !nombre || !apellido || !mail || !genero || !esVendedor) {
+        alert("Completá todos los campos obligatorios.");
+        return;
     }
 
+    if (telefono && !/^[0-9]+$/.test(telefono)) {
+        alert("El teléfono solo debe tener números.");
+        return;
     }
-    
-  </script>
+
+    const disponible = await usuarioDisponible(username);
+    if (!disponible) {
+        errorUsuario.style.display = "block";
+        return;
+    }
+    form.submit();
+});
+
+inputUsuario.addEventListener("blur", async () => {
+    const username = inputUsuario.value.trim();
+    if (!username) return;
+
+    const disponible = await usuarioDisponible(username);
+    errorUsuario.style.display = disponible ? "none" : "block";
+});
+</script>
+
 </html>

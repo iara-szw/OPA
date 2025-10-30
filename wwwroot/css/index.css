@@ -1,6 +1,4 @@
-<style>
 
-/* ====== RESETEO Y BASE ====== */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ====== HEADER STICKY ====== */
 header {
   position: sticky;
   top: 0;
@@ -45,7 +42,6 @@ header .iconos i {
   cursor: pointer;
 }
 
-/* ====== BANNER PRINCIPAL ====== */
 .banner {
   background: #111 url('/img/fondo-opa.jpg') center/cover no-repeat;
   text-align: center;
@@ -65,7 +61,6 @@ header .iconos i {
   margin-top: 0.5rem;
 }
 
-/* ====== SECCIÓN RECOMENDADO ====== */
 .recomendado {
   padding: 2rem 1rem;
 }
@@ -119,7 +114,6 @@ header .iconos i {
   font-size: 0.9rem;
 }
 
-/* ====== ÚLTIMOS LANZAMIENTOS ====== */
 .lanzamientos {
   padding: 2rem 1rem;
 }
@@ -150,7 +144,6 @@ header .iconos i {
   font-size: 1rem;
 }
 
-/* ====== SEGÚI EXPLORANDO ====== */
 .explorando {
   background: linear-gradient(to right, #2a0023, #960058);
   color: #fff;
@@ -200,7 +193,6 @@ header .iconos i {
   font-size: 1.1rem;
 }
 
-/* ====== FOOTER ====== */
 footer {
   background: #111;
   color: #fff;
@@ -210,7 +202,6 @@ footer {
   margin-top: 2rem;
 }
 
-/* ====== MEDIA QUERIES ====== */
 @media (max-width: 768px) {
   .banner h2 {
     font-size: 3.5rem;
@@ -225,4 +216,3 @@ footer {
   }
 }
 
-</style>
