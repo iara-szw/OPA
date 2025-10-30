@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPA - Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <section class="banner">
+      <h2>OPA</h2>
+      <p>Somos ropa, única y personal.</p>
+    </section>
+    <section class="SubirOutfit">
+    <button onclick="">VOLVER</button>
+    <h1>¡HOLA @ViewBag.Nombre!</h1>
+    <h2>COMPARTÍ CON EL RESTO TUS OUTFITS Y AYUDA AL RESTO A INSPIRARSE</h2>
+    <div>
+    <form method= "post" action="Envio.cshtml">
+    NOMBRE:
+    <input type="text" name="nombre" placeholder="Nombre">
+    ESTILO DEL OUTFIT:
+    <input type="text" name="estilodeloutfit" placeholder="Elegí todas las que apliquen">
+    TEMPORADA:
+    <input type="text" name="temporada" placeholder="Elegí todas las que apliquen">
+    D:
+    <input type="text" name="temporada" placeholder="Elegí todas las que apliquen">
+    </form>
+     <form action="" method="post" target="_blank">
+    <input type="checkbox" name="guardarDireccion" value="guardar"> GUARDAR DIRECCIÓN
+    </form>
+    </div>
+    </section>
+    <footer>
+      <p>© 2025 OPA</p>
+    </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  </body>
+  </html>

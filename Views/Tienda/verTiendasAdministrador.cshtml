@@ -1,12 +1,88 @@
+@{
+    var tiendas = ViewBag.tiendas;
+}
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OPA</title>
+    <meta charset="utf-8" />
+    <title>Mis Tiendas</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: white;
+        }
+
+        header {
+            height: 70px;
+            background: linear-gradient(90deg,#ff0174 0%,#000 55%,#ff0074 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+        }
+
+        .container {
+            padding-top: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .tienda-btn {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: none;
+            background: #dcdcdc;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tienda-btn:hover {
+            background: #b5b5b5;
+        }
+
+        .nombre-tienda {
+            position: relative;
+            top: 165px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
+
 <body>
-<main>
-    
-</main>
+
+<div class="container">
+<h2>Elegi la tienda a la que queres ingresar</h2>
+    @foreach (var t in tiendas)
+    {
+        <form action='@Url.Action("seleccionarTienda")'  method="post" style="text-align:center;">
+            <input type="hidden" name="IdTienda" value="@t.IdTienda" />
+ 
+            <button type="submit" class="tienda-btn">
+
+            </button>
+            <div class="nombre-tienda">@t.Nombre</div>
+        </form>
+    }
+
+</div>
+
 </body>
+</html>

@@ -8,24 +8,53 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+    <style>
+      /* Header degradado EB006B → negro → EB006B */
+      .opa-gradient-header{ background: linear-gradient(90deg, #EB006B 0%, #0b0b0b 45%, #0b0b0b 55%, #EB006B 100%); }
+      .opa-navbar{ padding-top: 1rem; padding-bottom: 1rem; font-size: 1.05em; }
+      .opa-logo-box{ background:#ffffff; border-radius:12px; padding:6px 8px; display:flex; align-items:center; }
+      .opa-logo-box img{ height:30px; width:auto; display:block; }
+      .opa-icon{ width:28px; height:28px; object-fit:contain; display:block; }
+      .opa-icon-white{ filter: invert(1) brightness(100%); }
+      .opa-search-active{ filter:none; }
+      .opa-search-form{ max-width:520px; width:100%; }
+      .opa-search-input{ width:0; opacity:0; overflow:hidden; transition: width .22s ease, opacity .22s ease; }
+      .opa-search-input.show{ width: clamp(220px, 40vw, 540px); opacity:1; }
+      .navbar-toggler{ border: none; transform: scale(1.05); }
+      .navbar-toggler .navbar-toggler-icon{ filter: invert(1); }
+    </style>
 </head>
 
 <body>
 <header>
    
-    <nav class="navbar bg-body-tertiary fixed-top">
-  <div class="container-fluid">
-   <div class="logo">
-        <img src="wwwroot/img/logoOPA-02.png" alt="logo"> 
+     <nav class="navbar opa-gradient-header opa-navbar fixed-top">
+  <div class="container-fluid align-items-center">
+   <a class="navbar-brand d-flex align-items-center" href="@Url.Action("Index","Home")">
+      <span class="opa-logo-box">
+        <img src="/img/logoOPA-03.png" alt="OPA"/>
+      </span>
+   </a>
+
+   <div class="d-flex align-items-center gap-2 ms-auto">
+      <form id="opaSearchForm" class="opa-search-form me-2" role="search" onsubmit="return false;">
+        <div class="input-group opa-search-input" id="opaSearchInput">
+          <input id="opaSearchText" type="text" class="form-control rounded-4" placeholder="Buscar" aria-label="Buscar">
+        </div>
+      </form>
+
+      <button id="opaSearchBtn" type="button" class="btn btn-link p-0 m-0" aria-label="Buscar">
+        <img id="opaSearchIcon" class="opa-icon" src="/img/searchWhite.png" alt="Buscar">
+      </button>
+
+      <a class="btn btn-link p-0 m-0" href="@Url.Action("Carrito","Home")" aria-label="Carrito">
+        <img class="opa-icon" src="/img/tiendaWhite.png" alt="Carrito">
+      </a>
+
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-     <div class="iconos-header">
-      <a href="#" class="buscar">🔍</a>
-      <a href="#" class="carrito">🛒</a>
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -54,10 +83,7 @@
           </li>
 
         </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <!-- Contenido del offcanvas se completará luego -->
       </div>
     </div>
   </div>
@@ -76,6 +102,34 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+      (function(){
+        const btn = document.getElementById('opaSearchBtn');
+        const icon = document.getElementById('opaSearchIcon');
+        const inputWrap = document.getElementById('opaSearchInput');
+        const text = document.getElementById('opaSearchText');
+        let open = false;
+        function toggle(){
+          open = !open;
+          inputWrap.classList.toggle('show', open);
+          // Intercambiar icono: blanco por defecto, oscuro al abrir
+          icon.src = open ? '/img/search.png' : '/img/searchWhite.png';
+          if(open){ setTimeout(()=>text.focus(), 10); }
+        }
+        btn?.addEventListener('click', toggle);
+        // Redirige cuando presiona Enter o al perder foco con texto
+        function go(){
+          const q = (text.value || '').trim();
+          if(q.length>0){
+            const url = '@Url.Action("Explorar","Home")' + '?q=' + encodeURIComponent(q);
+            window.location.href = url;
+          }
+        }
+        text?.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); }});
+        text?.addEventListener('blur', function(){ open=false; inputWrap.classList.remove('show'); icon.src='/img/searchWhite.png'; });
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && open){ open=false; inputWrap.classList.remove('show'); icon.src='/img/searchWhite.png'; text.blur(); }});
+      })();
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

@@ -1,38 +1,243 @@
-don<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPA - Armario</title>
-</head>
-<body>
-  <section class="banner">
-    <h2>ARMARIO</h2>
-    <p>Encontrá tu estilo</p><img src="wwwroot/img/formulario.png" alt="formulario">
-  </section>
-  <section class="tu avatar">
-    <h4>TU AVATAR</h4>
-    <img>
-  </section>
-  <section class="tu ropa">
-    <h4>TU ROPA</h4>
-    <select name="orden">
-    <option>Ordenar por nombre</option>
-    <option>Ordenar por fecha de compra</option>
-    <!---Agregar mas filtros para ordenar--->
-    <input type="text" name="Buscar" placeholder="Buscar"/>
-@foreach (var Prenda in ((IEnumerable<Prenda>)ViewBag.poseidos).Take(12))
-{
-    <div class="card">
-        <img src="@Prenda.foto" alt="@Prenda.Modelo"/>
-        <h5>@Prenda.Modelo</h5>
-    </div>
+@using OPA.Models
+@{
+  var usuarioNombre = ViewBag.UsuarioNombre as string;
+  var poseidos = ViewBag.poseidos as IEnumerable<Prenda> ?? Enumerable.Empty<Prenda>();
+  var deseados = ViewBag.deseados as IEnumerable<Prenda> ?? Enumerable.Empty<Prenda>();
+  var recomendados = ViewBag.recomendados as IEnumerable<Prenda> ?? Enumerable.Empty<Prenda>();
+  IEnumerable<object> coloresList = (IEnumerable<object>)(ViewBag.colores ?? new List<object>());
+  Func<object,string> getHex = (obj) => {
+      if (obj == null) return "#ff8bd1";
+      var t = obj.GetType();
+      var p = t.GetProperty("Hex") ?? t.GetProperty("Codigo") ?? t.GetProperty("ValorHex") ?? t.GetProperty("ColorHex");
+      var val = p?.GetValue(obj)?.ToString();
+      return string.IsNullOrWhiteSpace(val) ? "#ff8bd1" : val;
+  };
 }
- <!---linkear a tus prendas-->
-<button onclick="">VER MÁS</button>
-  </section>
-</body>
-</html>
 
+<style>
+    /* Estilos base (utilizable sin Tailwind/Bootstrap). Ajustados a diseño e‑commerce */
+    :root { --magenta:#E6007E; --gris:#f5f5f7; --texto:#111827; }
+    body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--texto); background: #ffffff; margin: 0; }
+    .encabezado {
+      background: linear-gradient(180deg, var(--magenta) 0%, #ffffff 100%);
+      padding: 16px 20px;
+    }
+    .topbar { display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:1px; color:#ffffff; }
+    .logo img { height:28px; width:auto; }
+    .acciones { display:flex; align-items:center; gap:12px; }
+    .acciones img { width:22px; height:22px; filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+    .contenedor { max-width:1200px; margin: 0 auto; padding: 16px 20px; }
+    h1 { margin: 8px 0 0; font-size: 28px; letter-spacing: 1px; }
+    .sub { margin: 4px 0 16px; color:#4b5563; font-size:14px; }
+    .tabs { display:flex; gap:12px; margin: 12px 0 8px; }
+    .tab-btn { padding:8px 14px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; transition: all .2s ease-in-out; font-weight:600; }
+    .tab-btn.activo { background: var(--magenta); color:#fff; border-color: transparent; }
+    .panel { display:none; }
+    .panel.activo { display:block; }
+    /* Grid de prendas */
+    .grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:12px; }
+    @@media(min-width:640px){ .grid{ grid-template-columns: repeat(3, 1fr);} }
+    @@media(min-width:1024px){ .grid{ grid-template-columns: repeat(4, 1fr);} }
+    .card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform:translateY(-2px) scale(1.01); box-shadow:0 10px 20px rgba(0,0,0,.06); }
+    .card img { width:100%; height:180px; object-fit:cover; background:#fafafa; }
+    .card .info { padding:10px 12px; }
+    .card .titulo { font-weight:700; font-size:14px; margin:0 0 4px; }
+    .card .marca { font-size:12px; color:#6b7280; }
+    .seccion-encabezado { display:flex; align-items:center; justify-content:space-between; margin:18px 0 10px; }
+    .seccion-encabezado h3 { margin:0; font-size:18px; }
+    .ver-mas { padding:8px 14px; border-radius:10px; background:#111827; color:#fff; border:none; cursor:pointer; transition:opacity .2s ease; }
+    .ver-mas:hover { opacity:.9; }
+    /* Carruseles */
+    .carrusel { display:flex; gap:12px; overflow-x:auto; padding-bottom:6px; scroll-snap-type:x proximity; }
+    .carrusel .card { min-width:160px; scroll-snap-align:start; }
+    /* Preferencias */
+    .preferencias { border:1px dashed #d1d5db; border-radius:14px; padding:14px; background:#ffffff; }
+    .pref-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+    @@media(min-width:768px){ .pref-grid{ grid-template-columns:repeat(3, 1fr);} }
+    .chip { display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; border:1px solid #e5e7eb; margin:4px; font-size:12px; background:#fff; }
+    .color-swatch { width:22px; height:22px; border-radius:999px; border:2px solid #fff; box-shadow:0 0 0 1px #e5e7eb inset; margin-right:8px; }
+    .descubri { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:10px; }
+    .descubri .mini-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; text-align:center; cursor:pointer; transition:transform .2s ease; }
+    .descubri .mini-card:hover { transform: translateY(-2px); }
+    .placeholder { border:1px dashed #d1d5db; border-radius:12px; padding:20px; text-align:center; color:#6b7280; background:#fafafa; }
+    .fila-filtros { display:flex; gap:8px; align-items:center; margin:8px 0 14px; }
+    .select, .input { padding:8px 10px; border:1px solid #e5e7eb; border-radius:10px; background:#fff; }
+  </style>
 
+<div class="container py-3">
+    <h1>ARMARIO</h1>
+    <div class="sub">@(string.IsNullOrWhiteSpace(usuarioNombre) ? "Mi estilo" : usuarioNombre)</div>
 
+    <div class="tabs">
+      <button id="tab-avatar" class="tab-btn" type="button">Tu Avatar</button>
+      <button id="tab-ropa" class="tab-btn activo" type="button">Tu Ropa</button>
+    </div>
+
+    <section id="panel-avatar" class="panel">
+      <div class="placeholder">
+        <img src="/img/armario.png" alt="Avatar" style="height:120px; opacity:.7; display:block; margin:0 auto 8px;">
+        <div>Tu avatar aparecerá aquí.</div>
+      </div>
+    </section>
+
+    <section id="panel-ropa" class="panel activo">
+      <div class="seccion-encabezado">
+        <h3>Tu Ropa</h3>
+        <div class="fila-filtros">
+          <select class="select" name="orden">
+            <option>Ordenar por nombre</option>
+            <option>Ordenar por fecha de compra</option>
+          </select>
+          <input class="input" type="text" name="buscar" placeholder="Buscar" />
+        </div>
+      </div>
+
+      @if (poseidos.Any())
+      {
+        <div class="row g-3">
+        @foreach (var prenda in poseidos.Take(12))
+        {
+          <div class="col-6 col-sm-4 col-lg-3">
+            <div class="card h-100">
+              <img src="@prenda.foto" alt="@prenda.Modelo" />
+              <div class="info">
+                <p class="titulo">@prenda.Modelo</p>
+                <span class="marca">@prenda.Tipo</span>
+              </div>
+            </div>
+          </div>
+        }
+        </div>
+      }
+      else
+      {
+        <div class="placeholder">Todavía no agregaste prendas a tu armario 👕</div>
+      }
+
+      <div style="display:flex; justify-content:center; margin-top:14px;">
+        <button class="ver-mas" type="button">Ver más</button>
+      </div>
+    </section>
+
+    <section class="mt-4">
+      <div class="seccion-encabezado">
+        <h3>💗 Lista de deseados</h3>
+        <button class="ver-mas" type="button">Ver más</button>
+      </div>
+      <div class="carrusel">
+        @foreach (var prenda in deseados)
+        {
+          <div class="card">
+            <img src="@prenda.foto" alt="@prenda.Modelo" />
+            <div class="info">
+              <p class="titulo">@prenda.Modelo</p>
+              <span class="marca">@prenda.Tipo</span>
+            </div>
+          </div>
+        }
+        @if (!deseados.Any())
+        {
+          <div class="placeholder" style="min-width:260px;">Aún no tenés deseados 💗</div>
+        }
+      </div>
+    </section>
+
+    <section class="mt-4">
+      <div class="seccion-encabezado">
+        <h3>Recomendado para vos</h3>
+        <button class="ver-mas" type="button">Ver más</button>
+      </div>
+      <div class="carrusel">
+        @foreach (var prenda in recomendados)
+        {
+          <div class="card">
+            <img src="@prenda.foto" alt="@prenda.Modelo" />
+            <div class="info">
+              <p class="titulo">@prenda.Modelo</p>
+              <span class="marca">@prenda.Tipo</span>
+            </div>
+          </div>
+        }
+        @if (!recomendados.Any())
+        {
+          <div class="placeholder" style="min-width:260px;">Pronto verás recomendaciones según tus gustos ✨</div>
+        }
+      </div>
+    </section>
+
+    <section class="mt-4">
+      <div class="preferencias">
+        <h3 style="margin:0 0 10px;">Tus preferencias</h3>
+        <div class="pref-grid">
+          <div>
+            <div style="font-weight:700; margin-bottom:6px;">Estilos</div>
+            <div>
+              @foreach (var estilo in (IEnumerable<Estilo>)(ViewBag.estilos ?? Enumerable.Empty<Estilo>()))
+              {
+                <span class="chip">@estilo.Nombre</span>
+              }
+              @if (ViewBag.estilos == null || ((IEnumerable<Estilo>)ViewBag.estilos).Count() == 0)
+              {
+                <div class="chip" style="opacity:.7;">Sin estilos</div>
+              }
+            </div>
+          </div>
+          <div>
+            <div style="font-weight:700; margin-bottom:6px;">Tus prendas</div>
+            <a href="#" class="chip" style="text-decoration:none; color:inherit;">Ver todas</a>
+            <a href="#" class="chip" style="text-decoration:none; color:inherit;">Agregar más</a>
+          </div>
+          <div>
+            <div style="font-weight:700; margin-bottom:6px;">Tus colores</div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              @foreach (var c in coloresList)
+              {
+                <div class="color-swatch" style="background:@getHex(c);"></div>
+              }
+              @if (ViewBag.colores == null || ((IEnumerable<Color>)ViewBag.colores).Count() == 0)
+              {
+                <div class="color-swatch" style="background:#ff8bd1;"></div>
+                <div class="color-swatch" style="background:#111827;"></div>
+                <div class="color-swatch" style="background:#0081ff;"></div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div style="font-weight:700; margin-bottom:6px;">Descubrí más</div>
+          <div class="descubri">
+            <div class="mini-card">Colores</div>
+            <div class="mini-card">Estilos</div>
+            <div class="mini-card">Outfits</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function(){
+      const tabAvatar = document.getElementById('tab-avatar');
+      const tabRopa = document.getElementById('tab-ropa');
+      const panelAvatar = document.getElementById('panel-avatar');
+      const panelRopa = document.getElementById('panel-ropa');
+      function activar(tab){
+        if(tab === 'avatar'){
+          tabAvatar.classList.add('activo');
+          tabRopa.classList.remove('activo');
+          panelAvatar.classList.add('activo');
+          panelRopa.classList.remove('activo');
+        } else {
+          tabRopa.classList.add('activo');
+          tabAvatar.classList.remove('activo');
+          panelRopa.classList.add('activo');
+          panelAvatar.classList.remove('activo');
+        }
+      }
+      tabAvatar.addEventListener('click', ()=>activar('avatar'));
+      tabRopa.addEventListener('click', ()=>activar('ropa'));
+    })();
+  </script>

@@ -1,67 +1,111 @@
+@{
+    var tienda = ViewBag.tienda;
+    var productos = ViewBag.productos;
+    bool permisos = ViewBag.permisos ?? false;
+}
+
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Perfil</title>
-    <link rel="stylesheet" href="~/css/perfil.css" />
+    <title>@tienda.Nombre</title>
+    <meta charset="utf-8" />
+    <style>
+        body { font-family: Arial; margin: 0; background:white; }
+        header{height:70px;background:linear-gradient(90deg,#ff0174 0%,#000 55%,#ff0074 100%);display:flex;align-items:center;justify-content:space-between;padding:0 20px;color:white;}
+        .container{max-width:1100px;margin:30px auto;padding:0 20px;}
+        h1{text-align:center;font-size:26px;margin-bottom:20px;font-weight:800;}
+        .grid{display:grid;grid-template-columns:1fr 200px 1fr;gap:25px;align-items:center;margin-bottom:30px;}
+        .card{border:2px solid #111;border-radius:10px;padding:15px;background:white;}
+        .card p{font-size:14px;margin:10px 0;}
+        .btn{width:100%;padding:10px;border-radius:8px;border:2px solid #111;background:white;font-weight:700;margin-top:10px;cursor:pointer;}
+        .btn-danger{border-color:red;color:red;}
+        .avatar{width:160px;height:160px;border-radius:50%;border:6px solid #111;display:flex;align-items:center;justify-content:center;font-size:60px;overflow:hidden;}
+        .avatar img{width:100%;height:100%;object-fit:cover;}
+        .cta{text-align:center;margin:25px 0;}
+        .publish-btn{padding:12px 18px;border:2px solid #111;border-radius:10px;background:white;font-weight:800;}
+        .carousel{display:flex;gap:15px;overflow-x:auto;padding-bottom:10px;}
+        .item{min-width:150px;border-radius:10px;background:#f4f4f4;padding:8px;text-align:center;}
+        .item img{width:100%;height:150px;object-fit:cover;border-radius:8px;}
+    </style>
 </head>
-
 <body>
-<main class="perfil">
 
-    <h1>¡HOLA @ViewBag.usu.Nombre.ToUpper()!</h1>
+<header>
+    <div><b>OPA!</b></div>
+    <div>🔍 🛒 ☰</div>
+</header>
 
-    <div class="perfil-grid">
+<div class="container">
 
-        <div class="avatar">
-            <div class="foto">
-                @if(!string.IsNullOrEmpty(ViewBag.usu.FotoDePerfil))
+    <h1>¡HOLA @tienda.Nombre!</h1>
+
+    <div class="grid">
+
+        <!-- Información -->
+        <div class="card">
+            <p><b>NOMBRE</b><br>@tienda.Nombre</p>
+            <p><b>MAIL</b><br>@tienda.Mail</p>
+            <p><b>TELÉFONO</b><br>@tienda.Telefono</p>
+            <p><b>UBICACIÓN</b><br>@tienda.Ubicacion</p>
+
+            @if(permisos){
+                <button class="btn" onclick="location.href='/Tienda/editarTienda'">EDITAR DATOS</button>
+            }
+        </div>
+
+        <!-- Avatar -->
+        <div style="text-align:center;">
+            <div class="avatar">
+                @if(!String.IsNullOrEmpty(tienda.FotoDePerfil))
                 {
-                    <img src="@ViewBag.usu.FotoDePerfil" class="foto-perfil" />
+                    <img src="@tienda.FotoDePerfil" />
+                }
+                else
+                {
+                    <span>👤</span>
                 }
             </div>
         </div>
-        <section class="info-card">
-            <h3>INFORMACIÓN PERSONAL</h3>
 
-            <div class="card">
-                <p><b>NOMBRE</b><br>@ViewBag.usu.Nombre @ViewBag.usu.Apellido</p>
-                <p><b>MAIL</b><br>@ViewBag.usu.Mail</p>
-                <p><b>TELEFONO</b><br>@ViewBag.usu.Telefono</p>
-                <p><b>CONTRASEÑA</b><br>********...</p>
-            </div>
+        <!-- Opciones -->
+        <div class="card">
+            @if(permisos){
+                <button class="btn" onclick="location.href='/Tienda/pedidos'">ADMINISTRAR PEDIDOS</button>
+                <button class="btn" onclick="location.href='/Tienda/estadisticas'">VER ESTADÍSTICAS</button>
+            }
+            <button class="btn" onclick="location.href='/Ayuda'">AYUDA</button>
+            <button class="btn" onclick="location.href='/Sesion/logout'">CERRAR SESIÓN</button>
 
-            <form action='@Url.Action("editarUsuario")' >
-                <button class="btn rosa">EDITAR DATOS</button>
-            </form>
-        </section>
-        <section class="medidas-card">
-            <h3>MEDIDAS</h3>
-
-            <div class="card">
-                <p><b>Talle torso</b><br>@(ViewBag.usu.MedidaTorso == 0 ? "—" : ViewBag.usu.MedidaTorso.ToString())</p>
-                <p><b>Talle Piernas</b><br> coming soon </p>
-                <p><b>Talle Cintura</b><br> coming soon </p>
-                <p><b>Talle Calzado</b><br> coming soon </p>
-            </div>
-
-            <form action="/Home/editarMedidas">
-                <button class="btn negro">EDITAR DATOS</button>
-            </form>
-            <button class="btn blanco">VER TUTORIAL</button>
-        </section>
+            @if(permisos){
+                <button class="btn btn-danger" onclick="location.href='/Tienda/eliminarTienda'">ELIMINAR TIENDA</button>
+            }
+        </div>
 
     </div>
 
-    <div class="menu-links">
-        <form action='@Url.Action("Armario","Armario")' ><button class="link">Mi armario</button></form>
-        <form ><button class="link">Mi billetera</button></form>
-        <form ><button class="link">Necesito ayuda</button></form>
-        <form action='@Url.Action("cerrarSesion","Comprador")'><button class="link">Cerrar sesión</button></form>
+    <!-- Publicar -->
+    @if(permisos){
+    <div class="cta">
+        <p>¡Publicá tus nuevos productos!</p>
+        <button class="publish-btn" onclick="location.href='/Producto/crear'">
+            HACER PUBLICACIÓN
+        </button>
+    </div>
+    }
+
+    <!-- Productos -->
+    <h2>MIS PRENDAS ></h2>
+    <div class="carousel">
+        @foreach(var p in productos)
+        {
+            <div class="item">
+                <img src="@p.Foto" alt="">
+                <div>@p.Nombre</div>
+            </div>
+        }
     </div>
 
-</main>
+</div>
 
 </body>
 </html>

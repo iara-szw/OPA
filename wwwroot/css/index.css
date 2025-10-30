@@ -214,5 +214,9 @@ footer {
     width: 140px;
     height: 140px;
   }
+
+  main.iniciarSesion {
+    margin-top: 10%;
+}
 }
 
