@@ -9,6 +9,18 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\armario.png",
+      "PackagePath": "staticwebassets\\img\\armario.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
+      "PackagePath": "staticwebassets\\img\\formulario.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\home.png",
+      "PackagePath": "staticwebassets\\img\\home.png"
+    },
+    {
       "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
       "PackagePath": "staticwebassets\\img\\logoOPA-01.png"
     },
@@ -19,6 +31,22 @@
     {
       "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
       "PackagePath": "staticwebassets\\img\\logoOPA-03.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
+      "PackagePath": "staticwebassets\\img\\outfit.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
+      "PackagePath": "staticwebassets\\img\\perfil.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\search.png",
+      "PackagePath": "staticwebassets\\img\\search.png"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
+      "PackagePath": "staticwebassets\\img\\tienda.png"
     },
     {
       "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\js\\site.js",

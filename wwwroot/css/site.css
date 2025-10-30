@@ -1,23 +1,228 @@
-html {
-  font-size: 14px;
-  min-height: 100%;
-}
+<style>
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+/* ====== RESETEO Y BASE ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #111;
+  overflow-x: hidden;
 }
 
+/* ====== HEADER STICKY ====== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(to right, #960058, #2a0023);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+}
 
+header .logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+header .iconos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+header .iconos i {
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ====== BANNER PRINCIPAL ====== */
+.banner {
+  background: #111 url('/img/fondo-opa.jpg') center/cover no-repeat;
+  text-align: center;
+  padding: 5rem 1rem;
+  color: #ff0088;
+}
+
+.banner h2 {
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.banner p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* ====== SECCIÓN RECOMENDADO ====== */
+.recomendado {
+  padding: 2rem 1rem;
+}
+
+.recomendado h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: #111;
+  font-weight: 600;
+}
+
+.ropaRecomendada {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.ropaRecomendada::-webkit-scrollbar {
+  height: 8px;
+}
+
+.ropaRecomendada::-webkit-scrollbar-thumb {
+  background: #ff0088;
+  border-radius: 10px;
+}
+
+.ropaRecomendada div {
+  min-width: 180px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.ropaRecomendada img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.ropaRecomendada h4 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.ropaRecomendada p {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* ====== ÚLTIMOS LANZAMIENTOS ====== */
+.lanzamientos {
+  padding: 2rem 1rem;
+}
+
+.lanzamientos h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.lanzamientos div {
+  display: inline-block;
+  margin-right: 1rem;
+  text-align: center;
+}
+
+.lanzamientos img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.lanzamientos h4 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ====== SEGÚI EXPLORANDO ====== */
+.explorando {
+  background: linear-gradient(to right, #2a0023, #960058);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.explorando h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.explorar-opciones {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.opcion {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opcion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.opcion p,
+.opcion a {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+/* ====== FOOTER ====== */
 footer {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
 }
+
+/* ====== MEDIA QUERIES ====== */
+@media (max-width: 768px) {
+  .banner h2 {
+    font-size: 3.5rem;
+  }
+  .ropaRecomendada img, .lanzamientos img {
+    width: 140px;
+    height: 140px;
+  }
+  .opcion {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+</style>

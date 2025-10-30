@@ -5,9 +5,9 @@ static class CompradorBD{
     public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
     static public  void agregarComprador(Comprador usu){
 
-        string query = "INSERT INTO Comprador (Usuario, Nombre, Apellido, Contraseña,Telefono,Mail,Genero) VALUES (@pUsuario, @pNombre, @pApellido, @pContraseña, @pTelefono, @pMail, @pGenero)";
+        string query = "INSERT INTO Comprador (Usuario, Nombre, Apellido, Contraseña,Telefono,Mail,Genero,esVendedor) VALUES (@pUsuario, @pNombre, @pApellido, @pContraseña, @pTelefono, @pMail, @pGenero,@pVendedor)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
-        connection.Execute(query, new {pUsuario=usu.Usuario, pNombre=usu.Nombre,pApellido=usu.Apellido, pContraseña=usu.Contraseña, pTelefono=usu.Telefono, pMail=usu.Mail, pGenero=usu.Genero});
+        connection.Execute(query, new {pUsuario=usu.Usuario, pNombre=usu.Nombre,pApellido=usu.Apellido, pContraseña=usu.Contraseña, pTelefono=usu.Telefono, pMail=usu.Mail, pGenero=usu.Genero, pVendedor=usu.esVendedor});
         }
     }
     static public Comprador levantarComprador(string nombreUsuario, string password){

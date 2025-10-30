@@ -1,5 +1,4 @@
  public class Comprador{
-    public int IdComprador;
 	public string Usuario;
 	public string Nombre;
     public string Apellido;

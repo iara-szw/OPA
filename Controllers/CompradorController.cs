@@ -53,7 +53,9 @@ public class CompradorController : Controller
             Comprador usu =new Comprador();
             string passwordHasheada = encriptar.HashearPassword(password);
             usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero,esVendedor);
-            CompradorBD.agregarComprador(usu);
+           CompradorBD.agregarComprador(usu);
+                       Console.WriteLine($"{usu.Usuario}  {usu.Contraseña} {usu.Nombre} {usu.Apellido} {usu.Telefono} {usu.Mail} {usu.Genero} {usu.esVendedor}");
+
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }
