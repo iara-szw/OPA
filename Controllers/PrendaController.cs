@@ -8,12 +8,9 @@ public class PrendaController : Controller
 {
 
 
-    public IActionResult agregarPrenda(string Tipo,int IdPrenda, string Modelo, int IdTalle,string descripcion,double Precio, List<Estilo> estilos, int Temporada){
+    public IActionResult agregarPrenda(string Tipo, string Modelo, int IdTalle,string descripcion,double Precio, List<int> estilos,int color, int Temporada, string foto){
         Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
-        if(tienda == null){
-            return RedirectToAction("verTiendasAdministrador");
-        }
-        PrendaBD.agregarPrenda(tienda.IdTienda, Tipo,IdPrenda, Modelo, IdTalle,descripcion, Precio,estilos,Temporada);
+        PrendaBD.agregarPrenda(tienda.IdTienda, Tipo, Modelo, IdTalle,descripcion, Precio,estilos,color,Temporada, foto);
         return RedirectToAction("vistaTienda","Tienda");
     }
 

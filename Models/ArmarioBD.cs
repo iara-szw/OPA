@@ -6,7 +6,7 @@ static class ArmarioBD{
     static public List<Prenda> levantarPoseidos(string Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
-        string query="SELECT * FROM Prenda as PRE INNER JOIN Poseido as P ON PRE.IdPrenda=P.IdPrenda WHERE P.IdComprador=@pIdComprador";
+        string query="SELECT * FROM Prenda as PRE INNER JOIN Poseido as P ON PRE.IdPrenda=P.IdPrenda WHERE P.Usuario=@pIdComprador";
         prendas= connection.Query<Prenda>(query, new{@pIdComprador=Idcomprador}).ToList();
 
     }
@@ -15,7 +15,7 @@ static class ArmarioBD{
     static public List<Prenda> levantarDeseados(string Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
-        string query="SELECT * FROM Prenda as PRE INNER JOIN Deseado as D ON PRE.IdPrenda=D.IdPrenda WHERE D.IdComprador=@pIdComprador";
+        string query="SELECT * FROM Prenda as PRE INNER JOIN Deseado as D ON PRE.IdPrenda=D.IdPrenda WHERE D.Usuario=@pIdComprador";
         prendas= connection.Query<Prenda>(query,new{@pIdComprador=Idcomprador}).ToList();
 
     }

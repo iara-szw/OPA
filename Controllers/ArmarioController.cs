@@ -22,7 +22,7 @@ public class ArmarioController : Controller
         Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         if(usu==null){
             ViewBag.estado="Tenes que iniciar sesión para ver tu armario";
-            return View();
+            return RedirectToAction("iniciarSesion","Comprador");
         }
         ViewBag.poseidos=ArmarioBD.levantarPoseidos(usu.Usuario);
         ViewBag.recomendados=BD.levantarRecomendados(usu.Usuario);

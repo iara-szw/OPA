@@ -38,9 +38,13 @@ public class TiendaController : Controller
 
     public IActionResult subidaProducto(){
               Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+
         if(tienda==null){
             return RedirectToAction("verTiendasAdministrador");
         }
+        ViewBag.estilos=BD.levantarEstilos();
+        ViewBag.colores=BD.levantarColor();
+        ViewBag.Temporada=BD.levantarTemporada();
             return View();
     }
     public IActionResult nuevaTienda(){

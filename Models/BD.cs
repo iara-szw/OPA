@@ -31,5 +31,31 @@ static class BD{
     }
     return ropa;
     }
+     static public List<Estilo> levantarEstilos(){
+    List<Estilo> estilos = new List<Estilo>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Estilo ";
+        estilos= connection.Query<Estilo>(query).ToList();
 
+    }
+    return estilos;
+    }
+    static public List<Color> levantarColor(){
+    List<Color> colores = new List<Color>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Color ";
+        colores= connection.Query<Color>(query).ToList();
+
+    }
+    return colores;
+    }
+        static public List<Temporada> levantarTemporada(){
+    List<Temporada> temporada = new List<Temporada>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Temporada ";
+        temporada= connection.Query<Temporada>(query).ToList();
+
+    }
+    return temporada;
+    }
 }

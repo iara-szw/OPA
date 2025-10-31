@@ -46,6 +46,12 @@ public class CompradorController : Controller
         return View();
     }
 
+public IActionResult medidas(){
+            if(HttpContext.Session.GetString("usuario") == null){
+                return RedirectToAction("iniciarSesion");
+            }
+        return View();
+    }
       public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
         if(CompradorBD.yaExiste(nombreUsuario)){
             return RedirectToAction("registrarse",new{estado="errorUsuario"});
@@ -81,5 +87,10 @@ public JsonResult validarUsuario(string username)
         CompradorBD.cargarMedidas(Usu.Usuario,MedidaTorso,MedidaCintura,MedidaPierna,MedidaHombros,MedidaBrazos,MedidaCadera);
         return View();
         //Arreglar en BD todas las medidas posibles
+    }
+    public IActionResult editarPerfil(string Nombre,string Apellido,string Telefono,string FotoDePerfil,string Mail,int Genero){
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        CompradorBD.editarComprador(Usu.Usuario,Nombre,Apellido,Telefono,FotoDePerfil,Mail,Genero);
+        return RedirectToAction("vistaUsuario");
     }
 }

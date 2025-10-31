@@ -9,79 +9,87 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OPA
 build_property.RootNamespace = OPA
-build_property.ProjectDir = C:\Users\49433586\Downloads\OPA-master\OPA\
+build_property.ProjectDir = C:\Users\49193480\Downloads\OPA\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\49433586\Downloads\OPA-master\OPA
+build_property.MSBuildProjectDirectory = C:\Users\49193480\Downloads\OPA
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Armario/Armario.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Armario/Armario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJtYXJpb1xBcm1hcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Comprador/iniciarSesion.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Comprador/iniciarSesion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXGluaWNpYXJTZXNpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Comprador/registrarse.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Comprador/medidas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXG1lZGlkYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49193480/Downloads/OPA/Views/Comprador/registrarse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXHJlZ2lzdHJhcnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Comprador/vistaUsuario.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Comprador/vistaUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhZG9yXHZpc3RhVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/Carrito.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/Carrito.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXJyaXRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/Envio.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/Envio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbnZpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/HomeOutfit.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/HomeOutfit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lT3V0Zml0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/Index.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/Pago.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/Pago.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYWdvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Home/SubirOutfit.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Home/SubirOutfit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdWJpck91dGZpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Shared/_Layout.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Tienda/subidaProducto.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Tienda/nuevaTienda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGllbmRhXG51ZXZhVGllbmRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/49193480/Downloads/OPA/Views/Tienda/subidaProducto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGllbmRhXHN1YmlkYVByb2R1Y3RvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Tienda/verTiendasAdministrador.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Tienda/verTiendasAdministrador.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGllbmRhXHZlclRpZW5kYXNBZG1pbmlzdHJhZG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/Tienda/vistaTienda.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/Tienda/vistaTienda.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGllbmRhXHZpc3RhVGllbmRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/_ViewImports.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/49433586/Downloads/OPA-master/OPA/Views/_ViewStart.cshtml]
+[C:/Users/49193480/Downloads/OPA/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
