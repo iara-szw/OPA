@@ -22,6 +22,15 @@
       .opa-search-input.show{ width: clamp(220px, 40vw, 540px); opacity:1; }
       .navbar-toggler{ border: none; transform: scale(1.05); }
       .navbar-toggler .navbar-toggler-icon{ filter: invert(1); }
+      /* ===== Offcanvas menú lateral derecho ===== */
+      .offcanvas{ background-color:#ffffff; }
+      .offcanvas-header{ border-bottom:0; }
+      .offcanvas-body a{ text-decoration:none; color:#000; font-weight:500; padding:.4rem 0; }
+      .offcanvas-body a:hover{ opacity:.7; }
+      .offcanvas-body a img{ width:24px; height:24px; object-fit:contain; }
+      .menu-section, .menu-footer{ display:flex; flex-direction:column; }
+      .menu-section a{ margin-bottom:1.1rem; }
+      .menu-footer{ margin-top:auto; }
     </style>
 </head>
 
@@ -57,33 +66,38 @@
     </div>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="@Url.Action("Index")"><p>Home</p><img src="/img/home.png"></a>
-            <!--- PONER EN FLEX --->
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href='@Url.Action("armario","Armario")' ><p>Armario</p><img src="/img/Armario.png"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("armario","Armario")"><p>ENCONTRÁ TU ESTILO</p><img src="/img/encontra.png"></a>
+      <div class="offcanvas-body d-flex flex-column justify-content-between">
+        <div class="menu-section">
+          <a href="/Home/Index" class="d-flex align-items-center mb-3 text-decoration-none">
+            <img src="~/img/home.png" class="me-2" width="24" alt="Home" />
+            <span>HOME</span>
+          </a>
+          <a href="/Armario/Armario" class="d-flex align-items-center mb-3 text-decoration-none">
+            <img src="~/img/armario.png" class="me-2" width="24" alt="Armario" />
+            <span>ARMARIO</span>
+          </a>
+          <a href="/Comprador/EncontrarEstilo" class="d-flex align-items-center mb-3 text-decoration-none">
+            <img src="~/img/formulario.png" class="me-2" width="24" alt="Estilo" />
+            <span>ENCONTRÁ TU ESTILO</span>
+          </a>
+          <a href="/Outfit/Index" class="d-flex align-items-center mb-3 text-decoration-none">
+            <img src="~/img/outfit.png" class="me-2" width="24" alt="Outfits" />
+            <span>OUTFITS</span>
+          </a>
+        </div>
 
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="@Url.Action("OUTFITS")"><p>OUTFITS</p><img src="/img/OUTFITS.png"></a>
-          </li>
-          <li class="nav-item">
-     <a class="nav-link" href="@Url.Action("vistaUsuario","Comprador")"><p>MI PERFIL</p><img src="/img/perfil.png"></a>
-          </li>
-          <li class="nav-item">
-               <a class="nav-link" href="@Url.Action("vistaTienda","Tienda")"><p>Mi Tienda</p><img src="/img/tienda.png"></a>
-          </li>
-
-        </ul>
-        <!-- Contenido del offcanvas se completará luego -->
+        <div class="menu-footer">
+          <a href="/Tienda/VerTiendasAdministrador" class="d-flex align-items-center mb-3 text-decoration-none">
+            <span class="me-2">&#8646;</span>
+            <span>CAMBIAR A VENDEDOR</span>
+          </a>
+          <a href="/Comprador/VistaUsuario" class="d-flex align-items-center text-decoration-none">
+            <img src="~/img/perfil.png" class="me-2" width="24" alt="Perfil" />
+            <span>PERFIL</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

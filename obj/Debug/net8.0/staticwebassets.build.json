@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iHb3tg58LliYySfuNixv3EVL4p27I8iq3Tf/CtNRkLs=",
+  "Hash": "RwY2VFQabP+yMMDgMCsI8TyxTciJvMkUy2tY3g30pQQ=",
   "Source": "OPA",
   "BasePath": "_content/OPA",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "OPA\\wwwroot",
       "Source": "OPA",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\index.css",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\css\\index.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\favicon.ico",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\armario.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\armario.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/armario.png",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\img\\armario.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/formulario.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\img\\formulario.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\home.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\home.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/home.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\img\\home.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-01.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-01.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-02.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\logoOPA-02.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-02.png",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-02.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-03.png",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-03.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/outfit.png",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\img\\outfit.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/perfil.png",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\img\\perfil.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\search.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\search.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/search.png",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\img\\search.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "img/tienda.png",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\img\\tienda.png"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\js\\site.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "OPA",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\49432830\\Downloads\\OPA\\wwwroot\\",
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",

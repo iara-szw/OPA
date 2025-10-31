@@ -1,5 +1,5 @@
-public class temporada{
-    public int idTemporada;
-public string Nombre	;
-		
+public class Temporada
+{
+    public int idTemporada { get; set; }
+    public string Nombre { get; set; }
 }
