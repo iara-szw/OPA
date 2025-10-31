@@ -38,7 +38,7 @@ OPA conecta usuarios con moda que cuenta historias.
 
 ---
 
-###¿Como ejecutarlo?
+### ¿Como ejecutarlo?
 ### 🚀 Ejecutar el proyecto localmente
 
 ```bash
@@ -64,7 +64,7 @@ Dotnet run
 | ---------------------- | --------------------------------------------- |
 | 🖥️ Prototipo en Figma | [https://www.figma.com/design/xdO25bBIpL0HfelIxk2846/Opa?node-id=64-171&t=Oi1AYidWNF5vKJGl-1]   |
 | ✅ Tablero en Trello    | [https://trello.com/invite/b/684b128d5b9e0b2db7a92108/ATTI1acaf9c74f0009f6ce9fd904429131121CC8AD99/esfi] |
-| 🧠 Miro (si aplica)    |[https://miro.com/app/board/uXjVIpappx0=/]|
+| 🧠 Miro    |[https://miro.com/app/board/uXjVIpappx0=/]|
 ---
 
 </p>
