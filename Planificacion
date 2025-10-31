@@ -1,0 +1,31 @@
+Planificación OPA
+Controllers:
+  UsuarioController: Controla las acciones relacionadas al perfil
+  TiendaController: Controlas las acciones relacionadas a las tiendas y los administradores
+  PrendaController: Controla las acciones sobre modificacion de prendas
+  ArmarioController: Administra la ropa en el perfil de cada usuario
+  CompraController: controla el carrito
+
+Modelos:
+-Usuario
+-Tienda
+-Prenda
+-Administrador (la relacion entre un usuario y la tienda en la que vende)
+
+-BD (general)
+-BD usuario
+-BD Tienda
+-BD Admin
+-BD Prenda
+-BD armario
+
+-Encriptar para la contraseña
+
+Views:
+-Index
+-Perfil usuario
+-Perfil tienda
+-Armario
+-Carrito
+
+
