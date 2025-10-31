@@ -38,8 +38,7 @@ OPA conecta usuarios con moda que cuenta historias.
 
 ---
 
-## 📘 README – OPA
-
+###¿Como ejecutarlo?
 ### 🚀 Ejecutar el proyecto localmente
 
 ```bash
