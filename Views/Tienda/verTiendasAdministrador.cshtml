@@ -70,7 +70,7 @@
 
 <div class="container">
 <h2>Elegi la tienda a la que queres ingresar</h2>
-    @foreach (var t in tiendas)
+    @foreach (Tienda t in tiendas)
     {
         <form action='@Url.Action("seleccionarTienda")'  method="post" style="text-align:center;">
             <input type="hidden" name="IdTienda" value="@t.IdTienda" />

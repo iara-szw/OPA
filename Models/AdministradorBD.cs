@@ -11,12 +11,12 @@ static class AdministradorBD{
         connection.Execute(query, new {pTienda=idTienda, pPermisos=permisos,pUsuario=usuario, pMail=mail});
         }
     }
-    public static Administrador levantarAdministrador(string usuario){
-        Administrador usu=null;
+    public static List<Tienda> levantarAdministrador(string usuario){
+        List<Tienda> usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "SELECT * FROM Administrador WHERE Usuario=@pusuario";
-        usu= connection.QueryFirstOrDefault<Administrador>(query,new{pusuario=usuario});
+        string query = "SELECT * FROM Tienda INNER JOIN Administrador ON Administrador.idTienda=Tienda.idTienda WHERE Administrador.Usuario=@pusuario";
+        usu= connection.Query<Tienda>(query,new{pusuario=usuario}).ToList();
             
         }
         return usu;

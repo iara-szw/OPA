@@ -87,9 +87,9 @@
     @if(permisos){
     <div class="cta">
         <p>¡Publicá tus nuevos productos!</p>
-        <button class="publish-btn" onclick="location.href='/Producto/crear'">
+        <a class="publish-btn" href='@Url.Action("subidaProducto")'>
             HACER PUBLICACIÓN
-        </button>
+        </a>
     </div>
     }
 

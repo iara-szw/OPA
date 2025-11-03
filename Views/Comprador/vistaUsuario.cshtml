@@ -1,67 +1,105 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Perfil</title>
-    <link rel="stylesheet" href="~/css/perfil.css" />
-</head>
 
-<body>
-<main class="perfil">
+@{
+	ViewData["Title"] = "Mi Perfil";
+}
 
-    <h1>¡HOLA @ViewBag.usu.Nombre.ToUpper()!</h1>
+<style>
+	.perfil-card { border: 1px solid #aaa; border-radius: 10px; padding: 15px; margin: 10px auto; max-width: 300px; }
+	.perfil-btn { border: 1px solid black; border-radius: 8px; width: 100%; margin-top: 10px; }
+	.perfil-btn:hover { background-color: #f8f9fa; box-shadow: 0 1px 0 rgba(0,0,0,.1) inset; }
+	.perfil-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #d60077; display: inline-block; object-fit: cover; }
+	@@media (min-width: 768px) { .perfil-card { max-width: 100%; } }
+</style>
 
-    <div class="perfil-grid">
+<div class="container my-5 text-center">
+	<div class="row justify-content-center align-items-center mb-4 g-3">
+		<div class="col-auto">
+			@if (!string.IsNullOrEmpty(ViewBag.usu?.FotoDePerfil))
+			{
+				<img src="@ViewBag.usu.FotoDePerfil" alt="Usuario" class="perfil-img" />
+			}
+			else
+			{
+				<div class="perfil-img" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600;">
+					<span>U</span>
+				</div>
+			}
+		</div>
+		<div class="col-12 col-md-auto">
+			<h1 class="display-5 fw-bold m-0">¡HOLA @((ViewBag.usu?.Nombre as string ?? "").ToUpper())!</h1>
+		</div>
+	</div>
 
-        <div class="avatar">
-            <div class="foto">
-                @if(!string.IsNullOrEmpty(ViewBag.usu.FotoDePerfil))
-                {
-                    <img src="@ViewBag.usu.FotoDePerfil" class="foto-perfil" />
-                }
-            </div>
-        </div>
-        <section class="info-card">
-            <h3>INFORMACIÓN PERSONAL</h3>
+	<div class="row g-4 text-start">
+		<div class="col-12 col-md-6">
+			<div class="card perfil-card h-100">
+				<div class="card-body">
+					<h3 class="h5 text-center mb-3">INFORMACIÓN PERSONAL</h3>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">NOMBRE</div>
+						<div>@(ViewBag.usu?.Nombre) @(ViewBag.usu?.Apellido)</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">MAIL</div>
+						<div>@(ViewBag.usu?.Mail)</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TELÉFONO</div>
+						<div>@(ViewBag.usu?.Telefono)</div>
+					</div>
+					<div class="mb-3">
+						<div class="fw-semibold small text-muted">CONTRASEÑA</div>
+						<div>********...</div>
+					</div>
+					<form action='@Url.Action("editarUsuario")'>
+						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-6">
+			<div class="card perfil-card h-100">
+				<div class="card-body">
+					<h3 class="h5 text-center mb-3">MEDIDAS</h3>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE TORSO</div>
+						<div>@((ViewBag.usu?.MedidaTorso == 0) ? "coming soon" : ViewBag.usu?.MedidaTorso?.ToString())</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE PIERNAS</div>
+						<div>coming soon</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE CINTURA</div>
+						<div>coming soon</div>
+					</div>
+					<div class="mb-3">
+						<div class="fw-semibold small text-muted">TALLE CALZADO</div>
+						<div>coming soon</div>
+					</div>
+					<form action="/Home/editarMedidas" class="mb-2">
+						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
+					</form>
+					<button type="button" class="btn btn-light perfil-btn">VER TUTORIAL</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            <div class="card">
-                <p><b>NOMBRE</b><br>@ViewBag.usu.Nombre @ViewBag.usu.Apellido</p>
-                <p><b>MAIL</b><br>@ViewBag.usu.Mail</p>
-                <p><b>TELEFONO</b><br>@ViewBag.usu.Telefono</p>
-                <p><b>CONTRASEÑA</b><br>********...</p>
-            </div>
-
-            <form action='@Url.Action("editarUsuario")' >
-                <button class="btn rosa">EDITAR DATOS</button>
-            </form>
-        </section>
-        <section class="medidas-card">
-            <h3>MEDIDAS</h3>
-
-            <div class="card">
-                <p><b>Talle torso</b><br>@(ViewBag.usu.MedidaTorso == 0 ? "—" : ViewBag.usu.MedidaTorso.ToString())</p>
-                <p><b>Talle Piernas</b><br> coming soon </p>
-                <p><b>Talle Cintura</b><br> coming soon </p>
-                <p><b>Talle Calzado</b><br> coming soon </p>
-            </div>
-
-            <form action="/Home/editarMedidas">
-                <button class="btn negro" action='@Url.Action("medidas")'>EDITAR DATOS</button>
-            </form>
-            <button class="btn blanco">VER TUTORIAL</button>
-        </section>
-
-    </div>
-
-    <div class="menu-links">
-        <form action='@Url.Action("Armario","Armario")' ><button class="link">Mi armario</button></form>
-        <form ><button class="link">Mi billetera</button></form>
-        <form ><button class="link">Necesito ayuda</button></form>
-        <form action='@Url.Action("cerrarSesion","Comprador")'><button class="link">Cerrar sesión</button></form>
-    </div>
-
-</main>
-
-</body>
-</html>
+	<div class="row justify-content-center mt-4">
+		<div class="col-12 col-md-6 col-lg-4">
+			<form action='@Url.Action("Armario","Armario")' class="mb-2">
+				<button type="submit" class="btn btn-light perfil-btn">Mi armario</button>
+			</form>
+			<form class="mb-2">
+				<button type="button" class="btn btn-light perfil-btn">Mi billetera</button>
+			</form>
+			<form class="mb-2">
+				<button type="button" class="btn btn-light perfil-btn">Necesito ayuda</button>
+			</form>
+			<form action='@Url.Action("cerrarSesion","Comprador")' class="mb-2">
+				<button type="submit" class="btn btn-light perfil-btn">Cerrar sesión</button>
+			</form>
+		</div>
+	</div>
+</div>

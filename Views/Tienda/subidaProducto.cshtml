@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Subir producto</title>
+</head>
+
+
+<form action='@Url.Action("agregarPrenda")'>
+
+<input type="text" name="tipo" placeholder="Tipo">
+<input type="text" name="Modelo" placeholder="Modelo">
+<select>
+<option value=1>S</option>
+<option value=1>M</option>
+<option value=1>L</option>
+</select>
+<input type="text" name="Descripcion" placeholder="Descripción">
+<input type="double" name="Precio" placeholder="Precio">
+
+
+@foreach(Estilo estilo in ViewBag.estilos){
+    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre">
+    <label for="@estilo.Nombre">@estilo.Nombre</label>
+}
+@foreach(Color color in ViewBag.colores){
+    <input type="radio" name="color" value="@color.idColor" id="@color.idColor">
+    <label for="@color.idColor">@color.idColor</label>
+    //Poner que con el codigo heza se ponga el color 
+}
+@foreach(Temporada temporada in ViewBag.Temporada){
+    <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre">
+    <label for="@temporada.Nombre">@temporada.Nombre</label>
+}
+
+<input type="file" name="foto">
+
+</form>

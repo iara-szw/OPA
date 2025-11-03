@@ -55,20 +55,10 @@ async function usuarioDisponible(username) {
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); 
     errorUsuario.style.display = "none";
-
     const username = inputUsuario.value.trim();
-    const password = document.querySelector("input[name='password']").value;
-    const nombre = document.querySelector("input[name='nombre']").value;
-    const apellido = document.querySelector("input[name='apellido']").value;
-    const telefono = document.querySelector("input[name='telefono']").value;
-    const mail = document.querySelector("input[name='Mail']").value;
-    const genero = document.querySelector("select[name='Genero']").value;
-    const esVendedor = document.querySelector("select[name='esVendedor']").value;
 
-    if (!username || !password || !nombre || !apellido || !mail || !genero || !esVendedor) {
-        alert("Completá todos los campos obligatorios.");
-        return;
-    }
+    const telefono = document.querySelector("input[name='telefono']").value;
+
 
     if (telefono && !/^[0-9]+$/.test(telefono)) {
         alert("El teléfono solo debe tener números.");

@@ -1,5 +1,5 @@
 public class Temporada
 {
-    public int idTemporada { get; set; }
-    public string Nombre { get; set; }
+    public int idTemporada;
+    public string Nombre;
 }

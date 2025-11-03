@@ -45,6 +45,7 @@ public class TiendaController : Controller
         ViewBag.estilos=BD.levantarEstilos();
         ViewBag.colores=BD.levantarColor();
         ViewBag.Temporada=BD.levantarTemporada();
+        
             return View();
     }
     public IActionResult nuevaTienda(){
