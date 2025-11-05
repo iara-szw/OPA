@@ -9,25 +9,43 @@
 	.perfil-btn:hover { background-color: #f8f9fa; box-shadow: 0 1px 0 rgba(0,0,0,.1) inset; }
 	.perfil-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #d60077; display: inline-block; object-fit: cover; }
 	@@media (min-width: 768px) { .perfil-card { max-width: 100%; } }
+	.row.g-4.text-start{
+		display:flex;
+		MARGIN-left:5%;
+	}
+	.col-12.col-md-6{
+		width:40%;
+	}
+	..col-12.col-md-6{
+		background-color:white;
+	}
+	.perfil-btn {
+    background-color: #f8f9fa;
+border: solid 1px grey;
+}
+.button.btn.btn-light.perfil-btn{
+	background-color:white !important;
+}
+	.perfil-btn:hover {
+    background-color: #f8f9fa;
+    box-shadow: 1px 5px 10px rgb(209 2 96);
+}
+.perfil-btn {
+    background-color: #f8f9fa;
+    border: solid 1px black;
+}
+.card.perfil-card.h-100 {
+    border: 2px solid black;
+}
 </style>
 
 <div class="container my-5 text-center">
 	<div class="row justify-content-center align-items-center mb-4 g-3">
-		<div class="col-auto">
-			@if (!string.IsNullOrEmpty(ViewBag.usu?.FotoDePerfil))
-			{
-				<img src="@ViewBag.usu.FotoDePerfil" alt="Usuario" class="perfil-img" />
-			}
-			else
-			{
-				<div class="perfil-img" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600;">
-					<span>U</span>
-				</div>
-			}
-		</div>
+		
 		<div class="col-12 col-md-auto">
 			<h1 class="display-5 fw-bold m-0">¡HOLA @((ViewBag.usu?.Nombre as string ?? "").ToUpper())!</h1>
 		</div>
+		
 	</div>
 
 	<div class="row g-4 text-start">
@@ -56,6 +74,18 @@
 					</form>
 				</div>
 			</div>
+		</div>
+		<div class="col-auto">
+			@if (!string.IsNullOrEmpty(ViewBag.usu?.FotoDePerfil))
+			{
+				<img src="@ViewBag.usu.FotoDePerfil" alt="Usuario" class="perfil-img" />
+			}
+			else
+			{
+				<div class="perfil-img" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600;">
+					<span>U</span>
+				</div>
+			}
 		</div>
 		<div class="col-12 col-md-6">
 			<div class="card perfil-card h-100">

@@ -23,8 +23,7 @@
 }
 @foreach(Color color in ViewBag.colores){
     <input type="radio" name="color" value="@color.idColor" id="@color.idColor">
-    <label for="@color.idColor">@color.Nombre</label>
-    <div style="background-color:@color.codigoHexa">Muestra</div>
+    <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
     //Poner que con el codigo heza se ponga el color 
 }
 @foreach(Temporada temporada in ViewBag.Temporada){
