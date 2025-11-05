@@ -3,8 +3,8 @@
     <title>Subir producto</title>
 </head>
 
-
-<form action='@Url.Action("agregarPrenda")'>
+<body>
+<form action='@Url.Action("agregarPrenda","Prenda")'>
 
 <input type="text" name="tipo" placeholder="Tipo">
 <input type="text" name="Modelo" placeholder="Modelo">
@@ -16,14 +16,15 @@
 <input type="text" name="Descripcion" placeholder="Descripción">
 <input type="double" name="Precio" placeholder="Precio">
 
-
+<!--- PONER DESPLEGLBBLES Y ARREGLAR FORMA DE COLORES--->
 @foreach(Estilo estilo in ViewBag.estilos){
     <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre">
     <label for="@estilo.Nombre">@estilo.Nombre</label>
 }
 @foreach(Color color in ViewBag.colores){
     <input type="radio" name="color" value="@color.idColor" id="@color.idColor">
-    <label for="@color.idColor">@color.idColor</label>
+    <label for="@color.idColor">@color.Nombre</label>
+    <div style="background-color:@color.codigoHexa">Muestra</div>
     //Poner que con el codigo heza se ponga el color 
 }
 @foreach(Temporada temporada in ViewBag.Temporada){
@@ -32,5 +33,14 @@
 }
 
 <input type="file" name="foto">
+<input type="submit" >
 
 </form>
+</body>
+<script>
+$('input[type=checkbox]').on('change', function (e) {
+    if ($('input[type=checkbox]:checked').length > 3) {
+        $(this).prop('checked', false);
+        alert("allowed only 3");
+    }
+});</script>

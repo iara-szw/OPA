@@ -48,21 +48,27 @@ public class TiendaController : Controller
         
             return View();
     }
-    public IActionResult nuevaTienda(){
-        return View();
-    }
-    public IActionResult agregarTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto){
-        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+    public IActionResult nuevaTienda(){   
+             Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         if(usu==null){
             return RedirectToAction("iniciarSesion","Comprador");
         }
-        int idNuevo=TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,FotoDePerfil,Contacto,usu.Usuario);
+        return View();
+    }
+[HttpPost]
+
+
+    public IActionResult agregarTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,IFormFile  FotoDePerfil,string Contacto){
+                string FotoDePerfilN = Guid.NewGuid().ToString() + Path.GetExtension(FotoDePerfil.FileName);
+Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+
+        int idNuevo=TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,FotoDePerfilN,Contacto,usu.Usuario);
         if (idNuevo == -1){
             return RedirectToAction("nuevaTienda");
         }
         Tienda tiendaActual=TiendaBD.levantarTienda(idNuevo);
         HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
-        return View();
+        return RedirectToAction("vistaTienda");
     }
 
     public IActionResult vistaTienda(){

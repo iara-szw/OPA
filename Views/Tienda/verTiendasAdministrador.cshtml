@@ -70,19 +70,21 @@
 
 <div class="container">
 <h2>Elegi la tienda a la que queres ingresar</h2>
+ <form action='@Url.Action("seleccionarTienda")'  method="post" style="text-align:center;">
     @foreach (Tienda t in tiendas)
     {
-        <form action='@Url.Action("seleccionarTienda")'  method="post" style="text-align:center;">
+       
             <input type="hidden" name="IdTienda" value="@t.IdTienda" />
  
             <button type="submit" class="tienda-btn">
 
             </button>
             <div class="nombre-tienda">@t.Nombre</div>
-        </form>
+
     }
+            </form>
 
 </div>
-
+<a href='@Url.Action("nuevaTienda")'>Agregar Tienda</a>
 </body>
 </html>

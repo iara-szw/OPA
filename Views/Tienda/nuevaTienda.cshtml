@@ -1,0 +1,20 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Crear tienda</title>
+</head>
+string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto
+
+<form action='@Url.Action("agregarTienda")' enctype = "multipart/form-data">
+
+<input type="text" name="Nombre" placeholder="Nombre" required>
+<input type="text" name="Ubicacion" placeholder="Ubicación" required>
+<input type="email" name="Mail" placeholder="Correo electronico" required>
+<input type="text" name="Telefono" placeholder="Telefono" required>
+<input type="text" name="Descripcion" placeholder="Descripcion" required>
+
+<input type="file" name="foto" required>
+<input type="text" name="Contacto" placeholder="Contacto" required>
+
+<input type="submit">
+
+</form>
