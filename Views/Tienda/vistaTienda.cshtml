@@ -1,105 +1,102 @@
 @{
     var tienda = ViewBag.tienda;
-    var productos = ViewBag.productos;
+    var productos = ViewBag.productos as IEnumerable<dynamic> ?? new List<dynamic>();
     bool permisos = ViewBag.permisos ?? false;
+    ViewData["Title"] = tienda?.Nombre ?? "Tienda";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@tienda.Nombre</title>
-    <meta charset="utf-8" />
-    <style>
-        body { font-family: Arial; margin: 0; background:white; }
-        .container{max-width:1100px;margin:30px auto;padding:0 20px;}
-        h1{text-align:center;font-size:26px;margin-bottom:20px;font-weight:800;}
-        .grid{display:grid;grid-template-columns:1fr 200px 1fr;gap:25px;align-items:center;margin-bottom:30px;}
-        .card{border:2px solid #111;border-radius:10px;padding:15px;background:white;}
-        .card p{font-size:14px;margin:10px 0;}
-        .btn{width:100%;padding:10px;border-radius:8px;border:2px solid #111;background:white;font-weight:700;margin-top:10px;cursor:pointer;}
-        .btn-danger{border-color:red;color:red;}
-        .avatar{width:160px;height:160px;border-radius:50%;border:6px solid #111;display:flex;align-items:center;justify-content:center;font-size:60px;overflow:hidden;}
-        .avatar img{width:100%;height:100%;object-fit:cover;}
-        .cta{text-align:center;margin:25px 0;}
-        .publish-btn{padding:12px 18px;border:2px solid #111;border-radius:10px;background:white;font-weight:800;}
-        .carousel{display:flex;gap:15px;overflow-x:auto;padding-bottom:10px;}
-        .item{min-width:150px;border-radius:10px;background:#f4f4f4;padding:8px;text-align:center;}
-        .item img{width:100%;height:150px;object-fit:cover;border-radius:8px;}
-    </style>
-</head>
-<body>
+<div class="container my-4">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-uppercase">¡HOLA @tienda.Nombre!</h1>
+    </div>
 
-<div class="container">
+    <div class="row g-4 align-items-stretch">
+        <!-- Panel izquierdo: Información de tienda -->
+        <div class="col-12 col-lg-4">
+            <div class="card h-100 shadow-sm border-2">
+                <div class="card-body">
+                    <div class="mb-2 small text-muted">NOMBRE</div>
+                    <div class="fw-semibold mb-3">@tienda.Nombre</div>
 
-    <h1>¡HOLA @tienda.Nombre!</h1>
+                    <div class="mb-2 small text-muted">MAIL</div>
+                    <div class="fw-semibold mb-3">@tienda.Mail</div>
 
-    <div class="grid">
+                    <div class="mb-2 small text-muted">TELÉFONO</div>
+                    <div class="fw-semibold mb-3">@tienda.Telefono</div>
 
-        <!-- Información -->
-        <div class="card">
-            <p><b>NOMBRE</b><br>@tienda.Nombre</p>
-            <p><b>MAIL</b><br>@tienda.Mail</p>
-            <p><b>TELÉFONO</b><br>@tienda.Telefono</p>
-            <p><b>UBICACIÓN</b><br>@tienda.Ubicacion</p>
+                    <div class="mb-2 small text-muted">UBICACIÓN</div>
+                    <div class="fw-semibold mb-3">@tienda.Ubicacion</div>
 
-            @if(permisos){
-                <button class="btn" onclick="location.href='/Tienda/editarTienda'">EDITAR DATOS</button>
-            }
+                    @if (permisos)
+                    {
+                        <a class="btn btn-outline-dark w-100 mt-2" href="@Url.Action("editarTienda","Tienda")">EDITAR DATOS</a>
+                    }
+                </div>
+            </div>
         </div>
 
-        <!-- Avatar -->
-        <div style="text-align:center;">
-            <div class="avatar">
-                @if(!String.IsNullOrEmpty(tienda.FotoDePerfil))
+        <!-- Centro: Avatar y CTA publicar -->
+        <div class="col-12 col-lg-4 d-flex flex-column align-items-center gap-3">
+            <div class="rounded-circle border border-4 border-dark overflow-hidden d-flex align-items-center justify-content-center" style="width: 180px; height: 180px;">
+                @if (!string.IsNullOrEmpty(tienda.FotoDePerfil))
                 {
-                    <img src="@tienda.FotoDePerfil" />
+                    <img src="@tienda.FotoDePerfil" alt="Perfil tienda" style="width:100%; height:100%; object-fit:cover;" />
                 }
                 else
                 {
-                    <span>👤</span>
+                    <span style="font-size:64px;">👤</span>
                 }
             </div>
-        </div>
 
-        <!-- Opciones -->
-        <div class="card">
-            @if(permisos){
-                <button class="btn" onclick="location.href='/Tienda/pedidos'">ADMINISTRAR PEDIDOS</button>
-                <button class="btn" onclick="location.href='/Tienda/estadisticas'">VER ESTADÍSTICAS</button>
-            }
-            <button class="btn" onclick="location.href='/Ayuda'">AYUDA</button>
-            <button class="btn" onclick="location.href='/Sesion/logout'">CERRAR SESIÓN</button>
-
-            @if(permisos){
-                <button class="btn btn-danger" onclick="location.href='/Tienda/eliminarTienda'">ELIMINAR TIENDA</button>
+            @if (permisos)
+            {
+                <div class="text-center">
+                    <p class="mb-2">¡Publicá tus nuevos productos!</p>
+                    <a class="btn btn-outline-dark fw-bold px-4" href='@Url.Action("subidaProducto","Tienda")'>HACER PUBLICACIÓN</a>
+                </div>
             }
         </div>
 
-    </div>
-
-    <!-- Publicar -->
-    @if(permisos){
-    <div class="cta">
-        <p>¡Publicá tus nuevos productos!</p>
-        <a class="publish-btn" href='@Url.Action("subidaProducto")'>
-            HACER PUBLICACIÓN
-        </a>
-    </div>
-    }
-
-    <!-- Productos -->
-    <h2>MIS PRENDAS ></h2>
-    <div class="carousel">
-        @foreach(var p in productos)
-        {
-            <div class="item">
-                <img src="@p.Foto" alt="">
-                <div>@p.Nombre</div>
+        <!-- Panel derecho: Opciones -->
+        <div class="col-12 col-lg-4">
+            <div class="card h-100 shadow-sm border-2">
+                <div class="card-body d-grid gap-2">
+                    @if (permisos)
+                    {
+                        <a class="btn btn-outline-dark w-100" href="@Url.Action("verCarrito","Compra")">ADMINISTRAR PEDIDOS</a>
+                        <a class="btn btn-outline-dark w-100" href="@Url.Action("Index","Home")">VER ESTADÍSTICAS</a>
+                    }
+                    <a class="btn btn-outline-dark w-100" href="@Url.Action("Index","Home")">AYUDA</a>
+                    <a class="btn btn-outline-dark w-100" href="@Url.Action("cerrarSesion","Comprador")">CERRAR SESIÓN</a>
+                    @if (permisos)
+                    {
+                        <a class="btn btn-outline-danger w-100" href="@Url.Action("verTiendasAdministrador","Tienda")">ELIMINAR TIENDA</a>
+                    }
+                </div>
             </div>
-        }
+        </div>
     </div>
 
+    <!-- Carrusel de prendas -->
+    <div class="mt-5">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="h5 m-0">MIS PRENDAS ></h2>
+        </div>
+        <div class="d-flex gap-3 overflow-auto pb-2">
+            @foreach (var p in productos)
+            {
+                <div class="border rounded-3 p-2 text-center" style="min-width: 170px;">
+                    <div class="mb-2">
+                        <img src="@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" />
+                    </div>
+                    <div class="small fw-semibold">@p.Modelo</div>
+                    <div class="text-muted small">$ @p.Precio</div>
+                </div>
+            }
+            @if (!productos.Any())
+            {
+                <div class="text-muted">Todavía no hay prendas publicadas.</div>
+            }
+        </div>
+    </div>
 </div>
-
-</body>
-</html>

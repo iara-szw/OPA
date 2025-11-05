@@ -53,13 +53,16 @@ public IActionResult medidas(){
         return View();
     }
       public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
+        if(string.IsNullOrWhiteSpace(telefono)){
+            return RedirectToAction("registrarse", new { estado = "telefonoRequerido" });
+        }
         if(CompradorBD.yaExiste(nombreUsuario)){
             return RedirectToAction("registrarse",new{estado="errorUsuario"});
         }else{
             Comprador usu =new Comprador();
             string passwordHasheada = encriptar.HashearPassword(password);
             usu.crearComprador(nombreUsuario, passwordHasheada, nombre, apellido, telefono, Mail, Genero,esVendedor);
-           CompradorBD.agregarComprador(usu);
+            CompradorBD.agregarComprador(usu);
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
     }

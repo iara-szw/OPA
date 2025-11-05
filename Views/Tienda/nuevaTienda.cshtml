@@ -1,20 +1,397 @@
-<head>
-    <meta charset="utf-8" />
-    <title>Crear tienda</title>
-</head>
-string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto
+@{
+    ViewData["Title"] = "Nueva Tienda";
+}
 
-<form action='@Url.Action("agregarTienda")' enctype = "multipart/form-data">
+<style>
+    .nueva-tienda-container {
+        min-height: calc(100vh - 102px);
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 3rem 0;
+    }
+    .brand-card {
+        background: linear-gradient(135deg, #EB006B 0%, #0b0b0b 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+    }
+    .brand-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .brand-card .logo-section {
+        position: relative;
+        z-index: 1;
+    }
+    .brand-card h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -0.5px;
+    }
+    .brand-card p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+    .form-card {
+        background: white;
+        border: 2px solid #111;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .form-card h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.3px;
+    }
+    .form-card .subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+    }
+    .form-label {
+        font-weight: 600;
+        color: #111;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .form-control, .form-select {
+        border: 2px solid #111;
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #EB006B;
+        box-shadow: 0 0 0 3px rgba(235, 0, 107, 0.1);
+        outline: none;
+    }
+    .form-control::placeholder {
+        color: #999;
+    }
+    textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+    }
+    .char-counter {
+        font-size: 0.85rem;
+        color: #999;
+        text-align: right;
+        margin-top: 0.25rem;
+    }
+    .avatar-upload {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .avatar-preview {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid #111;
+        overflow: hidden;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .avatar-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .avatar-preview .placeholder {
+        font-size: 3rem;
+        color: #ccc;
+    }
+    .file-input-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+    .file-input-wrapper input[type="file"] {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .file-input-label {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: white;
+        border: 2px solid #111;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+    }
+    .file-input-label:hover {
+        background: #111;
+        color: white;
+    }
+    .file-hint {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    .btn-primary-custom {
+        background: #111;
+        color: white;
+        border: 2px solid #111;
+        border-radius: 10px;
+        padding: 0.875rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .btn-primary-custom:hover {
+        background: #EB006B;
+        border-color: #EB006B;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(235, 0, 107, 0.3);
+    }
+    .btn-secondary-custom {
+        background: white;
+        color: #111;
+        border: 2px solid #111;
+        border-radius: 10px;
+        padding: 0.875rem 2rem;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+    .btn-secondary-custom:hover {
+        background: #f8f9fa;
+        transform: translateY(-2px);
+    }
+    .help-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: white;
+        text-decoration: none;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        transition: all 0.2s ease;
+        position: relative;
+        z-index: 1;
+    }
+    .help-link:hover {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        text-decoration: none;
+    }
+    .help-link img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+    }
+    .support-badge {
+        display: inline-block;
+        background: #EB006B;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: auto;
+        position: relative;
+        z-index: 1;
+    }
+    @@media (max-width: 991px) {
+        .brand-card {
+            margin-bottom: 2rem;
+            min-height: auto;
+        }
+        .brand-card h2 {
+            font-size: 2rem;
+        }
+        .form-card {
+            padding: 2rem;
+        }
+        .form-card h3 {
+            font-size: 1.75rem;
+        }
+    }
+    .required-field::after {
+        content: " *";
+        color: #EB006B;
+    }
+</style>
 
-<input type="text" name="Nombre" placeholder="Nombre" required>
-<input type="text" name="Ubicacion" placeholder="Ubicación" required>
-<input type="email" name="Mail" placeholder="Correo electronico" required>
-<input type="text" name="Telefono" placeholder="Telefono" required>
-<input type="text" name="Descripcion" placeholder="Descripcion" required>
+<div class="nueva-tienda-container">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Panel izquierdo: Branding -->
+            <div class="col-lg-5">
+                <div class="brand-card">
+                    <div class="logo-section">
+                        <div class="mb-4">
+                            <img src="~/img/logoOPA-03.png" alt="OPA" style="height: 50px; width: auto;" />
+                        </div>
+                        <h2>Crea tu tienda</h2>
+                        <p>Mostrá tu marca, subí tus prendas y empezá a vender en OPA. Conectá con clientes que buscan moda local y auténtica.</p>
+                        
+                        <a href="#" class="help-link">
+                            <img src="~/img/formulario.png" alt="Ayuda" />
+                            <span>¿Cómo cargar tus primeras prendas?</span>
+                        </a>
+                    </div>
+                    
+                    <div class="support-badge">
+                        💬 Soporte 24/7
+                    </div>
+                </div>
+            </div>
 
-<input type="file" name="foto" required>
-<input type="text" name="Contacto" placeholder="Contacto" required>
+            <!-- Panel derecho: Formulario -->
+            <div class="col-lg-7">
+                <div class="form-card">
+                    <h3>Nueva Tienda</h3>
+                    <p class="subtitle">Completá los datos para publicar tus productos</p>
 
-<input type="submit">
+                    <form method="POST" action='@Url.Action("agregarTienda", "Tienda")' enctype="multipart/form-data" id="formNuevaTienda">
+                        <!-- Nombre -->
+                        <div class="mb-4">
+                            <label for="Nombre" class="form-label required-field">Nombre de la tienda</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ej: Vesta Boutique" required maxlength="200" />
+                        </div>
 
-</form>
+                        <!-- Ubicación -->
+                        <div class="mb-4">
+                            <label for="Ubicacion" class="form-label required-field">Ubicación</label>
+                            <input type="text" class="form-control" id="Ubicacion" name="Ubicacion" placeholder="Ciudad, Provincia" required maxlength="500" />
+                        </div>
+
+                        <!-- Mail -->
+                        <div class="mb-4">
+                            <label for="Mail" class="form-label required-field">Correo electrónico</label>
+                            <input type="email" class="form-control" id="Mail" name="Mail" placeholder="tienda@ejemplo.com" required maxlength="200" />
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div class="mb-4">
+                            <label for="Telefono" class="form-label required-field">Teléfono</label>
+                            <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Solo números" required pattern="^[0-9]+$" maxlength="20" />
+                        </div>
+
+                        <!-- Contacto -->
+                        <div class="mb-4">
+                            <label for="Contacto" class="form-label required-field">Contacto</label>
+                            <input type="text" class="form-control" id="Contacto" name="Contacto" placeholder="@@instagram, WhatsApp, sitio web" required maxlength="200" />
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-4">
+                            <label for="Descripcion" class="form-label required-field">Descripción</label>
+                            <textarea class="form-control" id="Descripcion" name="Descripcion" placeholder="Contanos sobre tu tienda, tu estilo, tus productos..." required maxlength="2000"></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span>/2000 caracteres
+                            </div>
+                        </div>
+
+                        <!-- Foto de perfil -->
+                        <div class="mb-4">
+                            <label class="form-label required-field">Foto de perfil</label>
+                            <div class="avatar-upload">
+                                <div class="avatar-preview" id="avatarPreview">
+                                    <div class="placeholder">👤</div>
+                                </div>
+                                <div class="file-input-wrapper">
+                                    <input type="file" name="FotoDePerfil" id="FotoDePerfil" accept="image/*" required />
+                                    <label for="FotoDePerfil" class="file-input-label">Subir foto</label>
+                                </div>
+                                <p class="file-hint">Recomendado: 512×512 px, JPG o PNG</p>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex gap-3 justify-content-end flex-wrap">
+                            <a href='@Url.Action("Index", "Home")' class="btn btn-secondary-custom">Cancelar</a>
+                            <button type="submit" class="btn btn-primary-custom">Crear tienda</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Contador de caracteres
+    const descripcionTextarea = document.getElementById('Descripcion');
+    const charCount = document.getElementById('charCount');
+    
+    if (descripcionTextarea && charCount) {
+        descripcionTextarea.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+        });
+    }
+
+    // Preview de imagen
+    const fotoInput = document.getElementById('FotoDePerfil');
+    const avatarPreview = document.getElementById('avatarPreview');
+    
+    if (fotoInput && avatarPreview) {
+        fotoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Validación de teléfono
+    const telefonoInput = document.getElementById('Telefono');
+    if (telefonoInput) {
+        telefonoInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
+
+    // Validación del formulario
+    const form = document.getElementById('formNuevaTienda');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const descripcion = descripcionTextarea.value.trim();
+            if (descripcion.length < 10) {
+                e.preventDefault();
+                alert('La descripción debe tener al menos 10 caracteres.');
+                descripcionTextarea.focus();
+                return false;
+            }
+        });
+    }
+</script>
