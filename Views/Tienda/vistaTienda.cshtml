@@ -52,7 +52,7 @@
             {
                 <div class="text-center">
                     <p class="mb-2">¡Publicá tus nuevos productos!</p>
-                    <a class="btn btn-outline-dark fw-bold px-4" href='@Url.Action("subidaProducto","Tienda")'>HACER PUBLICACIÓN</a>
+                    <a class="btn btn-light perfil-btn" href='@Url.Action("subidaProducto","Tienda")'>PUBLICAR</a>
                 </div>
             }
         </div>
@@ -63,11 +63,11 @@
                 <div class="card-body d-grid gap-2">
                     @if (permisos)
                     {
-                        <a class="btn btn-outline-dark w-100" href="@Url.Action("verCarrito","Compra")">ADMINISTRAR PEDIDOS</a>
-                        <a class="btn btn-outline-dark w-100" href="@Url.Action("Index","Home")">VER ESTADÍSTICAS</a>
+                        <a class="btn btn-light perfil-btn" href="@Url.Action("verCarrito","Compra")">ADMINISTRAR PEDIDOS</a>
+                        <a class="btn btn-light perfil-btn" href="@Url.Action("Index","Home")">VER ESTADÍSTICAS</a>
                     }
-                    <a class="btn btn-outline-dark w-100" href="@Url.Action("Index","Home")">AYUDA</a>
-                    <a class="btn btn-outline-dark w-100" href="@Url.Action("cerrarSesion","Comprador")">CERRAR SESIÓN</a>
+                    <a class="btn btn-light perfil-btn" href="@Url.Action("Index","Home")">AYUDA</a>
+                    <a class="btn btn-light perfil-btn" href="@Url.Action("cerrarSesion","Comprador")">CERRAR SESIÓN</a>
                     @if (permisos)
                     {
                         <a class="btn btn-outline-danger w-100" href="@Url.Action("verTiendasAdministrador","Tienda")">ELIMINAR TIENDA</a>

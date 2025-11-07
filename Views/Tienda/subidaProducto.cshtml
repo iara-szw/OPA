@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<form action='@Url.Action("agregarPrenda","Prenda")'>
+<form action='@Url.Action("agregarPrenda","Prenda")' enctype="multipart/form-data" >
 
 <input type="text" name="tipo" placeholder="Tipo">
 <input type="text" name="Modelo" placeholder="Modelo">
@@ -24,7 +24,6 @@
 @foreach(Color color in ViewBag.colores){
     <input type="radio" name="color" value="@color.idColor" id="@color.idColor">
     <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
-    //Poner que con el codigo heza se ponga el color 
 }
 @foreach(Temporada temporada in ViewBag.Temporada){
     <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre">

@@ -1,13 +1,12 @@
-<<<<<<< HEAD
+
 <head>
     <meta charset="utf-8" />
     <title>Crear tienda</title>
 </head>
-=======
 @{
     ViewData["Title"] = "Nueva Tienda";
 }
->>>>>>> c430373cbe34beec587c62f669a52b0c272fb1f7
+
 
 <style>
     .nueva-tienda-container {
@@ -286,37 +285,26 @@
                     <p class="subtitle">Completá los datos para publicar tus productos</p>
 
                     <form method="POST" action='@Url.Action("agregarTienda", "Tienda")' enctype="multipart/form-data" id="formNuevaTienda">
-                        <!-- Nombre -->
                         <div class="mb-4">
                             <label for="Nombre" class="form-label required-field">Nombre de la tienda</label>
                             <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ej: Vesta Boutique" required maxlength="200" />
                         </div>
-
-                        <!-- Ubicación -->
                         <div class="mb-4">
                             <label for="Ubicacion" class="form-label required-field">Ubicación</label>
                             <input type="text" class="form-control" id="Ubicacion" name="Ubicacion" placeholder="Ciudad, Provincia" required maxlength="500" />
                         </div>
-
-                        <!-- Mail -->
                         <div class="mb-4">
                             <label for="Mail" class="form-label required-field">Correo electrónico</label>
                             <input type="email" class="form-control" id="Mail" name="Mail" placeholder="tienda@ejemplo.com" required maxlength="200" />
                         </div>
-
-                        <!-- Teléfono -->
                         <div class="mb-4">
                             <label for="Telefono" class="form-label required-field">Teléfono</label>
                             <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Solo números" required pattern="^[0-9]+$" maxlength="20" />
                         </div>
-
-                        <!-- Contacto -->
                         <div class="mb-4">
                             <label for="Contacto" class="form-label required-field">Contacto</label>
                             <input type="text" class="form-control" id="Contacto" name="Contacto" placeholder="@@instagram, WhatsApp, sitio web" required maxlength="200" />
                         </div>
-
-                        <!-- Descripción -->
                         <div class="mb-4">
                             <label for="Descripcion" class="form-label required-field">Descripción</label>
                             <textarea class="form-control" id="Descripcion" name="Descripcion" placeholder="Contanos sobre tu tienda, tu estilo, tus productos..." required maxlength="2000"></textarea>
@@ -324,8 +312,6 @@
                                 <span id="charCount">0</span>/2000 caracteres
                             </div>
                         </div>
-
-                        <!-- Foto de perfil -->
                         <div class="mb-4">
                             <label class="form-label required-field">Foto de perfil</label>
                             <div class="avatar-upload">
@@ -339,8 +325,6 @@
                                 <p class="file-hint">Recomendado: 512×512 px, JPG o PNG</p>
                             </div>
                         </div>
-
-                        <!-- Botones -->
                         <div class="d-flex gap-3 justify-content-end flex-wrap">
                             <a href='@Url.Action("Index", "Home")' class="btn btn-secondary-custom">Cancelar</a>
                             <button type="submit" class="btn btn-primary-custom">Crear tienda</button>

@@ -7,10 +7,12 @@ namespace OPA.Controllers;
 public class TiendaController : Controller
 {
     private readonly ILogger<TiendaController> _logger;
+private readonly IWebHostEnvironment _env;
 
-    public TiendaController(ILogger<TiendaController> logger)
+    public TiendaController(ILogger<TiendaController> logger,IWebHostEnvironment env)
     {
         _logger = logger;
+        _env = env;
     }
 
   public IActionResult verTiendasAdministrador(){
@@ -59,10 +61,22 @@ public class TiendaController : Controller
 
 
     public IActionResult agregarTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,IFormFile  FotoDePerfil,string Contacto){
-                string FotoDePerfilN = Guid.NewGuid().ToString() + Path.GetExtension(FotoDePerfil.FileName);
 Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+string nombreArchivo=FotoDePerfil.FileName;
 
-        int idNuevo=TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,FotoDePerfilN,Contacto,usu.Usuario);
+if (FotoDePerfil != null && FotoDePerfil.Length>0){
+string rutaCarpeta=Path.Combine(_env.WebRootPath,"img");
+if(!Directory.Exists(rutaCarpeta)){
+Directory.CreateDirectory(rutaCarpeta);
+}
+string rutaCompleta=Path.Combine(rutaCarpeta, nombreArchivo);
+
+using (var stream = new FileStream (rutaCompleta, FileMode.Create)){
+FotoDePerfil.CopyTo(stream);
+
+}
+}
+         int idNuevo=TiendaBD.crearTienda(Nombre,Ubicacion,Mail,Telefono,Descripcion,nombreArchivo,Contacto,usu.Usuario);
         if (idNuevo == -1){
             return RedirectToAction("nuevaTienda");
         }

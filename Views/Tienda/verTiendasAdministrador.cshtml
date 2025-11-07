@@ -14,7 +14,9 @@
             font-family: Arial;
             background: white;
         }
-
+        h2{
+            text-align:center;
+        }
         header {
             height: 70px;
             background: linear-gradient(90deg,#ff0174 0%,#000 55%,#ff0074 100%);
@@ -27,9 +29,11 @@
 
         .container {
             padding-top: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
+            margin-left:0%;
+            width:100% !important;
+                max-width: none;
+    
+            display:inline-block;
         }
 
         .tienda-btn {
@@ -53,7 +57,6 @@
 
         .nombre-tienda {
             position: relative;
-            top: 165px;
             font-size: 13px;
             text-align: center;
             font-weight: 600;
@@ -63,6 +66,21 @@
             text-decoration: none;
             color: inherit;
         }
+
+        #formSeleccionarTienda{
+            width: 50%;
+    display: flex
+;
+    margin-top: 1%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-self:center;
+}
+#tiendaSeleccionar{
+    margin:5%;
+}
+#tiendaSeleccionar:first-child{
+}
     </style>
 </head>
 
@@ -70,16 +88,17 @@
 
 <div class="container">
 <h2>Elegi la tienda a la que queres ingresar</h2>
- <form action='@Url.Action("seleccionarTienda")'  method="post" style="text-align:center;">
+ <form action='@Url.Action("seleccionarTienda")'  id="formSeleccionarTienda" method="post" style="text-align:center;">
     @foreach (Tienda t in tiendas)
     {
-       
+            <div class="tiendaSeleccionar">
             <input type="hidden" name="IdTienda" value="@t.IdTienda" />
  
             <button type="submit" class="tienda-btn">
 
             </button>
-            <div class="nombre-tienda">@t.Nombre</div>
+            <p class="nombre-tienda">@t.Nombre</p>
+            </div>
 
     }
             </form>

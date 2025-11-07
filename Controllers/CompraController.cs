@@ -28,8 +28,21 @@ public class CompraController : Controller
         return;
     }
     public IActionResult verCarrito(){
+        if(Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"))==null){
+            return RedirectToAction("iniciarSesion","Comprador");
+        }
+
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
-        List<Prenda> Ropa=new List<Prenda>();
+                List<Prenda> Ropa=new List<Prenda>();
+
+        if(prendas == null){
+            List<int> carrito=new List<int>();
+                    HttpContext.Session.SetString("carrito", Objeto.ListToString(carrito));
+        ViewBag.ropa=Ropa;
+        return View();
+
+
+        }
         foreach(int id in prendas){
             Ropa.Add(BD.levantarPrenda(id));
         }
