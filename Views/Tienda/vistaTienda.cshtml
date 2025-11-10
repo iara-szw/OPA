@@ -4,7 +4,7 @@
     bool permisos = ViewBag.permisos ?? false;
     ViewData["Title"] = tienda?.Nombre ?? "Tienda";
 }
-
+<body>
 <div class="container my-4">
     <div class="text-center mb-4">
         <h1 class="fw-bold text-uppercase">¡HOLA @tienda.Nombre!</h1>
@@ -63,11 +63,11 @@
                 <div class="card-body d-grid gap-2">
                     @if (permisos)
                     {
-                        <a class="btn btn-light perfil-btn" href="@Url.Action("verCarrito","Compra")">ADMINISTRAR PEDIDOS</a>
-                        <a class="btn btn-light perfil-btn" href="@Url.Action("Index","Home")">VER ESTADÍSTICAS</a>
+                        <a class="btn btn-light perfil-btn" href=#>ADMINISTRAR PEDIDOS</a>
+                        <a class="btn btn-light perfil-btn" href=#>VER ESTADÍSTICAS</a>
                     }
-                    <a class="btn btn-light perfil-btn" href="@Url.Action("Index","Home")">AYUDA</a>
-                    <a class="btn btn-light perfil-btn" href="@Url.Action("cerrarSesion","Comprador")">CERRAR SESIÓN</a>
+                    <a class="btn btn-light perfil-btn" onclick="AbrirVendedorNuevo()">AÑADIR VENDEDOER</a>
+                    <a class="btn btn-light perfil-btn" href="@Url.Action("verTiendasAdministrador","Comprador")">CERRAR SESIÓN</a>
                     @if (permisos)
                     {
                         <a class="btn btn-outline-danger w-100" href="@Url.Action("verTiendasAdministrador","Tienda")">ELIMINAR TIENDA</a>
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-
+   
     <!-- Carrusel de prendas -->
     <div class="mt-5">
         <div class="d-flex align-items-center justify-content-between mb-3">
@@ -100,3 +100,12 @@
         </div>
     </div>
 </div>
+</body>
+
+
+<script>
+function AbrirVendedorNuevo(params) {
+    
+}
+
+</script>

@@ -4,33 +4,33 @@
 </head>
 
 <body>
-<form action='@Url.Action("agregarPrenda","Prenda")' enctype="multipart/form-data" >
+<form action='@Url.Action("agregarPrenda","Prenda")' method="post" enctype="multipart/form-data" >
 
-<input type="text" name="tipo" placeholder="Tipo">
-<input type="text" name="Modelo" placeholder="Modelo">
-<select>
-<option value=1>S</option>
-<option value=1>M</option>
-<option value=1>L</option>
+<input type="text" name="Tipo" placeholder="Tipo" required>
+<input type="text" name="Modelo" placeholder="Modelo" required>
+<select name="IdTalle" required>
+<option value="1" >S</option>
+<option value="2" >M</option>
+<option value="3" >L</option>
 </select>
-<input type="text" name="Descripcion" placeholder="Descripción">
-<input type="double" name="Precio" placeholder="Precio">
+<input type="text" name="descripcion" placeholder="Descripción" required>
+<input type="double" name="Precio" placeholder="Precio" required>
 
 <!--- PONER DESPLEGLBBLES Y ARREGLAR FORMA DE COLORES--->
 @foreach(Estilo estilo in ViewBag.estilos){
-    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre">
+    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre" required>
     <label for="@estilo.Nombre">@estilo.Nombre</label>
 }
 @foreach(Color color in ViewBag.colores){
-    <input type="radio" name="color" value="@color.idColor" id="@color.idColor">
+    <input type="radio" name="color" value="@color.idColor" id="@color.idColor" required>
     <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
 }
 @foreach(Temporada temporada in ViewBag.Temporada){
-    <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre">
+    <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre" required>
     <label for="@temporada.Nombre">@temporada.Nombre</label>
 }
 
-<input type="file" name="foto">
+<input type="file" name="foto" required>
 <input type="submit" >
 
 </form>

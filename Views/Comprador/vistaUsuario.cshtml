@@ -2,7 +2,7 @@
 @{
 	ViewData["Title"] = "Mi Perfil";
 }
-
+<body>
 <style>
 	.perfil-card { border: 1px solid #aaa; border-radius: 10px; padding: 15px; margin: 10px auto; max-width: 300px; }
 	.perfil-btn { border: 1px solid black; border-radius: 8px; width: 100%; margin-top: 10px; }
@@ -109,8 +109,8 @@ border: solid 1px grey;
 					</div>
 					<form action="/Home/editarMedidas" class="mb-2">
 						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
-					</form>
-					<button type="button" class="btn btn-light perfil-btn">VER TUTORIAL</button>
+					</form> 
+					<button type="button" class="btn btn-light perfil-btn" onclick="verTutorial()">VER TUTORIAL</button>
 				</div>
 			</div>
 		</div>
@@ -133,3 +133,15 @@ border: solid 1px grey;
 		</div>
 	</div>
 </div>
+<div id="videotutorial" style="display:none">
+
+<!--- poner tutorial aca--->
+</div>
+</body>
+<script>
+function verTutorial(){
+	var video = document.getElementById("videotutorial");
+	video.style.display="block";
+}
+
+</script>

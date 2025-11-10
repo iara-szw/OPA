@@ -57,6 +57,15 @@ private readonly IWebHostEnvironment _env;
         }
         return View();
     }
+    //  public IActionResult aniadirAdministrador(int idTienda, string idUsuario){   
+       // Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+       // if(usu==null){
+        //    return RedirectToAction("iniciarSesion","Comprador");
+       // }
+       // TiendaBD.aniadirAdministrador(idTienda, idUsuario,usu.Usuario);
+
+      //  return RedirectToAction("vistaTienda");
+   // }
 [HttpPost]
 
 
