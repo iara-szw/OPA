@@ -99,7 +99,7 @@ public JsonResult validarUsuario(string username)
 
     public void agregarDeseado(int idPrenda){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        CompradorBD.agregarDeseado();
+        CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
 
     }
 }
