@@ -96,4 +96,10 @@ public JsonResult validarUsuario(string username)
         CompradorBD.editarComprador(Usu.Usuario,Nombre,Apellido,Telefono,FotoDePerfil,Mail,Genero);
         return RedirectToAction("vistaUsuario");
     }
+
+    public void agregarDeseado(int idPrenda){
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        CompradorBD.agregarDeseado();
+
+    }
 }

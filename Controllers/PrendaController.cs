@@ -35,13 +35,16 @@ foto.CopyTo(stream);
         return RedirectToAction("vistaTienda","Tienda");
     }
 
-    public IActionResult LevantarPrenda(int IdPrenda){
-        PrendaBD.LevantarPrenda(IdPrenda);
-        return RedirectToAction("vistaPrenda","Home");
-    }
+    public IActionResult vistaPrenda(int idPrenda){
+        ViewBag.prenda=PrendaBD.LevantarPrenda(IdPrenda);
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+    ViewBag.Poseido=CompradorBD.verSiPoseido(idPrenda, Usu.Usuario);
+        ViewBag.Deseado=CompradorBD.verSiDeseado(idPrenda, Usu.Usuario);
 
+
+    }
     public IActionResult EliminarPrenda(int IdPrenda){
         PrendaBD.eliminarPrenda(IdPrenda);
-        return RedirectToAction("vistaPrenda","Home");
+        return RedirectToAction("index","Home");
     }
 }

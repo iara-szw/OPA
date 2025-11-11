@@ -10,6 +10,13 @@ static class CompradorBD{
         connection.Execute(query, new {pUsuario=usu.Usuario, pNombre=usu.Nombre,pApellido=usu.Apellido, pContraseña=usu.Contraseña, pTelefono=usu.Telefono, pMail=usu.Mail, pGenero=usu.Genero, pVendedor=usu.esVendedor});
         }
     }
+
+    static public void agregarDeseado(int idPrenda, string Usuario){
+        string query = "INSERT INTO Deseado VALUES (@pidPrenda, @pUsuario)";
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+        connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
+        }
+    }
     static public Comprador levantarComprador(string nombreUsuario, string password){
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){

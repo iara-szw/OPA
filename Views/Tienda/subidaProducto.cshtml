@@ -18,7 +18,7 @@
 
 <!--- PONER DESPLEGLBBLES Y ARREGLAR FORMA DE COLORES--->
 @foreach(Estilo estilo in ViewBag.estilos){
-    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre" required>
+    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre" >
     <label for="@estilo.Nombre">@estilo.Nombre</label>
 }
 @foreach(Color color in ViewBag.colores){

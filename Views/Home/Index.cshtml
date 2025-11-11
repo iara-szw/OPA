@@ -14,10 +14,10 @@
     </section>
     <section class="recomendado">
       <h3>Recomendado para vos ></h3>
-      <div class="ropaRecomendada">
+      <div class="ropaRecomendada" >
       @foreach(Prenda prendita in ViewBag.Ropa){
         <div>
-        <img src="/img/@prendita.foto">
+        <a href=#><img src="/img/@prendita.foto"></a>
           <h4>@prendita.Modelo</h4>
           <p>@prendita.Precio</p>
         </div>
