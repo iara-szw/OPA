@@ -44,7 +44,7 @@
   
                         <div class="d-flex gap-3 justify-content-end flex-wrap">
                          @if(ViewBag.estado=="error"){
-                          <h2>El usuario o contraseña son incorrectos.</h2>
+                          <h2 id="error">El usuario o contraseña son incorrectos.</h2>
                              }
                                                          <a href='@Url.Action("registrarse")' class="btn btn-secondary-custom">Registrarse</a>
                             <button type="submit" class="btn btn-primary-custom">Iniciar sesion</button>

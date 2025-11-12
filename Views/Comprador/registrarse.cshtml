@@ -5,39 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registrarse</title>
     <link rel="stylesheet" href="style.css" />
+            <link rel="stylesheet" href="~/css/iniciarSesion.css" asp-append-version="true" />
+
   </head>
 
-  <body>
-    <main class="registrarse">
+  <body>  
+<div class="nueva-tienda-container">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Panel izquierdo: Branding -->
+            <div class="col-lg-5">
+                <div class="brand-card">
+                    <div class="logo-section">
+                        <div class="mb-4">
+                            <img src="~/img/logoOPA-03.png" alt="OPA" style="height: 50px; width: auto;" />
+                        </div>
+                        <h2>Registrate</h2>
+                        <p>Accede a OPA y crea tu propio armario</p>
+                        
+                        <a href="#" class="help-link">
+                            <img src="~/img/formulario.png" alt="Ayuda" />
+                            <span>¿Como crear una cuenta?</span>
+                        </a>
+                    </div>
+                    
+                    <div class="support-badge">
+                        💬 Soporte 24/7
+                    </div>
+                </div>
+            </div>
+
       <section>
-        <div>
-          <h2>Registrarse</h2>
+        <div CLASS="form-card">
           @if(ViewBag.estado == "telefonoRequerido"){
             <div style="color:#b00020; font-size:.95rem; margin-bottom:.5rem;">El teléfono es obligatorio.</div>
           }
           <form id="formRegistro" method="POST" action='@Url.Action("registrarNuevo")'>
-          <input type="text" name="nombreUsuario" id="usuario" placeholder="Nombre de usuario" required />
+          <input type="text" name="nombreUsuario" id="usuario" placeholder="Nombre de usuario" class="form-control" required />
 
 
-            <input type="password" name="password" placeholder="Contraseña" required />
-            <input type="text" placeholder="Nombre" name="nombre" required />
-            <input type="text" placeholder="Apellido" name="apellido" required />
-            <input type="text" placeholder="Teléfono" name="telefono" required pattern="^[0-9]+$" maxlength="20" />
-            <input type="email" placeholder="Correo electrónico" name="Mail" required />
-             <select name="Genero">
+            <input type="password" name="password" placeholder="Contraseña"  class="form-control" required />
+            <input type="text" placeholder="Nombre" name="nombre" class="form-control" required />
+            <input type="text" placeholder="Apellido" name="apellido"  class="form-control" required />
+            <input type="text" placeholder="Teléfono" name="telefono" class="form-control" required pattern="^[0-9]+$" maxlength="20" />
+            <input type="email" placeholder="Correo electrónico" name="Mail" class="form-control" required />
+             <select name="Genero" class="form-control">
               <option disabled selected>Selecciona tu genero</option>
               <option value=1>Mujer</option>
               <option value=2>Hombre</option>
               <option value=3>Otro</option>
              </select>
-              <select name="esVendedor">
+              <select name="esVendedor" class="form-control" >
               <option disabled selected>¿Sos vendedor? esta opcion se puede cambiar en el futuro</option>
               <option value="true">Si</option>
               <option value="false">No</option>
              </select>
           <h2 id="yaesta" style="display:none">Ese nombre de usuario ya esta en uso.</h2>
-            <input type="submit" value="Registrarse" />
-            <p>¿Ya tenés una cuenta?<a href='@Url.Action("iniciarSesion")'>Iniciar sesión</a></p>
+          <div class="d-flex gap-3 justify-content-end flex-wrap">
+                            <a href='@Url.Action("iniciarSesion")' class="btn btn-secondary-custom">Iniciar sesión</a>
+                            <button type="submit" class="btn btn-primary-custom">Registrarse</button>
+                        </div>
+          
           </form>
           
         </div>
