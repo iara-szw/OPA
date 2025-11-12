@@ -12,6 +12,7 @@ static class CompradorBD{
     }
 
     static public void agregarDeseado(int idPrenda, string Usuario){
+        Console.WriteLine("aca");
         string query = "INSERT INTO Deseado VALUES (@pidPrenda, @pUsuario)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
@@ -82,5 +83,25 @@ static class CompradorBD{
         connection.Execute(query,new{@nombre=Nombre,@apellido=Apellido,@telefono=Telefono,@fotoDePerfil=FotoDePerfil,@mail=Mail,@genero=Genero,@Usuario=usuario});
             
         }
+    }
+
+    static public bool verSiPoseido(int idPrenda, string usuario){
+          bool esta = false;
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT 1 FROM Poseido WHERE Usuario=@pusuario AND IdPrenda=@pidPrenda";
+        esta= connection.QueryFirstOrDefault<bool>(query,new{@pusuario=usuario,pidPrenda=idPrenda});
+
+    }
+    return esta;
+    }
+
+      static public bool verSiDeseado(int idPrenda, string usuario){
+          bool esta = false;
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT 1 FROM Deseado WHERE Usuario=@pusuario AND IdPrenda=@pidPrenda";
+        esta= connection.QueryFirstOrDefault<bool>(query,new{@pusuario=usuario,pidPrenda=idPrenda});
+
+    }
+    return esta;
     }
 }

@@ -14,18 +14,19 @@ public class CompraController : Controller
         _logger = logger;
     }
 
-    public void GuardarCarrito(int idPrenda)
-    {
+    public IActionResult GuardarCarrito(int idPrenda)
+    {   
+
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
-        if(prendas.Count() == 0){
+        if(prendas == null){
             List<int> ropa=new List<int>();
             ropa.Add(idPrenda);
             HttpContext.Session.SetString("carrito", Objeto.ListToString(ropa));
-            return;
+        return RedirectToAction("vistaPrenda","Home",new{IdPrenda=idPrenda});
         }
         prendas.Add(idPrenda);
         HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
-        return;
+        return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }
     public IActionResult verCarrito(){
         if(Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"))==null){
@@ -49,10 +50,10 @@ public class CompraController : Controller
         ViewBag.ropa=Ropa;
         return View();
     }
-    public void eliminarPrenda(int IdPrenda){
+    public IActionResult eliminarPrenda(int IdPrenda){
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
         prendas.Remove(IdPrenda);
        HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
-       return;
+       return RedirectToAction("verCarrito");
     }
 }

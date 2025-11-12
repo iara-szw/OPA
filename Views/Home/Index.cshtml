@@ -17,7 +17,7 @@
       <div class="ropaRecomendada" >
       @foreach(Prenda prendita in ViewBag.Ropa){
         <div>
-        <a href=#><img src="/img/@prendita.foto"></a>
+        <a href='@Url.Action("VistaPrenda",new{idPrenda=@prendita.IdPrenda})'><img src="/img/@prendita.foto"></a>
           <h4>@prendita.Modelo</h4>
           <p>@prendita.Precio</p>
         </div>

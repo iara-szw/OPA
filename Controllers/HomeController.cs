@@ -27,6 +27,18 @@ public class HomeController : Controller
         ViewBag.tiendas=BD.levantarRecomendadosTienda();
         return View();
     }
-    
+        public IActionResult vistaPrenda(int IdPrenda){
+        ViewBag.prenda=PrendaBD.LevantarPrenda(IdPrenda);
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(Usu!=null){ 
+    ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
+    ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
+        ViewBag.Usuario=true;
+
+}else{
+    ViewBag.Usuario=false;
+}
+        return View();
+    }
     //- web con el catálogo de productos y carrito.
 }

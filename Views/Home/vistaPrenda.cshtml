@@ -1,0 +1,20 @@
+
+
+
+
+@ViewBag.Prenda.Modelo
+
+@if(ViewBag.Usuario==true){
+<form action='@Url.Action("GuardarCarrito","Compra")' >
+    <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
+    <input type="submit" placeholder="Guardar en el carrito">
+
+</form>
+<form action='@Url.Action("agregarDeseado","Comprador")' >
+    <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
+    <input type="image" src="foto.png">
+
+</form>
+}else{
+    <p>Tienes que iniciar sesion para agregar prendas a tu carrito/deseados</p>
+}

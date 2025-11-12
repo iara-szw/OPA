@@ -97,9 +97,10 @@ public JsonResult validarUsuario(string username)
         return RedirectToAction("vistaUsuario");
     }
 
-    public void agregarDeseado(int idPrenda){
+    public IActionResult agregarDeseado(int idPrenda){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
 
+        return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }
 }

@@ -11,8 +11,16 @@ static class BD{
         prendas= connection.Query<Prenda>(query,new{@idComprador=Idcomprador}).ToList();
 
     }
+    if (prendas.Count()<5){
+        using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Prenda";
+        prendas= connection.Query<Prenda>(query).ToList();
+        }
+    }
     return prendas;
     }
+
+
      static public List<Tienda> levantarRecomendadosTienda(){
     List<Tienda> tiendas = new List<Tienda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){
