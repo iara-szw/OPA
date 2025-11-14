@@ -33,6 +33,11 @@ public class HomeController : Controller
         if(Usu!=null){ 
     ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
     ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
+    List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
+    if(prendas!=null){
+            ViewBag.estaEnCarrito=prendas.Contains(IdPrenda);
+
+    }
         ViewBag.Usuario=true;
 
 }else{

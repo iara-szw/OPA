@@ -12,12 +12,18 @@ static class CompradorBD{
     }
 
     static public void agregarDeseado(int idPrenda, string Usuario){
-        Console.WriteLine("aca");
         string query = "INSERT INTO Deseado VALUES (@pidPrenda, @pUsuario)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
         }
     }
+        static public void comprarPrenda(int idPrenda, string Usuario){
+        string query = "INSERT INTO Poseido VALUES (@pUsuario,@pidPrenda)";
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+        connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
+        }
+    }
+
     static public Comprador levantarComprador(string nombreUsuario, string password){
         Comprador usu=null;
         using(SqlConnection connection = new SqlConnection(connectionString)){
@@ -75,12 +81,10 @@ static class CompradorBD{
             
         }
     }
-
-    static public void editarComprador(string usuario, string Nombre,string Apellido,string Telefono,string FotoDePerfil,string Mail,int Genero){
+    static public void editarComprador(string usuario, string nombre,string apellido,string mail,string telefono,string passwordHasheada){
          using(SqlConnection connection = new SqlConnection(connectionString)){
- 
-        string query = "UPDATE Comprador SET Nombre=@nombre, Apellido=@apellido, Telefono=@telefono, FotoDePerfil=@fotoDePerfil,Mail=@mail,Genero=@genero WHERE Usuario=@Usuario";
-        connection.Execute(query,new{@nombre=Nombre,@apellido=Apellido,@telefono=Telefono,@fotoDePerfil=FotoDePerfil,@mail=Mail,@genero=Genero,@Usuario=usuario});
+        string query = "UPDATE Comprador SET Nombre=@nombre, Apellido=@Apellido, Contraseña=@password, Telefono=@telefono,Mail=@mail";
+        connection.Execute(query,new{@nombre=nombre, @Apellido=apellido, @password=passwordHasheada,@telefono=telefono,@mail=mail});
             
         }
     }

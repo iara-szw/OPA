@@ -96,15 +96,17 @@
         <div class="row g-3">
         @foreach (var prenda in poseidos.Take(12))
         {
+             <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda})'>
           <div class="col-6 col-sm-4 col-lg-3">
             <div class="card h-100">
-              <img src="@prenda.foto" alt="@prenda.Modelo" />
+           <img src="@prenda.foto" alt="@prenda.Modelo" />
               <div class="info">
                 <p class="titulo">@prenda.Modelo</p>
                 <span class="marca">@prenda.Tipo</span>
               </div>
             </div>
           </div>
+          </a>
         }
         </div>
       }
@@ -126,6 +128,7 @@
       <div class="carrusel">
         @foreach (var prenda in deseados)
         {
+            <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda})'>
           <div class="card">
             <img src="@prenda.foto" alt="@prenda.Modelo" />
             <div class="info">
@@ -133,6 +136,7 @@
               <span class="marca">@prenda.Tipo</span>
             </div>
           </div>
+          </a>
         }
         @if (!deseados.Any())
         {
@@ -149,13 +153,14 @@
       <div class="carrusel">
         @foreach (var prenda in recomendados)
         {
-          <div class="card">
-            <img src="@prenda.foto" alt="@prenda.Modelo" />
+          <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda})'><div class="card">
+              <img src="@prenda.foto" alt="@prenda.Modelo" />
             <div class="info">
               <p class="titulo">@prenda.Modelo</p>
               <span class="marca">@prenda.Tipo</span>
             </div>
           </div>
+          </a>
         }
         @if (!recomendados.Any())
         {

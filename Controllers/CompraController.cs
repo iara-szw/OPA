@@ -56,4 +56,10 @@ public class CompraController : Controller
        HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
        return RedirectToAction("verCarrito");
     }
+    public IActionResult limpiarCarrito (){
+        HttpContext.Session.Remove("carrito");
+        List<int> prendas=new List<int>();
+       HttpContext.Session.SetString("carrito", Objeto.ListToString(prendas));
+       return RedirectToAction("Index","Home");
+    }
 }

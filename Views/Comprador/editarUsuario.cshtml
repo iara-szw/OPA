@@ -16,19 +16,24 @@
 		<form id="formEditar" novalidate>
 			<h5 class="mb-3">Información personal</h5>
 			<div class="mb-3">
-				<label for="nombre" class="form-label">Nombre completo</label>
-				<input id="nombre" class="form-control form-control-lg" required>
-				<div class="invalid-feedback">Ingresá tu nombre.</div>
+				<label for="nombre" class="form-label">Nombre</label>
+				<input id="nombre" class="form-control form-control-lg" placeholder="@ViewBag.usu.Nombre" required>
+				<div class="form-text">Ingresá tu nombre.</div>
+			</div>
+			<div class="mb-3">
+				<label for="apellido" class="form-label">Apellido</label>
+				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.usu.Apellido" required>
+				<div class="form-text">Ingresá tu Apellido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="mail" class="form-label">Email</label>
-				<input id="mail" type="email" class="form-control form-control-lg" required>
-				<div class="invalid-feedback">Ingresá un email válido.</div>
+				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.usu.Mail" required>
+				<div class="form-text">Ingresá un email válido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="telefono" class="form-label">Teléfono</label>
-				<input id="telefono" type="tel" class="form-control form-control-lg" required>
-				<div class="invalid-feedback">Ingresá tu teléfono.</div>
+				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.usu.Telefono" required>
+				<div class="form-text">Ingresá tu teléfono.</div>
 			</div>
 			<div class="mb-4">
 				<label for="contrasenia" class="form-label">Contraseña</label>
@@ -36,7 +41,7 @@
 				<div class="form-text">Dejala vacía para no cambiarla.</div>
 			</div>
 
-			<h5 class="mb-3">Medidas</h5>
+			<!-- <h5 class="mb-3">Medidas</h5>
 			<div class="row">
 				<div class="col-md-6 mb-3">
 					<label for="torso" class="form-label">Torso (cm)</label>
@@ -58,7 +63,7 @@
 					<input id="calzado" type="number" min="0" step="1" class="form-control form-control-lg">
 					<div class="invalid-feedback">Valor inválido.</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="d-flex justify-content-between pt-2">
 				<button type="submit" class="btn btn-dark btn-lg px-4 perfil-btn" id="btnGuardar">Guardar cambios</button>
@@ -70,25 +75,9 @@
 
 @section Scripts {
 <script>
-    // Cargar datos reales del usuario
-    async function cargarDatos() {
-        const res = await fetch('/Comprador/PerfilActual', { credentials: 'same-origin' });
-        if (!res.ok) return;
-        const json = await res.json();
-        if (!json?.ok) return;
-        const d = json.data || {};
-        // Heurística para nombre completo
-        document.getElementById('nombre').value = d.nombre || '';
-        document.getElementById('mail').value = d.mail || '';
-        document.getElementById('telefono').value = d.telefono || '';
-        if (typeof d.medidaTorso === 'number' && d.medidaTorso > 0) {
-            document.getElementById('torso').value = d.medidaTorso;
-        }
-    }
-
     // Subir datos al backend
     async function subirDatos(payload) {
-        const res = await fetch('/Comprador/ActualizarUsuario', {
+        const res = await fetch('/Comprador/editarPerfil', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
@@ -108,13 +97,15 @@
 		const alerta = document.getElementById('alerta');
 		const btnGuardar = document.getElementById('btnGuardar');
 		const nombre = document.getElementById('nombre');
+				const nombre = document.getElementById('apellido');
+
 		const mail = document.getElementById('mail');
 		const telefono = document.getElementById('telefono');
 		const contrasenia = document.getElementById('contrasenia');
-		const torso = document.getElementById('torso');
-		const piernas = document.getElementById('piernas');
-		const cintura = document.getElementById('cintura');
-		const calzado = document.getElementById('calzado');
+		// const torso = document.getElementById('torso');
+		// const piernas = document.getElementById('piernas');
+		// const cintura = document.getElementById('cintura');
+		// const calzado = document.getElementById('calzado');
 
 		function mostrarError(msg){ alerta.textContent = msg || 'Ocurrió un error.'; alerta.classList.remove('d-none'); }
 		function ocultarError(){ alerta.classList.add('d-none'); alerta.textContent=''; }
@@ -130,30 +121,29 @@
 
 			const payload = {
 				nombre: nombre.value.trim(),
+				apellido: apellido.value.trim(),
 				mail: mail.value.trim(),
 				telefono: telefono.value.trim(),
-				contrasenia: contrasenia.value, // vacío = no cambiar
-				medidas: {
-					torso: parseFloat(torso.value) || null,
-					piernas: parseFloat(piernas.value) || null,
-					cintura: parseFloat(cintura.value) || null,
-					calzado: parseInt(calzado.value) || null
-				}
+				contrasenia: contrasenia.value , // vacío = no cambiar
+				// medidas: {
+				// 	torso: parseFloat(torso.value) || null,
+				// 	piernas: parseFloat(piernas.value) || null,
+				// 	cintura: parseFloat(cintura.value) || null,
+				// 	calzado: parseInt(calzado.value) || null
+				// }
 			};
 
 			btnGuardar.disabled = true;
 			try {
 				const ok = await subirDatos(payload);
 				if (ok) window.location.href = '/comprador/vistaUsuario';
-				else mostrarError('No se pudieron guardar los cambios.');
+				else mostrarError('No se pudieron guardar los cambios. 1');
 			} catch (err) {
 				mostrarError(err?.message || 'No se pudieron guardar los cambios.');
 			} finally {
 				btnGuardar.disabled = false;
 			}
 		});
-
-		cargarDatos();
 	})();
 </script>
 }

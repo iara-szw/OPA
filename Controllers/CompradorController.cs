@@ -74,6 +74,13 @@ public JsonResult validarUsuario(string username)
     return Json(new { existe = existe });
 }
 
+public IActionResult editarUsuario(){
+            ViewBag.Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+            if(ViewBag.Usu==null){
+                return RedirectToAction("iniciarSesion()");
+            }
+    return View();
+}
     public IActionResult vistaUsuario(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
          if (Usu == null)
@@ -91,9 +98,27 @@ public JsonResult validarUsuario(string username)
         return View();
         //Arreglar en BD todas las medidas posibles
     }
-    public IActionResult editarPerfil(string Nombre,string Apellido,string Telefono,string FotoDePerfil,string Mail,int Genero){
+    public IActionResult editarPerfil(string nombre,string apellido,string mail,string telefono,string contrasenia){
+        Console.WriteLine(nombre);
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        CompradorBD.editarComprador(Usu.Usuario,Nombre,Apellido,Telefono,FotoDePerfil,Mail,Genero);
+    if(nombre==null){
+        nombre=Usu.Nombre;
+    }
+    if(apellido==null){
+        apellido=Usu.Apellido;
+    }
+    if(mail==null){
+        mail=Usu.Mail;
+    }
+    if(telefono==null){
+        telefono=Usu.Telefono;
+    }
+    if(contrasenia==null){
+        contrasenia=Usu.Contraseña;
+    }
+                        string passwordHasheada = encriptar.HashearPassword(contrasenia);
+
+        CompradorBD.editarComprador(Usu.Usuario,nombre,apellido,mail,telefono,passwordHasheada);
         return RedirectToAction("vistaUsuario");
     }
 
@@ -102,5 +127,15 @@ public JsonResult validarUsuario(string username)
         CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
 
         return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
+    }
+
+    public IActionResult comprarPrenda(){
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
+        foreach(int Prenda in prendas){
+            CompradorBD.comprarPrenda(Prenda, Usu.Usuario);
+        }
+        return RedirectToAction("limpiarCarrito","Compra");
+
     }
 }

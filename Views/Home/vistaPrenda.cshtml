@@ -5,16 +5,28 @@
 @ViewBag.Prenda.Modelo
 
 @if(ViewBag.Usuario==true){
-<form action='@Url.Action("GuardarCarrito","Compra")' >
-    <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
-    <input type="submit" placeholder="Guardar en el carrito">
 
-</form>
-<form action='@Url.Action("agregarDeseado","Comprador")' >
-    <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
-    <input type="image" src="foto.png">
+    if(!ViewBag.Poseido){
+        <form action='@Url.Action("GuardarCarrito","Compra")' >
+             <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
+             <input type="submit" name="Guardar en el carrito">
 
-</form>
-}else{
+        </form>
+    }else{
+        <h2>Esta prenda ya esta en tu armario</h2>
+    }
+    if(!ViewBag.Deseado){
+        <form action='@Url.Action("agregarDeseado","Comprador")' >
+             <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
+             <input type="image" src="foto.png">
+        </form>
+    }else{
+        <h2>Esta prenda ya esta en tus deseados</h2>
+    }
+    if(ViewBag.estaEnCarrito==true)
+{
+            <h2>Esta prenda ya esta en tu carrito</h2>
+
+}}else{
     <p>Tienes que iniciar sesion para agregar prendas a tu carrito/deseados</p>
 }
