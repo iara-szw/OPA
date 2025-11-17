@@ -17,22 +17,22 @@
 			<h5 class="mb-3">Información personal</h5>
 			<div class="mb-3">
 				<label for="nombre" class="form-label">Nombre</label>
-				<input id="nombre" class="form-control form-control-lg" placeholder="@ViewBag.usu.Nombre" required>
+				<input id="nombre" class="form-control form-control-lg" placeholder="@ViewBag.usu.Nombre" >
 				<div class="form-text">Ingresá tu nombre.</div>
 			</div>
 			<div class="mb-3">
 				<label for="apellido" class="form-label">Apellido</label>
-				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.usu.Apellido" required>
+				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.usu.Apellido" >
 				<div class="form-text">Ingresá tu Apellido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="mail" class="form-label">Email</label>
-				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.usu.Mail" required>
+				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.usu.Mail" >
 				<div class="form-text">Ingresá un email válido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="telefono" class="form-label">Teléfono</label>
-				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.usu.Telefono" required>
+				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.usu.Telefono" >
 				<div class="form-text">Ingresá tu teléfono.</div>
 			</div>
 			<div class="mb-4">
@@ -73,79 +73,62 @@
 	</div>
 </main>
 
-@section Scripts {
 <script>
-    // Subir datos al backend
-    async function subirDatos(payload) {
-        const res = await fetch('/Comprador/editarPerfil', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify(payload)
-        });
-        if (!res.ok) {
-            try { const err = await res.json(); throw new Error(err?.error || 'error'); }
-            catch { return false; }
-        }
-        const json = await res.json();
-        if (!json?.ok) { throw new Error(json?.error || 'error'); }
-        return true;
-    }
+async function subirDatos(payload) {
+    const res = await fetch('/Comprador/editarPerfil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload)
+    });
 
-	(function () {
-		const form = document.getElementById('formEditar');
-		const alerta = document.getElementById('alerta');
-		const btnGuardar = document.getElementById('btnGuardar');
-		const nombre = document.getElementById('nombre');
-				const nombre = document.getElementById('apellido');
-
-		const mail = document.getElementById('mail');
-		const telefono = document.getElementById('telefono');
-		const contrasenia = document.getElementById('contrasenia');
-		// const torso = document.getElementById('torso');
-		// const piernas = document.getElementById('piernas');
-		// const cintura = document.getElementById('cintura');
-		// const calzado = document.getElementById('calzado');
-
-		function mostrarError(msg){ alerta.textContent = msg || 'Ocurrió un error.'; alerta.classList.remove('d-none'); }
-		function ocultarError(){ alerta.classList.add('d-none'); alerta.textContent=''; }
-
-		function validar() {
-			if (!form.checkValidity()) { form.classList.add('was-validated'); return false; }
-			form.classList.add('was-validated'); return true;
-		}
-
-		form.addEventListener('submit', async (e) => {
-			e.preventDefault(); ocultarError();
-			if (!validar()) return;
-
-			const payload = {
-				nombre: nombre.value.trim(),
-				apellido: apellido.value.trim(),
-				mail: mail.value.trim(),
-				telefono: telefono.value.trim(),
-				contrasenia: contrasenia.value , // vacío = no cambiar
-				// medidas: {
-				// 	torso: parseFloat(torso.value) || null,
-				// 	piernas: parseFloat(piernas.value) || null,
-				// 	cintura: parseFloat(cintura.value) || null,
-				// 	calzado: parseInt(calzado.value) || null
-				// }
-			};
-
-			btnGuardar.disabled = true;
-			try {
-				const ok = await subirDatos(payload);
-				if (ok) window.location.href = '/comprador/vistaUsuario';
-				else mostrarError('No se pudieron guardar los cambios. 1');
-			} catch (err) {
-				mostrarError(err?.message || 'No se pudieron guardar los cambios.');
-			} finally {
-				btnGuardar.disabled = false;
-			}
-		});
-	})();
-</script>
+    const json = await res.json();
+    return json;
 }
 
+(function () {
+    const form = document.getElementById('formEditar');
+    const alerta = document.getElementById('alerta');
+    const btnGuardar = document.getElementById('btnGuardar');
 
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const mail = document.getElementById('mail');
+    const telefono = document.getElementById('telefono');
+    const contrasenia = document.getElementById('contrasenia');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alerta.classList.add("d-none");
+
+        // 🔹 SIEMPRE enviamos todos los valores, aunque estén vacíos
+        const payload = {
+            nombre: nombre.value.trim(),
+            apellido: apellido.value.trim(),
+            mail: mail.value.trim(),
+            telefono: telefono.value.trim(),
+            contrasenia: contrasenia.value.trim()
+        };
+
+        btnGuardar.disabled = true;
+
+        try {
+            const resp = await subirDatos(payload);
+
+            if (resp.ok) {
+                window.location.href = '/comprador/vistaUsuario';
+                return;
+            }
+
+            alerta.textContent = resp.error || "No se pudieron guardar los cambios.";
+            alerta.classList.remove("d-none");
+
+        } catch (err) {
+            alerta.textContent = "Error inesperado: " + err.message;
+            alerta.classList.remove("d-none");
+        }
+
+        btnGuardar.disabled = false;
+    });
+})();
+</script>

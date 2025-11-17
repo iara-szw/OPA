@@ -43,10 +43,18 @@ header .iconos i {
 }
 
 .banner {
-  background: #111 url('/img/fondo-opa.jpg') center/cover no-repeat;
+  background-color: #111;
+  background-image: url('/img/fondo-opa.png');
+  background-repeat: repeat;
+  background-position: center;
   text-align: center;
   padding: 5rem 1rem;
   color: #ff0088;
+}
+.banner img {
+  width: 25%;
+  height: 25%;
+
 }
 
 .banner h2 {

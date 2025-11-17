@@ -98,28 +98,51 @@ public IActionResult editarUsuario(){
         return View();
         //Arreglar en BD todas las medidas posibles
     }
+    [HttpPost]
+
     public IActionResult editarPerfil(string nombre,string apellido,string mail,string telefono,string contrasenia){
-        Console.WriteLine(nombre);
-        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-    if(nombre==null){
+        try
+    {
+        string passwordHasheada;
+        Console.WriteLine("aca");
+      var sessionData = HttpContext.Session.GetString("usuario");
+if (string.IsNullOrEmpty(sessionData))
+{
+    return RedirectToAction("iniciarSesion");
+}
+
+Comprador Usu = Objeto.StringToobject<Comprador>(sessionData);
+
+    if(nombre==""){
         nombre=Usu.Nombre;
+        Console.WriteLine(nombre);
     }
-    if(apellido==null){
+    if(apellido==""){
         apellido=Usu.Apellido;
+                Console.WriteLine(apellido);
+
     }
-    if(mail==null){
+    if(mail==""){
         mail=Usu.Mail;
     }
-    if(telefono==null){
+    if(telefono==""){
         telefono=Usu.Telefono;
     }
-    if(contrasenia==null){
-        contrasenia=Usu.Contraseña;
+    if(contrasenia==""){
+        passwordHasheada=Usu.Contraseña;
+    }else{
+         passwordHasheada = encriptar.HashearPassword(contrasenia);
+
     }
-                        string passwordHasheada = encriptar.HashearPassword(contrasenia);
 
         CompradorBD.editarComprador(Usu.Usuario,nombre,apellido,mail,telefono,passwordHasheada);
-        return RedirectToAction("vistaUsuario");
+                return Json(new { ok = true });
+ }
+    catch (Exception ex)
+    {
+        // Si ocurre un error, devolver un JSON con el mensaje de error
+        return Json(new { ok = false, error = ex.Message });
+    }
     }
 
     public IActionResult agregarDeseado(int idPrenda){

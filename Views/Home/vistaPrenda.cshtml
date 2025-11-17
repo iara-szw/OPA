@@ -1,13 +1,24 @@
+    <head>
+    <title>@ViewBag.Prenda.Modelo</title>
+    <link rel="stylesheet" href="~/css/prenda.css" asp-append-version="true" />
+</head>
+
+<div class="descripcionPrenda">
+<img src="/img/@ViewBag.Prenda.foto">
+<div class="textoPrenda">
+<p>@ViewBag.Prenda.Tipo</p>
+<p>@ViewBag.Prenda.Modelo</p>
+<p>@ViewBag.Prenda.descripcion</p>
+<p>@ViewBag.Prenda.Precio</p>
+</div>
+</div>
 
 
-
-
-@ViewBag.Prenda.Modelo
 
 @if(ViewBag.Usuario==true){
 
     if(!ViewBag.Poseido){
-        <form action='@Url.Action("GuardarCarrito","Compra")' >
+        <form action='@Url.Action("GuardarCarrito","Compra")'>
              <input type="hidden" name="idPrenda" value=@ViewBag.Prenda.IdPrenda>
              <input type="submit" name="Guardar en el carrito">
 

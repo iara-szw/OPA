@@ -1,0 +1,12 @@
+.descripcionPrenda {
+    display: flex
+;
+    border: 1px solid black;
+    width: 75%;
+    margin: 10%;
+    padding:2%;
+}
+
+img{
+    width:40%;
+}

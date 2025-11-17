@@ -2,108 +2,127 @@
     var tiendas = ViewBag.tiendas;
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Mis Tiendas</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: white;
-        }
-        h2{
-            text-align:center;
-        }
-        header {
-            height: 70px;
-            background: linear-gradient(90deg,#ff0174 0%,#000 55%,#ff0074 100%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            color: white;
-        }
-
-        .container {
-            padding-top: 60px;
-            margin-left:0%;
-            width:100% !important;
-                max-width: none;
-    
-            display:inline-block;
-        }
-
-        .tienda-btn {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: none;
-            background: #dcdcdc;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: .2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tienda-btn:hover {
-            background: #b5b5b5;
-        }
-
-        .nombre-tienda {
-            position: relative;
-            font-size: 13px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        #formSeleccionarTienda{
-            width: 50%;
-    display: flex
-;
-    margin-top: 1%;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    justify-self:center;
-}
-#tiendaSeleccionar{
-    margin:5%;
-}
-#tiendaSeleccionar:first-child{
-}
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-<h2>Elegi la tienda a la que queres ingresar</h2>
- <form action='@Url.Action("seleccionarTienda")'  id="formSeleccionarTienda" method="post" style="text-align:center;">
-    @foreach (Tienda t in tiendas)
-    {
-            <div class="tiendaSeleccionar">
-            <input type="hidden" name="IdTienda" value="@t.IdTienda" />
- 
-            <button type="submit" class="tienda-btn">
-
-            </button>
-            <p class="nombre-tienda">@t.Nombre</p>
-            </div>
-
+<style>
+    .admin-tiendas {
+        width: 100%;
+        min-height: calc(100vh - 200px);
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
     }
-            </form>
 
+    .admin-tiendas__inner {
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .admin-tiendas__inner h1 {
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+        font-size: 2rem;
+        font-weight: 400;
+        color: #000;
+        margin-bottom: 60px;
+    }
+
+    .circulos-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .tienda-link,
+    .circulo-agregar {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tienda-link {
+        width: 180px;
+        height: 180px;
+    }
+
+    .circulo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border: 3px solid #000;
+        text-transform: uppercase;
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .circulo-tienda {
+        color: #000;
+    }
+
+    .circulo-agregar {
+        background-color: #d9d9d9;
+        border: 5px solid transparent;
+        border-image: linear-gradient(135deg, #ff0088, #000) 1;
+        color: #4d4d4d;
+        font-size: 4rem;
+        font-weight: 300;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+    }
+
+    .circulo-agregar:hover {
+        transform: scale(1.05);
+    }
+
+    .circulo-placeholder {
+        background-color: #d9d9d9;
+        border-width: 3px;
+        border-style: solid;
+    }
+
+    .circulo-placeholder.azul {
+        border-color: #00a3ff;
+    }
+
+    .circulo-placeholder.rosa {
+        border-color: #ff5db1;
+    }
+</style>
+
+<div class="admin-tiendas">
+    <div class="admin-tiendas__inner">
+        <h1>Elegí la tienda a la que querés ingresar</h1>
+
+        <div class="circulos-grid">
+            @if (tiendas != null)
+            {
+                foreach (Tienda t in tiendas)
+                {
+                    <a class="tienda-link" href="/Tienda/seleccionarTienda?IdTienda=@t.IdTienda" aria-label="Ingresar a @t.Nombre">
+                        <div class="circulo circulo-tienda">
+                            <span>@t.Nombre</span>
+                        </div>
+                    </a>
+                }
+            }
+
+            <a class="circulo circulo-agregar" href="/Tienda/nuevaTienda" aria-label="Agregar tienda">
+                <span>+</span>
+            </a>
+
+            <div class="circulo circulo-placeholder azul"></div>
+            <div class="circulo circulo-placeholder rosa"></div>
+        </div>
+    </div>
 </div>
-<a href='@Url.Action("nuevaTienda")'>Agregar Tienda</a>
-</body>
-</html>
