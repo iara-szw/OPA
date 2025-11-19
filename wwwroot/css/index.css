@@ -173,7 +173,7 @@ header .iconos i {
 }
 
 .opcion {
-  width: 180px;
+  width: 13%;
   height: 180px;
   border-radius: 10px;
   overflow: hidden;
@@ -188,12 +188,12 @@ header .iconos i {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-
-.opcion p,
 .opcion a {
+  
+  margin: 0%;
   position: absolute;
-  bottom: 10px;
-  width: 100%;
+  margin-top: 60%;
+  left: 40%;
   text-align: center;
   font-weight: 600;
   color: #000;
@@ -207,7 +207,6 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  margin-top: 2rem;
 }
 
 @media (max-width: 768px) {

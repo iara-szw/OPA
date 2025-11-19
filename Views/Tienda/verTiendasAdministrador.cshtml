@@ -1,105 +1,10 @@
 @{
     var tiendas = ViewBag.tiendas;
 }
+<head>
+            <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
 
-<style>
-    .admin-tiendas {
-        width: 100%;
-        min-height: calc(100vh - 200px);
-        background-color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 80px 20px;
-    }
-
-    .admin-tiendas__inner {
-        text-align: center;
-        width: 100%;
-        max-width: 1200px;
-    }
-
-    .admin-tiendas__inner h1 {
-        font-family: 'Poppins', 'Segoe UI', sans-serif;
-        font-size: 2rem;
-        font-weight: 400;
-        color: #000;
-        margin-bottom: 60px;
-    }
-
-    .circulos-grid {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 50px;
-    }
-
-    .tienda-link,
-    .circulo-agregar {
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .tienda-link {
-        width: 180px;
-        height: 180px;
-    }
-
-    .circulo {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        border: 3px solid #000;
-        text-transform: uppercase;
-        font-family: 'Poppins', 'Segoe UI', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .circulo-tienda {
-        color: #000;
-    }
-
-    .circulo-agregar {
-        background-color: #d9d9d9;
-        border: 5px solid transparent;
-        border-image: linear-gradient(135deg, #ff0088, #000) 1;
-        color: #4d4d4d;
-        font-size: 4rem;
-        font-weight: 300;
-        text-decoration: none;
-        transition: transform 0.2s ease;
-    }
-
-    .circulo-agregar:hover {
-        transform: scale(1.05);
-    }
-
-    .circulo-placeholder {
-        background-color: #d9d9d9;
-        border-width: 3px;
-        border-style: solid;
-    }
-
-    .circulo-placeholder.azul {
-        border-color: #00a3ff;
-    }
-
-    .circulo-placeholder.rosa {
-        border-color: #ff5db1;
-    }
-</style>
-
+</head>
 <div class="admin-tiendas">
     <div class="admin-tiendas__inner">
         <h1>Elegí la tienda a la que querés ingresar</h1>
@@ -120,9 +25,6 @@
             <a class="circulo circulo-agregar" href="/Tienda/nuevaTienda" aria-label="Agregar tienda">
                 <span>+</span>
             </a>
-
-            <div class="circulo circulo-placeholder azul"></div>
-            <div class="circulo circulo-placeholder rosa"></div>
         </div>
     </div>
 </div>

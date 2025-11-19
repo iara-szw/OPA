@@ -31,7 +31,7 @@
       .menu-section, .menu-footer{ display:flex; flex-direction:column; }
       .menu-section a{ margin-bottom:1.1rem; }
       .menu-footer{ margin-top:auto; }
-      header{margin-bottom:5%;}
+      main{margin-top:5%;}
     </style>
 </head>
 
@@ -54,11 +54,11 @@
       </form>
 
       <button id="opaSearchBtn" type="button" class="btn btn-link p-0 m-0" aria-label="Buscar">
-        <img id="opaSearchIcon" class="opa-icon" src="/img/searchWhite.png" alt="Buscar">
+        <img id="opaSearchIcon" class="opa-icon" src="/img/whiteSearch.png" alt="Buscar">
       </button>
 
       <a class="btn btn-link p-0 m-0" href="@Url.Action("verCarrito","Compra")" aria-label="Carrito">
-        <img class="opa-icon" src="/img/tiendaWhite.png" alt="Carrito">
+        <img class="opa-icon" src="/img/whiteTienda.png" alt="Carrito">
       </a>
 
       <button class="navbar-toggler ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -128,7 +128,7 @@
           open = !open;
           inputWrap.classList.toggle('show', open);
           // Intercambiar icono: blanco por defecto, oscuro al abrir
-          icon.src = open ? '/img/search.png' : '/img/searchWhite.png';
+          icon.src = open ? '/img/search.png' : '/img/whiteSearch.png';
           if(open){ setTimeout(()=>text.focus(), 10); }
         }
         btn?.addEventListener('click', toggle);
@@ -141,8 +141,8 @@
           }
         }
         text?.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); go(); }});
-        text?.addEventListener('blur', function(){ open=false; inputWrap.classList.remove('show'); icon.src='/img/searchWhite.png'; });
-        document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && open){ open=false; inputWrap.classList.remove('show'); icon.src='/img/searchWhite.png'; text.blur(); }});
+        text?.addEventListener('blur', function(){ open=false; inputWrap.classList.remove('show'); icon.src='/img/whiteSearch.png'; });
+        document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && open){ open=false; inputWrap.classList.remove('show'); icon.src='/img/whiteSearch.png'; text.blur(); }});
       })();
     </script>
     @await RenderSectionAsync("Scripts", required: false)

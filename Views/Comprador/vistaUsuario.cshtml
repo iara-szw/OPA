@@ -7,6 +7,13 @@
 	.perfil-card { border: 1px solid #aaa; border-radius: 10px; padding: 15px; margin: 10px auto; max-width: 300px; }
 	.perfil-btn { border: 1px solid black; border-radius: 8px; width: 100%; margin-top: 10px; }
 	.perfil-btn:hover { background-color: #f8f9fa; box-shadow: 0 1px 0 rgba(0,0,0,.1) inset; }
+	#cerrar{
+		width:3%;
+		margin-bottom:1%;
+	}
+	#cerrar:hover{
+		cursor:pointer;
+	}
 	.perfil-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #d60077; display: inline-block; object-fit: cover; }
 	@@media (min-width: 768px) { .perfil-card { max-width: 100%; } }
 	.row.g-4.text-start{
@@ -38,12 +45,15 @@ border: solid 1px grey;
     border: 2px solid black;
 }
 #videotutorial{
-	top: 20%;
+	top: 17%;
     position: absolute;
-    left: 35%;
+    left: 25%;
+	
 }
 iframe{
-	width:300%;
+	width:110%;
+	border:2px solid black;
+	border-radius:10px;
 }
 </style>
 
@@ -142,7 +152,8 @@ iframe{
 	</div>
 </div>
 <div id="videotutorial" style="display:none;position:absolute">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3NoIx9cbZyE?si=HgeN5gLDnI4rqdVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<img id="cerrar" src="/img/cruz.png" onclick="cerrarTutorial()">
+<iframe width="600" height="500" src="https://www.youtube.com/embed/3NoIx9cbZyE?si=HgeN5gLDnI4rqdVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <!--- poner tutorial aca--->
 </div>
 </body>
@@ -150,6 +161,13 @@ iframe{
 function verTutorial(){
 	var video = document.getElementById("videotutorial");
 	video.style.display="block";
+}
+
+function cerrarTutorial(){
+		var video = document.getElementById("videotutorial");
+
+	video.style.display="none";
+
 }
 
 </script>
