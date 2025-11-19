@@ -1,3 +1,5 @@
+@using Newtonsoft.Json
+
 @{
 	ViewData["Title"] = "Editar Usuario";
 }
@@ -11,28 +13,28 @@
 	<h2 class="text-center mb-4">Editar mis datos</h2>
 
 	<div id="alerta" class="alert alert-danger d-none"></div>
-
+	<div id="usu" style="display:none" value="@ViewBag.Usu"> </div>
 	<div class="card shadow-sm p-4 mx-auto perfil-card" style="max-width:640px;">
 		<form id="formEditar" novalidate>
 			<h5 class="mb-3">Información personal</h5>
 			<div class="mb-3">
 				<label for="nombre" class="form-label">Nombre</label>
-				<input id="nombre" class="form-control form-control-lg" placeholder="@ViewBag.usu.Nombre" >
+				<input id="nombre" name="nombre" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Nombre" >
 				<div class="form-text">Ingresá tu nombre.</div>
 			</div>
 			<div class="mb-3">
 				<label for="apellido" class="form-label">Apellido</label>
-				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.usu.Apellido" >
+				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Apellido" >
 				<div class="form-text">Ingresá tu Apellido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="mail" class="form-label">Email</label>
-				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.usu.Mail" >
+				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Mail" >
 				<div class="form-text">Ingresá un email válido.</div>
 			</div>
 			<div class="mb-3">
 				<label for="telefono" class="form-label">Teléfono</label>
-				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.usu.Telefono" >
+				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Telefono" >
 				<div class="form-text">Ingresá tu teléfono.</div>
 			</div>
 			<div class="mb-4">
@@ -87,6 +89,7 @@ async function subirDatos(payload) {
 }
 
 (function () {
+    var usu = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Usu));
     const form = document.getElementById('formEditar');
     const alerta = document.getElementById('alerta');
     const btnGuardar = document.getElementById('btnGuardar');
@@ -96,20 +99,33 @@ async function subirDatos(payload) {
     const mail = document.getElementById('mail');
     const telefono = document.getElementById('telefono');
     const contrasenia = document.getElementById('contrasenia');
-
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         alerta.classList.add("d-none");
+ if(nombre.value==""){
+        nombre.value=usu.Nombre;
+    }
+    if(apellido.value==""){
+        apellido.value=usu.Apellido;
 
-        // 🔹 SIEMPRE enviamos todos los valores, aunque estén vacíos
+    }
+    if(mail.value==""){
+        mail.value=usu.Mail;
+    }
+    if(telefono.value==""){
+        telefono.value=usu.Telefono;
+    }
+	 if(contrasenia.value==""){
+		contrasenia.value=usu.Contraseña;
+	 }
         const payload = {
-            nombre: nombre.value.trim(),
-            apellido: apellido.value.trim(),
-            mail: mail.value.trim(),
-            telefono: telefono.value.trim(),
-            contrasenia: contrasenia.value.trim()
+            nombre: nombre.value,
+            apellido: apellido.value,
+            mail: mail.value,
+            telefono: telefono.value,
+            contrasenia: contrasenia.value
         };
-
+		console.log('Payload:', payload); 
         btnGuardar.disabled = true;
 
         try {

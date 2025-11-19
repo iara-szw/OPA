@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
 using OPA.Models;
 
 namespace OPA.Controllers;
@@ -100,49 +102,34 @@ public IActionResult editarUsuario(){
     }
     [HttpPost]
 
-    public IActionResult editarPerfil(string nombre,string apellido,string mail,string telefono,string contrasenia){
+    public IActionResult editarPerfil([FromBody] PayloadModel payload){
         try
     {
-        string passwordHasheada;
-        Console.WriteLine("aca");
-      var sessionData = HttpContext.Session.GetString("usuario");
-if (string.IsNullOrEmpty(sessionData))
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+                string passwordHasheada=Usu.Contraseña;
+
+
+
+if (Usu==null)
 {
+
     return RedirectToAction("iniciarSesion");
+    
 }
-
-Comprador Usu = Objeto.StringToobject<Comprador>(sessionData);
-
-    if(nombre==""){
-        nombre=Usu.Nombre;
-        Console.WriteLine(nombre);
-    }
-    if(apellido==""){
-        apellido=Usu.Apellido;
-                Console.WriteLine(apellido);
-
-    }
-    if(mail==""){
-        mail=Usu.Mail;
-    }
-    if(telefono==""){
-        telefono=Usu.Telefono;
-    }
-    if(contrasenia==""){
-        passwordHasheada=Usu.Contraseña;
-    }else{
-         passwordHasheada = encriptar.HashearPassword(contrasenia);
-
+    if(payload.contrasenia!=Usu.Contraseña){
+         passwordHasheada = encriptar.HashearPassword(payload.contrasenia);
     }
 
-        CompradorBD.editarComprador(Usu.Usuario,nombre,apellido,mail,telefono,passwordHasheada);
+
+        CompradorBD.editarComprador(Usu.Usuario,payload.nombre,payload.apellido,payload.mail,payload.telefono,passwordHasheada);
+                        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(CompradorBD.levantarComprador(Usu.Usuario,passwordHasheada)));
                 return Json(new { ok = true });
  }
     catch (Exception ex)
     {
         // Si ocurre un error, devolver un JSON con el mensaje de error
         return Json(new { ok = false, error = ex.Message });
-    }
+    }   
     }
 
     public IActionResult agregarDeseado(int idPrenda){
