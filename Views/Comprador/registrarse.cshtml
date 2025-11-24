@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse</title>
+    <style>
+      :root {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #111;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      }
+      .nueva-tienda-container {
+        min-height: calc(100vh - 102px);
+        padding: 3rem 0;
+        display: flex;
+        align-items: center;
+      }
+      .registro-layout {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 4rem 0;
+      }
+      .registro-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        width: 100%;
+        padding: 0 clamp(1.5rem, 5vw, 5rem);
+      }
+      .registro-column {
+        flex: 1 1 450px;
+        max-width: 500px;
+        display: flex;
+      }
+      .registro-column > * {
+        width: 100%;
+      }
+      .brand-card {
+        background: linear-gradient(135deg, #EB006B 0%, #0b0b0b 100%);
+        border-radius: 16px;
+        padding: 2.5rem;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        min-height: 100%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      .brand-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .brand-card h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -0.5px;
+      }
+      .brand-card p {
+        font-size: 1.1rem;
+        opacity: .95;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .help-link {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        color: #fff;
+        text-decoration: none;
+        margin-top: 1.5rem;
+        padding: .75rem 1rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        transition: all .2s ease;
+        position: relative;
+        z-index: 1;
+      }
+      .help-link:hover {
+        background: rgba(255,255,255,0.2);
+      }
+      .help-link img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+      }
+      .support-badge {
+        display: inline-block;
+        background: #EB006B;
+        color: #fff;
+        padding: .5rem 1rem;
+        border-radius: 20px;
+        font-size: .85rem;
+        font-weight: 600;
+        margin-top: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .form-card {
+        background: #fff;
+        border: 2px solid #111;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .form-control, .form-card select {
+        width: 100%;
+        border: 1px solid #111;
+        border-radius: 10px;
+        padding: .75rem 1rem;
+        font-size: 1rem;
+        transition: all .2s ease;
+        margin: .5rem 0;
+        
+      }
+      .label-form {
+        font-weight: 600;
+        font-size: 1rem;
+        display: block;
+        margin-top: .75rem;
+        margin-bottom: .5rem;
+      }
+      .radio-container {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .radio-option {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1rem;
+      }
+      .form-control:focus, .form-card select:focus {
+        border-color: #EB006B;
+        box-shadow: 0 0 0 3px rgba(235, 0, 107, 0.1);
+        outline: none;
+      }
+      .btn-primary-custom,
+      .btn-secondary-custom {
+        border-radius: 10px;
+        padding: .875rem 2rem;
+        font-weight: 600;
+        font-size: 1rem;
+        border: 2px solid #111;
+        transition: all .2s ease;
+      }
+      .btn-primary-custom {
+        background: #111;
+        color: #fff;
+      }
+      .btn-primary-custom:hover {
+        background: #EB006B;
+        border-color: #EB006B;
+        box-shadow: 0 4px 12px rgba(235, 0, 107, 0.3);
+      }
+      .btn-secondary-custom {
+        background: #fff;
+        color: #111;
+      }
+      .btn-secondary-custom:hover {
+        background: #f8f9fa;
+      }
+     
+    </style>
+  </head>
+
+  <body>  
+<div class="nueva-tienda-container registro-layout">
+    <div class="registro-wrapper">
+        <!-- Panel izquierdo: Branding -->
+        <div class="registro-column">
+            <div class="brand-card">
+                <div class="logo-section">
+                    <div class="mb-4">
+                        <img src="~/img/logoOPA-03.png" alt="OPA" style="height: 50px; width: auto;" />
+                    </div>
+                    <h2>Registrate</h2>
+                    <p>Accede a OPA y crea tu propio armario</p>
+                    <p>Todas las opciones se pueden modificar posteriormente<p>
+                    
+                    <a href="#" class="help-link">
+                        <img src="~/img/formulario.png" alt="Ayuda" />
+                        <span>¿Como crear una cuenta?</span>
+                    </a>
+                </div>
+                
+                <div class="support-badge">
+                    💬 Soporte 24/7
+                </div>
+            </div>
+        </div>
+
+      <section class="registro-column">
+        <div class="form-card">
+          @if(ViewBag.estado == "telefonoRequerido"){
+            <div style="color:#b00020; font-size:.95rem; margin-bottom:.5rem;">El teléfono es obligatorio.</div>
+          }
+          <form id="formRegistro" method="POST" action='@Url.Action("registrarNuevo")'>
+          <input type="text" name="nombreUsuario" id="usuario" placeholder="Nombre de usuario" class="form-control" required />
+
+
+            <input type="password" name="password" placeholder="Contraseña"  class="form-control" required />
+            <input type="text" placeholder="Nombre" name="nombre" class="form-control" required />
+            <input type="text" placeholder="Apellido" name="apellido"  class="form-control" required />
+            <input type="text" placeholder="Teléfono" name="telefono" class="form-control" required pattern="^[0-9]+$" maxlength="20" />
+            <input type="email" placeholder="Correo electrónico" name="Mail" class="form-control" required />
+             <select name="Genero" class="form-control">
+              <option disabled selected>Selecciona tu genero</option>
+              <option value=1>Mujer</option>
+              <option value=2>Hombre</option>
+              <option value=3>Otro</option>
+             </select>
+             <label class="label-form">¿Sos vendedor?</label>
+             <div class="radio-container">
+              <label class="radio-option">
+                <input type="radio" name="esVendedor" value="true" />
+                Sí
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="esVendedor" value="false" />
+                No
+              </label>
+             </div>
+          <h2 id="yaesta" style="display:none">Ese nombre de usuario ya esta en uso.</h2>
+          <div class="d-flex gap-3 justify-content-end flex-wrap">
+                            <a href='@Url.Action("iniciarSesion")' class="btn btn-secondary-custom">Iniciar sesión</a>
+                            <button type="submit" class="btn btn-primary-custom">Registrarse</button>
+                        </div>
+          
+          </form>
+          
+        </div>
+      </section>
+    </div>
+  </div>
+    </main>
+  </body>
+<script>
+const form = document.getElementById("formRegistro");
+const inputUsuario = document.querySelector("input[name='nombreUsuario']");
+const errorUsuario = document.getElementById("yaesta");
+
+async function usuarioDisponible(username) {
+    const respuesta = await fetch(`/Comprador/validarUsuario?username=${encodeURIComponent(username)}`);
+    const data = await respuesta.json();
+    return !data.existe; 
+}
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault(); 
+    errorUsuario.style.display = "none";
+    const username = inputUsuario.value.trim();
+
+    const telefono = document.querySelector("input[name='telefono']").value;
+
+
+    if (telefono && !/^[0-9]+$/.test(telefono)) {
+        alert("El teléfono solo debe tener números.");
+        return;
+    }
+
+    const disponible = await usuarioDisponible(username);
+    if (!disponible) {
+        errorUsuario.style.display = "block";
+        return;
+    }
+    form.submit();
+});
+
+inputUsuario.addEventListener("blur", async () => {
+    const username = inputUsuario.value.trim();
+    if (!username) return;
+
+    const disponible = await usuarioDisponible(username);
+    errorUsuario.style.display = disponible ? "none" : "block";
+});
+</script>
+
+</html>

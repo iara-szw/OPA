@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPA - Home</title>
+                <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  </head>
+  <body style="margin-top:0% !important">
+  <main >
+    <section class="banner">
+      <img src="/img/logoOPA-03.png" alt="OPA">
+      <p>Somos ropa, única y personal.</p>
+    </section>
+    <section class="recomendado">
+      <h3>Recomendado para vos ></h3>
+      <div class="ropaRecomendada" >
+      @foreach(Prenda prendita in ViewBag.Ropa){
+        <div>
+        <a href='@Url.Action("VistaPrenda",new{idPrenda=@prendita.IdPrenda})'><img src="/img/@prendita.foto"></a>
+          <h4>@prendita.Modelo</h4>
+          <p>@prendita.Precio</p>
+        </div>
+      }
+      </div>
+    </section>
+    <section class="lanzamientos">
+      <h3>Últimos lanzamientos ></h3>
+      @foreach(Tienda tienda in ViewBag.tiendas){
+        <div>
+        <img src="/img/@tienda.FotoDePerfil">
+          <h4>@tienda.Nombre</h4>
+        </div>
+      }
+    </section>
+    <section class="explorando">
+      <h3>Seguí explorando</h3>
+      <div class="explorar-opciones">
+        <div class="opcion">
+          <a href=# >Tiendas</a>
+        </div>
+        <div class="opcion">
+          <a href=# >Estilos</a>
+        </div>
+        <div class="opcion">
+          <a href='@Url.Action("HomeOutfit")'>Outfits</a>
+        </div>
+      </div>
+    </section>
+ </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+  </body>
+  </html>
+

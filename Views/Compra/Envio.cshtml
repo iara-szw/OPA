@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPA - Envío</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  </head>
+  <body>
+    
+    <section class="banner">
+      <h2>OPA</h2>
+      <p>Somos ropa, única y personal.</p>
+    </section>
+    <section class="Entrega">
+    <h1>ENTREGA</h1>
+    <div>
+    <h2>SELECCIONÁ EL MODO DE ENTREGA:</h2>
+    <form action="" method="post" target="_blank">
+    <input type="checkbox" name="md-entrega" value="selecciona"> RETIRO POR LOCAL(ES)
+    <input type="checkbox" name="md-entrega" value="selecciona"> ENTREGA POR CORREO (+$ENVÍO)
+    <input type="checkbox" name="md-entrega" value="selecciona"> PUNTO DE ENTREGA
+    <input type="checkbox" name="md-entrega" value="selecciona"> A DOMICILIO
+    </form>
+    <h2>DIRECCIÓN DE ENTREGA</h2>
+    <form method= "post" action="Envio.cshtml">
+    PROVINCIA:
+    <input type="text" name="provincia" placeholder="PROVINCIA">
+    CALLE:
+    <input type="text" name="calle" placeholder="CALLE">
+    NÚMERO:
+    <input type="text" name="número" placeholder="NÚMERO">
+    </form>
+     <form action="" method="post" target="_blank">
+    <input type="checkbox" name="guardarDireccion" value="guardar"> GUARDAR DIRECCIÓN
+    </form>
+        <iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
+</iframe>
+<h2>TOTAL DE ENVÍO: 6000$</h2>
+    </div>
+    <button onclick=<a href='@Url.Action("verCarrito")'></a>ATRÁS</button>
+    <button onclick=<a href='@Url.Action("Pago")'></a>CONTINUAR</button>
+    </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  </body>
+  </html>
+

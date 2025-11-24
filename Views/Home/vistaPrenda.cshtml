@@ -1,0 +1,89 @@
+@{
+    ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+                <link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
+}
+   
+
+<div class="prenda-page">
+  <section class="prenda-wrapper">
+      <div class="prenda-header">
+        <h1>@ViewBag.prenda.Modelo</h1>
+      </div>
+      <section class="prenda-content">
+        <div class="slider-card">
+          <div class="slider-frame">
+            <img src="@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
+            <div class="slider-controls">
+              <button type="button" class="slider-btn">&#60;</button>
+              <button type="button" class="slider-btn">&#62;</button>
+            </div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="price-row">
+            <span class="price">$ @ViewBag.prenda.Precio</span>
+          </div>
+          <p class="desc">@ViewBag.prenda.descripcion</p>
+          <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
+          <div class="section-title">ESTILOS</div>
+          <div class="tags">
+          @foreach(Estilo estilito in ViewBag.estilitos){
+               <span class="tag">@estilito.Nombre</span>
+          }
+         
+          </div>
+          <div class="section-title">COLORES</div>
+          <div class="color-options">
+          @foreach(Prenda prenda in ViewBag.Similares){
+            <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:#@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
+            }
+          </div>
+          <div class="section-title">TALLES</div>
+          <div class="talles">
+            <span class="talle">S</span>
+            <span class="talle">M</span>
+            <span class="talle">L</span>
+          </div>
+          <button type="button" class="avatar-btn">VER EN AVATAR</button>
+          <div class="action-buttons">
+          @{if(ViewBag.Usuario==true){
+          @if(!ViewBag.Deseado){
+          <a href="/Compra/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="wwwroot\img\like.png"/></a>
+
+          }else{
+          <a href="/Compra/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="wwwroot\img\Yalike.png"/></a>
+
+          }
+       
+            if(!ViewBag.estaEnCarrito){<a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+}else{
+  <a class="btn-cart" href="#">YA EN TU CARRITO</a>
+}
+   }else{
+   <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
+   <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
+   }
+   }
+          </div>
+        </div>
+      </section>
+      <section class="otros-section">
+        <div class="otros-header">
+          <span>OTROS &gt;</span>
+        </div>
+        <div class="otros-carousel">
+          <button type="button" class="otros-btn">&#60;</button>
+          <div class="otros-items">
+            <div class="otros-item"></div>
+            <div class="otros-item"></div>
+            <div class="otros-item"></div>
+            <div class="otros-item"></div>
+          </div>
+          <button type="button" class="otros-btn">&#62;</button>
+        </div>
+      </section>
+  </section>
+</div>
+
+}

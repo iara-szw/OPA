@@ -1,0 +1,145 @@
+
+<head>
+    <meta charset="utf-8" />
+    <title>Crear tienda</title>
+            <link rel="stylesheet" href="~/css/iniciarSesion.css" asp-append-version="true" />
+
+</head>
+@{
+    ViewData["Title"] = "Nueva Tienda";
+}
+
+
+<div class="nueva-tienda-container">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Panel izquierdo: Branding -->
+            <div class="col-lg-5">
+                <div class="brand-card">
+                    <div class="logo-section">
+                        <div class="mb-4">
+                            <img src="~/img/logoOPA-03.png" alt="OPA" style="height: 50px; width: auto;" />
+                        </div>
+                        <h2>Crea tu tienda</h2>
+                        <p>Mostrá tu marca, subí tus prendas y empezá a vender en OPA. Conectá con clientes que buscan moda local y auténtica.</p>
+                        
+                        <a href="#" class="help-link">
+                            <img src="~/img/formulario.png" alt="Ayuda" />
+                            <span>¿Cómo cargar tus primeras prendas?</span>
+                        </a>
+                    </div>
+                    
+                    <div class="support-badge">
+                        💬 Soporte 24/7
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel derecho: Formulario -->
+            <div class="col-lg-7">
+                <div class="form-card">
+                    <h3>Nueva Tienda</h3>
+                    <p class="subtitle">Completá los datos para publicar tus productos</p>
+
+                    <form method="POST" action='@Url.Action("agregarTienda", "Tienda")' enctype="multipart/form-data" id="formNuevaTienda">
+                        <div class="mb-4">
+                            <label for="Nombre" class="form-label required-field">Nombre de la tienda</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ej: Vesta Boutique" required maxlength="200" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="Ubicacion" class="form-label required-field">Ubicación</label>
+                            <input type="text" class="form-control" id="Ubicacion" name="Ubicacion" placeholder="Ciudad, Provincia" required maxlength="500" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="Mail" class="form-label required-field">Correo electrónico</label>
+                            <input type="email" class="form-control" id="Mail" name="Mail" placeholder="tienda@ejemplo.com" required maxlength="200" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="Telefono" class="form-label required-field">Teléfono</label>
+                            <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Solo números" required pattern="^[0-9]+$" maxlength="20" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="Contacto" class="form-label required-field">Contacto</label>
+                            <input type="text" class="form-control" id="Contacto" name="Contacto" placeholder="@@instagram, WhatsApp, sitio web" required maxlength="200" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="Descripcion" class="form-label required-field">Descripción</label>
+                            <textarea class="form-control" id="Descripcion" name="Descripcion" placeholder="Contanos sobre tu tienda, tu estilo, tus productos..." required maxlength="2000"></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span>/2000 caracteres
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label required-field">Foto de perfil</label>
+                            <div class="avatar-upload">
+                                <div class="avatar-preview" id="avatarPreview">
+                                    <div class="placeholder">👤</div>
+                                </div>
+                                <div class="file-input-wrapper">
+                                    <input type="file" name="FotoDePerfil" id="FotoDePerfil" accept="image/*" required />
+                                    <label for="FotoDePerfil" class="file-input-label">Subir foto</label>
+                                </div>
+                                <p class="file-hint">Recomendado: 512×512 px, JPG o PNG</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 justify-content-end flex-wrap">
+                            <a href='@Url.Action("Index", "Home")' class="btn btn-secondary-custom">Cancelar</a>
+                            <button type="submit" class="btn btn-primary-custom">Crear tienda</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Contador de caracteres
+    const descripcionTextarea = document.getElementById('Descripcion');
+    const charCount = document.getElementById('charCount');
+    
+    if (descripcionTextarea && charCount) {
+        descripcionTextarea.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+        });
+    }
+
+    // Preview de imagen
+    const fotoInput = document.getElementById('FotoDePerfil');
+    const avatarPreview = document.getElementById('avatarPreview');
+    
+    if (fotoInput && avatarPreview) {
+        fotoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Validación de teléfono
+    const telefonoInput = document.getElementById('Telefono');
+    if (telefonoInput) {
+        telefonoInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
+
+    // Validación del formulario
+    const form = document.getElementById('formNuevaTienda');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const descripcion = descripcionTextarea.value.trim();
+            if (descripcion.length < 10) {
+                e.preventDefault();
+                alert('La descripción debe tener al menos 10 caracteres.');
+                descripcionTextarea.focus();
+                return false;
+            }
+        });
+    }
+</script>

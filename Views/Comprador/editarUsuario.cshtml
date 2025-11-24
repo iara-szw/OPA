@@ -1,0 +1,150 @@
+@using Newtonsoft.Json
+
+@{
+	ViewData["Title"] = "Editar Usuario";
+}
+
+<style>
+	.perfil-card { border: 1px solid #aaa; border-radius: 14px; }
+	.perfil-btn { border-radius: 10px; }
+</style>
+
+<main class="container my-5">
+	<h2 class="text-center mb-4">Editar mis datos</h2>
+
+	<div id="alerta" class="alert alert-danger d-none"></div>
+	<div id="usu" style="display:none" value="@ViewBag.Usu"> </div>
+	<div class="card shadow-sm p-4 mx-auto perfil-card" style="max-width:640px;">
+		<form id="formEditar" novalidate>
+			<h5 class="mb-3">Información personal</h5>
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre</label>
+				<input id="nombre" name="nombre" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Nombre" >
+				<div class="form-text">Ingresá tu nombre.</div>
+			</div>
+			<div class="mb-3">
+				<label for="apellido" class="form-label">Apellido</label>
+				<input id="apellido" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Apellido" >
+				<div class="form-text">Ingresá tu Apellido.</div>
+			</div>
+			<div class="mb-3">
+				<label for="mail" class="form-label">Email</label>
+				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Mail" >
+				<div class="form-text">Ingresá un email válido.</div>
+			</div>
+			<div class="mb-3">
+				<label for="telefono" class="form-label">Teléfono</label>
+				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.Usu.Telefono" >
+				<div class="form-text">Ingresá tu teléfono.</div>
+			</div>
+			<div class="mb-4">
+				<label for="contrasenia" class="form-label">Contraseña</label>
+				<input id="contrasenia" type="password" class="form-control form-control-lg" minlength="6">
+				<div class="form-text">Dejala vacía para no cambiarla.</div>
+			</div>
+
+			<!-- <h5 class="mb-3">Medidas</h5>
+			<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="torso" class="form-label">Torso (cm)</label>
+					<input id="torso" type="number" min="0" step="0.1" class="form-control form-control-lg">
+					<div class="invalid-feedback">Valor inválido.</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="piernas" class="form-label">Piernas (cm)</label>
+					<input id="piernas" type="number" min="0" step="0.1" class="form-control form-control-lg">
+					<div class="invalid-feedback">Valor inválido.</div>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="cintura" class="form-label">Cintura (cm)</label>
+					<input id="cintura" type="number" min="0" step="0.1" class="form-control form-control-lg">
+					<div class="invalid-feedback">Valor inválido.</div>
+				</div>
+				<div class="col-md-6 mb-4">
+					<label for="calzado" class="form-label">Calzado</label>
+					<input id="calzado" type="number" min="0" step="1" class="form-control form-control-lg">
+					<div class="invalid-feedback">Valor inválido.</div>
+				</div>
+			</div> -->
+
+			<div class="d-flex justify-content-between pt-2">
+				<button type="submit" class="btn btn-dark btn-lg px-4 perfil-btn" id="btnGuardar">Guardar cambios</button>
+				<a href="/comprador/vistaUsuario" class="btn btn-outline-dark btn-lg px-4 perfil-btn">Cancelar</a>
+			</div>
+		</form>
+	</div>
+</main>
+
+<script>
+async function subirDatos(payload) {
+    const res = await fetch('/Comprador/editarPerfil', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+    return json;
+}
+
+(function () {
+    var usu = @Html.Raw(JsonConvert.SerializeObject(ViewBag.Usu));
+    const form = document.getElementById('formEditar');
+    const alerta = document.getElementById('alerta');
+    const btnGuardar = document.getElementById('btnGuardar');
+
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const mail = document.getElementById('mail');
+    const telefono = document.getElementById('telefono');
+    const contrasenia = document.getElementById('contrasenia');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alerta.classList.add("d-none");
+ if(nombre.value==""){
+        nombre.value=usu.Nombre;
+    }
+    if(apellido.value==""){
+        apellido.value=usu.Apellido;
+
+    }
+    if(mail.value==""){
+        mail.value=usu.Mail;
+    }
+    if(telefono.value==""){
+        telefono.value=usu.Telefono;
+    }
+	 if(contrasenia.value==""){
+		contrasenia.value=usu.Contraseña;
+	 }
+        const payload = {
+            nombre: nombre.value,
+            apellido: apellido.value,
+            mail: mail.value,
+            telefono: telefono.value,
+            contrasenia: contrasenia.value
+        };
+		console.log('Payload:', payload); 
+        btnGuardar.disabled = true;
+
+        try {
+            const resp = await subirDatos(payload);
+
+            if (resp.ok) {
+                window.location.href = '/comprador/vistaUsuario';
+                return;
+            }
+
+            alerta.textContent = resp.error || "No se pudieron guardar los cambios.";
+            alerta.classList.remove("d-none");
+
+        } catch (err) {
+            alerta.textContent = "Error inesperado: " + err.message;
+            alerta.classList.remove("d-none");
+        }
+
+        btnGuardar.disabled = false;
+    });
+})();
+</script>

@@ -1,0 +1,30 @@
+@{
+    var tiendas = ViewBag.tiendas;
+}
+<head>
+            <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
+
+</head>
+<div class="admin-tiendas">
+    <div class="admin-tiendas__inner">
+        <h1>Elegí la tienda a la que querés ingresar</h1>
+
+        <div class="circulos-grid">
+            @if (tiendas != null)
+            {
+                foreach (Tienda t in tiendas)
+                {
+                    <a class="tienda-link" href="/Tienda/seleccionarTienda?IdTienda=@t.IdTienda" aria-label="Ingresar a @t.Nombre">
+                        <div class="circulo circulo-tienda">
+                            <span>@t.Nombre</span>
+                        </div>
+                    </a>
+                }
+            }
+
+            <a class="circulo circulo-agregar" href="/Tienda/nuevaTienda" aria-label="Agregar tienda">
+                <span>+</span>
+            </a>
+        </div>
+    </div>
+</div>

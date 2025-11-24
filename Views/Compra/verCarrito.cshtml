@@ -1,0 +1,300 @@
+@using OPA.Models
+@{
+    ViewData["Title"] = "Tu carrito";
+    var prendas = ViewBag.ropa as List<Prenda>;
+    var hayPrendas = prendas != null && prendas.Count > 0;
+    var mockCards = new[]
+    {
+        new { Titulo = "LOOKS DESTACADOS", Texto = "Combinaciones listas para salir" },
+        new { Titulo = "NOVEDADES", Texto = "Prendas recién llegadas" },
+        new { Titulo = "BÁSICOS", Texto = "Esenciales para cualquier outfit" },
+        new { Titulo = "ACCESORIOS", Texto = "Detalles que hacen la diferencia" }
+    };
+}
+
+<style>
+    .carrito-root * {
+        box-sizing: border-box;
+    }
+
+    .carrito-root {
+        margin: 0;
+        padding: 140px 0 60px;
+        background: #f4f4f4;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .carrito-root .page {
+        width: 960px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 50px 70px;
+        border: 1px solid #e1e1e1;
+    }
+
+        h1 {
+            font-size: 28px;
+            letter-spacing: 0.08em;
+            margin: 0 0 40px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 25px 0;
+            border-top: 1px solid #d7d7d7;
+        }
+
+        .cart-item:first-of-type {
+            border-top: none;
+        }
+
+        .item-image {
+            width: 130px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .item-image img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border: 1px solid #cfcfcf;
+            background: #fff;
+            padding: 6px;
+        }
+
+        .item-info {
+            flex: 1;
+            border: 1px solid #111;
+            padding: 20px 25px;
+            position: relative;
+            min-height: 120px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .item-name {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+        }
+
+        .item-price {
+            margin: 3px 0 0;
+            font-size: 20px;
+        }
+
+        .item-description {
+            margin: 18px 0 22px;
+            font-size: 14px;
+            color: #5b5b5b;
+            letter-spacing: 0.03em;
+        }
+
+        .trash-button img {
+            width: 26px;
+            height: 26px;
+        }
+
+        .gift-btn {
+            border: 1px solid #111;
+            background: #fff;
+            padding: 10px 18px;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+            display: inline-flex;
+            gap: 10px;
+        }
+
+        .gift-btn span {
+            white-space: nowrap;
+        }
+
+        .gift-btn .hover-text {
+            display: none;
+        }
+
+        .gift-btn:hover .default-text {
+            display: none;
+        }
+
+        .gift-btn:hover .hover-text {
+            display: inline;
+        }
+
+        .cart-actions {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .explore-btn,
+        .continue-btn {
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            border: none;
+            background: none;
+            color: #111;
+            padding: 12px 18px;
+            border: 1px solid #111;
+            cursor: pointer;
+        }
+
+        .continue-btn {
+            background: #111;
+            color: #fff;
+        }
+
+        .empty-cart {
+            text-align: center;
+        }
+
+        .carousel {
+            margin: 40px auto 50px;
+            border: 1px solid #111;
+            padding: 30px 20px 20px;
+            position: relative;
+        }
+
+        .carousel-header {
+            text-align: left;
+            font-size: 16px;
+            letter-spacing: 0.2em;
+            margin-bottom: 25px;
+        }
+
+        .carousel-body {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .arrow {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+            font-size: 18px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 18px;
+            flex: 1;
+        }
+
+        .carousel-card {
+            flex: 1;
+            border: 1px solid #c7c7c7;
+            padding: 10px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mock-image {
+            height: 100px;
+            background: #f1f1f1;
+            border: 1px dashed #bdbdbd;
+        }
+
+        .mock-text {
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.1em;
+            margin-top: 12px;
+        }
+
+    .empty-cart .explore-btn {
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    @@media (max-width: 1024px) {
+        .carrito-root {
+            padding: 120px 0 40px;
+        }
+
+        .carrito-root .page {
+            width: 90%;
+            padding: 40px;
+        }
+    }
+</style>
+
+<section class="carrito-root">
+    <div class="page">
+        @if (hayPrendas)
+        {
+            <section>
+                <h1>TU CARRITO</h1>
+                @foreach (var prenda in prendas)
+                {
+                    <article class="cart-item">
+                        <div class="item-image">
+                            <img src="@prenda.foto" alt="@prenda.Modelo" />
+                        </div>
+                        <div class="item-info">
+                            <div class="item-header">
+                                <div>
+                                    <p class="item-name">@prenda.Modelo - @prenda.IdTalle</p>
+                                    <p class="item-price">@prenda.Precio</p>
+                                </div>
+                                <a class="trash-button" href="/Compra/eliminarPrenda?IdPrenda=@prenda.IdPrenda">
+                                    <img src="~/img/tacho.png" alt="Eliminar prenda" />
+                                </a>
+                            </div>
+                            <p class="item-description">@prenda.descripcion</p>
+                            <button class="gift-btn" type="button">
+                                <span class="default-text">COMPRA PARA REGALO</span>
+                                <span class="hover-text">PRÓXIMAMENTE</span>
+                            </button>
+                        </div>
+                    </article>
+                }
+                <div class="cart-actions">
+                    <a class="explore-btn" href="/Home/Index">SEGUÍ EXPLORANDO</a>
+                    <a class="continue-btn" href="#">CONTINUAR</a>
+                </div>
+            </section>
+        }
+        else
+        {
+            <section class="empty-cart">
+                <h1>TU CARRITO ESTÁ VACÍO</h1>
+                <div class="carousel">
+                    <div class="carousel-header">OTROS &gt;</div>
+                    <div class="carousel-body">
+                        <div class="arrow">&lt;</div>
+                        <div class="carousel-track">
+                            @foreach (var mock in mockCards)
+                            {
+                                <div class="carousel-card">
+                                    <div class="mock-image"></div>
+                                    <p class="mock-text">@mock.Titulo<br />@mock.Texto</p>
+                                </div>
+                            }
+                        </div>
+                        <div class="arrow">&gt;</div>
+                    </div>
+                </div>
+                <a class="explore-btn" href="/Home/Index">SEGUÍ EXPLORANDO</a>
+            </section>
+        }
+    </div>
+</section>

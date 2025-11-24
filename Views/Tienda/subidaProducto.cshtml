@@ -1,0 +1,44 @@
+<head>
+    <meta charset="utf-8" />
+    <title>Subir producto</title>
+</head>
+
+<body>
+<form action='@Url.Action("agregarPrenda","Prenda")' method="post" enctype="multipart/form-data" >
+
+<input type="text" name="Tipo" placeholder="Tipo" required>
+<input type="text" name="Modelo" placeholder="Modelo" required>
+<select name="IdTalle" required>
+<option value="1" >S</option>
+<option value="2" >M</option>
+<option value="3" >L</option>
+</select>
+<input type="text" name="descripcion" placeholder="Descripción" required>
+<input type="double" name="Precio" placeholder="Precio" required>
+
+<!--- PONER DESPLEGLBBLES Y ARREGLAR FORMA DE COLORES--->
+@foreach(Estilo estilo in ViewBag.estilos){
+    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre" >
+    <label for="@estilo.Nombre">@estilo.Nombre</label>
+}
+@foreach(Color color in ViewBag.colores){
+    <input type="checkbox" name="color" value="@color.idColor" id="@color.idColor" >
+    <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
+}
+@foreach(Temporada temporada in ViewBag.Temporada){
+    <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre" required>
+    <label for="@temporada.Nombre">@temporada.Nombre</label>
+}
+
+<input type="file" name="foto" required>
+<input type="submit" >
+
+</form>
+</body>
+<script>
+$('input[type=checkbox]').on('change', function (e) {
+    if ($('input[type=checkbox]:checked').length > 3) {
+        $(this).prop('checked', false);
+        alert("allowed only 3");
+    }
+});</script>
