@@ -2,7 +2,11 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 static class AdministradorBD{
  
+<<<<<<< HEAD
     public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+=======
+    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     
      public static void agregarAdministrador(int idTienda,bool permisos, string usuario,string mail){
 

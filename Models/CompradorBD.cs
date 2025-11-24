@@ -2,7 +2,11 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 static class CompradorBD{
  
+<<<<<<< HEAD
     public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+=======
+    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     static public  void agregarComprador(Comprador usu){
 
         string query = "INSERT INTO Comprador (Usuario, Nombre, Apellido, Contraseña,Telefono,Mail,Genero,esVendedor) VALUES (@pUsuario, @pNombre, @pApellido, @pContraseña, @pTelefono, @pMail, @pGenero,@pVendedor)";

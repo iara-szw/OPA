@@ -2,7 +2,11 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 static class BD{
  
+<<<<<<< HEAD
     public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+=======
+    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
 
      static public List<Prenda> levantarRecomendados(string Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
@@ -11,6 +15,15 @@ static class BD{
         prendas= connection.Query<Prenda>(query,new{@idComprador=Idcomprador}).ToList();
 
     }
+<<<<<<< HEAD
+=======
+    if (prendas.Count()<5){
+        using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Prenda";
+        prendas= connection.Query<Prenda>(query).ToList();
+        }
+    }
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     return prendas;
     }
 

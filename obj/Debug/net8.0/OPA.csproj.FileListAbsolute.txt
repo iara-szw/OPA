@@ -334,6 +334,7 @@ C:\Users\49193480\OPA\obj\Debug\net8.0\refint\OPA.dll
 C:\Users\49193480\OPA\obj\Debug\net8.0\OPA.pdb
 C:\Users\49193480\OPA\obj\Debug\net8.0\OPA.genruntimeconfig.cache
 C:\Users\49193480\OPA\obj\Debug\net8.0\ref\OPA.dll
+<<<<<<< HEAD
 C:\Users\iarit\Downloads\OPA-master\OPA-master\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\iarit\Downloads\OPA-master\OPA-master\bin\Debug\net8.0\appsettings.json
 C:\Users\iarit\Downloads\OPA-master\OPA-master\bin\Debug\net8.0\package-lock.json
@@ -416,3 +417,5 @@ C:\Users\iarit\Downloads\OPA-master\OPA-master\obj\Debug\net8.0\refint\OPA.dll
 C:\Users\iarit\Downloads\OPA-master\OPA-master\obj\Debug\net8.0\OPA.pdb
 C:\Users\iarit\Downloads\OPA-master\OPA-master\obj\Debug\net8.0\OPA.genruntimeconfig.cache
 C:\Users\iarit\Downloads\OPA-master\OPA-master\obj\Debug\net8.0\ref\OPA.dll
+=======
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f

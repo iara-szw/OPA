@@ -22,7 +22,11 @@
     <label for="@estilo.Nombre">@estilo.Nombre</label>
 }
 @foreach(Color color in ViewBag.colores){
+<<<<<<< HEAD
     <input type="checkbox" name="color" value="@color.idColor" id="@color.idColor" >
+=======
+    <input type="radio" name="color" value="@color.idColor" id="@color.idColor" required>
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
 }
 @foreach(Temporada temporada in ViewBag.Temporada){

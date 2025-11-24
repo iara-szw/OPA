@@ -1,14 +1,299 @@
 @{
     ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
     Layout = "~/Views/Shared/_Layout.cshtml";
+<<<<<<< HEAD
                 <link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
 }
    
+=======
+}
+
+<style>
+      :root {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #111;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .prenda-page {
+        background: #f4f4f4;
+        padding: 6rem 1rem 5rem;
+        display: flex;
+        justify-content: center;
+        min-height: calc(100vh - 140px);
+      }
+      .prenda-wrapper {
+        background: #fff;
+        border: 2px solid #111;
+        border-radius: 20px;
+        max-width: 1100px;
+        width: 100%;
+        padding: 2.5rem;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+      }
+      .prenda-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      .prenda-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+      }
+      .prenda-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+      }
+      .slider-card {
+        border: 1px solid #111;
+        border-radius: 16px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: fit-content;
+      }
+      .slider-frame {
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        padding: 1rem;
+        position: relative;
+        background: #fafafa;
+      }
+      .slider-image {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+      .slider-controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+      .slider-btn {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid #111;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        cursor: pointer;
+      }
+      .info-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: .5rem;
+      }
+      .price-row .price {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      .desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #444;
+      }
+      .vendedor {
+        font-size: .95rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .tags {
+        display: flex;
+        gap: .75rem;
+      }
+      .tag {
+        border: 1px solid #111;
+        border-radius: 999px;
+        padding: .35rem 1rem;
+        font-size: .9rem;
+        font-weight: 600;
+        background: #f6f6f6;
+      }
+      .section-title {
+        font-size: .95rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-top: 1rem;
+      }
+      .color-options {
+        display: flex;
+        gap: 1rem;
+        margin-top: .5rem;
+      }
+      .color-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid #111;
+      }
+      .color-black { background: #111; }
+      .color-blue { background: #0e3da3; }
+      .color-lightblue { background: #7ac6ff; }
+      .talles {
+        display: flex;
+        gap: 1rem;
+        margin-top: .5rem;
+      }
+      .talle {
+        width: 42px;
+        height: 42px;
+        border: 1px solid #111;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+      }
+      .avatar-btn {
+        position: relative;
+        border: 2px dashed #111;
+        background: transparent;
+        padding: .85rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        width: fit-content;
+        transition: background .2s ease;
+      }
+      .avatar-btn:hover {
+        background: #f9f2ff;
+      }
+      .avatar-btn::after {
+        content: 'Próximamente';
+        position: absolute;
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+        background: #111;
+        color: #fff;
+        padding: .35rem .65rem;
+        border-radius: 6px;
+        font-size: .75rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+        white-space: nowrap;
+      }
+      .avatar-btn:hover::after {
+        opacity: 1;
+      }
+      .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .action-buttons a,
+      .action-buttons button {
+        flex: 1;
+        min-width: 180px;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 2px solid #111;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: background .2s ease, color .2s ease;
+      }
+      .btn-cart {
+        background: #111;
+        color: #fff;
+      }
+      .btn-cart:hover {
+        background: #EB006B;
+        border-color: #EB006B;
+      }
+      .btn-buy {
+        background: #fff;
+        color: #111;
+      }
+      .btn-buy:hover {
+        background: #f8f8f8;
+      }
+      .otros-section {
+        margin-top: 3rem;
+      }
+      .otros-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      .otros-carousel {
+        border: 1px solid #111;
+        border-radius: 16px;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .otros-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #111;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .otros-items {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+        gap: 1rem;
+        flex: 1;
+      }
+      .otros-item {
+        background: #e7e7e7;
+        border-radius: 12px;
+        padding-bottom: 75%;
+        position: relative;
+      }
+      @@media (max-width: 768px) {
+        .prenda-page {
+          padding-top: 8rem;
+        }
+        .prenda-content {
+          grid-template-columns: 1fr;
+        }
+        .action-buttons {
+          flex-direction: column;
+        }
+        .otros-items {
+          grid-template-columns: repeat(2, minmax(100px, 1fr));
+        }
+      }
+    </style>
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
 
 <div class="prenda-page">
   <section class="prenda-wrapper">
       <div class="prenda-header">
         <h1>@ViewBag.prenda.Modelo</h1>
+<<<<<<< HEAD
+=======
+        <span>ID #@ViewBag.prenda.IdPrenda</span>
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       </div>
       <section class="prenda-content">
         <div class="slider-card">
@@ -25,6 +310,7 @@
             <span class="price">$ @ViewBag.prenda.Precio</span>
           </div>
           <p class="desc">@ViewBag.prenda.descripcion</p>
+<<<<<<< HEAD
           <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
           <div class="section-title">ESTILOS</div>
           <div class="tags">
@@ -38,6 +324,19 @@
           @foreach(Prenda prenda in ViewBag.Similares){
             <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:#@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
             }
+=======
+          <div class="vendedor">VENDEDOR: HUOKY STAGE</div>
+          <div class="section-title">ESTILOS</div>
+          <div class="tags">
+            <span class="tag">CASUAL</span>
+            <span class="tag">URBANO</span>
+          </div>
+          <div class="section-title">COLORES</div>
+          <div class="color-options">
+            <span class="color-dot color-black"></span>
+            <span class="color-dot color-blue"></span>
+            <span class="color-dot color-lightblue"></span>
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
           </div>
           <div class="section-title">TALLES</div>
           <div class="talles">
@@ -47,6 +346,7 @@
           </div>
           <button type="button" class="avatar-btn">VER EN AVATAR</button>
           <div class="action-buttons">
+<<<<<<< HEAD
           @{if(ViewBag.Usuario==true){
           @if(!ViewBag.Deseado){
           <a href="/Compra/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="wwwroot\img\like.png"/></a>
@@ -65,6 +365,10 @@
    <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
    }
    }
+=======
+            <a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+            <button type="button" class="btn-buy">COMPRAR</button>
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
           </div>
         </div>
       </section>
@@ -85,5 +389,8 @@
       </section>
   </section>
 </div>
+<<<<<<< HEAD
 
 }
+=======
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f

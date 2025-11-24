@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "Hash": "e6cwDvOTZMf5silLb9NHDsW17Fi1WiKvq0nzIyMAJBU=",
+=======
+  "Hash": "XVUD8NTz0TS2D7aIKzE2wOwdbTLBukOz9YWzbhrdDVA=",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
   "Source": "OPA",
   "BasePath": "_content/OPA",
   "Mode": "Default",
@@ -10,17 +14,28 @@
     {
       "Name": "OPA\\wwwroot",
       "Source": "OPA",
+<<<<<<< HEAD
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\css\\index.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\index.css",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -36,10 +51,17 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\css\\iniciarSesion.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\iniciarSesion.css",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "css/iniciarSesion.css",
       "AssetKind": "All",
@@ -55,10 +77,17 @@
       "OriginalItemSpec": "wwwroot\\css\\iniciarSesion.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\css\\prenda.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\prenda.css",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "css/prenda.css",
       "AssetKind": "All",
@@ -74,10 +103,17 @@
       "OriginalItemSpec": "wwwroot\\css\\prenda.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\css\\tiendas.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\tiendas.css",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "css/tiendas.css",
       "AssetKind": "All",
@@ -93,6 +129,7 @@
       "OriginalItemSpec": "wwwroot\\css\\tiendas.css"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\css\\vistaprenda.css",
       "SourceId": "OPA",
       "SourceType": "Discovered",
@@ -116,6 +153,12 @@
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\favicon.ico",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -131,10 +174,17 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\armario.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\armario.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/armario.png",
       "AssetKind": "All",
@@ -150,10 +200,17 @@
       "OriginalItemSpec": "wwwroot\\img\\armario.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\cruz.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\cruz.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/cruz.png",
       "AssetKind": "All",
@@ -169,10 +226,17 @@
       "OriginalItemSpec": "wwwroot\\img\\cruz.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\fondo-opa.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\fondo-opa.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/fondo-opa.png",
       "AssetKind": "All",
@@ -188,10 +252,17 @@
       "OriginalItemSpec": "wwwroot\\img\\fondo-opa.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\formulario.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/formulario.png",
       "AssetKind": "All",
@@ -207,10 +278,17 @@
       "OriginalItemSpec": "wwwroot\\img\\formulario.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\home.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\home.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/home.png",
       "AssetKind": "All",
@@ -226,6 +304,7 @@
       "OriginalItemSpec": "wwwroot\\img\\home.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\like.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
@@ -249,6 +328,12 @@
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-01.png",
       "AssetKind": "All",
@@ -264,10 +349,17 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-01.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\logoOPA-02.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-02.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-02.png",
       "AssetKind": "All",
@@ -283,10 +375,17 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-02.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\logoOPA-03.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/logoOPA-03.png",
       "AssetKind": "All",
@@ -302,10 +401,17 @@
       "OriginalItemSpec": "wwwroot\\img\\logoOPA-03.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\outfit.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/outfit.png",
       "AssetKind": "All",
@@ -321,10 +427,17 @@
       "OriginalItemSpec": "wwwroot\\img\\outfit.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\perfil.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/perfil.png",
       "AssetKind": "All",
@@ -340,10 +453,17 @@
       "OriginalItemSpec": "wwwroot\\img\\perfil.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\search.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\search.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/search.png",
       "AssetKind": "All",
@@ -359,10 +479,17 @@
       "OriginalItemSpec": "wwwroot\\img\\search.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\tienda.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/tienda.png",
       "AssetKind": "All",
@@ -378,10 +505,17 @@
       "OriginalItemSpec": "wwwroot\\img\\tienda.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\whiteMenu.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteMenu.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/whiteMenu.png",
       "AssetKind": "All",
@@ -397,10 +531,17 @@
       "OriginalItemSpec": "wwwroot\\img\\whiteMenu.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\whiteSearch.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteSearch.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/whiteSearch.png",
       "AssetKind": "All",
@@ -416,10 +557,17 @@
       "OriginalItemSpec": "wwwroot\\img\\whiteSearch.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\whiteTienda.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteTienda.png",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "img/whiteTienda.png",
       "AssetKind": "All",
@@ -435,6 +583,7 @@
       "OriginalItemSpec": "wwwroot\\img\\whiteTienda.png"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\img\\Yalike.png",
       "SourceId": "OPA",
       "SourceType": "Discovered",
@@ -458,6 +607,12 @@
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\js\\site.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -473,10 +628,17 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -492,10 +654,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -511,10 +680,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -530,10 +706,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -549,10 +732,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -568,10 +758,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -587,10 +784,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -606,10 +810,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -625,10 +836,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -644,10 +862,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -663,10 +888,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -682,10 +914,17 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+<<<<<<< HEAD
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "OPA",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA-master\\OPA-master\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\",
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
       "BasePath": "_content/OPA",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
