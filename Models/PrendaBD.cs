@@ -35,17 +35,17 @@ public class PrendaBD{
         }
         return color;
     }
-     static public Color levantarColor(int idColor)
+     static public int levantarStock(int IdPrenda)
     {
-        Color color = new Color();
+        int stock;
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
 
-            string query = "SELECT * FROM Color WHERE idColor=@pidColor";
-            color = connection.QueryFirstOrDefault<Color>(query, new {pidColor = idColor });
+            string query = "SELECT stock FROM Prenda WHERE IdPrenda=@pIdPrenda";
+            stock = connection.QueryFirstOrDefault<int>(query, new {pIdPrenda = IdPrenda });
 
         }
-        return color;
+        return stock;
     }
     static public Prenda LevantarPrenda(int IdPrenda)
     {
@@ -90,7 +90,7 @@ public class PrendaBD{
         }
     }
     static public void restarStock(int IdPrenda){
-                string query = "UPDATE Prenda SET stock=stock-1 WHERE IdPrenda=@pIdPrenda";
+                string query = "UPDATE Prenda SET stock=stock-1 WHERE IdPrenda=@IdPrenda";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pIdPrenda=IdPrenda});
         }

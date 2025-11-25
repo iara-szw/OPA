@@ -56,7 +56,12 @@
 
           }
        
-            if(!ViewBag.estaEnCarrito){<a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+            if(!ViewBag.estaEnCarrito)
+            { if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){<a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+            }else{
+                <a class="btn-cart" href="#">NO HAY STOCK</a>
+
+            }
 }else{
   <a class="btn-cart" href="#">YA EN TU CARRITO</a>
 }

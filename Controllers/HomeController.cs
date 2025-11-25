@@ -23,7 +23,7 @@ public class HomeController : Controller
         id=usu.Usuario;
 
         }
-        ViewBag.Ropa=BD.levantarRecomendados(id); //Esto seria para la linea de recomendados
+        ViewBag.Ropa=BD.levantarRecomendados(id);
         ViewBag.tiendas=BD.levantarRecomendadosTienda();
         return View();
     }

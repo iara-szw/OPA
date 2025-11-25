@@ -149,7 +149,7 @@ if (Usu==null)
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
         foreach(int prenda in prendas){
             CompradorBD.comprarPrenda(prenda, Usu.Usuario);
-                    PrendaBD.restarStock(prenda.IdPrenda);
+                    PrendaBD.restarStock(prenda);
 
         }
         return RedirectToAction("limpiarCarrito","Compra");
