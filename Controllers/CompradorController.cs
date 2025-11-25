@@ -138,12 +138,16 @@ if (Usu==null)
 
         return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }
+<<<<<<< HEAD
  public IActionResult quitarDeseado(int idPrenda){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
 
         return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }
+=======
+
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     public IActionResult comprarPrenda(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));

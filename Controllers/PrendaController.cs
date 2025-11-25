@@ -13,7 +13,11 @@ public PrendaController (IWebHostEnvironment env)
 _env = env;
 }
 [HttpPost]
+<<<<<<< HEAD
     public IActionResult agregarPrenda(string Tipo, string Modelo, int IdTalle,string descripcion,double Precio, List<int> estilos,List<int> color, int Temporada, IFormFile foto){
+=======
+    public IActionResult agregarPrenda(string Tipo, string Modelo, int IdTalle,string descripcion,double Precio, List<int> estilos,int color, int Temporada, IFormFile foto){
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
         Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
 
         if (foto != null && foto.Length>0){

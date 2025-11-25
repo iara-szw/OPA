@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\49193480\\Downloads\\OPA-2\\OPA.csproj": {}
   },
   "projects": {
     "C:\\Users\\49193480\\Downloads\\OPA-2\\OPA.csproj": {
@@ -12,6 +11,23 @@
         "projectPath": "C:\\Users\\49193480\\Downloads\\OPA-2\\OPA.csproj",
         "packagesPath": "C:\\Users\\49193480\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\49193480\\Downloads\\OPA-2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\iarit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+    "C:\\Users\\49193480\\Downloads\\OPA\\OPA.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\49193480\\Downloads\\OPA\\OPA.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\49193480\\Downloads\\OPA\\OPA.csproj",
+        "projectName": "OPA",
+        "projectPath": "C:\\Users\\49193480\\Downloads\\OPA\\OPA.csproj",
+        "packagesPath": "C:\\Users\\49193480\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\49193480\\Downloads\\OPA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

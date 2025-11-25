@@ -28,6 +28,7 @@ public class HomeController : Controller
         return View();
     }
         public IActionResult vistaPrenda(int IdPrenda){
+<<<<<<< HEAD
         Prenda prenda1=PrendaBD.LevantarPrenda(IdPrenda);
         ViewBag.prenda = prenda1;
 
@@ -49,6 +50,18 @@ public class HomeController : Controller
                     ViewBag.estaEnCarrito = false;
 
  }
+=======
+        ViewBag.prenda=PrendaBD.LevantarPrenda(IdPrenda);
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(Usu!=null){ 
+    ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
+    ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
+    List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
+    if(prendas!=null){
+            ViewBag.estaEnCarrito=prendas.Contains(IdPrenda);
+
+    }
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
         ViewBag.Usuario=true;
 
 }else{

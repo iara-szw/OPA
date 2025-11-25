@@ -64,6 +64,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\tiendas.css))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\vistaprenda.css))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
@@ -80,6 +81,8 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\vistaprenda.css))</OriginalItemSpec>
     </StaticWebAsset>
+=======
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
@@ -176,6 +179,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\home.png))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\like.png))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
@@ -192,6 +196,8 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\like.png))</OriginalItemSpec>
     </StaticWebAsset>
+=======
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\logoOPA-01.png))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
@@ -352,6 +358,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\whiteTienda.png))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\Yalike.png))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
@@ -368,6 +375,8 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\img\Yalike.png))</OriginalItemSpec>
     </StaticWebAsset>
+=======
+>>>>>>> e74b5af953a42157a6a9be6fbbc2a0395bae5d2f
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>
       <SourceId>OPA</SourceId>
