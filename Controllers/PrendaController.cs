@@ -35,8 +35,4 @@ foto.CopyTo(stream);
         return RedirectToAction("vistaTienda","Tienda");
     }
 
-    public IActionResult EliminarPrenda(int IdPrenda){
-        PrendaBD.eliminarPrenda(IdPrenda);
-        return RedirectToAction("index","Home");
-    }
 }

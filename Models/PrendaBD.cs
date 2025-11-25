@@ -1,7 +1,7 @@
 using Microsoft.Data.SqlClient;
 using Dapper;
 public class PrendaBD{
-    public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
 
   static public void agregarPrenda(int idTienda, string tipo, string modelo, int idTalle,string Descripcion,double precio, List<int> Estilos,List<int> color, int temporada, string Foto){
     if (Estilos.Count != 3)
@@ -23,6 +23,18 @@ public class PrendaBD{
         
     }
 
+     static public Color levantarColor(int idColor)
+    {
+        Color color = new Color();
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+
+            string query = "SELECT * FROM Color WHERE idColor=@pidColor";
+            color = connection.QueryFirstOrDefault<Color>(query, new {pidColor = idColor });
+
+        }
+        return color;
+    }
      static public Color levantarColor(int idColor)
     {
         Color color = new Color();
@@ -76,5 +88,12 @@ public class PrendaBD{
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pIdPrenda=IdPrenda});
         }
+    }
+    static public void restarStock(int IdPrenda){
+                string query = "UPDATE Prenda SET stock=stock-1 WHERE IdPrenda=@pIdPrenda";
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+        connection.Execute(query, new {pIdPrenda=IdPrenda});
+        }
+
     }
 }

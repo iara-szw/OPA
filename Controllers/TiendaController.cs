@@ -106,5 +106,25 @@ FotoDePerfil.CopyTo(stream);
         return View();
 
     }
+  public IActionResult verProducto(int IdPrenda){
+            Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+        if(tienda == null){
+            return RedirectToAction("verTiendasAdministrador");
+        }
+
+        Prenda prenda1=PrendaBD.LevantarPrenda(IdPrenda);
+        ViewBag.prenda = prenda1;
+
+        ViewBag.vendedor = tienda.Nombre;
+        ViewBag.estilitos=PrendaBD.LevantarPrendaxEstilo(IdPrenda);
+        ViewBag.Similares = PrendaBD.LevantarSimilar(IdPrenda);
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+       
+        return View();
+    }
+        public IActionResult EliminarPrenda(int IdPrenda){
+        PrendaBD.eliminarPrenda(IdPrenda);
+        return RedirectToAction("index","Home");
+    }
 
 }

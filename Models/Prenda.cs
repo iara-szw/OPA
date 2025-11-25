@@ -9,4 +9,5 @@ public class Prenda
    public string foto;
    public int Color;
    public int IdTienda;
+   public int stock;
 }

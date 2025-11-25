@@ -147,8 +147,10 @@ if (Usu==null)
     public IActionResult comprarPrenda(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
-        foreach(int Prenda in prendas){
-            CompradorBD.comprarPrenda(Prenda, Usu.Usuario);
+        foreach(int prenda in prendas){
+            CompradorBD.comprarPrenda(prenda, Usu.Usuario);
+                    PrendaBD.restarStock(prenda.IdPrenda);
+
         }
         return RedirectToAction("limpiarCarrito","Compra");
 
