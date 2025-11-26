@@ -17,7 +17,6 @@
 	.perfil-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #d60077; display: inline-block; object-fit: cover; }
 	@@media (min-width: 768px) { .perfil-card { max-width: 100%; } }
 	.row.g-4.text-start{
-		display:flex;
 		MARGIN-left:5%;
 	}
 	.col-12.col-md-6{
@@ -65,8 +64,20 @@ iframe{
 		</div>
 		
 	</div>
-
-	<div class="row g-4 text-start">
+	<div class="informacion" style="display:flex">
+	<div class="col-auto">
+			@if (!string.IsNullOrEmpty(ViewBag.usu?.FotoDePerfil))
+			{
+				<img src="@ViewBag.usu.FotoDePerfil" alt="Usuario" class="perfil-img" />
+			}
+			else
+			{
+				<div class="perfil-img" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600;">
+					<span>U</span>
+				</div>
+			}
+		</div>
+	<div class="row g-4 text-start" style="width:70%;">
 		<div class="col-12 col-md-6">
 			<div class="card perfil-card h-100">
 				<div class="card-body">
@@ -93,18 +104,7 @@ iframe{
 				</div>
 			</div>
 		</div>
-		<div class="col-auto">
-			@if (!string.IsNullOrEmpty(ViewBag.usu?.FotoDePerfil))
-			{
-				<img src="@ViewBag.usu.FotoDePerfil" alt="Usuario" class="perfil-img" />
-			}
-			else
-			{
-				<div class="perfil-img" style="background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600;">
-					<span>U</span>
-				</div>
-			}
-		</div>
+	
 		<div class="col-12 col-md-6">
 			<div class="card perfil-card h-100">
 				<div class="card-body">
@@ -141,7 +141,7 @@ iframe{
 			</div>
 		</div>
 	</div>
-
+</div>
 	<div class="row justify-content-center mt-4">
 		<div class="col-12 col-md-6 col-lg-4">
 			<form action='@Url.Action("Armario","Armario")' class="mb-2">

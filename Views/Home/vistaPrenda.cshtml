@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    bool esPoseida = ViewBag.esPoseida is bool && (bool)ViewBag.esPoseida;
+    bool esPoseida = ViewBag.Poseido is bool && (bool)ViewBag.Poseido;
     var httpRequest = ViewContext?.HttpContext?.Request;
     bool vieneDeArmario = httpRequest != null && string.Equals(httpRequest.Query["from"], "armario", StringComparison.OrdinalIgnoreCase);
     string referer = httpRequest?.Headers["Referer"];

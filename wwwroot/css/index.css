@@ -153,7 +153,7 @@ header .iconos i {
 }
 
 .explorando {
-  background: linear-gradient(to right, #2a0023, #960058);
+  background: #fff;
   color: #fff;
   text-align: center;
   padding: 3rem 1rem;
@@ -234,4 +234,82 @@ main.iniciarSesion {
 
 main.registrarse{
   margin-top:10%;
+}
+
+.landing-hero{
+  min-height: 70vh;
+  background: linear-gradient(120deg,#EB006B 0%,#0b0b0b 55%,#EB006B 100%);
+  padding: 5rem 1rem;
+}
+.landing-logo{ width:150px; }
+.hero-subtitle{ max-width:640px; }
+.section-title{ color:#EB006B; font-weight:700; margin-bottom:1.5rem; }
+.landing-card{
+  background:#111;
+  color:#f4f4f4;
+  border-radius:18px;
+  padding:2rem;
+  border:1px solid rgba(235,0,107,0.2);
+}
+.landing-highlight{
+  background:#0b0b0b;
+}
+.landing-box{
+  background:rgba(255,255,255,0.05);
+  border-radius:18px;
+  padding:1.8rem;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.landing-steps{
+  counter-reset: step;
+  list-style:none;
+  padding-left:0;
+}
+.landing-steps li{
+  counter-increment: step;
+  margin-bottom:1rem;
+  padding-left:2.8rem;
+  position:relative;
+}
+.landing-steps li::before{
+  content: counter(step);
+  position:absolute;
+  left:0;
+  top:0;
+  width:2rem;
+  height:2rem;
+  border-radius:50%;
+  background:#EB006B;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.landing-cta{
+  background:linear-gradient(90deg,#0b0b0b,#EB006B);
+}
+
+.banner{
+  margin-top:-5%;
+}
+
+.ver{
+  background:linear-gradient(90deg,#0b0b0b,#EB006B);
+}
+.ver h3,.ver h4,.ver p{
+  color:#fff
+
+}
+.ver img{
+  border:2px solid white;
+  border-radius:white;
+}
+
+.ver h3{
+margin-left:15%;
+}
+.opcion{
+  border:2px solid black;
+  border-radius:15px;
 }
