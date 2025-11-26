@@ -113,7 +113,8 @@ string query = "SELECT TOP (@num) * FROM (SELECT *, ROW_NUMBER() OVER(PARTITION 
         }
         }
         return prendita;
-    }static public List<Estilo> LevantarPrendaxEstilo(int IdPrenda)
+    }
+    static public List<Estilo> LevantarPrendaxEstilo(int IdPrenda)
     {
         List<Estilo> estilitos = new List<Estilo>();
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -124,6 +125,16 @@ string query = "SELECT TOP (@num) * FROM (SELECT *, ROW_NUMBER() OVER(PARTITION 
 
         }
         return estilitos;
+    }
+    static public List<Temporada> LevantarTemporadas(int IdPrenda){
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string query = @"SELECT T.* 
+                            FROM TemporadaXPrenda TP 
+                            INNER JOIN Temporada T ON T.idTemporada = TP.IdTemporada 
+                            WHERE TP.IdPrenda=@pIdPrenda";
+            return connection.Query<Temporada>(query, new { pIdPrenda = IdPrenda }).ToList();
+        }
     }
     static public void eliminarPrenda(int IdPrenda){
         string query = "EXEC EliminarPrenda @pIdPrenda";

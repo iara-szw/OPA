@@ -1,0 +1,144 @@
+@using OPA.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tienda = ViewBag.tienda as Tienda;
+    var productos = (ViewBag.productos as IEnumerable<Prenda>)?.ToList() ?? new List<Prenda>();
+    ViewData["Title"] = "Mis productos";
+}
+
+<style>
+    .mis-productos-encabezado{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:space-between;
+        align-items:center;
+        gap:1rem;
+    }
+    .mis-productos-grid .card{
+        border-radius:18px;
+        border:1px solid #1d1d1b1a;
+        box-shadow:0 12px 24px rgba(0,0,0,.06);
+        min-height:100%;
+    }
+    .mis-productos-grid .card img{
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:14px;
+    }
+    .tag-pill{
+        display:inline-flex;
+        align-items:center;
+        padding:2px 12px;
+        border-radius:999px;
+        font-size:.8rem;
+        font-weight:500;
+        background:#f1f1f1;
+        margin:2px 6px 2px 0;
+    }
+    .admin-actions .btn{
+        font-weight:600;
+        text-transform:uppercase;
+        letter-spacing:.02em;
+    }
+    .meta-label{
+        font-size:.75rem;
+        font-weight:600;
+        color:#6c6c6c;
+        letter-spacing:.05em;
+    }
+    .meta-value{
+        font-size:.95rem;
+        font-weight:500;
+    }
+    .empty-state{
+        border:2px dashed #d9d9d9;
+        border-radius:24px;
+        padding:48px 32px;
+        text-align:center;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="mis-productos-encabezado">
+        <div>
+            <p class="text-uppercase text-muted mb-1 meta-label">Panel de tienda</p>
+            <h1 class="fw-bold text-uppercase mb-0">Mis productos</h1>
+            @if(tienda != null){
+                <p class="text-muted mb-0">Tienda: <strong>@tienda.Nombre</strong></p>
+            }
+        </div>
+        <a class="btn btn-dark px-4 py-2" href="@Url.Action("subidaProducto","Tienda")">+ Nueva prenda</a>
+    </div>
+
+    @if(!productos.Any()){
+        <div class="empty-state mt-5">
+            <h3 class="fw-semibold mb-2">Todavía no tenés prendas publicadas</h3>
+            <p class="text-muted mb-4">Subí tu primera prenda para comenzar a administrar tu catálogo.</p>
+            <a class="btn btn-outline-dark" href="@Url.Action("subidaProducto","Tienda")">Publicar prenda</a>
+        </div>
+    }
+    else{
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 mt-4 mis-productos-grid">
+            @foreach(var producto in productos){
+                var color = PrendaBD.levantarColor(producto.Color);
+                var talle = PrendaBD.levantarTalle(producto.IdTalle);
+                var estilos = PrendaBD.LevantarPrendaxEstilo(producto.IdPrenda);
+                var temporadas = PrendaBD.LevantarTemporadas(producto.IdPrenda);
+                <div class="col d-flex" id="prenda-@producto.IdPrenda">
+                    <div class="card p-3 w-100">
+                        <div class="position-relative mb-3">
+                            <img src="/img/@producto.foto" alt="@producto.Modelo" />
+                            @if(color != null && !string.IsNullOrEmpty(color.codigoHexa)){
+                                <span class="position-absolute top-0 end-0 m-3 badge rounded-pill text-bg-light" style="color:#000;">
+                                    <span class="d-inline-block rounded-circle me-2" style="width:12px;height:12px;background-color:@color.codigoHexa;"></span>
+                                    @color.Nombre
+                                </span>
+                            }
+                        </div>
+                        <div class="mb-2">
+                            <span class="meta-label">MODELO</span>
+                            <h2 class="h5 fw-bold text-uppercase mt-1">@producto.Modelo</h2>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <div>
+                                <div class="meta-label">PRECIO</div>
+                                <div class="meta-value">$ @producto.Precio.ToString("N0")</div>
+                            </div>
+                            <div class="text-end">
+                                <div class="meta-label">STOCK</div>
+                                <div class="meta-value">@producto.stock</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="meta-label">DETALLES</div>
+                            <div class="meta-value">
+                                Tipo: @(string.IsNullOrWhiteSpace(producto.Tipo) ? "Sin tipo" : producto.Tipo) |
+                                Talle: @(talle?.Nombre ?? "-")
+                            </div>
+                            <div class="meta-value">Temporada: @(temporadas != null && temporadas.Any() ? string.Join(", ", temporadas.Select(t => t.Nombre)) : "No asignada")</div>
+                        </div>
+                        @if(!string.IsNullOrWhiteSpace(producto.descripcion)){
+                            <p class="text-muted small">@producto.descripcion</p>
+                        }
+                        <div class="mb-3">
+                            <div class="meta-label mb-1">Estilos</div>
+                            @if(estilos != null && estilos.Any()){
+                                foreach(var estilo in estilos){
+                                    <span class="tag-pill">@estilo.Nombre</span>
+                                }
+                            }else{
+                                <span class="text-muted small">Sin estilos asociados</span>
+                            }
+                        </div>
+                        <div class="admin-actions d-grid gap-2">
+                            <a class="btn btn-outline-dark" href="@Url.Action("verProducto","Tienda",new{IdPrenda = producto.IdPrenda})">Editar prenda</a>
+                            <a class="btn btn-outline-danger" href="@Url.Action("EliminarPrenda","Tienda",new{IdPrenda = producto.IdPrenda})" onclick="return confirm('¿Seguro que querés eliminar esta prenda?');">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+

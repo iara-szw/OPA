@@ -1,18 +1,37 @@
 @{
     ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
     Layout = "~/Views/Shared/_Layout.cshtml";
-                <link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
+    bool esPoseida = ViewBag.esPoseida is bool && (bool)ViewBag.esPoseida;
+    var httpRequest = ViewContext?.HttpContext?.Request;
+    bool vieneDeArmario = httpRequest != null && string.Equals(httpRequest.Query["from"], "armario", StringComparison.OrdinalIgnoreCase);
+    string referer = httpRequest?.Headers["Referer"];
+    string volverUrl = vieneDeArmario ? Url.Action("armario","Armario") : (!string.IsNullOrWhiteSpace(referer) ? referer : Url.Action("Index","Home"));
+    bool usuarioLogueado = ViewBag.Usuario == true;
 }
-   
+<link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
 
 <div class="prenda-page">
   <section class="prenda-wrapper">
+      @if(esPoseida){
+        <div class="poseida-banner">
+          <span class="poseida-icon">✔</span>
+          <span>Esta prenda ya está en tu armario</span>
+        </div>
+      }
+      <div class="prenda-back-row">
+        <a class="back-link" href="@volverUrl">
+          &larr; @(vieneDeArmario ? "Volver al Armario" : "Volver")
+        </a>
+      </div>
       <div class="prenda-header">
         <h1>@ViewBag.prenda.Modelo</h1>
       </div>
       <section class="prenda-content">
         <div class="slider-card">
           <div class="slider-frame">
+            @if(esPoseida){
+              <span class="badge-armario">En tu armario</span>
+            }
             <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
             <div class="slider-controls">
               <button type="button" class="slider-btn">&#60;</button>
@@ -23,6 +42,9 @@
         <div class="info-card">
           <div class="price-row">
             <span class="price">$ @ViewBag.prenda.Precio</span>
+            @if(esPoseida){
+              <span class="armario-tag">En tu armario</span>
+            }
           </div>
           <p class="desc">@ViewBag.prenda.descripcion</p>
           <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
@@ -38,43 +60,62 @@
          
           </div>
           <div class="section-title">COLORES</div>
-          <div class="color-options">
+          <div class="color-options @(esPoseida ? "color-options-disabled" : string.Empty)">
           @foreach(Prenda prenda in ViewBag.Similares){
-            <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
+            var colorHex = PrendaBD.levantarColor(prenda.Color).codigoHexa;
+            if(esPoseida){
+              <span class="color-dot color-dot-disabled" style="background-color:@colorHex"></span>
+            }else{
+              <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@colorHex"></span></a>
+            }
             }
           </div>
           <div class="section-title">TALLES</div>
-          <div class="talles">
+          <div class="talles @(esPoseida ? "talles-disabled" : string.Empty)">
             <span class="talle">S</span>
             <span class="talle">M</span>
             <span class="talle">L</span>
           </div>
-          <button type="button" class="avatar-btn">VER EN AVATAR</button>
-          <div class="action-buttons">
-          @{if(ViewBag.Usuario==true){
-          @if(!ViewBag.Deseado){
-          <a href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png"/></a>
-
+          @if(esPoseida){
+            <div class="action-buttons poseida-actions">
+              <form method="post" action="@Url.Action("eliminarPoseido","Armario")">
+                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
+                <button type="submit" class="poseida-btn btn btn-outline-danger w-100">Eliminar del armario</button>
+              </form>
+              <form method="post" action="@Url.Action("moverADeseados","Armario")">
+                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
+                <button type="submit" class="poseida-btn btn btn-outline-secondary w-100">Mover a deseados</button>
+              </form>
+              <button type="button" class="poseida-btn btn btn-outline-dark w-100">Ver en avatar</button>
+            </div>
           }else{
-          <a href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png"/></a>
+            <button type="button" class="avatar-btn">VER EN AVATAR</button>
+            <div class="action-buttons">
+            @{
+                if(usuarioLogueado){
+                    if(!ViewBag.Deseado){
+                        <a href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png"/></a>
+                    }else{
+                        <a href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png"/></a>
+                    }
 
-          }
-       
-            if(!ViewBag.estaEnCarrito)
-            { if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){<a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
-            }else{
-                <a class="btn-cart" href="#">NO HAY STOCK</a>
-
+                    if(!ViewBag.estaEnCarrito)
+                    { 
+                        if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){
+                            <a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+                        }else{
+                            <a class="btn-cart" href="#">NO HAY STOCK</a>
+                        }
+                    }else{
+                        <a class="btn-cart" href="#">YA EN TU CARRITO</a>
+                    }
+                }else{
+                    <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
+                    <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
+                }
             }
-}else{
-  <a class="btn-cart" href="#">YA EN TU CARRITO</a>
-}
-   }else{
-   <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
-   <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
-   }
-   }
-          </div>
+            </div>
+          }
         </div>
       </section>
       <section class="otros-section">

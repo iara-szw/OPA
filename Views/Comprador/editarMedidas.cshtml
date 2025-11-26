@@ -1,0 +1,136 @@
+@using Newtonsoft.Json
+
+@{
+	ViewData["Title"] = "Editar Usuario";
+}
+
+<style>
+	.perfil-card { border: 1px solid #aaa; border-radius: 14px; }
+	.perfil-btn { border-radius: 10px; }
+</style>
+
+<main class="container my-5">
+	<h2 class="text-center mb-4">Editar mis datos</h2>
+
+	<div id="alerta" class="alert alert-danger d-none"></div>
+	<div id="usu" style="display:none" value="@ViewBag.Usu"> </div>
+	<div class="card shadow-sm p-4 mx-auto perfil-card" style="max-width:640px;">
+		<form id="formEditar" novalidate>
+			<h5 class="mb-3">Información personal</h5>
+			<div class="mb-3">
+				<label for="torso" class="form-label">Torso</label>
+				<input id="torso" type="tel" name="MedidaTorso" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaTorso" >
+				<div class="form-text">Ingresá la medida de tu torse.</div>
+			</div>
+			<div class="mb-3">
+				<label for="cintura" class="form-label">Cintura</label>
+				<input id="cintura"  type="tel" name="MedidaCintura" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCintura" >
+				<div class="form-text">Ingresá la medida de tu cintura.</div>
+			</div>
+			<div class="mb-3">
+				<label for="piernas" class="form-label">Piernas</label>
+				<input id="piernas" type="tel" name="MedidaPierna" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaPierna" >
+				<div class="form-text">Ingresá la medida de tus piernas.</div>
+			</div>
+			<div class="mb-3">
+				<label for="hombros" class="form-label">Hombros</label>
+				<input id="hombros" type="tel"name="MedidaHombros" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaHombros " >
+				<div class="form-text">Ingresá la medida de tus Hombros.</div>
+			</div>
+			<div class="mb-3">
+				<label for="brazos" class="form-label">Brazos</label>
+				<input id="brazos" type="tel" NAME="MedidaBrazos" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaBrazos" >
+				<div class="form-text">Ingresá la medida de tu brazo.</div>
+			</div>
+			<div class="mb-3">
+				<label for="cadera" class="form-label">Cadera</label>
+				<input id="caderas" type="tel" name="MedidaCadera" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCadera" >
+				<div class="form-text">Ingresá la medida de tu cadera.</div>
+			</div>
+				<div class="d-flex justify-content-between pt-2">
+				<button type="submit" class="btn btn-dark btn-lg px-4 perfil-btn" id="btnGuardar">Guardar cambios</button>
+				<a href="/comprador/vistaUsuario" class="btn btn-outline-dark btn-lg px-4 perfil-btn">Cancelar</a>
+			</div>
+		</form>
+	</div>
+</main>
+
+<script>
+async function subirDatos(payload) {
+    const res = await fetch('/Comprador/cargarMedidas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+    return json;
+}
+
+(function () {
+    const form = document.getElementById('formEditar');
+    const alerta = document.getElementById('alerta');
+    const btnGuardar = document.getElementById('btnGuardar');
+
+    const torso = document.getElementById('torso');
+    const cintura = document.getElementById('cintura');
+    const piernas = document.getElementById('piernas');
+    const hombros = document.getElementById('hombros');
+	    const brazos = document.getElementById('brazos');
+		    const cadera = document.getElementById('cadera');
+
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alerta.classList.add("d-none");
+ if(torso.value==null){
+        torso.value=ViewBag.MedidaTorso;
+    }
+    if(cintura.value==null){
+        cintura.value=ViewBag.medidas.MedidaCintura;
+    }
+    if(piernas.value==null){
+        piernas.value=ViewBag.medidas.MedidaPiernas;
+    }
+    if(hombros.value=null){
+        hombros.value=ViewBag.medidas.MedidaHombros;
+    }
+	 if(brazos.value==null){
+		brazos.value=ViewBag.medidas.MedidaBrazos;
+	 }
+	  if(cadera.value==null){
+		cadera.value=ViewBag.medidas.MedidaCadera;
+	 }
+        const payload = {
+		 MedidaTorso:torso.value,
+		  MedidaCintura:cintura.value,
+		   MedidaPierna:piernas.value, 
+		    MedidaHombros:hombros.value, 
+			 MedidaBrazos:brazos.value,
+			  MedidaCadera=cadera.value
+
+        };
+		console.log('Payload:', payload); 
+        btnGuardar.disabled = true;
+
+        try {
+            const resp = await subirDatos(payload);
+
+            if (resp.ok) {
+                window.location.href = '/comprador/vistaUsuario';
+                return;
+            }
+
+            alerta.textContent = resp.error || "No se pudieron guardar los cambios.";
+            alerta.classList.remove("d-none");
+
+        } catch (err) {
+            alerta.textContent = "Error inesperado: " + err.message;
+            alerta.classList.remove("d-none");
+        }
+
+        btnGuardar.disabled = false;
+    });
+})();
+</script>

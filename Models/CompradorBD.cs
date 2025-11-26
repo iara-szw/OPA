@@ -24,16 +24,7 @@ static class CompradorBD{
         }
     }
 
-    static public Comprador levantarComprador(string nombreUsuario, string password){
-        Comprador usu=null;
-        using(SqlConnection connection = new SqlConnection(connectionString)){
- 
-        string query = "SELECT * FROM Comprador WHERE Usuario=@pnombreUsuario AND Contraseña=@Contraseña";
-        usu= connection.QueryFirstOrDefault<Comprador>(query,new{pnombreUsuario=nombreUsuario,Contraseña=password});
-            
-        }
-        return usu;
-   }
+
     static public  bool yaExiste(string NombreUsuario){
 
         Comprador usu=null;
@@ -44,6 +35,16 @@ static class CompradorBD{
             
         }
         return usu!=null;
+   }
+      static public Comprador levantarComprador(string nombreUsuario, string password){
+        Comprador usu=null;
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "SELECT * FROM Comprador WHERE Usuario=@pnombreUsuario AND Contraseña=@Contraseña";
+        usu= connection.QueryFirstOrDefault<Comprador>(query,new{pnombreUsuario=nombreUsuario,Contraseña=password});
+            
+        }
+        return usu;
    }
     static public List<Estilo> levantarEstilos(string Idcomprador){
     List<Estilo> estilos = new List<Estilo>();
@@ -74,12 +75,23 @@ static class CompradorBD{
     }
 
     static  public void cargarMedidas(string usuario,double MedidaTorso, double MedidaCintura, double MedidaPierna, double MedidaHombros, double MedidaBrazos, double MedidaCadera){
+       Console.WriteLine("aca");
+       Console.WriteLine(MedidaTorso);
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
         string query = "EXEC cargarMedidas @idUsuario,@MedidaTorso,@MedidaCintura,@MedidaPierna,@MedidaHombros,@MedidaBrazos,@MedidaCadera";
         connection.Execute(query,new{@idUsuario=usuario,@MedidaTorso=MedidaTorso,@MedidaCintura=MedidaCintura,@MedidaPierna=MedidaPierna,@MedidaHombros=MedidaHombros,@MedidaBrazos=MedidaBrazos,@MedidaCadera=MedidaCadera});
             
         }
+    }
+     static  public TalleUsu levantarMedidas(string usuario){
+        TalleUsu tallesito;
+         using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM TallesUsu WHERE IdTalle=(SELECT talles FROM Comprador where Usuario=@pusuario)";
+        tallesito= connection.QueryFirstOrDefault<TalleUsu>(query,new{@pusuario=usuario});
+
+    }
+    return tallesito;
     }
     static public void editarComprador(string usuario, string nombre,string apellido,string mail,string telefono,string passwordHasheada){
          using(SqlConnection connection = new SqlConnection(connectionString)){

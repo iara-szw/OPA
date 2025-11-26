@@ -1,0 +1,146 @@
+@{
+    ViewData["Title"] = "Landing Page";
+}
+
+<section class="landing-hero text-white text-center d-flex flex-column justify-content-center align-items-center">
+    <img src="~/img/logoOPA-03.png" alt="OPA" class="landing-logo mb-3" />
+    <p class="lead">Somos ropa, única y personal.</p>
+    <p class="hero-subtitle">OPA conecta a compradores curiosos con vendedores independientes para que cada outfit cuente una historia.</p>
+    <div class="d-flex gap-3 flex-wrap justify-content-center">
+        <a href="/Comprador/Registrarse" class="btn btn-light px-4">Sumate como comprador</a>
+        <a href="/Tienda/NuevaTienda" class="btn btn-outline-light px-4">Quiero vender con OPA</a>
+    </div>
+</section>
+
+<section id="quienes-somos" class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="section-title">¿Quiénes somos?</h2>
+            <p>OPA nace como un marketplace de moda latino con foco en prendas únicas y asesoría personalizada. Reunimos a creativos, diseñadores emergentes y amantes de la moda que buscan destacarse sin perder autenticidad.</p>
+            <p>Creemos en la compra consciente, en la trazabilidad y en experiencias digitales que inspiran. Este proyecto reúne tecnología, datos de estilo y comunidad para que vestir sea un acto creativo, no una obligación.</p>
+        </div>
+        <div class="col-md-6">
+            <div class="landing-card shadow-sm">
+                <h3 class="h5 fw-bold mb-3">Nuestra propuesta</h3>
+                <ul class="list-unstyled m-0">
+                    <li>• Motor de recomendaciones según tus gustos.</li>
+                    <li>• Armario digital para gestionar tus prendas.</li>
+                    <li>• Outfit Lab para experimentar combinaciones.</li>
+                    <li>• Panel de vendedor con métricas claras.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-highlight text-white py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">¿Por qué OPA?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="landing-box h-100">
+                    <h3 class="h5">Curaduría inteligente</h3>
+                    <p>Algoritmos propios sugieren estilos que se alinean con tu mood y tu guardarropa real.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="landing-box h-100">
+                    <h3 class="h5">Comunidad con voz</h3>
+                    <p>Compradores y vendedores comparten tips, votos y reseñas que fortalecen la red.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="landing-box h-100">
+                    <h3 class="h5">Operación transparente</h3>
+                    <p>Métodos de pago seguros, logística integrada y seguimiento en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h2 class="section-title">Cómo funciona</h2>
+            <ol class="landing-steps">
+                <li>Registrate y completá tu perfil de estilo.</li>
+                <li>Cargá tu armario digital o explorá tiendas destacadas.</li>
+                <li>Creá outfits, calificalos y recibí sugerencias adaptadas.</li>
+                <li>Comprá o vendé con herramientas pensadas para pequeños negocios.</li>
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <div class="landing-card shadow-sm">
+                <h3 class="h5 fw-bold mb-3">Tecnología + moda</h3>
+                <p>OPA combina ASP.NET Core, Razor Views y una base de datos optimizada para gestionar prendas, usuarios y transacciones. Integramos análisis de datos para entender tendencias y mejorar cada sesión.</p>
+                <p class="mb-0">Nuestro roadmap incluye live shopping, inteligencia artificial para fitting y un ecosistema de APIs para aliados logísticos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="landing-cta text-center py-5">
+    <div class="container">
+        <h2 class="text-white mb-3">¿Listo para vestir distinto?</h2>
+        <p class="text-white-50 mb-4">Sumate a OPA y ayudanos a impulsar la moda independiente en la región.</p>
+        <a href="/Home/Index" class="btn btn-light px-5">Explorar la plataforma</a>
+    </div>
+</section>
+
+<style>
+    .landing-hero{
+        min-height: 70vh;
+        background: linear-gradient(120deg,#EB006B 0%,#0b0b0b 55%,#EB006B 100%);
+        padding: 5rem 1rem;
+    }
+    .landing-logo{ width:150px; }
+    .hero-subtitle{ max-width:640px; }
+    .section-title{ color:#EB006B; font-weight:700; margin-bottom:1.5rem; }
+    .landing-card{
+        background:#111;
+        color:#f4f4f4;
+        border-radius:18px;
+        padding:2rem;
+        border:1px solid rgba(235,0,107,0.2);
+    }
+    .landing-highlight{
+        background:#0b0b0b;
+    }
+    .landing-box{
+        background:rgba(255,255,255,0.05);
+        border-radius:18px;
+        padding:1.8rem;
+        border:1px solid rgba(255,255,255,0.08);
+    }
+    .landing-steps{
+        counter-reset: step;
+        list-style:none;
+        padding-left:0;
+    }
+    .landing-steps li{
+        counter-increment: step;
+        margin-bottom:1rem;
+        padding-left:2.8rem;
+        position:relative;
+    }
+    .landing-steps li::before{
+        content: counter(step);
+        position:absolute;
+        left:0;
+        top:0;
+        width:2rem;
+        height:2rem;
+        border-radius:50%;
+        background:#EB006B;
+        color:#fff;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:700;
+    }
+    .landing-cta{
+        background:linear-gradient(90deg,#0b0b0b,#EB006B);
+    }
+</style>
+

@@ -29,7 +29,7 @@
 
                     @if (permisos)
                     {
-                        <a class="btn btn-outline-dark w-100 mt-2" href="@Url.Action("editarTienda","Tienda")">EDITAR DATOS</a>
+                        <a class="btn btn-outline-dark w-100 mt-2" href='"@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
                     }
                 </div>
             </div>
@@ -67,10 +67,11 @@
                         <a class="btn btn-light perfil-btn" href=#>VER ESTADÍSTICAS</a>
                     }
                     <a class="btn btn-light perfil-btn" onclick="AbrirVendedorNuevo()">AÑADIR VENDEDOER</a>
-                    <a class="btn btn-light perfil-btn" href="@Url.Action("verTiendasAdministrador","Comprador")">CERRAR SESIÓN</a>
+                    <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Comprador")"'>CERRAR SESIÓN</a>
+                    
                     @if (permisos)
                     {
-                        <a class="btn btn-outline-danger w-100" href="@Url.Action("verTiendasAdministrador","Tienda")">ELIMINAR TIENDA</a>
+                        <a class="btn btn-outline-danger w-100" href='@Url.Action("verTiendasAdministrador","Tienda")'>ELIMINAR TIENDA</a>
                     }
                 </div>
             </div>
@@ -90,7 +91,7 @@
                         <a href='@Url.Action("verProducto",new{IdPrenda=@p.IdPrenda})'><img src="/img/@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" /></a>
                     </div>
                     <div class="small fw-semibold">@p.Modelo</div>
-                    <div class="text-muted small">$ @p.Precio</div>
+                    <div class="text-muted small">$@p.Precio</div>
                 </div>
             }
             @if (!productos.Any())

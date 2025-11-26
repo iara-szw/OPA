@@ -111,21 +111,29 @@ iframe{
 					<h3 class="h5 text-center mb-3">MEDIDAS</h3>
 					<div class="mb-2">
 						<div class="fw-semibold small text-muted">TALLE TORSO</div>
-						<div>@((ViewBag.usu?.MedidaTorso == 0) ? "coming soon" : ViewBag.usu?.MedidaTorso?.ToString())</div>
-					</div>
-					<div class="mb-2">
-						<div class="fw-semibold small text-muted">TALLE PIERNAS</div>
-						<div>coming soon</div>
+						<div>@((ViewBag.MedidaTorso == 0) ? "coming soon" : ViewBag.MedidaTorso?.ToString())</div>
 					</div>
 					<div class="mb-2">
 						<div class="fw-semibold small text-muted">TALLE CINTURA</div>
-						<div>coming soon</div>
+						<div>@((ViewBag.MedidaCintura == 0) ? "coming soon" : ViewBag.MedidaCintura?.ToString())</div>
 					</div>
-					<div class="mb-3">
-						<div class="fw-semibold small text-muted">TALLE CALZADO</div>
-						<div>coming soon</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE PIERNAS</div>
+						<div>@((ViewBag.MedidaPierna == 0) ? "coming soon" : ViewBag.MedidaPierna?.ToString())</div>
 					</div>
-					<form action="/Home/editarMedidas" class="mb-2">
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE HOMBROS</div>
+						<div>@((ViewBag.MedidaHombres == 0) ? "coming soon" : ViewBag.MedidaHombres?.ToString())</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE BRAZOS</div>
+						<div>@((ViewBag.MedidaBrazos == 0) ? "coming soon" : ViewBag.MedidaBrazos?.ToString())</div>
+					</div>
+					<div class="mb-2">
+						<div class="fw-semibold small text-muted">TALLE CADERA</div>
+						<div>@((ViewBag.MedidaCadera == 0) ? "coming soon" : ViewBag.MedidaCadera?.ToString())</div>
+					</div>
+					<form action="/Comprador/editarMedidas" class="mb-2">
 						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
 					</form> 
 					<button type="button" class="btn btn-light perfil-btn" onclick="verTutorial()">VER TUTORIAL</button>

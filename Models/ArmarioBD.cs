@@ -21,4 +21,14 @@ static class ArmarioBD{
     }
     return prendas;
     }
+
+    static public void eliminarPoseido(string usuario, int idPrenda){
+
+using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "DELETE FROM Poseido where Usuario=@pusuario AND idPrenda=@idPrenda";
+        connection.Execute(query,new{@pusuario=usuario,@idPrenda=idPrenda});
+            
+        }
+    }
 }

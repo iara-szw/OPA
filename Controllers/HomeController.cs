@@ -27,6 +27,10 @@ public class HomeController : Controller
         ViewBag.tiendas=BD.levantarRecomendadosTienda();
         return View();
     }
+    public IActionResult LandingPage()
+    {
+        return View();
+    }
         public IActionResult vistaPrenda(int IdPrenda){
         Prenda prenda1=PrendaBD.LevantarPrenda(IdPrenda);
         ViewBag.prenda = prenda1;
@@ -35,6 +39,7 @@ public class HomeController : Controller
         ViewBag.estilitos=PrendaBD.LevantarPrendaxEstilo(IdPrenda);
         ViewBag.Similares = PrendaBD.LevantarSimilar(IdPrenda);
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        bool esPoseida=false;
         if(Usu!=null){ 
         ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
         ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
@@ -48,7 +53,7 @@ public class HomeController : Controller
             {
                     ViewBag.estaEnCarrito = false;
 
- }
+}
         ViewBag.Usuario=true;
 
 }else{

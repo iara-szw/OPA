@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using OPA.Models;
 
@@ -108,6 +109,19 @@ FotoDePerfil.CopyTo(stream);
         return View();
 
     }
+    public IActionResult misProductos(){
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(usu==null){
+            return RedirectToAction("iniciarSesion","Comprador");
+        }
+        Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+        if(tienda == null){
+            return RedirectToAction("verTiendasAdministrador");
+        }
+        ViewBag.tienda=tienda;
+        ViewBag.productos=TiendaBD.levantarProductos(tienda.IdTienda) ?? new List<Prenda>();
+        return View();
+    }
   public IActionResult verProducto(int IdPrenda){
             Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
         if(tienda == null){
@@ -126,7 +140,7 @@ FotoDePerfil.CopyTo(stream);
     }
         public IActionResult EliminarPrenda(int IdPrenda){
         PrendaBD.eliminarPrenda(IdPrenda);
-        return RedirectToAction("index","Home");
+        return RedirectToAction("misProductos");
     }
 
 }

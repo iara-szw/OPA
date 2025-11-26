@@ -94,11 +94,38 @@ public IActionResult editarUsuario(){
         return View();
     }
 
-  public IActionResult cargarMedidas(double MedidaTorso, double MedidaCintura, double MedidaPierna, double MedidaHombros, double MedidaBrazos, double MedidaCadera){
+  public IActionResult cargarMedidas([FromBody] PayloadModel payload){
+    Console.WriteLine("aca1");
+        try
+    {
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        CompradorBD.cargarMedidas(Usu.Usuario,MedidaTorso,MedidaCintura,MedidaPierna,MedidaHombros,MedidaBrazos,MedidaCadera);
+    Console.WriteLine("aca2");
+    Console.WriteLine(payload.MedidaTorso);
+
+        CompradorBD.cargarMedidas(Usu.Usuario,payload.MedidaTorso,payload.MedidaCintura,payload.MedidaPierna,payload.MedidaHombros,payload.MedidaBrazos,payload.MedidaCadera);
+                   return Json(new { ok = true });
+
+    }
+    catch (Exception ex)
+    {
+        return Json(new { ok = false, error = ex.Message });
+    }   
+    }
+     public IActionResult editarMedidas(){
+        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        ViewBag.Usu=Usu;
+       ViewBag.medidas=CompradorBD.levantarMedidas(Usu.Usuario);
+       if(ViewBag.medidas==null){
+         ViewBag.medidas=new TalleUsu();
+    ViewBag.medidas.MedidaTorso=0;
+    ViewBag.medidas.MedidaCintura=0;
+    ViewBag.medidas.MedidaPierna=0;
+    ViewBag.medidas.MedidaHombros=0;
+    ViewBag.medidas.MedidaBrazos=0;
+    ViewBag.medidas.MedidaCadera=0;
+   }
+       
         return View();
-        //Arreglar en BD todas las medidas posibles
     }
     [HttpPost]
 
