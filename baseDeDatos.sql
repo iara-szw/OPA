@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Opa]    Script Date: 25/11/2025 17:24:00 ******/
+/****** Object:  Database [Opa]    Script Date: 25/11/2025 22:38:01 ******/
 CREATE DATABASE [Opa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -73,16 +73,11 @@ ALTER DATABASE [Opa] SET TARGET_RECOVERY_TIME = 60 SECONDS
 GO
 ALTER DATABASE [Opa] SET DELAYED_DURABILITY = DISABLED 
 GO
-EXEC sys.sp_db_vardecimal_storage_format N'Opa', N'ON'
-GO
 ALTER DATABASE [Opa] SET QUERY_STORE = OFF
 GO
 USE [Opa]
 GO
-/****** Object:  User [alumno]    Script Date: 25/11/2025 17:24:00 ******/
-CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
-GO
-/****** Object:  Table [dbo].[Administrador]    Script Date: 25/11/2025 17:24:00 ******/
+/****** Object:  Table [dbo].[Administrador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +93,7 @@ CREATE TABLE [dbo].[Administrador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Calificacion]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Calificacion]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +112,7 @@ CREATE TABLE [dbo].[Calificacion](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Carrito]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Carrito]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,7 +127,7 @@ CREATE TABLE [dbo].[Carrito](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Color]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Color]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +142,7 @@ CREATE TABLE [dbo].[Color](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ColorXComprador]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[ColorXComprador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +157,7 @@ CREATE TABLE [dbo].[ColorXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Comprador]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Comprador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -186,7 +181,7 @@ CREATE TABLE [dbo].[Comprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Deseado]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Deseado]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,7 +196,7 @@ CREATE TABLE [dbo].[Deseado](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Estilo]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Estilo]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -216,7 +211,7 @@ CREATE TABLE [dbo].[Estilo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[estiloXComprador]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[estiloXComprador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -231,7 +226,7 @@ CREATE TABLE [dbo].[estiloXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EstiloXPrenda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[EstiloXPrenda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -246,7 +241,7 @@ CREATE TABLE [dbo].[EstiloXPrenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Genero]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Genero]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -260,7 +255,7 @@ CREATE TABLE [dbo].[Genero](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Imagen]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Imagen]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -274,7 +269,7 @@ CREATE TABLE [dbo].[Imagen](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MedioDePago]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[MedioDePago]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -288,7 +283,7 @@ CREATE TABLE [dbo].[MedioDePago](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Outfit]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Outfit]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -305,7 +300,7 @@ CREATE TABLE [dbo].[Outfit](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Poseido]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Poseido]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -320,7 +315,7 @@ CREATE TABLE [dbo].[Poseido](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Prenda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Prenda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -343,7 +338,7 @@ CREATE TABLE [dbo].[Prenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Talle]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Talle]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -357,7 +352,7 @@ CREATE TABLE [dbo].[Talle](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TallesUsu]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[TallesUsu]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -376,7 +371,7 @@ CREATE TABLE [dbo].[TallesUsu](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Temporada]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Temporada]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -390,7 +385,7 @@ CREATE TABLE [dbo].[Temporada](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TemporadaXComprador]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[TemporadaXComprador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -405,7 +400,7 @@ CREATE TABLE [dbo].[TemporadaXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TemporadaXPrenda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[TemporadaXPrenda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -420,7 +415,7 @@ CREATE TABLE [dbo].[TemporadaXPrenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tienda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Tienda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -440,7 +435,7 @@ CREATE TABLE [dbo].[Tienda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tipos]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[Tipos]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -454,7 +449,7 @@ CREATE TABLE [dbo].[Tipos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TiposXComprador]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  Table [dbo].[TiposXComprador]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -472,6 +467,8 @@ GO
 SET IDENTITY_INSERT [dbo].[Administrador] ON 
 GO
 INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (1, 1, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (2, 2, N'admin', 1)
 GO
 SET IDENTITY_INSERT [dbo].[Administrador] OFF
 GO
@@ -657,6 +654,42 @@ INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (17, 6, 18)
 GO
 INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (18, 6, 19)
 GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (19, 7, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (20, 7, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (21, 7, 19)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (22, 8, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (23, 8, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (24, 8, 19)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (25, 9, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (26, 9, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (27, 9, 19)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (28, 10, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (29, 10, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (30, 10, 19)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (31, 11, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (32, 11, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (33, 11, 19)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (34, 12, 1)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (35, 12, 10)
+GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (36, 12, 19)
+GO
 SET IDENTITY_INSERT [dbo].[EstiloXPrenda] OFF
 GO
 INSERT [dbo].[Genero] ([IdGenero], [Nombre]) VALUES (1, N'Mujer')
@@ -664,6 +697,16 @@ GO
 INSERT [dbo].[Genero] ([IdGenero], [Nombre]) VALUES (2, N'Hombre')
 GO
 INSERT [dbo].[Genero] ([IdGenero], [Nombre]) VALUES (3, N'Otro')
+GO
+SET IDENTITY_INSERT [dbo].[Poseido] ON 
+GO
+INSERT [dbo].[Poseido] ([IdPoseido], [Usuario], [IdPrenda]) VALUES (1, N'admin', 7)
+GO
+INSERT [dbo].[Poseido] ([IdPoseido], [Usuario], [IdPrenda]) VALUES (2, N'admin', 7)
+GO
+INSERT [dbo].[Poseido] ([IdPoseido], [Usuario], [IdPrenda]) VALUES (4, N'admin', 7)
+GO
+SET IDENTITY_INSERT [dbo].[Poseido] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Prenda] ON 
 GO
@@ -678,6 +721,18 @@ GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 5, N'ssd', 1, N'sdsd', CAST(0.00 AS Decimal(15, 2)), N'cruz.png', 31, 1, 0, 10)
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 6, N'ssd', 1, N'sdsd', CAST(0.00 AS Decimal(15, 2)), N'cruz.png', 39, 1, 0, 10)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 7, N'Remera1', 1, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 1, 2, 1, 9)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 8, N'Remera1', 2, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 1, 2, 0, 2)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 9, N'Remera1', 1, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 3, 2, 0, 15)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 10, N'Remera1', 2, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 3, 2, 0, 0)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 11, N'Remera1', 1, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 5, 2, 0, 1)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 12, N'Remera1', 2, N'kabfjbkdafadf', CAST(10000.00 AS Decimal(15, 2)), N'bfofmclg2yl71.jpg', 5, 2, 0, 20)
 GO
 SET IDENTITY_INSERT [dbo].[Prenda] OFF
 GO
@@ -719,11 +774,25 @@ INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (5, 1
 GO
 INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (6, 1, 6)
 GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (7, 2, 7)
+GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (8, 2, 8)
+GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (9, 2, 9)
+GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (10, 2, 10)
+GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (11, 2, 11)
+GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (12, 2, 12)
+GO
 SET IDENTITY_INSERT [dbo].[TemporadaXPrenda] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Tienda] ON 
 GO
 INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (1, N'132', N'sdfsdf', N'sdfsdf@gmail.com', N'28372983', N'asfasfdasfasfasf', N'home.png', N'sfsfa')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (2, N'Boutique', N'Ciudad', N'no@gmail.com', N'2143424324234', N'sdfsdfsdfs', N'pregunti.png', N'342342')
 GO
 SET IDENTITY_INSERT [dbo].[Tienda] OFF
 GO
@@ -812,11 +881,13 @@ ALTER TABLE [dbo].[Comprador] CHECK CONSTRAINT [FK_Comprador_TallesUsu]
 GO
 ALTER TABLE [dbo].[Deseado]  WITH CHECK ADD  CONSTRAINT [FK_Deseado_Comprador1] FOREIGN KEY([Usuario])
 REFERENCES [dbo].[Comprador] ([Usuario])
+ON UPDATE CASCADE
 GO
 ALTER TABLE [dbo].[Deseado] CHECK CONSTRAINT [FK_Deseado_Comprador1]
 GO
 ALTER TABLE [dbo].[Deseado]  WITH CHECK ADD  CONSTRAINT [FK_Deseado_Prenda] FOREIGN KEY([IdPrenda])
 REFERENCES [dbo].[Prenda] ([IdPrenda])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Deseado] CHECK CONSTRAINT [FK_Deseado_Prenda]
 GO
@@ -827,16 +898,19 @@ ALTER TABLE [dbo].[estiloXComprador] CHECK CONSTRAINT [FK_estiloXComprador_Compr
 GO
 ALTER TABLE [dbo].[estiloXComprador]  WITH CHECK ADD  CONSTRAINT [FK_estiloXComprador_Estilo] FOREIGN KEY([idEstilo])
 REFERENCES [dbo].[Estilo] ([IdEstilo])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[estiloXComprador] CHECK CONSTRAINT [FK_estiloXComprador_Estilo]
 GO
 ALTER TABLE [dbo].[EstiloXPrenda]  WITH CHECK ADD  CONSTRAINT [FK_EstiloXPrenda_Estilo] FOREIGN KEY([IdEstilo])
 REFERENCES [dbo].[Estilo] ([IdEstilo])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[EstiloXPrenda] CHECK CONSTRAINT [FK_EstiloXPrenda_Estilo]
 GO
 ALTER TABLE [dbo].[EstiloXPrenda]  WITH CHECK ADD  CONSTRAINT [FK_EstiloXPrenda_Prenda] FOREIGN KEY([IdPrenda])
 REFERENCES [dbo].[Prenda] ([IdPrenda])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[EstiloXPrenda] CHECK CONSTRAINT [FK_EstiloXPrenda_Prenda]
 GO
@@ -857,11 +931,13 @@ ALTER TABLE [dbo].[Outfit] CHECK CONSTRAINT [FK_Outfit_Prenda]
 GO
 ALTER TABLE [dbo].[Poseido]  WITH CHECK ADD  CONSTRAINT [FK_Poseido_Comprador1] FOREIGN KEY([Usuario])
 REFERENCES [dbo].[Comprador] ([Usuario])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Poseido] CHECK CONSTRAINT [FK_Poseido_Comprador1]
 GO
 ALTER TABLE [dbo].[Poseido]  WITH CHECK ADD  CONSTRAINT [FK_Poseido_Prenda] FOREIGN KEY([IdPrenda])
 REFERENCES [dbo].[Prenda] ([IdPrenda])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Poseido] CHECK CONSTRAINT [FK_Poseido_Prenda]
 GO
@@ -872,6 +948,7 @@ ALTER TABLE [dbo].[Prenda] CHECK CONSTRAINT [FK_Prenda_Talle]
 GO
 ALTER TABLE [dbo].[TemporadaXComprador]  WITH CHECK ADD  CONSTRAINT [FK_TemporadaXComprador_Comprador] FOREIGN KEY([Usuario])
 REFERENCES [dbo].[Comprador] ([Usuario])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[TemporadaXComprador] CHECK CONSTRAINT [FK_TemporadaXComprador_Comprador]
 GO
@@ -882,11 +959,13 @@ ALTER TABLE [dbo].[TemporadaXComprador] CHECK CONSTRAINT [FK_TemporadaXComprador
 GO
 ALTER TABLE [dbo].[TemporadaXPrenda]  WITH CHECK ADD  CONSTRAINT [FK_TemporadaXPrenda_Prenda] FOREIGN KEY([IdPrenda])
 REFERENCES [dbo].[Prenda] ([IdPrenda])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[TemporadaXPrenda] CHECK CONSTRAINT [FK_TemporadaXPrenda_Prenda]
 GO
 ALTER TABLE [dbo].[TemporadaXPrenda]  WITH CHECK ADD  CONSTRAINT [FK_TemporadaXPrenda_Temporada] FOREIGN KEY([IdTemporada])
 REFERENCES [dbo].[Temporada] ([idTemporada])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[TemporadaXPrenda] CHECK CONSTRAINT [FK_TemporadaXPrenda_Temporada]
 GO
@@ -900,14 +979,14 @@ REFERENCES [dbo].[Tipos] ([idTipo])
 GO
 ALTER TABLE [dbo].[TiposXComprador] CHECK CONSTRAINT [FK_TiposXComprador_Tipos]
 GO
-/****** Object:  StoredProcedure [dbo].[agregarPrenda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  StoredProcedure [dbo].[agregarPrenda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[agregarPrenda]
     @IdTienda INT,
-    @Tipo NVARCHAR(50),
+    @Tipo int,
     @Modelo NVARCHAR(100),
     @IdTalle INT,
     @Descripcion NVARCHAR(255),
@@ -917,7 +996,8 @@ CREATE PROCEDURE [dbo].[agregarPrenda]
     @Estilo3 INT,
     @Color INT,
     @Temporada INT,
-    @Foto NVARCHAR(255)
+    @Foto NVARCHAR(255),
+    @stock int
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -927,13 +1007,13 @@ BEGIN
     -- 1️⃣ Insertar la prenda
     If EXISTS (SELECT 1 FROM PRENDA where Modelo=@Modelo AND IdTienda=@IdTienda)
     BEGIN
-    INSERT INTO Prenda (Tipo, Modelo, IdTalle, Descripcion, Precio, Foto, Color, IdTienda, mostrar)
-    VALUES (@Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Foto, @Color, @IdTienda, 0);
+    INSERT INTO Prenda (Tipo, Modelo, IdTalle, Descripcion, Precio, Foto, Color, IdTienda, mostrar,stock)
+    VALUES (@Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Foto, @Color, @IdTienda, 0,@stock);
     END
     ELSE
     BEGIN 
-      INSERT INTO Prenda (Tipo, Modelo, IdTalle, Descripcion, Precio, Foto, Color, IdTienda, mostrar)
-    VALUES (@Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Foto, @Color, @IdTienda, 1);
+      INSERT INTO Prenda (Tipo, Modelo, IdTalle, Descripcion, Precio, Foto, Color, IdTienda, mostrar,stock)
+    VALUES (@Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Foto, @Color, @IdTienda, 1,@stock);
     END 
     SET @IdPrenda = SCOPE_IDENTITY();
     -- 4️⃣ Relacionar con temporada
@@ -953,7 +1033,7 @@ BEGIN
 
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[crearTienda]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  StoredProcedure [dbo].[crearTienda]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -987,7 +1067,44 @@ BEGIN
     SELECT @NuevoIdTienda AS IdTiendaCreada;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[levantarRecomendados]    Script Date: 25/11/2025 17:24:01 ******/
+/****** Object:  StoredProcedure [dbo].[EliminarPrenda]    Script Date: 25/11/2025 22:38:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[EliminarPrenda] 
+	-- Add the parameters for the stored procedure here
+	@idPrenda int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	DECLARE @modelo varchar(50)
+	DECLARE @tienda int
+	DECLARE @nuevoId int
+    -- Insert statements for procedure here
+	SET @tienda = (SELECT idTienda from Prenda where idPrenda=@idPrenda)
+	SET @modelo = (SELECT Modelo from Prenda where idPrenda=@idPrenda)
+
+DELETE FROM Prenda WHERE IdPrenda=@idPrenda
+If ((SELECT COUNT(IdPrenda) FROM Prenda where Modelo=@modelo AND IdTienda=@tienda AND mostrar=1)=0)
+BEGIN
+
+IF EXISTS(SELECT 1 FROM Prenda where Modelo=@modelo AND IdTienda=@tienda)
+BEGIN
+SET @nuevoId=(SELECT TOP 1 IdPrenda FROM PRENDA where Modelo=@modelo AND IdTienda=@tienda)
+UPDATE Prenda SET mostrar=1 WHERE Modelo=@modelo AND IdTienda=@tienda AND IdPrenda=@nuevoId
+END
+END
+END
+GO
+/****** Object:  StoredProcedure [dbo].[levantarRecomendados]    Script Date: 25/11/2025 22:38:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

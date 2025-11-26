@@ -127,7 +127,6 @@ if (Usu==null)
  }
     catch (Exception ex)
     {
-        // Si ocurre un error, devolver un JSON con el mensaje de error
         return Json(new { ok = false, error = ex.Message });
     }   
     }

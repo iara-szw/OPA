@@ -93,3 +93,29 @@
     .circulo-placeholder.rosa {
         border-color: #ff5db1;
     }
+
+    /* Estilos para la vista de subir producto, alineados con nuevaTienda */
+    .subida-producto-container{max-width:980px;margin:28px auto;padding:28px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .subida-producto-container h2{font-size:1.6rem;margin-bottom:12px;font-weight:700;color:#111}
+    .subida-producto-container .form-row{display:flex;gap:16px;flex-wrap:wrap}
+    .subida-producto-container .form-group{flex:1;min-width:180px;display:flex;flex-direction:column;margin-bottom:12px}
+    .subida-producto-container label{font-weight:600;margin-bottom:6px;color:#111;text-transform:uppercase;font-size:0.85rem}
+    .form-control, .form-select{border:1px solid #111;border-radius:10px;padding:0.6rem 0.9rem;font-size:0.95rem}
+    .form-control:focus, .form-select:focus{border-color:#EB006B;box-shadow:0 0 0 3px rgba(235,0,107,0.08);outline:none}
+    .estilos-wrap{display:flex;flex-wrap:wrap;gap:8px}
+    .estilos-wrap input[type="checkbox"]{margin-right:6px}
+    .color-dropdown{position:relative}
+    .color-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #ddd;border-radius:8px;background:#fafafa;cursor:pointer}
+    .color-menu{position:absolute;left:0;top:calc(100% + 8px);background:#fff;border:1px solid #e6e6e6;border-radius:8px;padding:8px;box-shadow:0 8px 20px rgba(0,0,0,.08);z-index:10;max-height:220px;overflow:auto;width:320px}
+    .color-item{display:flex;align-items:center;gap:8px;padding:8px;border-radius:6px}
+    .color-item:hover{background:#f7f7f7}
+    .color-dot{width:18px;height:18px;border-radius:50%;border:1px solid #aaa;display:inline-block}
+    .small-note{font-size:0.9rem;color:#666}
+    .submit-row{display:flex;justify-content:flex-end;gap:12px;margin-top:12px}
+
+    /* Ajustes responsive */
+    @media (max-width: 767px){
+        .subida-producto-container{padding:18px;margin:14px}
+        .form-row{flex-direction:column}
+        .color-menu{width:100%}
+    }

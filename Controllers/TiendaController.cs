@@ -46,6 +46,8 @@ private readonly IWebHostEnvironment _env;
         }
         ViewBag.estilos=BD.levantarEstilos();
         ViewBag.colores=BD.levantarColor();
+        ViewBag.tipos=BD.levantarTipos();
+        ViewBag.talles=BD.levantarTalles();
         ViewBag.Temporada=BD.levantarTemporada();
         
             return View();

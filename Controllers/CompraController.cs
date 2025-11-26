@@ -46,6 +46,9 @@ public class CompraController : Controller
         }
         foreach(int id in prendas){
             Ropa.Add(BD.levantarPrenda(id));
+            if(Ropa.Last()==null){
+                Ropa.RemoveAt(Ropa.Count-1);
+            }
         }
         ViewBag.ropa=Ropa;
         return View();

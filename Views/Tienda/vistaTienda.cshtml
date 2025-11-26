@@ -87,7 +87,7 @@
             {
                 <div class="border rounded-3 p-2 text-center" style="min-width: 170px;">
                     <div class="mb-2">
-                        <a href='@Url.Action("verProducto",new{IdPrenda=@p.IdPrenda})'><img src="@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" /></a>
+                        <a href='@Url.Action("verProducto",new{IdPrenda=@p.IdPrenda})'><img src="/img/@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" /></a>
                     </div>
                     <div class="small fw-semibold">@p.Modelo</div>
                     <div class="text-muted small">$ @p.Precio</div>

@@ -1,44 +1,228 @@
 <head>
     <meta charset="utf-8" />
     <title>Subir producto</title>
+    <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
+    
 </head>
 
 <body>
-<form action='@Url.Action("agregarPrenda","Prenda")' method="post" enctype="multipart/form-data" >
+    <div class="subida-producto-container">
+        <h2>Subir producto</h2>
+        <form action='@Url.Action("agregarPrenda","Prenda")' method="post" enctype="multipart/form-data" id="formSubirPrenda">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="Tipo">Tipo</label>
+                    <select id="Tipo" name="Tipo" class="form-select" required>
+                        <option value="">Seleccionar tipo</option>
+                        @if(ViewBag.tipos != null){
+                            foreach(var t in ViewBag.tipos){
+                                <option value="@t.idTipo">@t.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Modelo">Modelo</label>
+                    <input id="Modelo" name="Modelo" type="text" placeholder="Ej: Clásico" required />
+                </div>
+                <div class="form-group">
+                    <label>Talles disponibles</label>
+                    <div class="estilos-wrap" id="tallesWrap">
+                        @if(ViewBag.talles != null){
+                            foreach(var t in ViewBag.talles){
+                                <div>
+                                    <input type="checkbox" class="talla-checkbox" name="talles" value="@t.IdTalle" id="talle_@t.IdTalle" />
+                                    <label for="talle_@t.IdTalle">@t.Nombre</label>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="small-note">Seleccioná los talles en los que estará disponible esta prenda.</div>
+                </div>
+            </div>
 
-<input type="text" name="Tipo" placeholder="Tipo" required>
-<input type="text" name="Modelo" placeholder="Modelo" required>
-<select name="IdTalle" required>
-<option value="1" >S</option>
-<option value="2" >M</option>
-<option value="3" >L</option>
-</select>
-<input type="text" name="descripcion" placeholder="Descripción" required>
-<input type="double" name="Precio" placeholder="Precio" required>
+            <div class="form-row">
+                <div class="form-group" style="flex:1 1 60%">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción de la prenda" required rows="3"></textarea>
+                </div>
+                <div class="form-group" style="flex:1 1 30%">
+                    <label for="Precio">Precio</label>
+                    <input id="Precio" name="Precio" class="form-control" type="number" step="0.01" placeholder="0.00" required />
+                </div>
+            </div>
 
-<!--- PONER DESPLEGLBBLES Y ARREGLAR FORMA DE COLORES--->
-@foreach(Estilo estilo in ViewBag.estilos){
-    <input type="checkbox" name="estilos" value="@estilo.IdEstilo" id="@estilo.Nombre" >
-    <label for="@estilo.Nombre">@estilo.Nombre</label>
-}
-@foreach(Color color in ViewBag.colores){
-    <input type="checkbox" name="color" value="@color.idColor" id="@color.idColor" >
-    <label for="@color.idColor" style="background-color:@color.codigoHexa;width:8%;border-radius:15px;margin:1%;border:1px solid black"><p style="PADDING:1%;MARGIN-TOP:2%;margin-left:10%;align-items:center;">@color.Nombre</p></label>
-}
-@foreach(Temporada temporada in ViewBag.Temporada){
-    <input type="radio" name="Temporada" value="@temporada.idTemporada" id="@temporada.Nombre" required>
-    <label for="@temporada.Nombre">@temporada.Nombre</label>
-}
+            <div class="form-row">
+                <div class="form-group" style="flex:1">
+                    <label>Estilos (máx 3)</label>
+                    <div class="estilos-wrap">
+                        @foreach(Estilo estilo in ViewBag.estilos){
+                            <div>
+                                <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" />
+                                <label for="estilo_@estilo.IdEstilo">@estilo.Nombre</label>
+                            </div>
+                        }
+                    </div>
+                </div>
 
-<input type="file" name="foto" required>
-<input type="submit" >
+                <div class="form-group" style="flex:1">
+                    <label>Colores (máx 3)</label>
+                    <div class="color-dropdown">
+                        <div class="color-toggle" id="colorToggle" role="button" aria-haspopup="true" aria-expanded="false">Seleccionar colores <span class="small-note">(haz clic)</span></div>
+                        <div class="color-menu" id="colorMenu" style="display:none;">
+                            @foreach(Color color in ViewBag.colores){
+                                <label class="color-item">
+                                            <input type="checkbox" class="color-checkbox" name="color" value="@color.idColor" />
+                                            <span class="color-dot" style="background-color:@color.codigoHexa"></span>
+                                            <span class="small-note">@color.Nombre</span>
+                                </label>
+                            }
+                        </div>
+                    </div>
+                    <div id="stockEditor" style="margin-top:10px;display:none">
+                        <div class="small-note">Definí el stock por color y talle antes de confirmar.</div>
+                        <div id="stockGrid"></div>
+                    </div>
+                </div>
+            </div>
 
-</form>
+            <div class="form-row">
+                <div class="form-group" style="flex:1">
+                    <label>Temporada</label>
+                    <div>
+                        @foreach(Temporada temporada in ViewBag.Temporada){
+                            <input type="radio" name="Temporada" value="@temporada.idTemporada" id="temp_@temporada.idTemporada" required />
+                            <label for="temp_@temporada.idTemporada">@temporada.Nombre</label>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group" style="flex:1">
+                    <label for="foto">Foto</label>
+                    <input id="foto" type="file" name="foto" class="form-control" accept="image/*" required />
+                </div>
+            </div>
+
+            <input type="hidden" id="variantStock" name="variantStock" />
+            <div class="submit-row">
+                <a class="btn btn-secondary-custom" href='@Url.Action("vistaTienda","Tienda")'>Cancelar</a>
+                <button type="submit" class="btn btn-primary-custom">Subir producto</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        (function(){
+            // Toggle dropdown
+            const toggle = document.getElementById('colorToggle');
+            const menu = document.getElementById('colorMenu');
+            toggle && toggle.addEventListener('click', function(e){
+                const open = menu.style.display !== 'none';
+                menu.style.display = open ? 'none' : 'block';
+                toggle.setAttribute('aria-expanded', String(!open));
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(e){
+                if(!menu) return;
+                if(!menu.contains(e.target) && !toggle.contains(e.target)){
+                    menu.style.display = 'none';
+                    toggle.setAttribute('aria-expanded','false');
+                }
+            });
+
+            // Limit selections to 3 per group
+            function limitCheckboxes(selector, max){
+                const elems = document.querySelectorAll(selector);
+                elems.forEach(function(chk){
+                    chk.addEventListener('change', function(){
+                        const checked = Array.from(document.querySelectorAll(selector)).filter(i=>i.checked);
+                        if(checked.length > max){
+                            this.checked = false;
+                            alert('Sólo se permiten ' + max + ' selecciones.');
+                        }
+                    });
+                });
+            }
+            limitCheckboxes('.estilo-checkbox', 3);
+            limitCheckboxes('.color-checkbox', 3);
+
+            // Handle talles selection
+            function getSelectedTalles(){
+                return Array.from(document.querySelectorAll('.talla-checkbox')).filter(i=>i.checked).map(i=>({id: parseInt(i.value), name: document.querySelector('label[for="'+i.id+'"]')?.innerText || i.id}));
+            }
+
+            // Build stock editor for selected colors and talles
+            function rebuildStockGrid(){
+                const selectedColors = Array.from(document.querySelectorAll('.color-checkbox')).filter(i=>i.checked).map(i=>({id:parseInt(i.value), name: i.parentElement.querySelector('.small-note')?.innerText || i.value}));
+                const talles = getSelectedTalles();
+                const stockEditor = document.getElementById('stockEditor');
+                const grid = document.getElementById('stockGrid');
+                grid.innerHTML = '';
+                if(selectedColors.length===0 || talles.length===0){
+                    stockEditor.style.display = 'none';
+                    return;
+                }
+                stockEditor.style.display = 'block';
+                // Build table-like layout
+                const table = document.createElement('div');
+                table.style.display = 'grid';
+                table.style.gridTemplateColumns = '200px repeat('+talles.length+', 1fr)';
+                table.style.gap = '8px';
+                // header
+                const headerEmpty = document.createElement('div'); headerEmpty.innerText = 'Color / Talle'; headerEmpty.style.fontWeight='700'; table.appendChild(headerEmpty);
+                talles.forEach(t=>{const h=document.createElement('div'); h.innerText=t.name; h.style.fontWeight='700'; table.appendChild(h);});
+                selectedColors.forEach(color=>{
+                    const colorLabel = document.createElement('div');
+                    const dot = document.createElement('span'); dot.className='color-dot'; dot.style.backgroundColor = (function(){const c=document.querySelector('.color-checkbox[value="'+color.id+'"]');return c?c.parentElement.querySelector('.color-dot').style.backgroundColor:'#ccc';})();
+                    colorLabel.appendChild(dot);
+                    const text = document.createElement('span'); text.style.marginLeft='8px'; text.innerText = color.name; colorLabel.appendChild(text);
+                    table.appendChild(colorLabel);
+                    talles.forEach(t=>{
+                        const inp = document.createElement('input');
+                        inp.type='number'; inp.min='0'; inp.value='0'; inp.dataset.color = color.id; inp.dataset.talle = t.id; inp.className='stock-input'; inp.style.width='100%'; inp.style.padding='6px'; inp.style.border='1px solid #ddd'; inp.style.borderRadius='6px';
+                        table.appendChild(inp);
+                    });
+                });
+                grid.appendChild(table);
+            }
+
+            // wire events
+            document.addEventListener('change', function(e){
+                if(e.target && (e.target.classList.contains('color-checkbox') || e.target.classList.contains('talla-checkbox'))){
+                    // if color selected but no talles, prompt
+                    const talles = getSelectedTalles();
+                    if(e.target.classList.contains('color-checkbox') && e.target.checked && talles.length===0){
+                        alert('Seleccioná primero los talles disponibles.');
+                        e.target.checked = false;
+                        return;
+                    }
+                    rebuildStockGrid();
+                }
+            });
+
+            // Before submit: collect variant stocks into hidden input
+            const form = document.getElementById('formSubirPrenda');
+            form && form.addEventListener('submit', function(e){
+                const anyColor = Array.from(document.querySelectorAll('.color-checkbox')).some(i=>i.checked);
+                if(!anyColor){
+                    e.preventDefault();
+                    alert('Seleccioná al menos un color.');
+                    menu.style.display = 'block';
+                    toggle.setAttribute('aria-expanded','true');
+                    return false;
+                }
+                const stockInputs = Array.from(document.querySelectorAll('.stock-input'));
+                const mapping = {};
+                stockInputs.forEach(i=>{
+                    const color = i.dataset.color; const talle = i.dataset.talle; const stock = parseInt(i.value) || 0;
+                    if(!mapping[color]) mapping[color]=[];
+                    mapping[color].push({talleId: parseInt(talle), stock: stock});
+                });
+                // mapping is {colorId: [{talleId,stock}, ...], ...}
+                document.getElementById('variantStock').value = JSON.stringify(mapping);
+                // allow submit to continue
+            });
+        })();
+    </script>
 </body>
-<script>
-$('input[type=checkbox]').on('change', function (e) {
-    if ($('input[type=checkbox]:checked').length > 3) {
-        $(this).prop('checked', false);
-        alert("allowed only 3");
-    }
-});</script>

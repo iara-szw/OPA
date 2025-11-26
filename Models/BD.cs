@@ -11,6 +11,14 @@ static class BD{
         prendas= connection.Query<Prenda>(query,new{@idComprador=Idcomprador}).ToList();
 
     }
+    if (Idcomprador!="default" && prendas.Count<20)
+    {
+            using(SqlConnection connection=new SqlConnection(connectionString)){
+
+        string query="SELECT TOP 20 * FROM Prenda WHERE mostrar=1";
+        prendas= connection.Query<Prenda>(query,new{}).ToList();
+            }
+    }
     return prendas;
     }
 
@@ -30,6 +38,9 @@ static class BD{
         string query="SELECT * FROM Prenda where IdPrenda=@pIdPrenda";
         ropa= connection.QueryFirstOrDefault<Prenda>(query,new{pIdPrenda=IdPrenda});
 
+    }
+    if(ropa==null){
+        ropa=null;
     }
     return ropa;
     }
@@ -60,4 +71,23 @@ static class BD{
     }
     return temporada;
     }
+
+        static public List<Talle> levantarTalles(){
+    List<Talle> talles = new List<Talle>();
+    using(SqlConnection connection=new SqlConnection(connectionString)){
+        string query="SELECT * FROM Talle ";
+        talles= connection.Query<Talle>(query).ToList();
+
+    }
+    return talles;
+    }
+
+        static public List<Tipo> levantarTipos(){
+            List<Tipo> tipos = new List<Tipo>();
+            using(SqlConnection connection=new SqlConnection(connectionString)){
+                string query = "SELECT * FROM Tipos";
+                tipos = connection.Query<Tipo>(query).ToList();
+            }
+            return tipos;
+        }
 }

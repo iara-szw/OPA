@@ -13,7 +13,7 @@ public PrendaController (IWebHostEnvironment env)
 _env = env;
 }
 [HttpPost]
-    public IActionResult agregarPrenda(string Tipo, string Modelo, int IdTalle,string descripcion,double Precio, List<int> estilos,List<int> color, int Temporada, IFormFile foto){
+    public IActionResult agregarPrenda(int Tipo, string Modelo, string descripcion, double Precio, List<int> estilos, List<int> color, List<int> talles, int Temporada, string variantStock, IFormFile foto){
         Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
 
         if (foto != null && foto.Length>0){
@@ -29,7 +29,7 @@ using (var stream = new FileStream (rutaCompleta, FileMode.Create)){
 foto.CopyTo(stream);
 
 }
-        PrendaBD.agregarPrenda(tienda.IdTienda, Tipo, Modelo, IdTalle,descripcion, Precio,estilos,color,Temporada, nombreArchivo);
+        PrendaBD.agregarPrenda(tienda.IdTienda, Tipo, Modelo, descripcion, Precio, estilos, color, talles, Temporada, nombreArchivo, variantStock);
 
 }
         return RedirectToAction("vistaTienda","Tienda");

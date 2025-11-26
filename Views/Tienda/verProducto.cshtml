@@ -13,7 +13,7 @@
       <section class="prenda-content">
         <div class="slider-card">
           <div class="slider-frame">
-            <img src="@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
+            <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
             <div class="slider-controls">
               <button type="button" class="slider-btn">&#60;</button>
               <button type="button" class="slider-btn">&#62;</button>
@@ -26,6 +26,11 @@
           </div>
           <p class="desc">@ViewBag.prenda.descripcion</p>
           <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
+          <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
+            <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
+            <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
+            <span style="margin-left:12px;"><strong>Stock:</strong> @ViewBag.prenda.stock</span>
+          </div>
           <div class="section-title">ESTILOS</div>
           <div class="tags">
           @foreach(Estilo estilito in ViewBag.estilitos){
@@ -36,7 +41,7 @@
           <div class="section-title">COLORES</div>
           <div class="color-options">
           @foreach(Prenda prenda in ViewBag.Similares){
-            <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:#@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
+            <a href="/Tienda/verProducto?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
             }
           </div>
           <div class="section-title">TALLES</div>
