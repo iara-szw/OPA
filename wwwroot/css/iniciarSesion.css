@@ -5,6 +5,8 @@
 
 #error{
     color:#eb0033;
+    font-size:medium;
+    margin-right:56%;
 }
 .nueva-tienda-container {
     min-height: calc(100vh - 102px);

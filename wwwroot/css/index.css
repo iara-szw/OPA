@@ -93,6 +93,17 @@ header .iconos i {
   height: 8px;
 }
 
+#vermas{
+  background-color: #ff0088;
+  color:white;
+  margin-left:40%;
+  margin-top:3%;
+}
+#vermas:hover{
+  background-color:#c10067;
+  scale: 1.05;
+  transition: all ease 0.4s;
+}
 .ropaRecomendada::-webkit-scrollbar-thumb {
   background: #ff0088;
   border-radius: 10px;
@@ -103,7 +114,12 @@ header .iconos i {
   flex: 0 0 auto;
   text-align: center;
 }
+#quienes-somos{
+  padding-top: 5% !important;
+  padding-bottom: 5% !important;
 
+
+}
 .ropaRecomendada img {
   width: 180px;
   height: 180px;
