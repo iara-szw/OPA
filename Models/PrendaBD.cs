@@ -1,16 +1,14 @@
 using Microsoft.Data.SqlClient;
 using Dapper;
 using System.Text.Json;
-// Simplified implementation will call stored procedure per color+talle
 public class PrendaBD{
-    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+    public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
 
     static public void agregarPrenda(int idTienda, int tipoInt, string modelo, string Descripcion, double precio, List<int> Estilos, List<int> colores, List<int> talles, int temporada, string Foto, string variantStockJson){
         while (Estilos.Count < 3) {
            Estilos.Add(0);
         }
 
-        // Parse variantStockJson -> mapping colorId -> mapping talleId->stock
         Dictionary<int, Dictionary<int,int>> stockMap = new Dictionary<int, Dictionary<int,int>>();
         if (!string.IsNullOrEmpty(variantStockJson)){
             try{
@@ -81,6 +79,14 @@ public class PrendaBD{
         }
         return stock;
     }
+    static public void UpdateStock(int IdPrenda, int nuevoStock)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string query = "UPDATE Prenda SET stock = @pStock WHERE IdPrenda = @pIdPrenda";
+            connection.Execute(query, new { pStock = nuevoStock, pIdPrenda = IdPrenda });
+        }
+    }
     static public Prenda LevantarPrenda(int IdPrenda)
     {
         using (SqlConnection connection = new SqlConnection(connectionString))
@@ -88,6 +94,67 @@ public class PrendaBD{
             string query = "SELECT * FROM Prenda WHERE IdPrenda=@pIdPrenda";
             var prendita = connection.QueryFirstOrDefault<Prenda>(query, new { pIdPrenda = IdPrenda });
             return prendita ?? new Prenda();
+        }
+    }
+
+    static public List<Prenda> LevantarVariantes(int IdPrenda)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            string query = "SELECT * FROM Prenda WHERE Modelo = (SELECT Modelo FROM Prenda WHERE IdPrenda = @pIdPrenda) AND Color = (SELECT Color FROM Prenda WHERE IdPrenda = @pIdPrenda) AND IdTienda = (SELECT IdTienda FROM Prenda WHERE IdPrenda = @pIdPrenda) ORDER BY IdTalle";
+            var variantes = connection.Query<Prenda>(query, new { pIdPrenda = IdPrenda }).ToList();
+            return variantes;
+        }
+    }
+
+    static public List<Prenda> FiltrarPrendas(double? minPrecio, double? maxPrecio, int? colorId, int? estiloId, string q)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            var where = new List<string>();
+            var parameters = new DynamicParameters();
+            string baseQuery = "SELECT DISTINCT p.* FROM Prenda p ";
+            if (estiloId.HasValue)
+            {
+                baseQuery += " INNER JOIN EstiloXPrenda ep ON ep.IdPrenda = p.IdPrenda ";
+                where.Add("ep.IdEstilo = @pEstilo");
+                parameters.Add("pEstilo", estiloId.Value);
+            }
+            if (colorId.HasValue)
+            {
+                where.Add("p.Color = @pColor");
+                parameters.Add("pColor", colorId.Value);
+            }
+            if (minPrecio.HasValue)
+            {
+                where.Add("p.Precio >= @pMin");
+                parameters.Add("pMin", minPrecio.Value);
+            }
+            if (maxPrecio.HasValue)
+            {
+                where.Add("p.Precio <= @pMax");
+                parameters.Add("pMax", maxPrecio.Value);
+            }
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                where.Add("(p.Modelo LIKE @q OR p.Descripcion LIKE @q)");
+                parameters.Add("q", "%" + q + "%");
+            }
+
+            string finalQuery = baseQuery;
+            if (where.Count > 0)
+            {
+                finalQuery += " WHERE " + string.Join(" AND ", where) + " AND p.mostrar=1";
+            }
+            else
+            {
+                finalQuery += " WHERE p.mostrar=1";
+            }
+
+            finalQuery += " ORDER BY p.Precio ASC";
+
+            var prendas = connection.Query<Prenda>(finalQuery, parameters).ToList();
+            return prendas;
         }
     }
 

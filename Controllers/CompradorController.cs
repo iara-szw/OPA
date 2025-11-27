@@ -48,12 +48,7 @@ public class CompradorController : Controller
         return View();
     }
 
-public IActionResult medidas(){
-            if(HttpContext.Session.GetString("usuario") == null){
-                return RedirectToAction("iniciarSesion");
-            }
-        return View();
-    }
+
       public IActionResult registrarNuevo(string nombreUsuario,string password, string nombre,string apellido,string telefono,string Mail, int Genero, bool esVendedor){
         if(string.IsNullOrWhiteSpace(telefono)){
             return RedirectToAction("registrarse", new { estado = "telefonoRequerido" });

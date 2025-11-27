@@ -61,5 +61,14 @@ public class HomeController : Controller
 }
         return View();
     }
+    public IActionResult Explorar(double? minPrecio, double? maxPrecio, int? colorId, int? estiloId, string q)
+    {
+        ViewBag.colores = BD.levantarColor();
+        ViewBag.estilos = BD.levantarEstilos();
+        var prendas = PrendaBD.FiltrarPrendas(minPrecio, maxPrecio, colorId, estiloId, q);
+        ViewBag.prendas = prendas;
+        ViewBag.filtro = new { minPrecio, maxPrecio, colorId, estiloId, q };
+        return View();
+    }
     //- web con el catálogo de productos y carrito.
 }

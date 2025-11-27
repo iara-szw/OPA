@@ -1,0 +1,86 @@
+@{
+    ViewData["Title"] = "Explorar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using OPA.Models
+@{
+    var coloresList = (ViewBag.colores as List<Color>) ?? new List<Color>();
+    var estilosList = (ViewBag.estilos as List<Estilo>) ?? new List<Estilo>();
+    var prendasList = (ViewBag.prendas as List<Prenda>) ?? new List<Prenda>();
+    var filtro = ViewBag.filtro;
+    int? selColor = null;
+    int? selEstilo = null;
+    if (filtro != null){
+        try { selColor = filtro.colorId != null ? (int?)Convert.ToInt32(filtro.colorId) : null; } catch { selColor = null; }
+        try { selEstilo = filtro.estiloId != null ? (int?)Convert.ToInt32(filtro.estiloId) : null; } catch { selEstilo = null; }
+    }
+}
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+<div class="container mt-4">
+    <h2>Explorar prendas</h2>
+    <form id="filterForm" method="get" action='@Url.Action("Explorar","Home")' class="row g-2 align-items-end">
+        <div class="col-auto">
+            <label class="form-label">Min Precio</label>
+            <input type="number" step="0.01" name="minPrecio" class="form-control" value="@ViewBag.filtro?.minPrecio" />
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Max Precio</label>
+            <input type="number" step="0.01" name="maxPrecio" class="form-control" value="@ViewBag.filtro?.maxPrecio" />
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Color</label>
+            <select name="colorId" class="form-select">
+                <option value="">Todos</option>
+                @foreach(Color c in coloresList){
+                    if (selColor.HasValue && selColor.Value == c.idColor) {
+                        <option value="@c.idColor" selected>@c.Nombre</option>
+                    } else {
+                        <option value="@c.idColor">@c.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Estilo</label>
+            <select name="estiloId" class="form-select">
+                <option value="">Todos</option>
+                @foreach(Estilo e in estilosList){
+                    if (selEstilo.HasValue && selEstilo.Value == e.IdEstilo) {
+                        <option value="@e.IdEstilo" selected>@e.Nombre</option>
+                    } else {
+                        <option value="@e.IdEstilo">@e.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <label class="form-label">Buscar</label>
+            <input type="text" name="q" class="form-control" value="@ViewBag.filtro?.q" />
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary">Filtrar</button>
+        </div>
+    </form>
+
+    <div class="row mt-4">
+        @if(prendasList != null && prendasList.Count>0){
+            foreach(Prenda p in prendasList){
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="card h-100">
+                        <a href='@Url.Action("vistaPrenda","Home", new { IdPrenda = p.IdPrenda })'>
+                            <img src="/img/@p.foto" class="card-img-top" style="height:180px; object-fit:cover;" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">@p.Modelo</h5>
+                            <p class="card-text">$ @p.Precio</p>
+                            <p class="card-text small">@PrendaBD.levantarTalle(p.IdTalle).Nombre - @PrendaBD.levantarColor(p.Color).Nombre</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        } else {
+            <div class="col-12">No hay prendas</div>
+        }
+    </div>
+</div>

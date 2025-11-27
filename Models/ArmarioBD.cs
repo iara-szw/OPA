@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 static class ArmarioBD{
  
-    static public  string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+    static public  string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
     static public List<Prenda> levantarPoseidos(string Idcomprador){
     List<Prenda> prendas = new List<Prenda>();
     using(SqlConnection connection=new SqlConnection(connectionString)){

@@ -29,7 +29,7 @@
           <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
             <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
             <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
-            <span style="margin-left:12px;"><strong>Stock:</strong> @ViewBag.prenda.stock</span>
+            <span style="margin-left:12px;"><strong>Stock:</strong> <span id="currentStock">@ViewBag.prenda.stock</span></span>
           </div>
           <div class="section-title">ESTILOS</div>
           <div class="tags">
@@ -46,9 +46,23 @@
           </div>
           <div class="section-title">TALLES</div>
           <div class="talles">
-            <span class="talle">S</span>
-            <span class="talle">M</span>
-            <span class="talle">L</span>
+            @{
+                var variantes = PrendaBD.LevantarVariantes(ViewBag.prenda.IdPrenda);
+                foreach(var v in variantes){
+                    var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
+                    if(v.IdPrenda == ViewBag.prenda.IdPrenda){
+                        <span class="talle active-talle">@nombreTalle</span>
+                    } else {
+                        <a class="talle-link" href="@Url.Action("verProducto","Tienda", new { IdPrenda = v.IdPrenda })"> <span class="talle">@nombreTalle</span></a>
+                    }
+                }
+            }
+          </div>
+          <div class="stock-editor" style="margin-top:12px;">
+            <label for="stockInput"><strong>Editar stock:</strong></label>
+            <input id="stockInput" type="number" min="0" value="@ViewBag.prenda.stock" style="width:90px; margin-left:8px;" />
+            <button id="saveStockBtn" class="btn btn-sm btn-primary" style="margin-left:8px;">Guardar</button>
+            <span id="stockMsg" style="margin-left:8px;color:green;display:none;">Guardado</span>
           </div>
           <a class="btn-cart" href="/Tienda/EliminarPrenda?idPrenda=@ViewBag.prenda.IdPrenda">ELIMINAR PRENDA</a>
           </div>
@@ -56,4 +70,23 @@
       </section>
   </section>
 </div>
+
+<script>
+document.getElementById('saveStockBtn')?.addEventListener('click', function(){
+  var nuevo = parseInt(document.getElementById('stockInput').value || '0');
+  var id = @ViewBag.prenda.IdPrenda;
+  fetch('/Prenda/UpdateStock', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'idPrenda=' + encodeURIComponent(id) + '&stock=' + encodeURIComponent(nuevo)
+  }).then(r=>r.json()).then(j=>{
+    if(j.ok){
+      document.getElementById('currentStock').innerText = nuevo;
+      var msg = document.getElementById('stockMsg'); msg.style.display='inline'; setTimeout(()=>msg.style.display='none',2000);
+    } else {
+      alert('Error al guardar stock: ' + (j.error || ''));
+    }
+  }).catch(e=>{ alert('Error de red'); });
+});
+</script>
 

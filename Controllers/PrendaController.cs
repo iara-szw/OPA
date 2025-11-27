@@ -13,6 +13,19 @@ public PrendaController (IWebHostEnvironment env)
 _env = env;
 }
 [HttpPost]
+    public IActionResult UpdateStock(int idPrenda, int stock)
+    {
+        try
+        {
+            PrendaBD.UpdateStock(idPrenda, stock);
+            return Json(new { ok = true });
+        }
+        catch (Exception ex)
+        {
+            return Json(new { ok = false, error = ex.Message });
+        }
+    }
+[HttpPost]
     public IActionResult agregarPrenda(int Tipo, string Modelo, string descripcion, double Precio, List<int> estilos, List<int> color, List<int> talles, int Temporada, string variantStock, IFormFile foto){
         Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
 

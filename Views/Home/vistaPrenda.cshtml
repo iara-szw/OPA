@@ -51,6 +51,7 @@
           <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
             <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
             <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
+            <span style="margin-left:12px;"><strong>Stock:</strong> @PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)</span>
           </div>
           <div class="section-title">ESTILOS</div>
           <div class="tags">
@@ -72,9 +73,17 @@
           </div>
           <div class="section-title">TALLES</div>
           <div class="talles @(esPoseida ? "talles-disabled" : string.Empty)">
-            <span class="talle">S</span>
-            <span class="talle">M</span>
-            <span class="talle">L</span>
+            @{
+                var variantes = PrendaBD.LevantarVariantes(ViewBag.prenda.IdPrenda);
+                foreach(var v in variantes){
+                    var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
+                    if(v.IdPrenda == ViewBag.prenda.IdPrenda){
+                        <span class="talle active-talle">@nombreTalle</span>
+                    } else {
+                        <a href="/Home/vistaPrenda?idPrenda=@v.IdPrenda"><span class="talle">@nombreTalle</span></a>
+                    }
+                }
+            }
           </div>
           @if(esPoseida){
             <div class="action-buttons poseida-actions">
