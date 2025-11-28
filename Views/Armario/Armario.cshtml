@@ -13,11 +13,32 @@
       return string.IsNullOrWhiteSpace(val) ? "#ff8bd1" : val;
   };
 }
-
+<head>    <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
+</head>
 <style>
+.color-menu{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    z-index: 10;
+    max-height: 220px;
+    overflow: auto;
+    width: 320px;
+    }
+.estilos-wrap {
+  display: flex
+;
+    gap: 7%;
+    flex-wrap: wrap;
+}
     :root { --magenta:#E6007E; --gris:#f5f5f7; --texto:#111827; }
     body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--texto); background: #ffffff; margin: 0; }
-    .encabezado {
+    .encabezado { 
       background: linear-gradient(180deg, var(--magenta) 0%, #ffffff 100%);
       padding: 16px 20px;
     }
@@ -39,6 +60,9 @@
     @@media(min-width:640px){ .grid{ grid-template-columns: repeat(3, 1fr);} }
     @@media(min-width:1024px){ .grid{ grid-template-columns: repeat(4, 1fr);} }
     .card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease; }
+    .preferencias .card{
+width:200%;
+    }
     .card:hover { transform:translateY(-2px) scale(1.01); box-shadow:0 10px 20px rgba(0,0,0,.06); }
     .card img { width:100%; height:180px; object-fit:cover; background:#fafafa; }
     .card .info { padding:10px 12px; }
@@ -61,6 +85,16 @@
     .placeholder { border:1px dashed #d1d5db; border-radius:12px; padding:20px; text-align:center; color:#6b7280; background:#fafafa; }
     .fila-filtros { display:flex; gap:8px; align-items:center; margin:8px 0 14px; }
     .select, .input { padding:8px 10px; border:1px solid #e5e7eb; border-radius:10px; background:#fff; }
+ a.btn.btn-primary {
+    background-color: #ff0088;
+    border: none;
+    margin-top: 3%;
+}
+.btn.btn-primary {
+    background-color: #ff0088;
+    border: none;
+    margin-top: 3%;
+}
   </style>
 
 <div class="container py-3">
@@ -171,9 +205,9 @@
       <div class="preferencias">
         <h3 style="margin:0 0 10px;">Tus preferencias</h3>
         <div class="pref-grid">
-          <div>
-            <div style="font-weight:700; margin-bottom:6px;">Estilos</div>
-            <div>
+            <div>   
+                     <div style="font-weight:700; margin-bottom:6px;">Estilos</div>
+
               @foreach (var estilo in (IEnumerable<Estilo>)(ViewBag.estilos ?? Enumerable.Empty<Estilo>()))
               {
                 <span class="chip">@estilo.Nombre</span>
@@ -182,13 +216,49 @@
               {
                 <div class="chip" style="opacity:.7;">Sin estilos</div>
               }
+              <p class="d-inline-flex gap-1">
+              <br>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Cambiar estilos</a>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">  
+      <div class="card card-body">
+
+            <div class="form-row">
+                <div class="form-group" style="flex:1">
+                <form action='@Url.Action("guardarEstilos")'>
+                    <label>Estilos (máx 3)</label>
+                    <div class="estilos-wrap">
+                        @foreach(Estilo estilo in ViewBag.TodoEstilos){
+                            <div>
+                            @if(!ViewBag.estilos.Contains(estilo)){
+                                <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" />
+                                }
+                                 else{
+                                <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" style="checked=true"/>
+                                }
+                                <label for="estilo_@estilo.IdEstilo">@estilo.Nombre</label>
+                            </div>
+                        }
+                    </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>    
             </div>
+    </div>
+  </div>
+            </div>
+            
           </div>
+          </div>
+          <div>
           <div>
             <div style="font-weight:700; margin-bottom:6px;">Tus prendas</div>
             <a href="#" class="chip" style="text-decoration:none; color:inherit;">Ver todas</a>
             <a href="#" class="chip" style="text-decoration:none; color:inherit;">Agregar más</a>
           </div>
+          </div>
+          <div>
           <div>
             <div style="font-weight:700; margin-bottom:6px;">Tus colores</div>
             <div style="display:flex; align-items:center; gap:10px;">
@@ -203,29 +273,51 @@
                 <div class="color-swatch" style="background:#0081ff;"></div>
               }
             </div>
+            <form action='@Url.Action("guardarColores")'>
+            <div class="form-group" style="flex:1">
+                   <div class="color-dropdown">
+                        <div class="color-toggle" id="colorToggle" role="button" aria-haspopup="true" aria-expanded="false">Cambiar colores <span class="small-note">(haz clic)</span></div>
+                        <div class="color-menu" id="colorMenu" style="display:none;">
+                            @foreach(Color color in ViewBag.TodoColores){
+                                <label class="color-item">
+                                            <input type="checkbox" class="color-checkbox" name="colores" value="@color.idColor" />
+                                            <span class="color-dot" style="background-color:@color.codigoHexa"></span>
+                                            <span class="small-note">@color.Nombre</span>
+                                </label>
+                            }
+                        </div>
+                                    <button type="submit" class="btn btn-primary-custom">Guardar</button>
+
+                    </div>
+            </div>
+                    </form>
           </div>
         </div>
-        <div style="margin-top:14px;">
-          <div style="font-weight:700; margin-bottom:6px;">Descubrí más</div>
-          <div class="descubri">
-        <div class="opcion">
-          <p>Tiendas</p>
         </div>
-        <div class="opcion">
-          <p>Estilos</p>
         </div>
-        <div class="opcion">
-          <a href='@Url.Action("HomeOutfit")'>Outfits</a>
-        </div>
-      </div>
-          </div>
-        </div>
-      </div>
     </section>
   </div>
 
   <script>
     (function(){
+            // Toggle dropdown
+            const toggle = document.getElementById('colorToggle');
+            const menu = document.getElementById('colorMenu');
+            toggle && toggle.addEventListener('click', function(e){
+                const open = menu.style.display !== 'none';
+                menu.style.display = open ? 'none' : 'block';
+                toggle.setAttribute('aria-expanded', String(!open));
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(e){
+                if(!menu) return;
+                if(!menu.contains(e.target) && !toggle.contains(e.target)){
+                    menu.style.display = 'none';
+                    toggle.setAttribute('aria-expanded','false');
+                }
+            });
+
       const tabAvatar = document.getElementById('tab-avatar');
       const tabRopa = document.getElementById('tab-ropa');
       const panelAvatar = document.getElementById('panel-avatar');
@@ -246,4 +338,20 @@
       tabAvatar.addEventListener('click', ()=>activar('avatar'));
       tabRopa.addEventListener('click', ()=>activar('ropa'));
     })();
+
+    function limitCheckboxes(selector, max){
+                const elems = document.querySelectorAll(selector);
+                elems.forEach(function(chk){
+                    chk.addEventListener('change', function(){
+                        const checked = Array.from(document.querySelectorAll(selector)).filter(i=>i.checked);
+                        if(checked.length > max){
+                            this.checked = false;
+                            alert('Sólo se permiten ' + max + ' estilos en preferidos.');
+                        }
+                    });
+                });
+            }
+            limitCheckboxes('.estilo-checkbox', 3);
+                        limitCheckboxes('.color-checkbox', 3);
+
   </script>

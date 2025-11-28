@@ -30,6 +30,10 @@ public class ArmarioController : Controller
         ViewBag.estilos=CompradorBD.levantarEstilos(usu.Usuario);
         ViewBag.colores=CompradorBD.levantarColores(usu.Usuario);
         ViewBag.prendas=CompradorBD.levantarPrendas(usu.Usuario);
+                ViewBag.TodoEstilos=BD.levantarEstilos();
+                                ViewBag.TodoColores=BD.levantarColor();
+
+
         return View();
     }
 
@@ -55,6 +59,23 @@ public class ArmarioController : Controller
         }
         return RedirectToAction("vistaPrenda","Home",new{IdPrenda=idPrenda, from="armario"});
     }
+    public IActionResult guardarEstilos(List<int> estilos){
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(usu==null){
+            return RedirectToAction("iniciarSesion","Comprador");
+        }
 
+        ArmarioBD.agregarEstilos(usu.Usuario,estilos);
+        return RedirectToAction("Armario");
+    }
 
+    public IActionResult guardarColores(List<int> colores){
+        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(usu==null){
+            return RedirectToAction("iniciarSesion","Comprador");
+        }
+
+        ArmarioBD.agregarColores(usu.Usuario,colores);
+        return RedirectToAction("Armario");
+    }
 }

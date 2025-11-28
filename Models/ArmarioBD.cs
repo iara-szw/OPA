@@ -21,7 +21,38 @@ static class ArmarioBD{
     }
     return prendas;
     }
-
+        static public void agregarEstilos(string Usuario,List<int>estilos){
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "DELETE EstiloxComprador WHERE usuario=@usuario";
+        connection.Execute(query,new{@usuario=Usuario});
+            
+        }
+        foreach(int est in estilos){
+            using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "INSERT INTO EstiloxComprador Values(@usuario,@idEstilo)";
+        connection.Execute(query,new{@usuario=Usuario,@idEstilo=est});
+            
+        }
+        }
+        }
+         static public void agregarColores(string Usuario,List<int>colores){
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "DELETE ColorxComprador WHERE usuario=@usuario";
+        connection.Execute(query,new{@usuario=Usuario});
+            
+        }
+        foreach(int col in colores){
+            using(SqlConnection connection = new SqlConnection(connectionString)){
+ 
+        string query = "INSERT INTO ColorxComprador Values(@usuario,@idColor)";
+        connection.Execute(query,new{@usuario=Usuario,@idEstilo=col});
+            
+        }
+        }
+        }
     static public void eliminarPoseido(string usuario, int idPrenda){
 
 using(SqlConnection connection = new SqlConnection(connectionString)){
