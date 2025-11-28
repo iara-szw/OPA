@@ -1,331 +1,79 @@
-﻿
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+﻿<!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPA - Home</title>
+                <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fff;
-  color: #111;
-  overflow-x: hidden;
-}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: linear-gradient(to right, #960058, #2a0023);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 1rem;
-}
-
-header .logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-header .iconos {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-header .iconos i {
-  color: #fff;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-.banner {
-  background-color: #111;
-  background-image: url('/img/fondo-opa.png');
-  background-repeat: repeat;
-  background-position: center;
-  text-align: center;
-  padding: 5rem 1rem;
-  color: #ff0088;
-}
-.banner img {
-  width: 25%;
-  height: 25%;
-
-}
-
-.banner h2 {
-  font-size: 5rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.banner p {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.recomendado {
-  padding: 2rem 1rem;
-}
-
-.recomendado h3 {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  color: #111;
-  font-weight: 600;
-}
-
-.ropaRecomendada {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 1rem;
-}
-
-.ropaRecomendada::-webkit-scrollbar {
-  height: 8px;
-}
-
-#vermas{
-  background-color: #ff0088;
-  color:white;
-  margin-left:40%;
-  margin-top:3%;
-}
-#vermas:hover{
-  background-color:#c10067;
-  scale: 1.05;
-  transition: all ease 0.4s;
-}
-.ropaRecomendada::-webkit-scrollbar-thumb {
-  background: #ff0088;
-  border-radius: 10px;
-}
-
-.ropaRecomendada div {
-  min-width: 180px;
-  flex: 0 0 auto;
-  text-align: center;
-}
-#quienes-somos{
-  padding-top: 5% !important;
-  padding-bottom: 5% !important;
-
-
-}
-.ropaRecomendada img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.ropaRecomendada h4 {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
-
-.ropaRecomendada p {
-  color: #777;
-  font-size: 0.9rem;
-}
-
-.lanzamientos {
-  padding: 2rem 1rem;
-}
-
-.lanzamientos h3 {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.lanzamientos div {
-  display: inline-block;
-  margin-right: 1rem;
-  text-align: center;
-}
-
-.lanzamientos img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.lanzamientos h4 {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-}
-
-.explorando {
-  background: #fff;
-  color: #fff;
-  text-align: center;
-  padding: 3rem 1rem;
-}
-
-.explorando h3 {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 2rem;
-}
-
-.explorar-opciones {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.opcion {
-  width: 13%;
-  height: 180px;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
-  color: #000;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.opcion:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-.opcion a {
-  
-  margin: 0%;
-  position: absolute;
-  margin-top: 60%;
-  left: 40%;
-  text-align: center;
-  font-weight: 600;
-  color: #000;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  .banner h2 {
-    font-size: 3.5rem;
-  }
-  .ropaRecomendada img, .lanzamientos img {
-    width: 140px;
-    height: 140px;
-  }
-  .opcion {
-    width: 140px;
-    height: 140px;
-  }
-
-  main.iniciarSesion {
-    margin-top: 10%;
-}
-}
-
-
-main.iniciarSesion {
-  margin-top: 10%;
-}
-
-main.registrarse{
-  margin-top:10%;
-}
-
-.landing-hero{
-  min-height: 70vh;
-  background: linear-gradient(120deg,#EB006B 0%,#0b0b0b 55%,#EB006B 100%);
-  padding: 5rem 1rem;
-}
-.landing-logo{ width:150px; }
-.hero-subtitle{ max-width:640px; }
-.section-title-index{ color:#EB006B; font-weight:700; margin-bottom:1.5rem; }
-.landing-card{
-  background:#111;
-  color:#f4f4f4;
-  border-radius:18px;
-  padding:2rem;
-  border:1px solid rgba(235,0,107,0.2);
-}
-.landing-highlight{
-  background:#0b0b0b;
-}
-.landing-box{
-  background:rgba(255,255,255,0.05);
-  border-radius:18px;
-  padding:1.8rem;
-  border:1px solid rgba(255,255,255,0.08);
-}
-.landing-steps{
-  counter-reset: step;
-  list-style:none;
-  padding-left:0;
-}
-.landing-steps li{
-  counter-increment: step;
-  margin-bottom:1rem;
-  padding-left:2.8rem;
-  position:relative;
-}
-.landing-steps li::before{
-  content: counter(step);
-  position:absolute;
-  left:0;
-  top:0;
-  width:2rem;
-  height:2rem;
-  border-radius:50%;
-  background:#EB006B;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-}
-.landing-cta{
-  background:linear-gradient(90deg,#0b0b0b,#EB006B);
-}
-
-.banner{
-  margin-top:-5%;
-}
-
-.ver{
-  background:linear-gradient(90deg,#0b0b0b,#EB006B);
-}
-.ver h3,.ver h4,.ver p{
-  color:#fff
-
-}
-.ver img{
-  border:2px solid white;
-  border-radius:white;
-}
-
-.ver h3{
-margin-left:15%;
-}
-.opcion{
-  border:2px solid black;
-  border-radius:15px;
-}
+  </head>
+  <body >
+  <main style="margin-top:0% !important">
+    <section class="banner">
+      <img src="/img/logoOPA-03.png" alt="OPA">
+      <p>Somos ropa, única y personal.</p>
+    </section>
+    <section id="quienes-somos" class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="section-title">¿Quiénes somos?</h2>
+            <p>OPA nace como un marketplace de moda latino con foco en prendas únicas y asesoría personalizada. Reunimos a creativos, diseñadores emergentes y amantes de la moda que buscan destacarse sin perder autenticidad.</p>
+            <p>Creemos en la compra consciente, en la trazabilidad y en experiencias digitales que inspiran. Este proyecto reúne tecnología, datos de estilo y comunidad para que vestir sea un acto creativo, no una obligación.</p>
+        </div>
+        <div class="col-md-6">
+            <div class="landing-card shadow-sm">
+                <h3 class="h5 fw-bold mb-3">Nuestra propuesta</h3>
+                <ul class="list-unstyled m-0">
+                    <li>• Motor de recomendaciones según tus gustos.</li>
+                    <li>• Armario digital para gestionar tus prendas.</li>
+                    <li>• Outfit Lab para experimentar combinaciones.</li>
+                    <li>• Panel de vendedor con métricas claras.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="/Comprador/Registrarse" class="btn btn-light px-4" id="vermas">Ver más sobre OPA</a>
+</section>
+<section class="ver">
+    <section class="recomendado">
+      <h3>Recomendado para vos ></h3>
+      <div class="ropaRecomendada" >
+      @foreach(Prenda prendita in ViewBag.Ropa){
+        <div>
+        <a href='@Url.Action("VistaPrenda",new{idPrenda=@prendita.IdPrenda})'><img src="/img/@prendita.foto"></a>
+          <h4>@prendita.Modelo</h4>
+          <p>@prendita.Precio</p>
+        </div>
+      }
+      </div>
+    </section>
+    <section class="lanzamientos">
+      <h3>Últimos lanzamientos ></h3>
+      @foreach(Tienda tienda in ViewBag.tiendas){
+        <div>
+        <img src="/img/@tienda.FotoDePerfil">
+          <h4>@tienda.Nombre</h4>
+        </div>
+      }
+    </section>
+    </section>
+    <section class="explorando">
+      <h3>Seguí explorando</h3>
+      <div class="explorar-opciones">
+        <div class="opcion">
+          <a href='@Url.Action("verTiendasAdministrador.cshtml")'>Tiendas</a>
+        </div>
+        <div class="opcion">
+          <a href=>Estilos</a>
+        </div>
+        <div class="opcion">
+          <a href='@Url.Action("HomeOutfit")'>Outfits</a>
+        </div>
+      </div>
+    </section>
+ </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+         </body>
+  </html>
