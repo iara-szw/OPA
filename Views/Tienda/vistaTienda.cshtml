@@ -1,144 +1,112 @@
 @{
-    ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    bool esPoseida = ViewBag.Poseido is bool && (bool)ViewBag.Poseido;
-    var httpRequest = ViewContext?.HttpContext?.Request;
-    bool vieneDeArmario = httpRequest != null && string.Equals(httpRequest.Query["from"], "armario", StringComparison.OrdinalIgnoreCase);
-    string referer = httpRequest?.Headers["Referer"];
-    string volverUrl = vieneDeArmario ? Url.Action("armario","Armario") : (!string.IsNullOrWhiteSpace(referer) ? referer : Url.Action("Index","Home"));
-    bool usuarioLogueado = ViewBag.Usuario == true;
+    var tienda = ViewBag.tienda;
+    var productos = ViewBag.productos as IEnumerable<dynamic> ?? new List<dynamic>();
+    bool permisos = ViewBag.permisos ?? false;
+    ViewData["Title"] = tienda?.Nombre ?? "Tienda";
 }
-<link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
+<body>
+<div class="container my-4">
+    <div class="text-center mb-4">
+        <h1 class="fw-bold text-uppercase">¡HOLA @tienda.Nombre!</h1>
+    </div>
 
-<div class="prenda-page">
-  <section class="prenda-wrapper">
-      @if(esPoseida){
-        <div class="poseida-banner">
-          <span>✔</span>
-          <span>Esta prenda ya está en tu armario</span>
-        </div>
-      }
-      <div class="prenda-back-row">
-        <a class="back-link" href="@volverUrl">
-          &larr; @(vieneDeArmario ? "Volver al Armario" : "Volver")
-        </a>
-      </div>
-      <h1>@ViewBag.prenda.Modelo</h1>
-      <section class="prenda-content">
-        <div class="slider-card">
-          <div class="slider-frame">
-            @if(esPoseida){
-              <span class="badge-armario">En tu armario</span>
-            }
-            <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
-            <div class="slider-controls">
-              <button type="button" class="round-btn">&#60;</button>
-              <button type="button" class="round-btn">&#62;</button>
-            </div>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="price-row">
-            <span class="price">$ @ViewBag.prenda.Precio</span>
-            @if(esPoseida){
-              <span class="armario-tag">En tu armario</span>
-            }
-          </div>
-          <p class="desc">@ViewBag.prenda.descripcion</p>
-          <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
-          <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
-            <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
-            <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
-            <span style="margin-left:12px;"><strong>Stock:</strong> @PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)</span>
-          </div>
-          <div class="section-title">ESTILOS</div>
-          <div class="tags">
-          @foreach(Estilo estilito in ViewBag.estilitos){
-               <span class="tag">@estilito.Nombre</span>
-          }
-         
-          </div>
-          <div class="section-title">COLORES</div>
-          <div class="color-options @(esPoseida ? "color-options-disabled" : string.Empty)">
-          @foreach(Prenda prenda in ViewBag.Similares){
-            var colorHex = PrendaBD.levantarColor(prenda.Color).codigoHexa;
-            if(esPoseida){
-              <span class="color-dot color-dot-disabled" style="background-color:@colorHex"></span>
-            }else{
-              <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@colorHex"></span></a>
-            }
-            }
-          </div>
-          <div class="section-title">TALLES</div>
-          <div class="talles @(esPoseida ? "talles-disabled" : string.Empty)">
-            @{
-                var variantes = PrendaBD.LevantarVariantes(ViewBag.prenda.IdPrenda);
-                foreach(var v in variantes){
-                    var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
-                    if(v.IdPrenda == ViewBag.prenda.IdPrenda){
-                        <span class="talle active-talle">@nombreTalle</span>
-                    } else {
-                        <a href="/Home/vistaPrenda?idPrenda=@v.IdPrenda"><span class="talle">@nombreTalle</span></a>
-                    }
-                }
-            }
-          </div>
-          @if(esPoseida){
-            <div class="action-buttons poseida-actions">
-              <form method="post" action="@Url.Action("eliminarPoseido","Armario")">
-                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
-                <button type="submit" class="poseida-btn btn btn-outline-danger w-100">Eliminar del armario</button>
-              </form>
-              <form method="post" action="@Url.Action("moverADeseados","Armario")">
-                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
-                <button type="submit" class="poseida-btn btn btn-outline-secondary w-100">Mover a deseados</button>
-              </form>
-            </div>
-          }else{
-            <div class="action-buttons">
-            @{
-                if(usuarioLogueado){
-                    if(!ViewBag.Deseado){
-                        <a href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png"/></a>
-                    }else{
-                        <a href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png"/></a>
-                    }
+    <div class="row g-4 align-items-stretch">
+        <!-- Panel izquierdo: Información de tienda -->
+        <div class="col-12 col-lg-4">
+            <div class="card h-100 shadow-sm border-2">
+                <div class="card-body">
+                    <div class="mb-2 small text-muted">NOMBRE</div>
+                    <div class="fw-semibold mb-3">@tienda.Nombre</div>
 
-                    if(!ViewBag.estaEnCarrito)
-                    { 
-                        if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){
-                            <a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
-                        }else{
-                            <a class="btn-cart" href="#">NO HAY STOCK</a>
-                        }
-                    }else{
-                        <a class="btn-cart" href="#">YA EN TU CARRITO</a>
+                    <div class="mb-2 small text-muted">MAIL</div>
+                    <div class="fw-semibold mb-3">@tienda.Mail</div>
+
+                    <div class="mb-2 small text-muted">TELÉFONO</div>
+                    <div class="fw-semibold mb-3">@tienda.Telefono</div>
+
+                    <div class="mb-2 small text-muted">UBICACIÓN</div>
+                    <div class="fw-semibold mb-3">@tienda.Ubicacion</div>
+
+                    @if (permisos)
+                    {
+                        <a class="btn btn-outline-dark w-100 mt-2" href='"@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
                     }
-                }else{
-                    <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
-                    <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
-                }
-            }
+                </div>
             </div>
-          }
         </div>
-      </section>
-    <section class="otros-section">
-        <div class="otros-header">
-          <span>OTROS &gt;</span>
+
+        <!-- Centro: Avatar y CTA publicar -->
+        <div class="col-12 col-lg-4 d-flex flex-column align-items-center gap-3">
+            <div class="rounded-circle border border-4 border-dark overflow-hidden d-flex align-items-center justify-content-center" style="width: 180px; height: 180px;">
+                @if (!string.IsNullOrEmpty(tienda.FotoDePerfil))
+                {
+                    <img src="@tienda.FotoDePerfil" alt="Perfil tienda" style="width:100%; height:100%; object-fit:cover;" />
+                }
+                else
+                {
+                    <span style="font-size:64px;">👤</span>
+                }
+            </div>
+
+            @if (permisos)
+            {
+                <div class="text-center">
+                    <p class="mb-2">¡Publicá tus nuevos productos!</p>
+                    <a class="btn btn-light perfil-btn" href='@Url.Action("subidaProducto","Tienda")'>PUBLICAR</a>
+                </div>
+            }
         </div>
-        <div class="otros-carousel">
-          <button type="button" class="round-btn">&#60;</button>
-          <div class="otros-items">
-            <div class="otros-item"></div>
-            <div class="otros-item"></div>
-            <div class="otros-item"></div>
-            <div class="otros-item"></div>
-          </div>
-          <button type="button" class="round-btn">&#62;</button>
+
+        <!-- Panel derecho: Opciones -->
+        <div class="col-12 col-lg-4">
+            <div class="card h-100 shadow-sm border-2">
+                <div class="card-body d-grid gap-2">
+                    @if (permisos)
+                    {
+                        <a class="btn btn-light perfil-btn" href=#>ADMINISTRAR PEDIDOS</a>
+                        <a class="btn btn-light perfil-btn" href=#>VER ESTADÍSTICAS</a>
+                    }
+                    <a class="btn btn-light perfil-btn" onclick="AbrirVendedorNuevo()">AÑADIR VENDEDOER</a>
+                    <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Comprador")"'>CERRAR SESIÓN</a>
+                    
+                    @if (permisos)
+                    {
+                        <a class="btn btn-outline-danger w-100" href='@Url.Action("verTiendasAdministrador","Tienda")'>ELIMINAR TIENDA</a>
+                    }
+                </div>
+            </div>
         </div>
-    </section>
-  </section>
+    </div>
+   
+    <!-- Carrusel de prendas -->
+    <div class="mt-5">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="h5 m-0">MIS PRENDAS ></h2>
+        </div>
+        <div class="d-flex gap-3 overflow-auto pb-2">
+            @foreach (var p in productos)
+            {
+                <div class="border rounded-3 p-2 text-center" style="min-width: 170px;">
+                    <div class="mb-2">
+                        <a href='@Url.Action("verProducto",new{IdPrenda=@p.IdPrenda})'><img src="/img/@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" /></a>
+                    </div>
+                    <div class="small fw-semibold">@p.Modelo</div>
+                    <div class="text-muted small">$@p.Precio</div>
+                </div>
+            }
+            @if (!productos.Any())
+            {
+                <div class="text-muted">Todavía no hay prendas publicadas.</div>
+            }
+        </div>
+    </div>
 </div>
+</body>
 
+
+<script>
+function AbrirVendedorNuevo(params) {
+    
 }
+
+</script>
