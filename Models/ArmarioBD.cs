@@ -47,8 +47,8 @@ static class ArmarioBD{
         foreach(int col in colores){
             using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "INSERT INTO ColorxComprador Values(@usuario,@idColor)";
-        connection.Execute(query,new{@usuario=Usuario,@idEstilo=col});
+        string query = "INSERT INTO ColorxComprador Values(@idColor,@usuario)";
+        connection.Execute(query,new{@usuario=Usuario,@idColor=col});
             
         }
         }
