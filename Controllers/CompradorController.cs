@@ -80,23 +80,21 @@ public IActionResult editarUsuario(){
 }
     public IActionResult vistaUsuario(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        
+
          if (Usu == null)
         {
             return RedirectToAction("iniciarSesion");
         }
-
+ ViewBag.medidas=CompradorBD.levantarMedidas(Usu.Usuario);
         ViewBag.usu=Usu;
         return View();
     }
 
   public IActionResult cargarMedidas([FromBody] PayloadModel payload){
-    Console.WriteLine("aca1");
         try
     {
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-    Console.WriteLine("aca2");
-    Console.WriteLine(payload.MedidaTorso);
-
         CompradorBD.cargarMedidas(Usu.Usuario,payload.MedidaTorso,payload.MedidaCintura,payload.MedidaPierna,payload.MedidaHombros,payload.MedidaBrazos,payload.MedidaCadera);
                    return Json(new { ok = true });
 
@@ -161,7 +159,7 @@ if (Usu==null)
     }
  public IActionResult quitarDeseado(int idPrenda){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
+        CompradorBD.quitarDeseado(idPrenda, Usu.Usuario);
 
         return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }

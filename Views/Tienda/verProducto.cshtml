@@ -1,8 +1,9 @@
 @{
-    ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-                <link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
+  ViewData["Title"] = ViewBag.prenda?.Modelo ?? "Prenda";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+  bool usuarioLogueado = ViewBag.Usuario == true;
 }
+<link rel="stylesheet" href="~/css/vistaprenda.css" asp-append-version="true" />
    
 
 <div class="prenda-page">
@@ -11,42 +12,41 @@
         <h1>@ViewBag.prenda.Modelo</h1>
       </div>
       <section class="prenda-content">
-        <div class="slider-card">
-          <div class="slider-frame">
-            <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
-            <div class="slider-controls">
-              <button type="button" class="slider-btn">&#60;</button>
-              <button type="button" class="slider-btn">&#62;</button>
+        <div class="left-col">
+          <div class="slider-card">
+            <div class="slider-frame">
+              <div class="thumbs-col">
+                @if(ViewBag.Similares != null){
+                  foreach(Prenda pThumb in ViewBag.Similares){
+                    <a href="/Tienda/verProducto?idPrenda=@pThumb.IdPrenda" class="thumb-link"><img src="/img/@pThumb.foto" alt="mini" class="thumb-img"/></a>
+                  }
+                } else {
+                  <img src="/img/@ViewBag.prenda.foto" alt="mini" class="thumb-img"/>
+                }
+              </div>
+
+              <div class="main-image-wrap">
+                <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
+              </div>
+
+              <div class="slider-controls">
+                <button type="button" class="slider-btn">&#60;</button>
+                <button type="button" class="slider-btn">&#62;</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="info-card">
-          <div class="price-row">
-            <span class="price">$ @ViewBag.prenda.Precio</span>
-          </div>
-          <p class="desc">@ViewBag.prenda.descripcion</p>
-          <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
-          <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
-            <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
-            <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
-            <span style="margin-left:12px;"><strong>Stock:</strong> <span id="currentStock">@ViewBag.prenda.stock</span></span>
-          </div>
-          <div class="section-title">ESTILOS</div>
-          <div class="tags">
-          @foreach(Estilo estilito in ViewBag.estilitos){
-               <span class="tag">@estilito.Nombre</span>
-          }
-         
-          </div>
-          <div class="section-title">COLORES</div>
-          <div class="color-options">
-          @foreach(Prenda prenda in ViewBag.Similares){
-            <a href="/Tienda/verProducto?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
-            }
-          </div>
-          <div class="section-title">TALLES</div>
-          <div class="talles">
-            @{
+
+          <div class="meta-below">
+            <div class="section-title">COLORES</div>
+            <div class="color-options">
+              @foreach(Prenda prenda in ViewBag.Similares){
+                <a href="/Tienda/verProducto?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@PrendaBD.levantarColor(prenda.Color).codigoHexa"></span></a>
+              }
+            </div>
+
+            <div class="section-title">TALLES</div>
+            <div class="talles">
+              @{ 
                 var variantes = PrendaBD.LevantarVariantes(ViewBag.prenda.IdPrenda);
                 foreach(var v in variantes){
                     var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
@@ -56,19 +56,60 @@
                         <a class="talle-link" href="@Url.Action("verProducto","Tienda", new { IdPrenda = v.IdPrenda })"> <span class="talle">@nombreTalle</span></a>
                     }
                 }
-            }
+              }
+            </div>
           </div>
-          <div class="stock-editor" style="margin-top:12px;">
-            <label for="stockInput"><strong>Editar stock:</strong></label>
-            <input id="stockInput" type="number" min="0" value="@ViewBag.prenda.stock" style="width:90px; margin-left:8px;" />
-            <button id="saveStockBtn" class="btn btn-sm btn-primary" style="margin-left:8px;">Guardar</button>
-            <span id="stockMsg" style="margin-left:8px;color:green;display:none;">Guardado</span>
-          </div>
-          <a class="btn-cart" href="/Tienda/EliminarPrenda?idPrenda=@ViewBag.prenda.IdPrenda">ELIMINAR PRENDA</a>
+        </div>
+
+        <div class="right-col">
+          <div class="info-card">
+            <div class="price-row">
+              <span class="price">$ @ViewBag.prenda.Precio</span>
+            </div>
+            <p class="desc">@ViewBag.prenda.descripcion</p>
+            <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
+            <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
+              <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
+              <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
+              <span style="margin-left:12px;"><strong>Stock:</strong> <span id="currentStock">@ViewBag.prenda.stock</span></span>
+            </div>
+
+            <div class="section-title">ESTILOS</div>
+            <div class="tags">
+              @foreach(Estilo estilito in ViewBag.estilitos){
+                   <span class="tag">@estilito.Nombre</span>
+              }
+            </div>
+
+            <div class="action-row">
+              <div class="stock-editor">
+                <label for="stockInput"><strong>Editar stock:</strong></label>
+                <input id="stockInput" type="number" min="0" value="@ViewBag.prenda.stock" style="width:90px; margin-left:8px;" />
+                <button id="saveStockBtn" class="btn btn-sm btn-primary" style="margin-left:8px;">Guardar</button>
+                <span id="stockMsg" style="margin-left:8px;color:green;display:none;">Guardado</span>
+              </div>
+
+              <div class="actions">
+                <a class="btn-outline-cart" href="/Tienda/EliminarPrenda?idPrenda=@ViewBag.prenda.IdPrenda">ELIMINAR PRENDA</a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
   </section>
+  @{ 
+    if(usuarioLogueado){
+      if(!(ViewBag.Deseado is bool && (bool)ViewBag.Deseado)){
+        <a class="like-circle" href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png" alt="like"/></a>
+      } else {
+        <a class="like-circle" href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png" alt="like"/></a>
+      }
+    } else {
+      <a class="like-circle" href="/Comprador/iniciarSesion"><img class="like" src="~/img/like.png" alt="like"/></a>
+    }
+  }
+</section>
 </div>
 
 <script>

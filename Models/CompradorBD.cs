@@ -12,12 +12,27 @@ static class CompradorBD{
     }
 
     static public void agregarDeseado(int idPrenda, string Usuario){
+        if(verSiDeseado(idPrenda,Usuario)){
+            return;
+        }
         string query = "INSERT INTO Deseado VALUES (@pidPrenda, @pUsuario)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
         }
     }
+      static public void quitarDeseado(int idPrenda, string Usuario){
+        if(!verSiDeseado(idPrenda,Usuario)){
+            return;
+        }
+        string query = "DELETE FROM Deseado WHERE IdPrenda=@pidPrenda AND Usuario=@pUsuario";
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+        connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
+        }
+    }
         static public void comprarPrenda(int idPrenda, string Usuario){
+            if(verSiPoseido(idPrenda,Usuario)){
+                return;
+            }
         string query = "INSERT INTO Poseido VALUES (@pUsuario,@pidPrenda)";
         using(SqlConnection connection = new SqlConnection(connectionString)){
         connection.Execute(query, new {pidPrenda=idPrenda, pUsuario=Usuario});
@@ -75,12 +90,10 @@ static class CompradorBD{
     }
 
     static  public void cargarMedidas(string usuario,double MedidaTorso, double MedidaCintura, double MedidaPierna, double MedidaHombros, double MedidaBrazos, double MedidaCadera){
-       Console.WriteLine("aca");
-       Console.WriteLine(MedidaTorso);
         using(SqlConnection connection = new SqlConnection(connectionString)){
  
-        string query = "EXEC cargarMedidas @idUsuario,@MedidaTorso,@MedidaCintura,@MedidaPierna,@MedidaHombros,@MedidaBrazos,@MedidaCadera";
-        connection.Execute(query,new{@idUsuario=usuario,@MedidaTorso=MedidaTorso,@MedidaCintura=MedidaCintura,@MedidaPierna=MedidaPierna,@MedidaHombros=MedidaHombros,@MedidaBrazos=MedidaBrazos,@MedidaCadera=MedidaCadera});
+        string query = "EXEC cargarMedidas @idUsuario,@pMedidaTorso,@pMedidaCintura,@pMedidaPierna,@pMedidaHombros,@pMedidaBrazos,@pMedidaCadera";
+        connection.Execute(query,new{@idUsuario=usuario,@pMedidaTorso=MedidaTorso,@pMedidaCintura=MedidaCintura,@pMedidaPierna=MedidaPierna,@pMedidaHombros=MedidaHombros,@pMedidaBrazos=MedidaBrazos,@pMedidaCadera=MedidaCadera});
             
         }
     }

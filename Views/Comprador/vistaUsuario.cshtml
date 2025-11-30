@@ -21,24 +21,24 @@
 	}
 	.col-12.col-md-6{
 		width:50%;
-		margin-right:3%;
+				background-color:white;
+
 	}
-	.col-12.col-md-6{
-		background-color:white;
-	}
-	.perfil-btn {
-    background-color: #f8f9fa;
-border: solid 1px grey;
+
+.informacion {
+    display: flex;
+    margin-left: 5%;
 }
 .button.btn.btn-light.perfil-btn{
-	background-color:white !important;
+	background-color:rgb(0, 0, 0) !important;
+	color:white !important;
 }
 	.perfil-btn:hover {
-    background-color: #f8f9fa;
     box-shadow: 1px 5px 10px rgb(209 2 96);
 }
 .perfil-btn {
-    background-color: #f8f9fa;
+    background-color: #000;
+    color: white;
     border: solid 1px black;
 }
 .card.perfil-card.h-100 {
@@ -102,6 +102,9 @@ iframe{
 					<form action='@Url.Action("editarUsuario")'>
 						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
 					</form>
+					<form action='@Url.Action("cerrarSesion","Comprador")' class="mb-2">
+				<button type="submit" class="btn btn-light perfil-btn">Cerrar sesión</button>
+			</form>
 				</div>
 			</div>
 		</div>
@@ -110,29 +113,29 @@ iframe{
 			<div class="card perfil-card h-100">
 				<div class="card-body">
 					<h3 class="h5 text-center mb-3">MEDIDAS</h3>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE TORSO</div>
-						<div>@((ViewBag.MedidaTorso == 0) ? "coming soon" : ViewBag.MedidaTorso?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaTorso == 0 ? "vacio" : ViewBag.medidas.MedidaTorso) cm</p>
 					</div>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE CINTURA</div>
-						<div>@((ViewBag.MedidaCintura == 0) ? "coming soon" : ViewBag.MedidaCintura?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaCintura == 0 ? "vacio" : ViewBag.medidas.MedidaCintura) cm</p>
 					</div>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE PIERNAS</div>
-						<div>@((ViewBag.MedidaPierna == 0) ? "coming soon" : ViewBag.MedidaPierna?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaPierna == 0 ? "vacio" : ViewBag.medidas.MedidaPierna) cm</p>
 					</div>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE HOMBROS</div>
-						<div>@((ViewBag.MedidaHombres == 0) ? "coming soon" : ViewBag.MedidaHombres?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaHombros == 0 ? "vacio" : ViewBag.medidas.MedidaHombros) cm</p>
 					</div>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE BRAZOS</div>
-						<div>@((ViewBag.MedidaBrazos == 0) ? "coming soon" : ViewBag.MedidaBrazos?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaBrazos == 0 ? "vacio" : ViewBag.medidas.MedidaBrazos) cm</p>
 					</div>
-					<div class="mb-2">
+					<div class="mb-2" style="display:flex;">
 						<div class="fw-semibold small text-muted">TALLE CADERA</div>
-						<div>@((ViewBag.MedidaCadera == 0) ? "coming soon" : ViewBag.MedidaCadera?.ToString())</div>
+						<p>@(ViewBag.medidas.MedidaCadera == 0 ? "vacio" : ViewBag.medidas.MedidaCadera) cm</p>
 					</div>
 					<form action="/Comprador/editarMedidas" class="mb-2">
 						<button type="submit" class="btn btn-light perfil-btn">EDITAR DATOS</button>
@@ -143,17 +146,12 @@ iframe{
 		</div>
 	</div>
 </div>
-	<div class="row justify-content-center mt-4">
-			<form action='@Url.Action("cerrarSesion","Comprador")' class="mb-2">
-				<button type="submit" class="btn btn-light perfil-btn">Cerrar sesión</button>
-			</form>
-		</div>
+
 	</div>
 </div>
 <div id="videotutorial" style="display:none;position:absolute">
 <img id="cerrar" src="/img/cruz.png" onclick="cerrarTutorial()">
 <iframe width="600" height="500" src="https://www.youtube.com/embed/3NoIx9cbZyE?si=HgeN5gLDnI4rqdVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<!--- poner tutorial aca--->
 </div>
 </body>
 <script>

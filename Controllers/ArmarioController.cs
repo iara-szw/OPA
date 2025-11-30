@@ -48,17 +48,7 @@ public class ArmarioController : Controller
     }
 
     [HttpPost]
-    public IActionResult moverADeseados(int idPrenda){
-        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        if(usu==null){
-            return RedirectToAction("iniciarSesion","Comprador");
-        }
-        ArmarioBD.eliminarPoseido(usu.Usuario,idPrenda);
-        if(!CompradorBD.verSiDeseado(idPrenda,usu.Usuario)){
-            CompradorBD.agregarDeseado(idPrenda,usu.Usuario);
-        }
-        return RedirectToAction("vistaPrenda","Home",new{IdPrenda=idPrenda, from="armario"});
-    }
+ 
     public IActionResult guardarEstilos(List<int> estilos){
         Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         if(usu==null){

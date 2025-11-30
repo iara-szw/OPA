@@ -17,36 +17,42 @@
 	<div class="card shadow-sm p-4 mx-auto perfil-card" style="max-width:640px;">
 		<form id="formEditar" novalidate>
 			<h5 class="mb-3">Información personal</h5>
-			<div class="mb-3">
-				<label for="torso" class="form-label">Torso</label>
-				<input id="torso" type="tel" name="MedidaTorso" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaTorso" >
-				<div class="form-text">Ingresá la medida de tu torse.</div>
-			</div>
-			<div class="mb-3">
-				<label for="cintura" class="form-label">Cintura</label>
-				<input id="cintura"  type="tel" name="MedidaCintura" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCintura" >
-				<div class="form-text">Ingresá la medida de tu cintura.</div>
-			</div>
-			<div class="mb-3">
-				<label for="piernas" class="form-label">Piernas</label>
-				<input id="piernas" type="tel" name="MedidaPierna" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaPierna" >
-				<div class="form-text">Ingresá la medida de tus piernas.</div>
-			</div>
-			<div class="mb-3">
-				<label for="hombros" class="form-label">Hombros</label>
-				<input id="hombros" type="tel"name="MedidaHombros" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaHombros " >
-				<div class="form-text">Ingresá la medida de tus Hombros.</div>
-			</div>
-			<div class="mb-3">
-				<label for="brazos" class="form-label">Brazos</label>
-				<input id="brazos" type="tel" NAME="MedidaBrazos" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaBrazos" >
-				<div class="form-text">Ingresá la medida de tu brazo.</div>
-			</div>
-			<div class="mb-3">
-				<label for="cadera" class="form-label">Cadera</label>
-				<input id="caderas" type="tel" name="MedidaCadera" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCadera" >
-				<div class="form-text">Ingresá la medida de tu cadera.</div>
-			</div>
+            <div class="mb-3">
+                <label for="torso" class="form-label">Torso</label>
+                <input id="torso" type="number" min="0" max="999.999" step="0.001" name="MedidaTorso" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaTorso" >
+                <div class="form-text">Ingresá la medida de tu torso.</div>
+                <div class="invalid-feedback">Valor inválido..</div>
+            </div>
+            <div class="mb-3">
+                <label for="cintura" class="form-label">Cintura</label>
+                <input id="cintura"  type="number" name="MedidaCintura" min="0" max="999.999" step="0.001" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCintura" >
+                <div class="form-text">Ingresá la medida de tu cintura.</div>
+                <div class="invalid-feedback">Valor inválido.</div>
+            </div>
+            <div class="mb-3">
+                <label for="piernas" class="form-label">Piernas</label>
+                <input id="piernas" type="number" name="MedidaPierna" min="0" max="999.999" step="0.001" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaPierna" >
+                <div class="form-text">Ingresá la medida de tus piernas.</div>
+                <div class="invalid-feedback">Valor inválido.</div>
+            </div>
+            <div class="mb-3">
+                <label for="hombros" class="form-label">Hombros</label>
+                <input id="hombros" type="number" name="MedidaHombros" min="0" max="999.999" step="0.001" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaHombros " >
+                <div class="form-text">Ingresá la medida de tus hombros.</div>
+                <div class="invalid-feedback">Valor inválido.</div>
+            </div>
+            <div class="mb-3">
+                <label for="brazos" class="form-label">Brazos</label>
+                <input id="brazos" type="number" name="MedidaBrazos" min="0" max="999.999" step="0.001" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaBrazos" >
+                <div class="form-text">Ingresá la medida de tu brazo.</div>
+                <div class="invalid-feedback">Valor inválido.</div>
+            </div>
+            <div class="mb-3">
+                <label for="caderas" class="form-label">Cadera</label>
+                <input id="caderas" type="number" name="MedidaCadera" min="0" max="999.999" step="0.001" class="form-control form-control-lg" placeholder="@ViewBag.medidas.MedidaCadera" >
+                <div class="form-text">Ingresá la medida de tu cadera.</div>
+                <div class="invalid-feedback">Valor inválido.</div>
+            </div>
 				<div class="d-flex justify-content-between pt-2">
 				<button type="submit" class="btn btn-dark btn-lg px-4 perfil-btn" id="btnGuardar">Guardar cambios</button>
 				<a href="/comprador/vistaUsuario" class="btn btn-outline-dark btn-lg px-4 perfil-btn">Cancelar</a>
@@ -73,64 +79,119 @@ async function subirDatos(payload) {
     const alerta = document.getElementById('alerta');
     const btnGuardar = document.getElementById('btnGuardar');
 
+    // inyecta las medidas del servidor como objeto JS
+    const medidas = @Html.Raw(JsonConvert.SerializeObject(ViewBag.medidas ?? new { MedidaTorso = 0, MedidaCintura = 0, MedidaPierna = 0, MedidaHombros = 0, MedidaBrazos = 0, MedidaCadera = 0 }));
+
     const torso = document.getElementById('torso');
     const cintura = document.getElementById('cintura');
     const piernas = document.getElementById('piernas');
     const hombros = document.getElementById('hombros');
-	    const brazos = document.getElementById('brazos');
-		    const cadera = document.getElementById('cadera');
+    const brazos = document.getElementById('brazos');
+    const caderas = document.getElementById('caderas');
 
+    // prefill si están vacíos
+    if (!torso.value && medidas.MedidaTorso) torso.value = medidas.MedidaTorso;
+    if (!cintura.value && medidas.MedidaCintura) cintura.value = medidas.MedidaCintura;
+    if (!piernas.value && medidas.MedidaPierna) piernas.value = medidas.MedidaPierna;
+    if (!hombros.value && medidas.MedidaHombros) hombros.value = medidas.MedidaHombros;
+    if (!brazos.value && medidas.MedidaBrazos) brazos.value = medidas.MedidaBrazos;
+    if (!caderas.value && medidas.MedidaCadera) caderas.value = medidas.MedidaCadera;
+
+    function parseNumber(v) {
+        if (v == null) return 0;
+        // permitir coma como separador decimal
+        const normalized = String(v).trim().replace(',', '.');
+        const n = parseFloat(normalized);
+        return isNaN(n) ? 0 : n;
+    }
+
+    // Validación: decimal(6,3) => máximo 3 decimales y valor <= 999.999
+    function validateField(input) {
+        const feedback = input.parentElement.querySelector('.invalid-feedback');
+        if (feedback) feedback.textContent = 'Valor inválido.';
+        input.classList.remove('is-invalid');
+
+        const raw = (input.value || '').toString().trim();
+        if (raw === '') return true; // vacío permitido (se trata como 0)
+
+        const normalized = raw.replace(',', '.');
+        if (!/^\d+(\.\d+)?$/.test(normalized)) {
+            if (feedback) feedback.textContent = 'Formato inválido (solo números).';
+            input.classList.add('is-invalid');
+            return false;
+        }
+
+        const parts = normalized.split('.');
+        const decimals = parts[1] ? parts[1].length : 0;
+        if (decimals > 3) {
+            if (feedback) feedback.textContent = 'Máximo 3 decimales.';
+            input.classList.add('is-invalid');
+            return false;
+        }
+
+        const num = parseFloat(normalized);
+        if (num > 999.999) {
+            if (feedback) feedback.textContent = 'Valor demasiado grande.';
+            input.classList.add('is-invalid');
+            return false;
+        }
+
+        return true;
+    }
+
+    const inputs = [torso, cintura, piernas, hombros, brazos, caderas];
+    inputs.forEach(i => {
+        if (!i) return;
+        i.addEventListener('input', () => {
+            i.classList.remove('is-invalid');
+            const fb = i.parentElement.querySelector('.invalid-feedback');
+            if (fb) fb.textContent = 'Valor inválido.';
+        });
+    });
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         alerta.classList.add("d-none");
- if(torso.value==null){
-        torso.value=ViewBag.MedidaTorso;
-    }
-    if(cintura.value==null){
-        cintura.value=ViewBag.medidas.MedidaCintura;
-    }
-    if(piernas.value==null){
-        piernas.value=ViewBag.medidas.MedidaPiernas;
-    }
-    if(hombros.value=null){
-        hombros.value=ViewBag.medidas.MedidaHombros;
-    }
-	 if(brazos.value==null){
-		brazos.value=ViewBag.medidas.MedidaBrazos;
-	 }
-	  if(cadera.value==null){
-		cadera.value=ViewBag.medidas.MedidaCadera;
-	 }
-        const payload = {
-		 MedidaTorso:torso.value,
-		  MedidaCintura:cintura.value,
-		   MedidaPierna:piernas.value, 
-		    MedidaHombros:hombros.value, 
-			 MedidaBrazos:brazos.value,
-			  MedidaCadera=cadera.value
-
-        };
-		console.log('Payload:', payload); 
         btnGuardar.disabled = true;
 
+        // validar campos antes de enviar
+        let ok = true;
+        inputs.forEach(i => { if (i && !validateField(i)) ok = false; });
+        if (!ok) {
+            alerta.textContent = 'Corrige los campos resaltados en rojo.';
+            alerta.classList.remove('d-none');
+            btnGuardar.disabled = false;
+            return;
+        }
+
         try {
+            const payload = {
+                MedidaTorso: parseNumber(torso.value),
+                MedidaCintura: parseNumber(cintura.value),
+                MedidaPierna: parseNumber(piernas.value),
+                MedidaHombros: parseNumber(hombros.value),
+                MedidaBrazos: parseNumber(brazos.value),
+                MedidaCadera: parseNumber(caderas.value)
+            };
+
+            console.log('Payload:', payload);
+
             const resp = await subirDatos(payload);
 
-            if (resp.ok) {
+            if (resp && resp.ok) {
                 window.location.href = '/comprador/vistaUsuario';
                 return;
             }
 
-            alerta.textContent = resp.error || "No se pudieron guardar los cambios.";
+            alerta.textContent = resp?.error || "No se pudieron guardar los cambios.";
             alerta.classList.remove("d-none");
-
         } catch (err) {
-            alerta.textContent = "Error inesperado: " + err.message;
+            console.error(err);
+            alerta.textContent = "Error inesperado: " + (err?.message || err);
             alerta.classList.remove("d-none");
+        } finally {
+            btnGuardar.disabled = false;
         }
-
-        btnGuardar.disabled = false;
     });
 })();
 </script>

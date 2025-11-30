@@ -12,68 +12,51 @@
 
 <div class="prenda-page">
   <section class="prenda-wrapper">
-      @if(esPoseida){
-        <div class="poseida-banner">
-          <span class="poseida-icon">✔</span>
-          <span>Esta prenda ya está en tu armario</span>
-        </div>
-      }
+      <div style="display:flex;    justify-content: space-between;">
       <div class="prenda-back-row">
         <a class="back-link" href="@volverUrl">
           &larr; @(vieneDeArmario ? "Volver al Armario" : "Volver")
         </a>
       </div>
-      <div class="prenda-header">
+       @{ 
+    if(usuarioLogueado){
+      if(!ViewBag.deseado){
+        <a class="like-circle"  href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png" alt="like"/></a>
+      } else {
+        <a class="like-circle"  href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png" alt="like"/></a>
+      }
+    } else {
+      <a class="like-circle"  href="/Comprador/iniciarSesion"><img class="like" src="~/img/like.png" alt="like"/></a>
+    }
+  }
+</div>
+      <div class="prenda-header " >
         <h1>@ViewBag.prenda.Modelo</h1>
       </div>
       <section class="prenda-content">
-        <div class="slider-card">
-          <div class="slider-frame">
-            @if(esPoseida){
-              <span class="badge-armario">En tu armario</span>
-            }
-            <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
-            <div class="slider-controls">
-              <button type="button" class="slider-btn">&#60;</button>
-              <button type="button" class="slider-btn">&#62;</button>
+        <div class="left-col">
+          <div class="slider-card">
+             
+
+                <img src="/img/@ViewBag.prenda.foto" alt="@ViewBag.prenda.Modelo" class="slider-image" />
+          </div>
+
+          <div class="meta-below">
+            <div class="section-title">COLORES</div>
+            <div class="color-options @(esPoseida ? "color-options-disabled" : string.Empty)">
+              @foreach(Prenda prenda in ViewBag.Similares){
+                var colorHex = PrendaBD.levantarColor(prenda.Color).codigoHexa;
+                if(esPoseida){
+                  <span class="color-dot color-dot-disabled" style="background-color:@colorHex"></span>
+                }else{
+                  <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@colorHex"></span></a>
+                }
+              }
             </div>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="price-row">
-            <span class="price">$ @ViewBag.prenda.Precio</span>
-            @if(esPoseida){
-              <span class="armario-tag">En tu armario</span>
-            }
-          </div>
-          <p class="desc">@ViewBag.prenda.descripcion</p>
-          <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
-          <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
-            <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
-            <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
-            <span style="margin-left:12px;"><strong>Stock:</strong> @PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)</span>
-          </div>
-          <div class="section-title">ESTILOS</div>
-          <div class="tags">
-          @foreach(Estilo estilito in ViewBag.estilitos){
-               <span class="tag">@estilito.Nombre</span>
-          }
-         
-          </div>
-          <div class="section-title">COLORES</div>
-          <div class="color-options @(esPoseida ? "color-options-disabled" : string.Empty)">
-          @foreach(Prenda prenda in ViewBag.Similares){
-            var colorHex = PrendaBD.levantarColor(prenda.Color).codigoHexa;
-            if(esPoseida){
-              <span class="color-dot color-dot-disabled" style="background-color:@colorHex"></span>
-            }else{
-              <a href="/Home/vistaPrenda?idPrenda=@prenda.IdPrenda"><span class="color-dot" style="background-color:@colorHex"></span></a>
-            }
-            }
-          </div>
-          <div class="section-title">TALLES</div>
-          <div class="talles @(esPoseida ? "talles-disabled" : string.Empty)">
-            @{
+
+            <div class="section-title">TALLES</div>
+            <div class="talles @(esPoseida ? "talles-disabled" : string.Empty)">
+              @{ 
                 var variantes = PrendaBD.LevantarVariantes(ViewBag.prenda.IdPrenda);
                 foreach(var v in variantes){
                     var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
@@ -83,51 +66,74 @@
                         <a href="/Home/vistaPrenda?idPrenda=@v.IdPrenda"><span class="talle">@nombreTalle</span></a>
                     }
                 }
-            }
-          </div>
-          @if(esPoseida){
-            <div class="action-buttons poseida-actions">
-              <form method="post" action="@Url.Action("eliminarPoseido","Armario")">
-                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
-                <button type="submit" class="poseida-btn btn btn-outline-danger w-100">Eliminar del armario</button>
-              </form>
-              <form method="post" action="@Url.Action("moverADeseados","Armario")">
-                <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
-                <button type="submit" class="poseida-btn btn btn-outline-secondary w-100">Mover a deseados</button>
-              </form>
-              <button type="button" class="poseida-btn btn btn-outline-dark w-100">Ver en avatar</button>
+              }
             </div>
-          }else{
-            <button type="button" class="avatar-btn">VER EN AVATAR</button>
-            <div class="action-buttons">
-            @{
-                if(usuarioLogueado){
-                    if(!ViewBag.Deseado){
-                        <a href="/Comprador/agregarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/like.png"/></a>
-                    }else{
-                        <a href="/Comprador/quitarDeseado?idPrenda=@ViewBag.prenda.IdPrenda"><img class="like" src="~/img/Yalike.png"/></a>
-                    }
+          </div>
+        </div>
 
-                    if(!ViewBag.estaEnCarrito)
-                    { 
-                        if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){
-                            <a class="btn-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+        <div class="right-col">
+          <div class="info-card">
+            <div class="price-row">
+              <span class="price">$ @ViewBag.prenda.Precio</span>
+              @if(esPoseida){
+                <span class="armario-tag">En tu armario</span>
+              }
+            </div>
+            <p class="desc">@ViewBag.prenda.descripcion</p>
+            <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
+            <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
+              <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
+              <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
+              <span style="margin-left:12px;"><strong>Stock:</strong> @PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)</span>
+            </div>
+
+            <div class="section-title">ESTILOS</div>
+            <div class="tags">
+              @foreach(Estilo estilito in ViewBag.estilitos){
+                   <span class="tag">@estilito.Nombre</span>
+              }
+            </div>
+
+            <div class="action-row">
+              @if(esPoseida){
+                <div class="action-buttons poseida-actions">
+                  <form method="post" action="@Url.Action("eliminarPoseido","Armario")">
+                    <input type="hidden" name="idPrenda" value="@ViewBag.prenda.IdPrenda" />
+                    <button type="submit" class="poseida-btn btn btn-outline-danger w-100">Eliminar del armario</button>
+                  </form>
+                  <button type="button" class="poseida-btn btn btn-outline-dark w-100">Ver en avatar</button>
+                </div>
+              }else{
+                <div class="action-buttons">
+                  @{ 
+                    if(usuarioLogueado){
+                        if(!ViewBag.estaEnCarrito)
+                        { 
+                            if(PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)!=0){
+                                <a class="btn-outline-cart" href="/Compra/GuardarCarrito?idPrenda=@ViewBag.prenda.IdPrenda">AGREGAR AL CARRITO</a>
+                            }else{
+                                <a class="btn-outline-cart disabled" href="#">NO HAY STOCK</a>
+                            }
                         }else{
-                            <a class="btn-cart" href="#">NO HAY STOCK</a>
+                            <a class="btn-outline-cart disabled" href="#">YA EN TU CARRITO</a>
                         }
                     }else{
-                        <a class="btn-cart" href="#">YA EN TU CARRITO</a>
+                        <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
+                         <a class="btn-outline-cart" href="#">AGREGAR AL CARRITO</a>
                     }
-                }else{
-                    <h3>Inicia Sesión para agregar a tu carrito y guardar esta prenda</h3>
-                    <img class="like" src="~/wwwroot/img/like.png"/> <a class="btn-cart" href="#">AGREGAR AL CARRITO</a>
-                }
-            }
+                  }
+                </div>
+              }
             </div>
-          }
+
+          </div>
         </div>
       </section>
-      <section class="otros-section">
+     
+ 
+  </section>
+</div>
+ <section class="otros-section">
         <div class="otros-header">
           <span>OTROS &gt;</span>
         </div>
@@ -141,8 +147,3 @@
           </div>
           <button type="button" class="otros-btn">&#62;</button>
         </div>
-      </section>
-  </section>
-</div>
-
-}

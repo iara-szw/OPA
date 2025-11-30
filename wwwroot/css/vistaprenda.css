@@ -6,7 +6,6 @@
   box-sizing: border-box;
 }
 .prenda-page {
-  background: #f4f4f4;
   padding: 4rem 1rem 3rem;
   display: flex;
   justify-content: center;
@@ -16,18 +15,23 @@
   background: #fff;
   border: 2px solid #111;
   border-radius: 20px;
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   padding: 2rem;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 25px 14px rgba(0, 0, 0, 0.12);
+  position: relative;
 }
 .prenda-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
   gap: 2rem;
-  flex: 1 0 auto;
-  width: 100%;
+  align-items: flex-start;
 }
+
+.left-col{ flex: 0 0 46%; max-width:46%; }
+.right-col{ flex: 1 1 54%; }
+
+.main-image-wrap .slider-image{ width:100%; height:420px; object-fit:cover; border-radius:12px;    width: 90%;height:auto;
+ }
 .slider-card {
   border: 1px solid #111;
   border-radius: 16px;
@@ -49,6 +53,9 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+.like-btn{ float:left; align-items:center; justify-content:center; background:#fff; border-radius:50%; width:56px; height:56px; border:2px solid #111; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.like-btn img.like{ width:28px; height:28px; display:block; margin:auto; }
 .slider-controls {
   display: flex;
   justify-content: space-between;
@@ -94,6 +101,7 @@
   font-size: .95rem;
   font-weight: 700;
   letter-spacing: 1px;
+  margin-top:5%;
 }
 .color-options {
   display: flex;
@@ -123,6 +131,7 @@
   font-weight: 600;
 }
 .action-buttons {
+  margin-top:0%;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -134,34 +143,28 @@
 .action-buttons a,
 .action-buttons button {
   flex: 1;
-  min-width: 180px;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  border: 2px solid #111;
+  min-width: 160px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.98rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  transition: background .2s ease, color .2s ease;
+  transition: background .18s ease, color .18s ease;
 }
-.btn-cart {
-  background: #111;
-  color: #fff;
+.producto-meta {
+  margin-top:4% !important;
 }
-.btn-cart:hover {
-  background: #EB006B;
-  border-color: #EB006B;
-}
-.btn-buy {
-  background: #fff;
-  color: #111;
-}
-.btn-buy:hover {
-  background: #f8f8f8;
-}
+.btn-outline-cart{ background:#fff; color:#111; border:2px solid #111; }
+.btn-buy-prim{ background:#EB006B; color:#fff; border:none; }
+.btn-dark.btn-cart{ background: linear-gradient(90deg,#0b0b0b,#EB006B); color:#fff; border:none; }
 .otros-section {
   margin-top: 2rem;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 1rem 2rem;
+  box-sizing: border-box;
 }
 .otros-header {
   display: flex;
@@ -218,7 +221,7 @@
     min-height: auto;
   }
   .prenda-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
   .action-buttons {
     flex-direction: column;
@@ -227,6 +230,11 @@
     grid-template-columns: repeat(2, minmax(100px, 1fr));
   }
 }
+
+.like-circle{  display:flex; align-items:center; justify-content:center; background:#fff; border-radius:50%; width:56px; height:56px; border:2px solid #111; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+.like-circle img.like{ width:28px; height:28px; display:block; margin:auto; }
+
+.action-row{ display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-top:1rem; }
 
 .poseida-banner{
   display:flex;
