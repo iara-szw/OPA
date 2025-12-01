@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="es">
 
@@ -84,12 +85,12 @@
               <span>HOME</span>
             </a>
 
-            <a href="/Comprador/EncontrarEstilo" class="d-flex align-items-center mb-3 text-decoration-none">
+            <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/formulario.png" class="me-2" width="24" alt="Estilo" />
               <span>ENCONTRÁ TU ESTILO</span>
             </a>
         
-            <a href="/Home/HomeOutfits" class="d-flex align-items-center mb-3 text-decoration-none">
+            <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/outfit.png" class="me-2" width="24" alt="Outfits" />
               <span>OUTFITS</span>
             </a>
@@ -99,21 +100,35 @@
               <span>¿QUIENES SOMOS?</span>
             </a>
 
-            <a href="/Comprador/MiBilletera" class="d-flex align-items-center mb-3 text-decoration-none">
+            <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/billetera.png" class="me-2" width="24" alt="Mi billetera" />
               <span>MI BILLETERA</span>
             </a>
 
-            <a href="/Comprador/Ayuda" class="d-flex align-items-center mb-3 text-decoration-none">
+            <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/ayuda.png" class="me-2" width="24" alt="Ayuda" />
               <span>NECESITO AYUDA</span>
             </a>
           </div>
           <div class="menu-footer">
-            <a href="/Tienda/VerTiendasAdministrador" class="d-flex align-items-center mb-3 text-decoration-none">
-              <span class="me-2">&#8646;</span>
-              <span>CAMBIAR A VENDEDOR</span>
-            </a>
+            @{
+                var modoUsuario = Context.Session.GetString("ModoUsuario") ?? "Comprador";
+                bool esVendedor = string.Equals(modoUsuario, "Vendedor", StringComparison.OrdinalIgnoreCase);
+            }
+            @if (esVendedor)
+            {
+                <a href="@Url.Action("CambiarAComprador","Comprador")" class="d-flex align-items-center mb-3 text-decoration-none">
+                  <span class="me-2">&#8646;</span>
+                  <span>CAMBIAR A COMPRADOR</span>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("CambiarAVendedor","Comprador")" class="d-flex align-items-center mb-3 text-decoration-none">
+                  <span class="me-2">&#8646;</span>
+                  <span>CAMBIAR A VENDEDOR</span>
+                </a>
+            }
 
             <a href="/Comprador/VistaUsuario" class="d-flex align-items-center text-decoration-none">
               <img src="~/img/perfil.png" class="me-2" width="24" alt="Perfil" />

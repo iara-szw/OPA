@@ -68,7 +68,10 @@
                 <p class="text-muted mb-0">Tienda: <strong>@tienda.Nombre</strong></p>
             }
         </div>
-        <a class="btn btn-dark px-4 py-2" href="@Url.Action("subidaProducto","Tienda")">+ Nueva prenda</a>
+        <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary px-3 py-2" href='@Url.Action("vistaTienda","Tienda", new { IdTienda = tienda?.IdTienda })'>← Volver a la tienda</a>
+            <a class="btn btn-dark px-4 py-2" href="@Url.Action("subidaProducto","Tienda")">+ Nueva prenda</a>
+        </div>
     </div>
 
     @if(!productos.Any()){

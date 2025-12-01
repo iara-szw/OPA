@@ -5,6 +5,25 @@
     ViewData["Title"] = tienda?.Nombre ?? "Tienda";
 }
 <body>
+<style>
+    .perfil-btn {
+        background-color: #000;
+        color: white;
+        border: solid 1px black;
+        border-radius: 8px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .perfil-btn:hover {
+        box-shadow: 1px 5px 10px rgb(209 2 96);
+    }
+
+    .button.btn.btn-light.perfil-btn {
+        background-color: rgb(0, 0, 0) !important;
+        color: white !important;
+    }
+</style>
 <div class="container my-4">
     <div class="text-center mb-4">
         <h1 class="fw-bold text-uppercase">¡HOLA @tienda.Nombre!</h1>
@@ -29,8 +48,9 @@
 
                     @if (permisos)
                     {
-                        <a class="btn btn-outline-dark w-100 mt-2" href='"@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
+                        <a class="btn btn-light perfil-btn" href='"@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
                     }
+                    
                 </div>
             </div>
         </div>
@@ -53,6 +73,7 @@
                 <div class="text-center">
                     <p class="mb-2">¡Publicá tus nuevos productos!</p>
                     <a class="btn btn-light perfil-btn" href='@Url.Action("subidaProducto","Tienda")'>PUBLICAR</a>
+                    <a class="btn btn-light perfil-btn  " href='@Url.Action("misProductos","Tienda")'>MIS PRODUCTOS</a>
                 </div>
             }
         </div>
@@ -71,33 +92,10 @@
                     
                     @if (permisos)
                     {
-                        <a class="btn btn-outline-danger w-100" href='@Url.Action("verTiendasAdministrador","Tienda")'>ELIMINAR TIENDA</a>
+                        <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Tienda")'>ELIMINAR TIENDA</a>
                     }
                 </div>
             </div>
-        </div>
-    </div>
-   
-    <!-- Carrusel de prendas -->
-    <div class="mt-5">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <h2 class="h5 m-0">MIS PRENDAS ></h2>
-        </div>
-        <div class="d-flex gap-3 overflow-auto pb-2">
-            @foreach (var p in productos)
-            {
-                <div class="border rounded-3 p-2 text-center" style="min-width: 170px;">
-                    <div class="mb-2">
-                        <a href='@Url.Action("verProducto",new{IdPrenda=@p.IdPrenda})'><img src="/img/@p.foto" alt="@p.Modelo" style="width:150px; height:150px; object-fit:cover; border-radius:8px;" /></a>
-                    </div>
-                    <div class="small fw-semibold">@p.Modelo</div>
-                    <div class="text-muted small">$@p.Precio</div>
-                </div>
-            }
-            @if (!productos.Any())
-            {
-                <div class="text-muted">Todavía no hay prendas publicadas.</div>
-            }
         </div>
     </div>
 </div>

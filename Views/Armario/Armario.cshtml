@@ -51,7 +51,7 @@
     h1 { margin: 8px 0 0; font-size: 28px; letter-spacing: 1px; }
     .sub { margin: 4px 0 16px; color:#4b5563; font-size:14px; }
     .tabs { display:flex; gap:12px; margin: 12px 0 8px; }
-    .tab-btn { padding:8px 14px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; transition: all .2s ease-in-out; font-weight:600; }
+    .tab-btn { padding:8px 14px; border-radius:10px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; transition: all .2s ease-in-out; font-weight:600; }
     .tab-btn.activo { background: var(--magenta); color:#fff; border-color: transparent; }
     .panel { display:none; }
     .panel.activo { display:block; }
@@ -136,7 +136,7 @@ width:100%;
         {
             <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda, from="armario"})'class="col-6 col-sm-4 col-lg-3">
                 <div class="card h-100">
-                  <img src="@prenda.foto" alt="@prenda.Modelo" />
+                  <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
                   <div class="info">
                     <p class="titulo">@prenda.Modelo</p>
                     <span class="marca">@prenda.Tipo</span>
@@ -166,7 +166,7 @@ width:100%;
         {
             <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda, from="armario"})'>
               <div class="card">
-                <img src="@prenda.foto" alt="@prenda.Modelo" />
+                <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
                 <div class="info">
                   <p class="titulo">@prenda.Modelo</p>
                   <span class="marca">@prenda.Tipo</span>
@@ -190,7 +190,7 @@ width:100%;
         @foreach (var prenda in recomendados)
         {
           <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda, from="armario"})'><div class="card">
-              <img src="@prenda.foto" alt="@prenda.Modelo" />
+              <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
             <div class="info">
               <p class="titulo">@prenda.Modelo</p>
               <span class="marca">@prenda.Tipo</span>
@@ -204,7 +204,6 @@ width:100%;
         }
       </div>
     </section>
-
     <section class="mt-4">
       <div class="preferencias">
         <h3 style="margin:0 0 10px;">Tus preferencias</h3>
@@ -284,7 +283,7 @@ width:100%;
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Cambiar color</a>
                          <div class="collapse multi-collapse" id="multiCollapseExample1">  
 
-                        <div class="color-menu" id="colorMenu" style="display:none;">
+                        <div class="color-menu" id="colorMenu" >
                             @foreach(Color color in ViewBag.TodoColores){
                                 <label class="color-item">
                                             <input type="checkbox" class="color-checkbox" name="colores" value="@color.idColor" />

@@ -22,7 +22,26 @@
         color: #000;
         margin-bottom: 60px;
     }
-
+  
+    .btn-primary-custom {
+        background: #111;
+        color: white;
+        border: 2px solid #111;
+        border-radius: 10px;
+        padding: 0.875rem 2rem;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .btn-primary-custom:hover {
+        background: #EB006B;
+        border-color: #EB006B;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(235, 0, 107, 0.3);
+    }
     .circulos-grid {
         display: flex;
         justify-content: center;
@@ -93,13 +112,34 @@
     .circulo-placeholder.rosa {
         border-color: #ff5db1;
     }
-
+    input#Modelo {
+    border-radius:10px;
+    padding:3%;
+    border: 1px solid black;
+    }
+.labelClaro{
+    font-weight: 600 !important;
+}
+.btn-secondary-custom {
+    background: white;
+    color: #111;
+    border: 2px solid #111;
+    border-radius: 10px;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.btn-secondary-custom:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
     /* Estilos para la vista de subir producto, alineados con nuevaTienda */
-    .subida-producto-container{max-width:980px;margin:28px auto;padding:28px;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+    .subida-producto-container{max-width:980px;margin:28px auto;padding:4%;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.06) ; border:2px solid black;}
     .subida-producto-container h2{font-size:1.6rem;margin-bottom:12px;font-weight:700;color:#111}
     .subida-producto-container .form-row{display:flex;gap:16px;flex-wrap:wrap}
     .subida-producto-container .form-group{flex:1;min-width:180px;display:flex;flex-direction:column;margin-bottom:12px}
-    .subida-producto-container label{font-weight:600;margin-bottom:6px;color:#111;text-transform:uppercase;font-size:0.85rem}
+    .subida-producto-container label{font-weight:700;margin-bottom:6px;color:#111;text-transform:uppercase;font-size:0.85rem}
     .form-control, .form-select{border:1px solid #111;border-radius:10px;padding:0.6rem 0.9rem;font-size:0.95rem}
     .form-control:focus, .form-select:focus{border-color:#EB006B;box-shadow:0 0 0 3px rgba(235,0,107,0.08);outline:none}
     .estilos-wrap{display:flex;flex-wrap:wrap;gap:8px}
@@ -111,7 +151,7 @@
     .color-item:hover{background:#f7f7f7}
     .color-dot{width:18px;height:18px;border-radius:50%;border:1px solid #aaa;display:inline-block}
     .small-note{font-size:0.9rem;color:#666}
-    .submit-row{display:flex;justify-content:flex-end;gap:12px;margin-top:12px}
+    .submit-row{display:flex;justify-content:flex-end;gap:12px;margin-top:5%}
 
     /* Ajustes responsive */
     @media (max-width: 767px){

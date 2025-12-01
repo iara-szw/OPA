@@ -33,10 +33,18 @@ private readonly IWebHostEnvironment _env;
 
 
     public IActionResult seleccionarTienda(int IdTienda){
+        Tienda tiendaActual = TiendaBD.levantarTienda(IdTienda);
+        if (tiendaActual == null)
+        {
+            return RedirectToAction("verTiendasAdministrador");
+        }
 
-              Tienda tiendaActual=TiendaBD.levantarTienda(IdTienda);
-            HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
-            return RedirectToAction("vistaTienda");
+        HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
+        // Modo vendedor persistente y tienda seleccionada
+        HttpContext.Session.SetString("ModoUsuario", "Vendedor");
+        HttpContext.Session.SetInt32("TiendaSeleccionada", IdTienda);
+
+        return RedirectToAction("vistaTienda");
     }
 
     public IActionResult subidaProducto(){
@@ -49,6 +57,20 @@ private readonly IWebHostEnvironment _env;
         ViewBag.colores=BD.levantarColor();
         ViewBag.tipos=BD.levantarTipos();
         ViewBag.talles=BD.levantarTalles();
+        ViewBag.Temporada=BD.levantarTemporada();
+        
+            return View();
+    }
+    public IActionResult editarProducto(int idPrenda){
+              Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+
+        if(tienda==null){
+            return RedirectToAction("verTiendasAdministrador");
+        }
+        ViewBag.estilos=PrendaBD.levantarColor(idPrenda);
+        ViewBag.colores=PrendaBD.levantarTalle(idPrenda);
+        ViewBag.tipos=PrendaBD.LevantarPrendaxEstilo(idPrenda);
+        ViewBag.talles=PrendaBD.LevantarPrendaxEstilo(idPrenda);
         ViewBag.Temporada=BD.levantarTemporada();
         
             return View();
@@ -92,8 +114,12 @@ FotoDePerfil.CopyTo(stream);
         if (idNuevo == -1){
             return RedirectToAction("nuevaTienda");
         }
-        Tienda tiendaActual=TiendaBD.levantarTienda(idNuevo);
+        Tienda tiendaActual = TiendaBD.levantarTienda(idNuevo);
         HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
+        // Nuevo modo vendedor y tienda seleccionada
+        HttpContext.Session.SetString("ModoUsuario", "Vendedor");
+        HttpContext.Session.SetInt32("TiendaSeleccionada", idNuevo);
+
         return RedirectToAction("vistaTienda");
     }
 
@@ -122,22 +148,7 @@ FotoDePerfil.CopyTo(stream);
         ViewBag.productos=TiendaBD.levantarProductos(tienda.IdTienda) ?? new List<Prenda>();
         return View();
     }
-  public IActionResult verProducto(int IdPrenda){
-            Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
-        if(tienda == null){
-            return RedirectToAction("verTiendasAdministrador");
-        }
-
-        Prenda prenda1=PrendaBD.LevantarPrenda(IdPrenda);
-        ViewBag.prenda = prenda1;
-
-        ViewBag.vendedor = tienda.Nombre;
-        ViewBag.estilitos=PrendaBD.LevantarPrendaxEstilo(IdPrenda);
-        ViewBag.Similares = PrendaBD.LevantarSimilar(IdPrenda);
-        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-       
-        return View();
-    }
+ 
         public IActionResult EliminarPrenda(int IdPrenda){
         PrendaBD.eliminarPrenda(IdPrenda);
         return RedirectToAction("misProductos");

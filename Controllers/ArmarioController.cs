@@ -47,7 +47,6 @@ public class ArmarioController : Controller
         return RedirectToAction("vistaPrenda","Home",new{IdPrenda=idPrenda, from="armario"});
     }
 
-    [HttpPost]
  
     public IActionResult guardarEstilos(List<int> estilos){
         Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));

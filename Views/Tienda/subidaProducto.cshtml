@@ -2,6 +2,7 @@
     <meta charset="utf-8" />
     <title>Subir producto</title>
     <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
+
     
 </head>
 
@@ -59,7 +60,7 @@
                         @foreach(Estilo estilo in ViewBag.estilos){
                             <div>
                                 <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" />
-                                <label for="estilo_@estilo.IdEstilo">@estilo.Nombre</label>
+                                <label class="labelClaro" for="estilo_@estilo.IdEstilo">@estilo.Nombre</label>
                             </div>
                         }
                     </div>
@@ -92,17 +93,17 @@
                     <div>
                         @foreach(Temporada temporada in ViewBag.Temporada){
                             <input type="radio" name="Temporada" value="@temporada.idTemporada" id="temp_@temporada.idTemporada" required />
-                            <label for="temp_@temporada.idTemporada">@temporada.Nombre</label>
+                            <label class="labelClaro" for="temp_@temporada.idTemporada">@temporada.Nombre</label>
                         }
                     </div>
                 </div>
 
-                <div class="form-group" style="flex:1">
+                
+            </div>
+<div class="form-group" style="flex:1">
                     <label for="foto">Foto</label>
                     <input id="foto" type="file" name="foto" class="form-control" accept="image/*" required />
                 </div>
-            </div>
-
             <input type="hidden" id="variantStock" name="variantStock" />
             <div class="submit-row">
                 <a class="btn btn-secondary-custom" href='@Url.Action("vistaTienda","Tienda")'>Cancelar</a>
@@ -145,7 +146,6 @@
                 });
             }
             limitCheckboxes('.estilo-checkbox', 3);
-            limitCheckboxes('.color-checkbox', 3);
 
             // Handle talles selection
             function getSelectedTalles(){

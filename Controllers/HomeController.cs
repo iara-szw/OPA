@@ -15,16 +15,31 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        string id="";
-        Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        if(usu == null){
-            id="default";
-        }else{
-        id=usu.Usuario;
-
+        // Si está en modo vendedor, redirigir a la tienda seleccionada o a la selección de tienda
+        var modo = HttpContext.Session.GetString("ModoUsuario");
+        if (string.Equals(modo, "Vendedor", StringComparison.OrdinalIgnoreCase))
+        {
+            int? tiendaSeleccionada = HttpContext.Session.GetInt32("TiendaSeleccionada");
+            if (tiendaSeleccionada.HasValue)
+            {
+                return RedirectToAction("vistaTienda", "Tienda");
+            }
+            else
+            {
+                return RedirectToAction("verTiendasAdministrador", "Tienda");
+            }
         }
-        ViewBag.Ropa=BD.levantarRecomendados(id);
-        ViewBag.tiendas=BD.levantarRecomendadosTienda();
+
+        string id = "";
+        Comprador usu = Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if (usu == null){
+            id = "default";
+            return RedirectToAction ("LandingPage");
+        }else{
+            id = usu.Usuario;
+        }
+        ViewBag.Ropa = BD.levantarRecomendados(id);
+        ViewBag.tiendas = BD.levantarRecomendadosTienda();
         return View();
     }
     public IActionResult LandingPage()

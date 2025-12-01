@@ -5,11 +5,23 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #fff;
   color: #111;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 header {
@@ -70,6 +82,7 @@ header .iconos i {
 }
 
 .recomendado {
+  
   padding: 2rem 1rem;
 }
 
@@ -96,8 +109,7 @@ header .iconos i {
 #vermas{
   background-color: #ff0088;
   color:white;
-  margin-left:40%;
-  margin-top:3%;
+  margin-left:0%;
 }
 #vermas:hover{
   background-color:#c10067;
@@ -167,9 +179,29 @@ header .iconos i {
   margin-top: 0.5rem;
   font-size: 1rem;
 }
+  .btn-primary-custom {
+    background: #111;
+    color: white;
+    border: 2px solid #111;
+    border-radius: 10px;
+    padding: 10%;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.btn-primary-custom:hover {
+    background: #EB006B;
+    border-color: #EB006B;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(235, 0, 107, 0.3);
+}
 
 .explorando {
-  background: #fff;
+  background:linear-gradient(90deg,#0b0b0b,#EB006B);
+
   color: #fff;
   text-align: center;
   padding: 3rem 1rem;
@@ -310,16 +342,13 @@ main.registrarse{
   margin-top:-5%;
 }
 
-.ver{
-  background:linear-gradient(90deg,#0b0b0b,#EB006B);
-}
 .ver h3,.ver h4,.ver p{
-  color:#fff
+  color:#000000
 
 }
 .ver img{
-  border:2px solid white;
-  border-radius:white;
+  border:2px solid rgb(0, 0, 0);
+  border-radius:10px;
 }
 
 .ver h3{

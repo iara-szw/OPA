@@ -61,9 +61,9 @@
                 foreach(var v in variantes){
                     var nombreTalle = PrendaBD.levantarTalle(v.IdTalle).Nombre;
                     if(v.IdPrenda == ViewBag.prenda.IdPrenda){
-                        <span class="talle active-talle">@nombreTalle</span>
+                        <span class="talle" id="activo">@nombreTalle</span>
                     } else {
-                        <a href="/Home/vistaPrenda?idPrenda=@v.IdPrenda"><span class="talle">@nombreTalle</span></a>
+                        <a href="/Home/vistaPrenda?idPrenda=@v.IdPrenda" id="tallec"><span class="talle">@nombreTalle</span></a>
                     }
                 }
               }

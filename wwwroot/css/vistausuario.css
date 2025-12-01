@@ -1,0 +1,52 @@
+.perfil-card { border: 1px solid #aaa; border-radius: 10px; padding: 15px; margin: 10px auto; max-width: 300px; }
+	.perfil-btn {  border-radius: 8px; width: 100%; margin-top: 10px;    background-color: #000;
+        color: white;}
+	.perfil-btn:hover { background-color: #f8f9fa; box-shadow: 0 1px 0 rgba(0,0,0,.1) inset; }
+	#cerrar{
+		width:3%;
+		margin-bottom:1%;
+	}
+	#cerrar:hover{
+		cursor:pointer;
+	}
+    .informacion{
+        display:flex;
+    }
+	.perfil-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid #d60077; display: inline-block; object-fit: cover; background:#f8f9fa; display:flex; align-items:center; justify-content:center; color:#999; font-weight:600}
+	@media (min-width: 768px) { .perfil-card { max-width: 100%; } }
+	.row.g-4.text-start{
+		MARGIN-left:5%;
+	}
+	.col-12.col-md-6{
+		width:50%;
+				background-color:white;
+
+	}
+
+.informacion {
+    display: flex;
+    margin-left: 5%;
+}
+.button.btn.btn-light.perfil-btn{
+	background-color:rgb(0, 0, 0) !important;
+	color:white !important;
+}
+	.perfil-btn:hover {
+        box-shadow: 0px 4px 13px 0px rgb(255 68 153) !important;
+        background-color: #000000 !important;
+        color: white !important;
+    }
+.card.perfil-card.h-100 {
+    border: 2px solid black;
+}
+#videotutorial{
+	top: 17%;
+    position: absolute;
+    left: 25%;
+	
+}
+iframe{
+	width:110%;
+	border:2px solid black;
+	border-radius:10px;
+}

@@ -130,6 +130,14 @@
   justify-content: center;
   font-weight: 600;
 }
+#tallec{
+  text-decoration: none;
+  color:#0b0b0b
+}
+#activo{
+  background-color:#0b0b0b;
+  color:#ddd
+}
 .action-buttons {
   margin-top:0%;
   display: flex;

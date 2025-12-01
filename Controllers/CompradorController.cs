@@ -34,6 +34,10 @@ public class CompradorController : Controller
        Comprador usu = CompradorBD.levantarComprador(nombreUsuario,encriptar.HashearPassword(password));
             if(usu != null){
                 HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usu));
+                // Al iniciar sesión siempre comenzamos en modo comprador
+                HttpContext.Session.SetString("ModoUsuario", "Comprador");
+                HttpContext.Session.Remove("TiendaSeleccionada");
+                HttpContext.Session.Remove("tienda");
                 return RedirectToAction("vistaUsuario");
             }else{
                 return RedirectToAction("iniciarSesion",new{estado="error"});
@@ -41,6 +45,9 @@ public class CompradorController : Controller
     }
         public IActionResult cerrarSesion(){
         HttpContext.Session.Remove("usuario");
+        HttpContext.Session.Remove("ModoUsuario");
+        HttpContext.Session.Remove("TiendaSeleccionada");
+        HttpContext.Session.Remove("tienda");
         return RedirectToAction("iniciarSesion");
     }
     public IActionResult registrarse(string estado){
@@ -62,6 +69,21 @@ public class CompradorController : Controller
             CompradorBD.agregarComprador(usu);
             return RedirectToAction("registrarse",new{estado="funciono"});
         }
+    }
+
+    // Cambiar a modo vendedor: envía a la selección de tiendas
+    public IActionResult CambiarAVendedor(){
+        HttpContext.Session.SetString("ModoUsuario", "Vendedor");
+        // Si no hay tienda seleccionada, se elegirá en verTiendasAdministrador
+        return RedirectToAction("verTiendasAdministrador","Tienda");
+    }
+
+    // Volver a modo comprador: se limpian los datos de tienda
+    public IActionResult CambiarAComprador(){
+        HttpContext.Session.SetString("ModoUsuario", "Comprador");
+        HttpContext.Session.Remove("TiendaSeleccionada");
+        HttpContext.Session.Remove("tienda");
+        return RedirectToAction("Index","Home");
     }
 
 [HttpGet]
