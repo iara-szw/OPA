@@ -108,8 +108,8 @@ static class CompradorBD{
     }
     static public void editarComprador(string usuario, string nombre,string apellido,string mail,string telefono,string passwordHasheada){
          using(SqlConnection connection = new SqlConnection(connectionString)){
-        string query = "UPDATE Comprador SET Nombre=@nombre, Apellido=@Apellido, Contraseña=@password, Telefono=@telefono,Mail=@mail";
-        connection.Execute(query,new{@nombre=nombre, @Apellido=apellido, @password=passwordHasheada,@telefono=telefono,@mail=mail});
+        string query = "UPDATE Comprador SET Nombre=@nombre, Apellido=@Apellido, Contraseña=@password, Telefono=@telefono,Mail=@mail WHERE Usuario=@usuario";
+        connection.Execute(query,new{@nombre=nombre, @Apellido=apellido, @password=passwordHasheada,@telefono=telefono,@mail=mail,@usuario=usuario});
             
         }
     }

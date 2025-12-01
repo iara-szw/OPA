@@ -48,7 +48,7 @@
 
                     @if (permisos)
                     {
-                        <a class="btn btn-light perfil-btn" href='"@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
+                        <a class="btn btn-light perfil-btn" href='@Url.Action("editarTienda","Tienda")'>EDITAR DATOS</a>
                     }
                     
                 </div>
@@ -60,7 +60,7 @@
             <div class="rounded-circle border border-4 border-dark overflow-hidden d-flex align-items-center justify-content-center" style="width: 180px; height: 180px;">
                 @if (!string.IsNullOrEmpty(tienda.FotoDePerfil))
                 {
-                    <img src="@tienda.FotoDePerfil" alt="Perfil tienda" style="width:100%; height:100%; object-fit:cover;" />
+                    <img src="/img/@tienda.FotoDePerfil" alt="Perfil tienda" style="width:100%; height:100%; object-fit:cover;" />
                 }
                 else
                 {
@@ -88,11 +88,11 @@
                         <a class="btn btn-light perfil-btn" href=#>VER ESTADÍSTICAS</a>
                     }
                     <a class="btn btn-light perfil-btn" onclick="AbrirVendedorNuevo()">AÑADIR VENDEDOER</a>
-                    <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Comprador")"'>CERRAR SESIÓN</a>
+                    <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Tienda")'>CERRAR SESIÓN</a>
                     
                     @if (permisos)
                     {
-                        <a class="btn btn-light perfil-btn" href='@Url.Action("verTiendasAdministrador","Tienda")'>ELIMINAR TIENDA</a>
+                       <a class="btn btn-outline-danger" href='@Url.Action("EliminarTienda","Tienda",new{IdTienda = tienda.IdTienda})' onclick="return confirm('¿Seguro que querés eliminar esta tienda?');">Eliminar</a>
                     }
                 </div>
             </div>

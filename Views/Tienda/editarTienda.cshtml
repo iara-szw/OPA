@@ -1,0 +1,142 @@
+@using Newtonsoft.Json
+
+@{
+	ViewData["Title"] = "Editar Tienda";
+}
+
+<style>
+	.perfil-card { border: 1px solid #aaa; border-radius: 14px; }
+	.perfil-btn { border-radius: 10px; }
+</style>
+
+<main class="container my-5">
+	<h2 class="text-center mb-4">Editar mis datos</h2>
+
+	<div id="alerta" class="alert alert-danger d-none"></div>
+	<div id="usu" style="display:none" value="@ViewBag.tienda"> </div>
+	<div class="card shadow-sm p-4 mx-auto perfil-card" style="max-width:640px;">
+		<form id="formEditar" novalidate>
+			<h5 class="mb-3">Información de @ViewBag.tienda.Nombre</h5>
+			<div class="mb-3">
+
+				<label for="nombre" class="form-label">Nombre</label>
+				<input id="nombre" name="nombre" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Nombre" >
+				<div class="form-text">Ingresá el nombre.</div>
+			</div>
+			<div class="mb-3">
+				<label for="ubicacion" class="form-label">Ubicacion</label>
+				<input id="ubicacion" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Ubicacion" >
+				<div class="form-text">Ingresá la ubicación.</div>
+			</div>
+			<div class="mb-3">
+				<label for="mail" class="form-label">Email</label>
+				<input id="mail" type="email" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Mail" >
+				<div class="form-text">Ingresá un email válido.</div>
+			</div>
+
+			<div class="mb-3">
+				<label for="telefono" class="form-label">Teléfono</label>
+				<input id="telefono" type="tel" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Telefono" >
+				<div class="form-text">Ingresá el teléfono.</div>
+			</div>
+            		<div class="mb-3">
+				<label for="descripcion" class="form-label">Descripción</label>
+				<input id="descripcion" type="text" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Descripcion" >
+				<div class="form-text">Ingresá la descripción.</div>
+            </div>
+            		<div class="mb-3">
+				<label for="contacto" class="form-label">Contacto</label>
+				<input id="contacto" type="text" class="form-control form-control-lg" placeholder="@ViewBag.tienda.Contacto" >
+				<div class="form-text">Ingresá información de contacto.</div>
+			</div>
+			<div class="d-flex justify-content-between pt-2">
+				<button type="submit" class="btn btn-dark btn-lg px-4 perfil-btn" id="btnGuardar">Guardar cambios</button>
+				<a href="/Tienda/vistaTienda" class="btn btn-outline-dark btn-lg px-4 perfil-btn">Cancelar</a>
+			</div>
+        </form>
+
+	</div>
+</main>
+
+<script>
+async function subirDatos(payload) {
+    const res = await fetch('/Tienda/cargarTienda', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload)
+    });
+
+    const json = await res.json();
+    return json;
+}
+
+(function () {
+
+    var tienda = @Html.Raw(JsonConvert.SerializeObject(ViewBag.tienda));
+    const form = document.getElementById('formEditar');
+    const alerta = document.getElementById('alerta');
+    const btnGuardar = document.getElementById('btnGuardar');
+
+    const nombre = document.getElementById('nombre');
+    const ubicación = document.getElementById('ubicacion');
+    const mail = document.getElementById('mail');
+    const telefono = document.getElementById('telefono');
+    const descripcion = document.getElementById('descripcion');
+        const contacto = document.getElementById('contacto');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alerta.classList.add("d-none");
+ if(nombre.value==""){
+        nombre.value=tienda.Nombre;
+    }
+    if(ubicacion.value==""){
+        ubicacion.value=tienda.Ubicacion;
+
+    }
+    if(mail.value==""){
+        mail.value=tienda.Mail;
+    }
+    if(telefono.value==""){
+        telefono.value=tienda.Telefono;
+    }
+	 if(descripcion.value==""){
+		descripcion.value=tienda.Descripcion;
+	 }
+      if(contacto.value==""){
+		contacto.value=tienda.Contacto;
+	 }
+        const payload = {
+            Nombre: nombre.value,
+            Ubicacion: ubicacion.value,
+            Mail: mail.value,
+            Telefono: telefono.value,
+            Descripcion: descripcion.value,
+            Contacto: contacto.value
+        };
+		console.log('Payload:', payload); 
+
+        btnGuardar.disabled = true;
+
+        try {
+            const resp = await subirDatos(payload);
+
+            if (resp.ok) {
+                window.location.href = '/Tienda/vistaTienda';
+            
+                return;
+            }
+
+            alerta.textContent = resp.error || "No se pudieron guardar los cambios.";
+            alerta.classList.remove("d-none");
+
+        } catch (err) {
+            alerta.textContent = "Error inesperado: " + err.message;
+            alerta.classList.remove("d-none");
+        }
+
+        btnGuardar.disabled = false;
+    });
+})();
+</script>

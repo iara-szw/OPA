@@ -122,7 +122,29 @@ FotoDePerfil.CopyTo(stream);
 
         return RedirectToAction("vistaTienda");
     }
+    [HttpPost]
 
+  public IActionResult cargarTienda([FromBody] PayloadM payload){
+        try
+    {
+        Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+      
+        TiendaBD.cambiarDatos(tienda.IdTienda,payload.Nombre,payload.Ubicacion,payload.Mail,payload.Telefono,payload.Descripcion,payload.Contacto);
+        HttpContext.Session.SetString("tienda", Objeto.ObjectToString(TiendaBD.levantarTienda(tienda.IdTienda)));
+
+                   return Json(new { ok = true });
+
+    }
+    catch (Exception ex)
+    {
+        return Json(new { ok = false, error = ex.Message });
+    }   
+    }
+        public IActionResult editarTienda(){
+                    ViewBag.tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+
+        return View();
+        }
     public IActionResult vistaTienda(){
         Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));

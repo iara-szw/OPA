@@ -14,6 +14,13 @@ static class TiendaBD{
         }
         return tiendita;
     }
+      static public void cambiarDatos(int IdTienda, string Nombre,string Ubicacion, string Mail, string Telefono,string Descripcion, string Contacto){
+           using(SqlConnection connection = new SqlConnection(connectionString)){
+        string query = "UPDATE Tienda SET Nombre=@nombre, Ubicacion=@pUbicacion, Mail=@pMail, Telefono=@telefono,Descripcion=@pDescripcion, Contacto=@contacto WHERE IdTienda=@IdTienda";
+        connection.Execute(query,new{@nombre=Nombre, @pUbicacion=Ubicacion, @pMail=Mail,@telefono=Telefono,@pDescripcion=Descripcion,@contacto=Contacto, @IdTienda=IdTienda});
+            
+        }
+      }
 
     static public int crearTienda(string Nombre,string Ubicacion,string Mail,string Telefono,string Descripcion,string FotoDePerfil,string Contacto, string usuario){
         int id=-1;
