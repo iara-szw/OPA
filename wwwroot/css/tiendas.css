@@ -159,3 +159,71 @@
         .form-row{flex-direction:column}
         .color-menu{width:100%}
     }
+    
+    @media (max-width: 320px) {
+        .admin-tiendas {
+            padding: 20px 10px;
+        }
+        
+        .admin-tiendas__inner h1 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .circulos-grid {
+            gap: 20px;
+        }
+        
+        .tienda-link,
+        .circulo {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .circulo {
+            font-size: 0.8rem;
+            padding: 15px;
+        }
+        
+        .circulo-agregar {
+            font-size: 3rem;
+        }
+        
+        .subida-producto-container {
+            padding: 12px;
+            margin: 10px;
+        }
+        
+        .subida-producto-container h2 {
+            font-size: 1.2rem;
+        }
+        
+        .form-group {
+            min-width: 100%;
+        }
+        
+        .form-control, .form-select {
+            padding: 0.5rem 0.7rem;
+            font-size: 0.9rem;
+        }
+        
+        .color-menu {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .submit-row {
+            flex-direction: column;
+        }
+        
+        .btn-primary-custom,
+        .btn-secondary-custom {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        input#Modelo {
+            padding: 2%;
+        }
+    }

@@ -61,19 +61,47 @@ private readonly IWebHostEnvironment _env;
         
             return View();
     }
-    public IActionResult editarProducto(int idPrenda){
-              Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
+    public IActionResult editarProducto(int IdPrenda){
+        Tienda tienda=Objeto.StringToobject<Tienda>(HttpContext.Session.GetString("tienda"));
 
         if(tienda==null){
             return RedirectToAction("verTiendasAdministrador");
         }
-        ViewBag.estilos=PrendaBD.levantarColor(idPrenda);
-        ViewBag.colores=PrendaBD.levantarTalle(idPrenda);
-        ViewBag.tipos=PrendaBD.LevantarPrendaxEstilo(idPrenda);
-        ViewBag.talles=PrendaBD.LevantarPrendaxEstilo(idPrenda);
-        ViewBag.Temporada=BD.levantarTemporada();
         
-            return View();
+        var prenda = PrendaBD.LevantarPrenda(IdPrenda);
+        if(prenda == null || prenda.IdPrenda == 0){
+            return RedirectToAction("misProductos");
+        }
+        
+        ViewBag.prenda = prenda;
+        ViewBag.estilos = BD.levantarEstilos();
+        ViewBag.colores = BD.levantarColor();
+        ViewBag.tipos = BD.levantarTipos();
+        ViewBag.talles = BD.levantarTalles();
+        ViewBag.Temporada = BD.levantarTemporada();
+        
+        List<Estilo> estilosPrenda = PrendaBD.LevantarPrendaxEstilo(IdPrenda);
+        List<Temporada> temporadasPrenda = PrendaBD.LevantarTemporadas(IdPrenda);
+        List<Prenda> variantes = PrendaBD.LevantarVariantes(IdPrenda);
+        
+        ViewBag.estilosSeleccionados = estilosPrenda?.Select(e => e.IdEstilo).ToList() ?? new List<int>();
+        ViewBag.temporadaSeleccionada = temporadasPrenda?.FirstOrDefault()?.idTemporada ?? 0;
+        ViewBag.coloresSeleccionados = variantes?.Select(v => v.Color).Distinct().ToList() ?? new List<int>();
+        ViewBag.tallesSeleccionados = variantes?.Select(v => v.IdTalle).Distinct().ToList() ?? new List<int>();
+        
+        // Construir mapa de stock para prellenar la tabla
+        var stockMap = new Dictionary<int, Dictionary<int, int>>();
+        if(variantes != null && variantes.Any()){
+            foreach(var variante in variantes){
+                if(!stockMap.ContainsKey(variante.Color)){
+                    stockMap[variante.Color] = new Dictionary<int, int>();
+                }
+                stockMap[variante.Color][variante.IdTalle] = variante.stock;
+            }
+        }
+        ViewBag.stockMap = stockMap;
+        
+        return View();
     }
     public IActionResult nuevaTienda(){   
              Comprador usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
@@ -168,12 +196,42 @@ FotoDePerfil.CopyTo(stream);
         }
         ViewBag.tienda=tienda;
         ViewBag.productos=TiendaBD.levantarProductos(tienda.IdTienda) ?? new List<Prenda>();
+        ViewBag.estilos=BD.levantarEstilos();
+        ViewBag.colores=BD.levantarColor();
+        ViewBag.tipos=BD.levantarTipos();
+        ViewBag.talles=BD.levantarTalles();
+        ViewBag.Temporada=BD.levantarTemporada();
         return View();
     }
  
         public IActionResult EliminarPrenda(int IdPrenda){
         PrendaBD.eliminarPrenda(IdPrenda);
         return RedirectToAction("misProductos");
+    }
+    
+        public IActionResult EliminarTienda(int IdTienda){
+        TiendaBD.eliminarTienda(IdTienda);
+        HttpContext.Session.Remove("tienda");
+        return RedirectToAction("verTiendasAdministrador");
+    }
+    public IActionResult verTiendaComprador(int IdTienda){
+        Tienda tienda = TiendaBD.levantarTienda(IdTienda);
+        if(tienda == null){
+            return RedirectToAction("Index","Home");
+        }
+        
+        // Verificar que el usuario no sea el vendedor
+        Comprador usu = Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+        if(usu != null){
+            bool esVendedor = AdministradorBD.verPermisos(IdTienda, usu.Usuario);
+            if(esVendedor){
+                return RedirectToAction("vistaTienda");
+            }
+        }
+        
+        ViewBag.tienda = tienda;
+        ViewBag.productos = TiendaBD.levantarProductos(IdTienda) ?? new List<Prenda>();
+        return View();
     }
 
 }

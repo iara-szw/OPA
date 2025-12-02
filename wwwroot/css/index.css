@@ -272,7 +272,185 @@ footer {
 
   main.iniciarSesion {
     margin-top: 10%;
+  }
 }
+
+@media (max-width: 320px) {
+  * {
+    max-width: 100%;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  header {
+    padding: 0.4rem 0.5rem;
+  }
+  
+  header .logo {
+    font-size: 1.4rem;
+  }
+  
+  header .iconos {
+    gap: 0.5rem;
+  }
+  
+  header .iconos i {
+    font-size: 1.2rem;
+  }
+  
+  .banner {
+    padding: 3rem 0.5rem;
+  }
+  
+  .banner img {
+    width: 60%;
+    height: auto;
+  }
+  
+  .banner h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .banner p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .recomendado,
+  .lanzamientos {
+    padding: 1rem 0.5rem;
+  }
+  
+  .recomendado h3,
+  .lanzamientos h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .ropaRecomendada {
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    
+flex-wrap: wrap;
+  }
+  
+  .ropaRecomendada div {
+    min-width: 140px;
+  }
+  
+  .ropaRecomendada img,
+  .lanzamientos img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .ropaRecomendada h4,
+  .lanzamientos h4 {
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+  }
+  
+  .ropaRecomendada p {
+    font-size: 0.85rem;
+  }
+  
+  #vermas {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0;
+  }
+  
+  .explorando {
+    padding: 2rem 0.5rem;
+  }
+  
+  .explorando h3 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .explorar-opciones {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .opcion {
+    width: 100%;
+    max-width: 200px;
+    height: 120px;
+  }
+  
+  .opcion a {
+    font-size: 1rem;
+    margin-top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  footer {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  main.iniciarSesion,
+  main.registrarse {
+    margin-top: 15%;
+  }
+  
+  .landing-hero {
+    padding: 3rem 0.5rem;
+    min-height: auto;
+  }
+  
+  .landing-logo {
+    width: 100px;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .section-title-index {
+    font-size: 1.2rem;
+  }
+  
+  .landing-card {
+    padding: 1.5rem;
+  }
+  
+  .landing-box {
+    padding: 1.2rem;
+  }
+  
+  .landing-steps li {
+    padding-left: 2.2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .landing-steps li::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .ver h3 {
+    margin-left: 5%;
+    font-size: 1rem;
+  }
+  
+  .ver img {
+    border-width: 1px;
+  }
+  
+  #quienes-somos {
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+  }
 }
 
 

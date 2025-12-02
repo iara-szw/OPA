@@ -50,3 +50,62 @@ iframe{
 	border:2px solid black;
 	border-radius:10px;
 }
+
+@media (max-width: 320px) {
+	.perfil-card {
+		max-width: 100%;
+		margin: 5px;
+		padding: 10px;
+	}
+	
+	#cerrar {
+		width: 8%;
+		margin-bottom: 2%;
+	}
+	
+	.perfil-img {
+		width: 100px;
+		height: 100px;
+	}
+	
+	.row.g-4.text-start {
+		margin-left: 0;
+		width: 100% !important;
+	}
+	
+	.col-12.col-md-6 {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	
+	.informacion {
+		flex-direction: column;
+		margin-left: 0;
+		align-items: center;
+	}
+	
+	#videotutorial {
+		top: 10%;
+		left: 0;
+		right: 0;
+		width: 100%;
+		padding: 10px;
+	}
+	
+	iframe {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		min-height: 200px;
+	}
+	
+	/* Override inline styles for mobile */
+	.row.g-4.text-start[style*="width:70%"] {
+		width: 100% !important;
+	}
+	
+	.mb-2[style*="display:flex"] {
+		flex-direction: column;
+		gap: 4px;
+	}
+}

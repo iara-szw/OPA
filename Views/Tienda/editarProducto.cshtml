@@ -1,15 +1,34 @@
+@using OPA.Models
+@using Newtonsoft.Json
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar producto";
+    var prenda = ViewBag.prenda as Prenda;
+    var estilosSeleccionados = ViewBag.estilosSeleccionados as List<int> ?? new List<int>();
+    var temporadaSeleccionada = ViewBag.temporadaSeleccionada as int? ?? 0;
+    var coloresSeleccionados = ViewBag.coloresSeleccionados as List<int> ?? new List<int>();
+    var tallesSeleccionados = ViewBag.tallesSeleccionados as List<int> ?? new List<int>();
+    var stockMap = ViewBag.stockMap as Dictionary<int, Dictionary<int, int>> ?? new Dictionary<int, Dictionary<int, int>>();
+}
+
 <head>
     <meta charset="utf-8" />
-    <title>Subir producto</title>
+    <title>Editar producto</title>
     <link rel="stylesheet" href="~/css/tiendas.css" asp-append-version="true" />
-
-    
 </head>
 
 <body>
+    @if(prenda == null || prenda.IdPrenda == 0){
+        <div class="subida-producto-container">
+            <h2>Error</h2>
+            <p>No se pudo cargar la prenda. <a href='@Url.Action("misProductos","Tienda")'>Volver a mis productos</a></p>
+        </div>
+    } else {
     <div class="subida-producto-container">
-        <h2>Subir producto</h2>
-        <form action='@Url.Action("agregarPrenda","Prenda")' method="post" enctype="multipart/form-data" id="formSubirPrenda">
+        <h2>Editar producto</h2>
+        <form action='@Url.Action("editarPrenda","Prenda")' method="post" enctype="multipart/form-data" id="formEditarPrenda">
+            <input type="hidden" name="IdPrenda" value="@prenda.IdPrenda" />
+            
             <div class="form-row">
                 <div class="form-group">
                     <label for="Tipo">Tipo</label>
@@ -17,14 +36,14 @@
                         <option value="">Seleccionar tipo</option>
                         @if(ViewBag.tipos != null){
                             foreach(var t in ViewBag.tipos){
-                                <option value="@t.idTipo">@t.Nombre</option>
+                                <option value="@t.idTipo" selected="@(prenda.Tipo == t.idTipo.ToString())">@t.Nombre</option>
                             }
                         }
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="Modelo">Modelo</label>
-                    <input id="Modelo" name="Modelo" type="text" placeholder="Ej: Clásico" required />
+                    <input id="Modelo" name="Modelo" type="text" placeholder="Ej: Clásico" value="@prenda.Modelo" required />
                 </div>
                 <div class="form-group">
                     <label>Talles disponibles</label>
@@ -32,7 +51,7 @@
                         @if(ViewBag.talles != null){
                             foreach(var t in ViewBag.talles){
                                 <div>
-                                    <input type="checkbox" class="talla-checkbox" name="talles" value="@t.IdTalle" id="talle_@t.IdTalle" />
+                                    <input type="checkbox" class="talla-checkbox" name="talles" value="@t.IdTalle" id="talle_@t.IdTalle" checked="@(tallesSeleccionados.Contains(t.IdTalle))" />
                                     <label for="talle_@t.IdTalle">@t.Nombre</label>
                                 </div>
                             }
@@ -45,12 +64,12 @@
             <div class="form-row">
                 <div class="form-group" style="flex:1 1 60%">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción de la prenda" required rows="3"></textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción de la prenda" required rows="3">@prenda.descripcion</textarea>
                 </div>
                 <div class="form-group" style="flex:1 1 30%">
                     <label for="Precio">Precio</label>
-                    <input id="Precio" name="Precio" class="form-control" type="text" placeholder="100.000,23" pattern="[0-9]+([.,][0-9]+)?" required />
-                    <input type="hidden" id="PrecioHidden" name="Precio" />
+                    <input id="Precio" class="form-control" type="text" placeholder="100.000,23" pattern="[0-9]+([.,][0-9]+)?" value="@(prenda.Precio.ToString("N2", System.Globalization.CultureInfo.GetCultureInfo("es-AR")))" required />
+                    <input type="hidden" id="PrecioHidden" name="Precio" value="@prenda.Precio" />
                 </div>
             </div>
 
@@ -60,7 +79,7 @@
                     <div class="estilos-wrap">
                         @foreach(Estilo estilo in ViewBag.estilos){
                             <div>
-                                <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" />
+                                <input type="checkbox" class="estilo-checkbox" name="estilos" value="@estilo.IdEstilo" id="estilo_@estilo.IdEstilo" checked="@(estilosSeleccionados.Contains(estilo.IdEstilo))" />
                                 <label class="labelClaro" for="estilo_@estilo.IdEstilo">@estilo.Nombre</label>
                             </div>
                         }
@@ -68,15 +87,15 @@
                 </div>
 
                 <div class="form-group" style="flex:1">
-                    <label>Colores (máx 3)</label>
+                    <label>Colores</label>
                     <div class="color-dropdown">
-                        <div class="color-toggle" id="colorToggle" role="button" aria-haspopup="true" aria-expanded="false">Seleccionar colores <span class="small-note">(haz clic)</span></div>
-                        <div class="color-menu" id="colorMenu" style="display:none;">
+                        <div class="color-toggle" id="colorToggle" role="button" aria-haspopup="true" aria-expanded="@(coloresSeleccionados.Count > 0 ? "true" : "false")">Seleccionar colores <span class="small-note">(haz clic)</span></div>
+                        <div class="color-menu" id="colorMenu" style="display:@(coloresSeleccionados.Count > 0 ? "block" : "none");">
                             @foreach(Color color in ViewBag.colores){
                                 <label class="color-item">
-                                            <input type="checkbox" class="color-checkbox" name="color" value="@color.idColor" />
-                                            <span class="color-dot" style="background-color:@color.codigoHexa"></span>
-                                            <span class="small-note">@color.Nombre</span>
+                                    <input type="checkbox" class="color-checkbox" name="color" value="@color.idColor" checked="@(coloresSeleccionados.Contains(color.idColor))" />
+                                    <span class="color-dot" style="background-color:@color.codigoHexa"></span>
+                                    <span class="small-note">@color.Nombre</span>
                                 </label>
                             }
                         </div>
@@ -93,26 +112,31 @@
                     <label>Temporada</label>
                     <div>
                         @foreach(Temporada temporada in ViewBag.Temporada){
-                            <input type="radio" name="Temporada" value="@temporada.idTemporada" id="temp_@temporada.idTemporada" required />
+                            <input type="radio" name="Temporada" value="@temporada.idTemporada" id="temp_@temporada.idTemporada" checked="@(temporadaSeleccionada == temporada.idTemporada)" required />
                             <label class="labelClaro" for="temp_@temporada.idTemporada">@temporada.Nombre</label>
                         }
                     </div>
                 </div>
-
-                
             </div>
-<div class="form-group" style="flex:1">
-                    <label for="foto">Foto</label>
-                    <input id="foto" type="file" name="foto" class="form-control" accept="image/*" required />
-                </div>
-            <input type="hidden" id="variantStock" name="variantStock" />
+            
+            <div class="form-group" style="flex:1">
+                <label for="foto">Foto (dejar vacío para mantener la actual)</label>
+                <input id="foto" type="file" name="foto" class="form-control" accept="image/*" />
+                @if(!string.IsNullOrEmpty(prenda.foto)){
+                    <div class="small-note" style="margin-top: 0.5rem;">
+                        Foto actual: <img src="/img/@prenda.foto" alt="@prenda.Modelo" style="max-width: 100px; max-height: 100px; border: 1px solid #ddd; border-radius: 8px; margin-top: 0.5rem;" />
+                    </div>
+                }
+            </div>
+            
+            <input type="hidden" id="variantStock" name="variantStock" value="" />
             <div class="submit-row">
-                <a class="btn btn-secondary-custom" href='@Url.Action("vistaTienda","Tienda")'>Cancelar</a>
-                <button type="submit" class="btn btn-primary-custom">Subir producto</button>
+                <a class="btn btn-secondary-custom" href='@Url.Action("misProductos","Tienda")'>Cancelar</a>
+                <button type="submit" class="btn btn-primary-custom">Guardar cambios</button>
             </div>
         </form>
     </div>
-
+}
     <script>
         (function(){
             // Toggle dropdown
@@ -133,7 +157,7 @@
                 }
             });
 
-            // Limit selections to 3 per group
+            // Limit selections to 3 per group (solo para estilos)
             function limitCheckboxes(selector, max){
                 const elems = document.querySelectorAll(selector);
                 elems.forEach(function(chk){
@@ -143,22 +167,26 @@
                             this.checked = false;
                             alert('Sólo se permiten ' + max + ' selecciones.');
                         }
-                        if(!checked.length<0){
-                            e.preventDefault();
-                            alert('Seleccioná al menos un ' + selector.replace('.', '').replace('-', '').replace('checkbox', '') + '.');
-                        }
                     });
                 });
             }
             limitCheckboxes('.estilo-checkbox', 3);
- 
+            // No hay límite para colores
+
+            // Handle talles selection
             function getSelectedTalles(){
-                return Array.from(document.querySelectorAll('.talla-checkbox')).filter(i=>i.checked).map(i=>({id: parseInt(i.value), name: document.querySelector('label[for="'+i.id+'"]')?.innerText || i.id}));
+                return Array.from(document.querySelectorAll('.talla-checkbox')).filter(i=>i.checked).map(i=>({
+                    id: parseInt(i.value), 
+                    name: document.querySelector('label[for="'+i.id+'"]')?.innerText || i.value
+                }));
             }
 
             // Build stock editor for selected colors and talles
             function rebuildStockGrid(){
-                const selectedColors = Array.from(document.querySelectorAll('.color-checkbox')).filter(i=>i.checked).map(i=>({id:parseInt(i.value), name: i.parentElement.querySelector('.small-note')?.innerText || i.value}));
+                const selectedColors = Array.from(document.querySelectorAll('.color-checkbox')).filter(i=>i.checked).map(i=>({
+                    id:parseInt(i.value), 
+                    name: i.parentElement.querySelector('.small-note')?.innerText || i.value
+                }));
                 const talles = getSelectedTalles();
                 const stockEditor = document.getElementById('stockEditor');
                 const grid = document.getElementById('stockGrid');
@@ -174,22 +202,64 @@
                 table.style.gridTemplateColumns = '200px repeat('+talles.length+', 1fr)';
                 table.style.gap = '8px';
                 // header
-                const headerEmpty = document.createElement('div'); headerEmpty.innerText = 'Color / Talle'; headerEmpty.style.fontWeight='700'; table.appendChild(headerEmpty);
-                talles.forEach(t=>{const h=document.createElement('div'); h.innerText=t.name; h.style.fontWeight='700'; table.appendChild(h);});
+                const headerEmpty = document.createElement('div'); 
+                headerEmpty.innerText = 'Color / Talle'; 
+                headerEmpty.style.fontWeight='700'; 
+                table.appendChild(headerEmpty);
+                talles.forEach(t=>{
+                    const h=document.createElement('div'); 
+                    h.innerText=t.name; 
+                    h.style.fontWeight='700'; 
+                    table.appendChild(h);
+                });
                 selectedColors.forEach(color=>{
                     const colorLabel = document.createElement('div');
-                    const dot = document.createElement('span'); dot.className='color-dot'; dot.style.backgroundColor = (function(){const c=document.querySelector('.color-checkbox[value="'+color.id+'"]');return c?c.parentElement.querySelector('.color-dot').style.backgroundColor:'#ccc';})();
+                    const colorCheckbox = document.querySelector('.color-checkbox[value="'+color.id+'"]');
+                    const colorDot = colorCheckbox ? colorCheckbox.parentElement.querySelector('.color-dot') : null;
+                    const colorHex = colorDot ? colorDot.style.backgroundColor : '#ccc';
+                    const dot = document.createElement('span'); 
+                    dot.className='color-dot'; 
+                    dot.style.backgroundColor = colorHex;
                     colorLabel.appendChild(dot);
-                    const text = document.createElement('span'); text.style.marginLeft='8px'; text.innerText = color.name; colorLabel.appendChild(text);
+                    const text = document.createElement('span'); 
+                    text.style.marginLeft='8px'; 
+                    text.innerText = color.name; 
+                    colorLabel.appendChild(text);
                     table.appendChild(colorLabel);
                     talles.forEach(t=>{
                         const inp = document.createElement('input');
-                        inp.type='number'; inp.min='0'; inp.value='0'; inp.dataset.color = color.id; inp.dataset.talle = t.id; inp.className='stock-input'; inp.style.width='100%'; inp.style.padding='6px'; inp.style.border='1px solid #ddd'; inp.style.borderRadius='6px';
+                        inp.type='number'; 
+                        inp.min='0'; 
+                        // Cargar stock existente si está disponible
+                        const stockValue = window.stockMapData && window.stockMapData[color.id] && window.stockMapData[color.id][t.id] 
+                            ? window.stockMapData[color.id][t.id] 
+                            : '0';
+                        inp.value = stockValue; 
+                        inp.dataset.color = color.id; 
+                        inp.dataset.talle = t.id; 
+                        inp.className='stock-input'; 
+                        inp.style.width='100%'; 
+                        inp.style.padding='6px'; 
+                        inp.style.border='1px solid #ddd'; 
+                        inp.style.borderRadius='6px';
                         table.appendChild(inp);
                     });
                 });
                 grid.appendChild(table);
             }
+
+            // Cargar stockMap desde el servidor
+            window.stockMapData = @Html.Raw(JsonConvert.SerializeObject(stockMap));
+            
+            // Construir grid inicial si hay colores y talles seleccionados
+            // Esperar a que el DOM esté completamente cargado
+            setTimeout(function(){
+                const selectedColors = Array.from(document.querySelectorAll('.color-checkbox')).filter(i=>i.checked);
+                const selectedTalles = Array.from(document.querySelectorAll('.talla-checkbox')).filter(i=>i.checked);
+                if(selectedColors.length > 0 && selectedTalles.length > 0){
+                    rebuildStockGrid();
+                }
+            }, 100);
 
             // wire events
             document.addEventListener('change', function(e){
@@ -244,7 +314,7 @@
             }
 
             // Before submit: collect variant stocks into hidden input and convert price
-            const form = document.getElementById('formSubirPrenda');
+            const form = document.getElementById('formEditarPrenda');
             form && form.addEventListener('submit', function(e){
                 const anyColor = Array.from(document.querySelectorAll('.color-checkbox')).some(i=>i.checked);
                 if(!anyColor){
@@ -257,13 +327,17 @@
                 
                 // Convertir precio a formato numérico estándar
                 const precioTexto = document.getElementById('Precio').value;
-                const precioNumerico = convertirPrecioParaEnvio(precioTexto);
-                document.getElementById('PrecioHidden').value = precioNumerico;
+                if(precioTexto){
+                    const precioNumerico = convertirPrecioParaEnvio(precioTexto);
+                    document.getElementById('PrecioHidden').value = precioNumerico;
+                }
                 
                 const stockInputs = Array.from(document.querySelectorAll('.stock-input'));
                 const mapping = {};
                 stockInputs.forEach(i=>{
-                    const color = i.dataset.color; const talle = i.dataset.talle; const stock = parseInt(i.value) || 0;
+                    const color = i.dataset.color; 
+                    const talle = i.dataset.talle; 
+                    const stock = parseInt(i.value) || 0;
                     if(!mapping[color]) mapping[color]=[];
                     mapping[color].push({talleId: parseInt(talle), stock: stock});
                 });
@@ -273,4 +347,6 @@
             });
         })();
     </script>
+    }
 </body>
+

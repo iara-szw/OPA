@@ -32,10 +32,10 @@
       </div>
     </section>
     <section class="lanzamientos">
-      <h3>Últimos lanzamientos ></h3>
+      <h3>Ver tiendas ></h3>
       @foreach(Tienda tienda in ViewBag.tiendas){
         <div>
-        <img src="/img/@tienda.FotoDePerfil">
+        <a href='@Url.Action("verTiendaComprador","tienda",new{idTienda=@tienda.IdTienda})'><img src="/img/@tienda.FotoDePerfil"></a>
           <h4>@tienda.Nombre</h4>
         </div>
       }

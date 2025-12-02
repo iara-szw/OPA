@@ -51,6 +51,9 @@ public class CompradorController : Controller
         return RedirectToAction("iniciarSesion");
     }
     public IActionResult registrarse(string estado){
+        if(estado=="funciono"){
+            return RedirectToAction("iniciarSesion");
+        }
         ViewBag.estado=estado;
         return View();
     }
@@ -100,18 +103,29 @@ public IActionResult editarUsuario(){
             }
     return View();
 }
-    public IActionResult vistaUsuario(){
-        Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        
 
-         if (Usu == null)
-        {
-            return RedirectToAction("iniciarSesion");
-        }
- ViewBag.medidas=CompradorBD.levantarMedidas(Usu.Usuario);
-        ViewBag.usu=Usu;
-        return View();
+ public IActionResult vistaUsuario(){
+    Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
+    
+    if (Usu == null)
+    {
+        return RedirectToAction("iniciarSesion");
     }
+    
+    ViewBag.medidas = CompradorBD.levantarMedidas(Usu.Usuario);
+    if(ViewBag.medidas == null){
+        ViewBag.medidas = new TalleUsu();
+        ViewBag.medidas.MedidaTorso = 0;
+        ViewBag.medidas.MedidaCintura = 0;
+        ViewBag.medidas.MedidaPierna = 0;
+        ViewBag.medidas.MedidaHombros = 0;
+        ViewBag.medidas.MedidaBrazos = 0;
+        ViewBag.medidas.MedidaCadera = 0;
+    }
+    ViewBag.usu = Usu;
+    return View();
+}
+
 
   public IActionResult cargarMedidas([FromBody] PayloadModel payload){
         try

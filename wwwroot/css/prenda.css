@@ -10,3 +10,17 @@
 img{
     width:40%;
 }
+
+@media (max-width: 320px) {
+    .descripcionPrenda {
+        width: 95%;
+        margin: 2.5%;
+        padding: 3%;
+        flex-direction: column;
+    }
+    
+    img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

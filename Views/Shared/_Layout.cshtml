@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NombreProyecto</title>
+    <title>@ViewData["Title"] - OPA</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -23,7 +23,7 @@
       .opa-search-input{ width:0; opacity:0; overflow:hidden; transition: width .22s ease, opacity .22s ease; }
       .opa-search-input.show{ width: clamp(220px, 40vw, 540px); opacity:1; }
       .navbar-toggler{ border: none; transform: scale(1.05); }
-      .navbar-toggler .navbar-toggler-icon{ filter: invert(1); }
+      .navbar-toggler .navbar-toggler-icon{ filter: invert(1); width: 1.5em; height: 1.5em; }
       .offcanvas{ background-color:#ffffff; }
       .offcanvas-header{ border-bottom:0; }
       .offcanvas-body a{ text-decoration:none; color:#000; font-weight:500; padding:.4rem 0; }
@@ -33,6 +33,184 @@
       .menu-section a{ margin-bottom:1.1rem; }
       .menu-footer{ margin-top:auto; }
       main{margin-top:5%;}
+      
+      @@media (max-width: 320px) {
+        .opa-navbar{ padding-top: 0.5rem; padding-bottom: 0.5rem; font-size: 0.9em; }
+        .opa-logo-box{ padding: 4px 6px; }
+        .opa-logo-box img{ height: 24px; }
+        .opa-icon{ width: 1.5em; height: 1.5em; min-width: 22px; min-height: 22px; }
+        .navbar-toggler{ transform: scale(1); padding: 0.25rem 0.5rem; }
+        .navbar-toggler .navbar-toggler-icon{ width: 1.5em; height: 1.5em; }
+        .opa-search-form{ max-width: 100%; }
+        .opa-search-input.show{ width: clamp(150px, 60vw, 280px); }
+        .offcanvas-body a img{ width: 20px; height: 20px; }
+        main{ margin-top: 8%; }
+        .container-fluid{ padding-left: 0.5rem; padding-right: 0.5rem; }
+      }
+      footer {
+        display: flex;
+        width: 100%;
+        margin-top: 0.5%;
+        padding: 2rem 1rem;
+        padding-bottom: 3rem;
+        background: #111;
+        color: #e9e7da;
+        box-sizing: border-box;
+      }
+      
+      footer img {
+        margin-left: 1%;
+        margin-right: 5%;
+        margin-top: 5%;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      
+      footer section {
+        display: flex;
+        gap: 8%;
+        margin-left: auto;
+        margin-top: 3%;
+      }
+      footer li{
+        width:120%;
+        margin-right: 3%;
+      }
+      footer a {
+        padding: 3%;
+        border: 2px solid #d70162;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #e9e7da;
+        display: block;
+        margin-bottom: 5%;
+        font-size: 0.9rem;
+      }
+      
+      footer .links {
+        margin-left: 10%;
+        margin-top: 5%;
+      }
+      
+      footer a:hover {
+        border: none;
+      }
+      
+      footer ul {
+        list-style-type: none;
+        padding-left: 0%;
+        margin: 0;
+      }
+      
+      footer h4 {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+      }
+      
+      footer p {
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+      }
+      
+      footer section div {
+        min-width: 150px;
+      }
+      
+      @@media (max-width: 320px) {
+        footer {
+          flex-direction: column;
+          padding: 1.5rem 0.75rem;
+          padding-bottom: 2rem;
+          margin-top: 1rem;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        
+        footer img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin: 0 auto 1rem auto;
+          display: block;
+        }
+        
+        footer .links {
+          margin-left: 0;
+          margin-top: 0;
+          margin-bottom: 1.5rem;
+          width: 100%;
+        }
+        
+        footer .links ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          justify-content: center;
+        }
+        
+        footer .links li {
+          flex: 0 0 auto;
+        }
+        
+        footer .links a {
+          padding: 0.5rem 0.75rem;
+          margin-bottom: 0;
+          font-size: 0.75rem;
+          border-width: 1px;
+        }
+        
+        footer section {
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-left: 0;
+          margin-top: 0;
+          width: 100%;
+        }
+        
+        footer section div {
+          min-width: 100%;
+          width: 100%;
+        }
+        
+        footer section h4 {
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        footer section ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        footer section ul li {
+          flex: 0 0 auto;
+        }
+        
+        footer section a {
+          padding: 0.4rem 0.6rem;
+          margin-bottom: 0;
+          font-size: 0.75rem;
+          border-width: 1px;
+        }
+        
+        footer section p {
+          font-size: 0.75rem;
+          line-height: 1.4;
+          margin: 0.4rem 0;
+        }
+        
+        footer section p a {
+          display: inline;
+          padding: 0;
+          border: none;
+          text-decoration: underline;
+        }
+      }
     </style>
 </head>
 
@@ -59,8 +237,8 @@
           <img id="opaSearchIcon" class="opa-icon" src="/img/whiteSearch.png" alt="Buscar">
         </button>
 
-      <a href="/Armario/Armario" class="btn btn-link p-0 m-0">
-              <img src="~/img/armario.png" class="me-2" width="24" alt="Armario" />
+      <a href="/Armario/Armario" class="btn btn-link p-0 m-0" aria-label="Armario">
+              <img src="~/img/armario.png" class="opa-icon" alt="Armario" />
             </a>
             
         <a class="btn btn-link p-0 m-0" href="@Url.Action("verCarrito","Compra")" aria-label="Carrito">
@@ -85,6 +263,11 @@
               <span>HOME</span>
             </a>
 
+            <a href="/Armario/Armario" class="d-flex align-items-center mb-3 text-decoration-none">
+              <img src="~/img/armario.png" class="me-2" width="24" alt="Armario" />
+              <span>MI ARMARIO</span>
+            </a>
+
             <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/formulario.png" class="me-2" width="24" alt="Estilo" />
               <span>ENCONTRÁ TU ESTILO</span>
@@ -95,16 +278,15 @@
               <span>OUTFITS</span>
             </a>
 
-            <a href="/Home/LandingPage" class="d-flex align-items-center mb-3 text-decoration-none">
-              <img src="~/img/pregunta.png" class="me-2" width="24" alt="Estilo" />
-              <span>¿QUIENES SOMOS?</span>
-            </a>
 
             <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/billetera.png" class="me-2" width="24" alt="Mi billetera" />
               <span>MI BILLETERA</span>
             </a>
-
+  <a href="/Home/LandingPage" class="d-flex align-items-center mb-3 text-decoration-none">
+              <img src="~/img/pregunta.png" class="me-2" width="24" alt="Estilo" />
+              <span>¿QUIENES SOMOS?</span>
+            </a>
             <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
               <img src="~/img/ayuda.png" class="me-2" width="24" alt="Ayuda" />
               <span>NECESITO AYUDA</span>
@@ -150,9 +332,37 @@
     @RenderBody()
 </main>
 
-<footer>
-    &copy; @DateTime.Now.Year - NombreProyecto
-</footer>
+
+    <footer>
+      <img src="/img/logoOPA-03.png" alt="" />
+     
+        <div class="links">
+      <ul>
+        <li><a href="/Home/Index">Catálogo</a></li>
+        <li><a href="/Home/LandingPage">Nosotros</a></li>
+        <li><a href="/Comprador/IniciarSesion">Iniciar sesión</a></li>
+        <li><a href="/Comprador/Registrarse">Registrarse</a></li>
+      </ul>
+    </div>
+    <section>
+    <div>
+      <h4>Seguinos</h4>
+       <ul>
+      <li><a href="#">Facebook</a></li>
+       <li><a href="#">Instagram</a></li>
+       <li><a href="#">Twitter</a></li>
+       <li><a href="#">YouTube</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Información</h4>
+      <p>© 2025 OPA. Todos los derechos reservados.</p>
+      <p><a href="#">Política de privacidad</a></p>
+      <p><a href="#">Términos y condiciones</a></p>
+      <p>Email: contacto@Opa.com</p>
+    </div>
+</section>
+    </footer>
 
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -255,3 +255,122 @@ textarea.form-control {
     content: " *";
     color: #EB006B;
 }
+
+@media (max-width: 320px) {
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    #inicios {
+        margin-top: 20%;
+        margin-bottom: 10%;
+        padding: 0 10px;
+    }
+    
+    #error {
+        margin-right: 0;
+        font-size: 0.9rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .nueva-tienda-container {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .brand-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .brand-card h2 {
+        font-size: 1.8rem;
+    }
+    
+    .brand-card p {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-card {
+        padding: 1.5rem;
+    }
+    
+    .form-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .form-card .subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        font-size: 0.8rem;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    textarea.form-control {
+        min-height: 100px;
+    }
+    
+    .char-counter {
+        font-size: 0.8rem;
+    }
+    
+    .avatar-preview {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .avatar-preview .placeholder {
+        font-size: 2.5rem;
+    }
+    
+    .file-input-label {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .file-hint {
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary-custom,
+    .btn-secondary-custom {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    
+    .help-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .help-link img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .support-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .row.g-4 {
+        flex-wrap: wrap;
+        margin: 0;
+    }
+}

@@ -135,7 +135,7 @@
                             }
                         </div>
                         <div class="admin-actions d-grid gap-2">
-                            <a class="btn btn-outline-dark" href="@Url.Action("verProducto","Tienda",new{IdPrenda = producto.IdPrenda})">Editar prenda</a>
+                            <a class="btn btn-outline-dark" href="@Url.Action("editarProducto","Tienda",new{IdPrenda = producto.IdPrenda})">Editar prenda</a>
                             <a class="btn btn-outline-danger" href="@Url.Action("EliminarPrenda","Tienda",new{IdPrenda = producto.IdPrenda})" onclick="return confirm('¿Seguro que querés eliminar esta prenda?');">Eliminar</a>
                         </div>
                     </div>
@@ -144,4 +144,3 @@
         </div>
     }
 </div>
-

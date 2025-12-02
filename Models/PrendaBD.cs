@@ -6,9 +6,8 @@ public class PrendaBD{
 
     static public void agregarPrenda(int idTienda, int tipoInt, string modelo, string Descripcion, double precio, List<int> Estilos, List<int> colores, List<int> talles, int temporada, string Foto, string variantStockJson){
         while (Estilos.Count < 3) {
-           Estilos.Add(0);
+           Estilos.Add(-1);
         }
-
         Dictionary<int, Dictionary<int,int>> stockMap = new Dictionary<int, Dictionary<int,int>>();
         if (!string.IsNullOrEmpty(variantStockJson)){
             try{
@@ -41,8 +40,8 @@ public class PrendaBD{
                         stock = stockMap[colorcito][talleId];
                     }
 
-                    string exec = "EXEC agregarPrenda @IdTienda, @Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Estilo1, @Estilo2, @Estilo3, @Color, @Temporada, @Foto, @Stock";
-                    connection.Execute(exec, new {IdTienda = idTienda, Tipo = tipoInt, Modelo = modelo, IdTalle = talleId, Descripcion = Descripcion, Precio = precio, Estilo1 = Estilos[0], Estilo2 = Estilos[1], Estilo3 = Estilos[2], Color = colorcito, Temporada = temporada, Foto = Foto, Stock = stock});
+                    string exec = "EXEC agregarPrenda @IdTienda, @Tipo, @Modelo, @IdTalle, @pDescripcion, @Precio, @Estilo1, @Estilo2, @Estilo3, @Color, @Temporada, @Foto, @Stock";
+                    connection.Execute(exec, new {IdTienda = idTienda, Tipo = tipoInt, Modelo = modelo, IdTalle = talleId, pDescripcion = Descripcion, Precio = precio, Estilo1 = Estilos[0], Estilo2 = Estilos[1], Estilo3 = Estilos[2], Color = colorcito, Temporada = temporada, Foto = Foto, Stock = stock});
                 }
             }
         }
@@ -215,5 +214,135 @@ string query = "SELECT TOP (@num) * FROM (SELECT *, ROW_NUMBER() OVER(PARTITION 
         connection.Execute(query, new {pIdPrenda=IdPrenda});
         }
 
+    }
+    
+    static public void editarPrenda(int idPrenda, int tipoInt, string modelo, string Descripcion, double precio, List<int> Estilos, List<int> colores, List<int> talles, int temporada, string Foto, string variantStockJson){
+        while (Estilos.Count < 3) {
+           Estilos.Add(0);
+        }
+
+        Dictionary<int, Dictionary<int,int>> stockMap = new Dictionary<int, Dictionary<int,int>>();
+        if (!string.IsNullOrEmpty(variantStockJson)){
+            try{
+                using(var doc = JsonDocument.Parse(variantStockJson)){
+                    foreach(var prop in doc.RootElement.EnumerateObject()){
+                        if (!int.TryParse(prop.Name, out var colorId)) continue;
+                        var inner = new Dictionary<int,int>();
+                        foreach(var item in prop.Value.EnumerateArray()){
+                            int talleId = item.GetProperty("talleId").GetInt32();
+                            int stock = item.GetProperty("stock").GetInt32();
+                            inner[talleId] = stock;
+                        }
+                        stockMap[colorId] = inner;
+                    }
+                }
+            }catch{
+                stockMap = new Dictionary<int, Dictionary<int,int>>();
+            }
+        }
+
+        // Obtener la prenda original para mantener IdTienda y Modelo
+        var prendaOriginal = LevantarPrenda(idPrenda);
+        if(prendaOriginal == null || prendaOriginal.IdPrenda == 0) return;
+
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+            connection.Open();
+
+            // Eliminar relaciones existentes
+            connection.Execute("DELETE FROM EstiloXPrenda WHERE IdPrenda=@IdPrenda", new {IdPrenda = idPrenda});
+            connection.Execute("DELETE FROM TemporadaXPrenda WHERE IdPrenda=@IdPrenda", new {IdPrenda = idPrenda});
+
+            // Actualizar o crear variantes por color y talle
+            foreach(var colorcito in colores){
+                var tallesToUse = (talles != null && talles.Count>0) ? talles : new List<int>{1};
+                foreach(var talleId in tallesToUse){
+                    int stock = 0;
+                    if (stockMap.ContainsKey(colorcito) && stockMap[colorcito].ContainsKey(talleId)){
+                        stock = stockMap[colorcito][talleId];
+                    }
+
+                    // Buscar si existe una variante con este color y talle
+                    string checkQuery = "SELECT IdPrenda FROM Prenda WHERE Modelo=@Modelo AND IdTienda=@IdTienda AND Color=@Color AND IdTalle=@IdTalle";
+                    var existingId = connection.QueryFirstOrDefault<int?>(checkQuery, new {
+                        Modelo = modelo,
+                        IdTienda = prendaOriginal.IdTienda,
+                        Color = colorcito,
+                        IdTalle = talleId
+                    });
+
+                    if(existingId.HasValue && existingId.Value == idPrenda){
+                        // Actualizar la prenda actual
+                        string updateQuery = @"UPDATE Prenda SET Tipo=@Tipo, Descripcion=@Descripcion, Precio=@Precio, Foto=@Foto, stock=@Stock 
+                                             WHERE IdPrenda=@IdPrenda";
+                        connection.Execute(updateQuery, new {
+                            Tipo = tipoInt,
+                            Descripcion = Descripcion,
+                            Precio = precio,
+                            Foto = Foto,
+                            Stock = stock,
+                            IdPrenda = idPrenda
+                        });
+                    } else if(existingId.HasValue){
+                        // Actualizar otra variante existente
+                        string updateQuery = @"UPDATE Prenda SET Tipo=@Tipo, Descripcion=@Descripcion, Precio=@Precio, Foto=@Foto, stock=@Stock 
+                                             WHERE IdPrenda=@IdPrenda";
+                        connection.Execute(updateQuery, new {
+                            Tipo = tipoInt,
+                            Descripcion = Descripcion,
+                            Precio = precio,
+                            Foto = Foto,
+                            Stock = stock,
+                            IdPrenda = existingId.Value
+                        });
+                    } else {
+                        // Crear nueva variante
+                        string insertQuery = @"INSERT INTO Prenda (Tipo, Modelo, IdTalle, Descripcion, Precio, Foto, Color, IdTienda, mostrar, stock)
+                                             VALUES (@Tipo, @Modelo, @IdTalle, @Descripcion, @Precio, @Foto, @Color, @IdTienda, 0, @Stock)";
+                        var newId = connection.QueryFirstOrDefault<int>(insertQuery + "; SELECT CAST(SCOPE_IDENTITY() as int)", new {
+                            Tipo = tipoInt,
+                            Modelo = modelo,
+                            IdTalle = talleId,
+                            Descripcion = Descripcion,
+                            Precio = precio,
+                            Foto = Foto,
+                            Color = colorcito,
+                            IdTienda = prendaOriginal.IdTienda,
+                            Stock = stock
+                        });
+                    }
+                }
+            }
+
+            // Actualizar la prenda principal
+            string mainUpdate = @"UPDATE Prenda SET Tipo=@Tipo, Modelo=@Modelo, Descripcion=@Descripcion, Precio=@Precio, Foto=@Foto 
+                                WHERE IdPrenda=@IdPrenda";
+            connection.Execute(mainUpdate, new {
+                Tipo = tipoInt,
+                Modelo = modelo,
+                Descripcion = Descripcion,
+                Precio = precio,
+                Foto = Foto,
+                IdPrenda = idPrenda
+            });
+
+            // Re-agregar relaciones de estilos
+            foreach(var estiloId in Estilos){
+                if(estiloId > 0){
+                    connection.Execute("INSERT INTO EstiloXPrenda (IdEstilo, IdPrenda) VALUES (@IdEstilo, @IdPrenda)", 
+                        new {IdEstilo = estiloId, IdPrenda = idPrenda});
+                }
+            }
+
+            // Re-agregar relación de temporada
+            connection.Execute("INSERT INTO TemporadaXPrenda (IdTemporada, IdPrenda) VALUES (@IdTemporada, @IdPrenda)", 
+                new {IdTemporada = temporada, IdPrenda = idPrenda});
+        }
+    }
+    
+    static public List<Prenda> LevantarPrendasPorModelo(int idTienda, string modelo){
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+            string query = "SELECT * FROM Prenda WHERE IdTienda=@IdTienda AND Modelo=@Modelo";
+            return connection.Query<Prenda>(query, new {IdTienda = idTienda, Modelo = modelo}).ToList();
+        }
     }
 }

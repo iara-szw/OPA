@@ -42,6 +42,11 @@ static class TiendaBD{
     }
     return productos;
     }
-    //Crear tienda, levantar administradores, agregar producto, borrar producto,editar producto,levamtar producto
+    static public void eliminarTienda(int IdTienda){
+        string query = "DELETE FROM Tienda WHERE IdTienda=@IdTienda";
+        using(SqlConnection connection = new SqlConnection(connectionString)){
+        connection.Execute(query, new {IdTienda=IdTienda});
+        }
+    }
 
 }

@@ -1,0 +1,265 @@
+@using OPA.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var tienda = ViewBag.tienda as Tienda;
+    var productos = (ViewBag.productos as IEnumerable<Prenda>)?.ToList() ?? new List<Prenda>();
+    ViewData["Title"] = tienda?.Nombre ?? "Tienda";
+}
+
+<style>
+    .tienda-comprador-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+    }
+    
+    .tienda-comprador-header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+    
+    .tienda-info-card {
+        background: #fff;
+        border: 2px solid #111;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .tienda-avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid #111;
+        overflow: hidden;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+    }
+    
+    .tienda-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .tienda-info-item {
+        margin-bottom: 1rem;
+    }
+    
+    .tienda-info-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #6c6c6c;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+    }
+    
+    .tienda-info-value {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #111;
+    }
+    
+    .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .producto-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 18px;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    
+    .producto-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .producto-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .producto-card-body {
+        padding: 1.5rem;
+    }
+    
+    .producto-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+    }
+    
+    .producto-card .precio {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #EB006B;
+        margin-top: 0.5rem;
+    }
+    
+    .producto-card .meta {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 0.5rem;
+    }
+    
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        border: 2px dashed #d9d9d9;
+        border-radius: 24px;
+        margin-top: 2rem;
+    }
+    
+    .empty-state h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+    
+    @@media (max-width: 320px) {
+        .tienda-comprador-header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .tienda-avatar {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .productos-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .producto-card img {
+            height: 250px;
+        }
+        
+        .tienda-info-card {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<div class="container my-5">
+    <div class="tienda-comprador-header">
+        <h1>@tienda.Nombre</h1>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 col-md-4 mb-4">
+            <div class="tienda-info-card">
+                <div class="tienda-avatar">
+                    @if (!string.IsNullOrEmpty(tienda.FotoDePerfil))
+                    {
+                        <img src="/img/@tienda.FotoDePerfil" alt="@tienda.Nombre" />
+                    }
+                    else
+                    {
+                        <span style="font-size: 64px;">👤</span>
+                    }
+                </div>
+                
+                <div class="tienda-info-item">
+                    <div class="tienda-info-label">Nombre</div>
+                    <div class="tienda-info-value">@tienda.Nombre</div>
+                </div>
+                
+                @if (!string.IsNullOrEmpty(tienda.Mail))
+                {
+                    <div class="tienda-info-item">
+                        <div class="tienda-info-label">Email</div>
+                        <div class="tienda-info-value">@tienda.Mail</div>
+                    </div>
+                }
+                
+                @if (!string.IsNullOrEmpty(tienda.Telefono))
+                {
+                    <div class="tienda-info-item">
+                        <div class="tienda-info-label">Teléfono</div>
+                        <div class="tienda-info-value">@tienda.Telefono</div>
+                    </div>
+                }
+                
+                @if (!string.IsNullOrEmpty(tienda.Ubicacion))
+                {
+                    <div class="tienda-info-item">
+                        <div class="tienda-info-label">Ubicación</div>
+                        <div class="tienda-info-value">@tienda.Ubicacion</div>
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <div class="col-12 col-md-8">
+            <h2 class="fw-bold mb-4">Productos</h2>
+            
+            @if (!productos.Any())
+            {
+                <div class="empty-state">
+                    <h3>Esta tienda aún no tiene productos publicados</h3>
+                    <p class="text-muted">Vuelve más tarde para ver sus productos.</p>
+                </div>
+            }
+            else
+            {
+                <div class="productos-grid">
+                    @foreach(var producto in productos)
+                    {
+                        var color = PrendaBD.levantarColor(producto.Color);
+                        var talle = PrendaBD.levantarTalle(producto.IdTalle);
+                        var estilos = PrendaBD.LevantarPrendaxEstilo(producto.IdPrenda);
+                        
+                        <a href='@Url.Action("vistaPrenda","Home", new { idPrenda = producto.IdPrenda })' class="producto-card">
+                            <img src="/img/@producto.foto" alt="@producto.Modelo" />
+                            <div class="producto-card-body">
+                                <h3>@producto.Modelo</h3>
+                                @if (!string.IsNullOrWhiteSpace(producto.descripcion))
+                                {
+                                    <p class="meta">@(producto.descripcion.Length > 100 ? producto.descripcion.Substring(0, 100) + "..." : producto.descripcion)</p>
+                                }
+                                <div class="precio">$ @producto.Precio.ToString("N0")</div>
+                                <div class="meta">
+                                    @if (color != null)
+                                    {
+                                        <span>Color: @color.Nombre</span>
+                                    }
+                                    @if (talle != null)
+                                    {
+                                        <span> | Talle: @talle.Nombre</span>
+                                    }
+                                    @if (estilos != null && estilos.Any())
+                                    {
+                                        <span> | Estilos: @string.Join(", ", estilos.Select(e => e.Nombre))</span>
+                                    }
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
