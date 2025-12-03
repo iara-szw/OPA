@@ -85,5 +85,11 @@ public class HomeController : Controller
         ViewBag.filtro = new { minPrecio, maxPrecio, colorId, estiloId, q };
         return View();
     }
-    //- web con el catálogo de productos y carrito.
+    public IActionResult verTiendas( string? q)
+    {
+        ViewBag.tiendas = TiendaBD.FiltrarTiendas(q);
+       
+        ViewBag.filtro = new { q };
+        return View();
+    }
 }

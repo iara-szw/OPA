@@ -32,6 +32,25 @@ static class TiendaBD{
         }
         return id;
     }
+   static public List<Tienda> FiltrarTiendas(string? q)
+    {
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            var where = new List<string>();
+            var parameters = new DynamicParameters();
+            string baseQuery = "SELECT DISTINCT t.* FROM Tienda t ";
+           
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                where.Add("(t.Nombre LIKE @q OR t.Descripcion LIKE @q)");
+                parameters.Add("q", "%" + q + "%");
+            }
+
+            string finalQuery = baseQuery;
+            var tiendas = connection.Query<Tienda>(finalQuery, parameters).ToList();
+            return tiendas;
+        }
+    }
 
     static public List<Prenda> levantarProductos(int idTienda){ 
         List<Prenda> productos= new List<Prenda>();

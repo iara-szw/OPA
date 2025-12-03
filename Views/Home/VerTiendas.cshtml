@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Explorar Tiendas";
+
+}
+
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+
+<div class="container mt-4">
+    <h2>Explorar tiendas</h2>
+    <form id="filterForm" method="get" action='@Url.Action("VerTiendas","Home")' class="row g-2 align-items-end">
+        <div class="col-auto">
+            <label class="form-label">Buscar</label>
+            <input type="text" name="q" class="form-control" value="@ViewBag.filtro?.q" />
+        </div>
+        <div class="col-auto">
+            <button class="btn-primary-custom">Filtrar</button>
+        </div>
+    </form>
+
+    <div class="row mt-4">
+        @if(ViewBag.tiendas != null && ViewBag.tiendas.Count>0){
+            foreach(Tienda t in ViewBag.tiendas){
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="card h-100">
+                        <a href='@Url.Action("verTiendaComprador","Tienda", new { IdTienda = t.IdTienda })'>
+                            <img src="/img/@t.FotoDePerfil" class="card-img-top" style="height:180px; object-fit:cover;" />
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">@t.Nombre</h5>
+                            <p class="card-text">@t.Descripcion</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        } else {
+            <div class="col-12">No hay prendas</div>
+        }
+    </div>
+</div>

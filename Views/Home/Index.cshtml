@@ -20,7 +20,7 @@
   
 <section class="ver">
     <section class="recomendado">
-      <h3>Recomendado para vos ></h3>
+      <a href='@Url.Action("Explorar")'><h3>Recomendado para vos ></h3></a>
       <div class="ropaRecomendada" >
       @foreach(Prenda prendita in ViewBag.Ropa){
         <div>
@@ -32,7 +32,7 @@
       </div>
     </section>
     <section class="lanzamientos">
-      <h3>Ver tiendas ></h3>
+      <a href='@Url.Action("VerTiendas")'><h3>Ver tiendas ></h3></a>
       @foreach(Tienda tienda in ViewBag.tiendas){
         <div>
         <a href='@Url.Action("verTiendaComprador","tienda",new{idTienda=@tienda.IdTienda})'><img src="/img/@tienda.FotoDePerfil"></a>

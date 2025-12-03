@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "F3uA21/RuA8IcHzQ4bizp7GxlaqYTogmUUr66LNXH0s=",
+  "Hash": "30V6++FJAX+P+rCTZeOiiNxjnwSSM0filt2y2Q2vCJc=",
   "Source": "OPA",
   "BasePath": "_content/OPA",
   "Mode": "Default",
@@ -262,6 +262,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\cruz.png"
+    },
+    {
+      "Identity": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\fc93c05f5823892b2b690c3d74fdd864.jpg",
+      "SourceId": "OPA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\",
+      "BasePath": "_content/OPA",
+      "RelativePath": "img/fc93c05f5823892b2b690c3d74fdd864.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\fc93c05f5823892b2b690c3d74fdd864.jpg"
     },
     {
       "Identity": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\fondo-opa.png",
