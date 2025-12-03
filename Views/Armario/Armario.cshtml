@@ -68,7 +68,7 @@ width:100%;
         }
 
     .card:hover { transform:translateY(-2px) scale(1.01); box-shadow:0 10px 20px rgba(0,0,0,.06); }
-    .card img { width:100%; height:180px; object-fit:cover; background:#fafafa; }
+    .card img { width:100%; height: ; object-fit:cover; background:#fafafa; }
     .card .info { padding:10px 12px; }
     .card .titulo { font-weight:700; font-size:14px; margin:0 0 4px; }
     .card .marca { font-size:12px; color:#6b7280; }
@@ -135,11 +135,10 @@ width:100%;
         @foreach (var prenda in poseidos.Take(12))
         {
             <a href='@Url.Action("vistaPrenda","Home",new{IdPrenda=@prenda.IdPrenda, from="armario"})'class="col-6 col-sm-4 col-lg-3">
-                <div class="card h-100">
+                <div class="card">
                   <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
                   <div class="info">
                     <p class="titulo">@prenda.Modelo</p>
-                    <span class="marca">@prenda.Tipo</span>
                   </div>
               </div>
             </a>
@@ -169,7 +168,6 @@ width:100%;
                 <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
                 <div class="info">
                   <p class="titulo">@prenda.Modelo</p>
-                  <span class="marca">@prenda.Tipo</span>
                 </div>
               </div>
             </a>
@@ -193,7 +191,6 @@ width:100%;
               <img src="/img/@prenda.foto" alt="@prenda.Modelo" />
             <div class="info">
               <p class="titulo">@prenda.Modelo</p>
-              <span class="marca">@prenda.Tipo</span>
             </div>
           </div>
           </a>

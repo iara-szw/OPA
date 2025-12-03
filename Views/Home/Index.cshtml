@@ -26,7 +26,7 @@
         <div>
         <a href='@Url.Action("VistaPrenda",new{idPrenda=@prendita.IdPrenda})'><img src="/img/@prendita.foto"></a>
           <h4>@prendita.Modelo</h4>
-          <p>@prendita.Precio</p>
+          <p>$@prendita.Precio</p>
         </div>
       }
       </div>
@@ -45,7 +45,7 @@
       <h3>Seguí explorando</h3>
       <div class="explorar-opciones">
         <div class="opcion">
-          <a href='@Url.Action("verTiendasAdministrador.cshtml")'>Tiendas</a>
+          <a  href='@Url.Action("VerTiendas")'>Tiendas</a>
         </div>
         <div class="opcion">
           <a href=>Estilos</a>

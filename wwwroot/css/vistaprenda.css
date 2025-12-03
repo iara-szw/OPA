@@ -6,26 +6,31 @@
   box-sizing: border-box;
 }
 .prenda-page {
-  padding: 4rem 1rem 3rem;
   display: flex;
   justify-content: center;
+  padding-left:10%;
+  padding-right:10%;
+
+  padding-top:1%;
+padding-bottom:5%;
   min-height: 100vh;
 }
 .prenda-wrapper {
   background: #fff;
   border: 2px solid #111;
   border-radius: 20px;
-  max-width: 1200px;
   width: 100%;
   padding: 2rem;
   box-shadow: 0 25px 14px rgba(0, 0, 0, 0.12);
   position: relative;
 }
+
 .prenda-content {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
 }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden; transition:transform .2s ease, box-shadow .2s ease; }
 
 .left-col{ flex: 0 0 46%; max-width:46%; }
 .right-col{ flex: 1 1 54%; }
@@ -33,13 +38,15 @@
 .main-image-wrap .slider-image{ width:100%; height:420px; object-fit:cover; border-radius:12px;    width: 90%;height:auto;
  }
 .slider-card {
-  border: 1px solid #111;
-  border-radius: 16px;
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: fit-content;
+    border: 1px solid #111;
+    border-radius: 16px;
+    padding: 1.25rem;
+    display: flex;
+    margin-left: 15%;
+    width: 70%;
+    flex-direction: column;
+    gap: 1rem;
+    height: fit-content;  
 }
 .slider-frame {
   border: 1px solid #ddd;
@@ -164,7 +171,7 @@
 .producto-meta {
   margin-top:4% !important;
 }
-.btn-outline-cart{ background:#fff; color:#111; border:2px solid #111; }
+.btn-outline-cart{ background:#EB006B; color:#fff; }
 .btn-buy-prim{ background:#EB006B; color:#fff; border:none; }
 .btn-dark.btn-cart{ background: linear-gradient(90deg,#0b0b0b,#EB006B); color:#fff; border:none; }
 .otros-section {
@@ -233,6 +240,10 @@
   }
   .action-buttons {
     flex-direction: column;
+  }
+  .action-buttons-no{
+    display:flex;
+    flex-direction: row;
   }
   .otros-items {
     grid-template-columns: repeat(2, minmax(100px, 1fr));

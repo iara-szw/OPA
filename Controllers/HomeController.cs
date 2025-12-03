@@ -58,6 +58,7 @@ public class HomeController : Controller
         if(Usu!=null){ 
         ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
         ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
+        ViewBag.recomendados=BD.levantarRecomendados(Usu.Usuario);
         
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
             if (prendas != null)
@@ -73,6 +74,7 @@ public class HomeController : Controller
 
 }else{
     ViewBag.Usuario=false;
+    ViewBag.recomendados=BD.levantarRecomendados("default");
 }
         return View();
     }

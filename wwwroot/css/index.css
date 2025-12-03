@@ -23,7 +23,9 @@ body {
 main {
   flex: 1;
 }
-
+a{
+  text-decoration: none !important;
+}
 header {
   position: sticky;
   top: 0;
