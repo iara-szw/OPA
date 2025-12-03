@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 static class TiendaBD{
  
-    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+    public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
 
     static public Tienda levantarTienda(int idTienda){
         Tienda tiendita=null;

@@ -31,14 +31,16 @@
       }
       </div>
     </section>
-    <section class="lanzamientos">
-      <a href='@Url.Action("VerTiendas")'><h3>Ver tiendas ></h3></a>
+    <section class="recomendado">
+      <a href='@Url.Action("VerTiendas")'><h3>Explorar tiendas ></h3></a>
+      <div class="ropaRecomendada" >
       @foreach(Tienda tienda in ViewBag.tiendas){
         <div>
         <a href='@Url.Action("verTiendaComprador","tienda",new{idTienda=@tienda.IdTienda})'><img src="/img/@tienda.FotoDePerfil"></a>
           <h4>@tienda.Nombre</h4>
         </div>
       }
+      </div>
     </section>
     </section>
     <section class="explorando">

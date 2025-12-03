@@ -56,7 +56,7 @@
             <p class="desc">@ViewBag.prenda.descripcion</p>
             <div class="vendedor">VENDEDOR: @ViewBag.vendedor</div>
             <div class="producto-meta" style="font-size:0.95rem;color:#555;margin-top:4px;">
-              <span><strong>Otros colores:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
+              <span><strong>Color:</strong> @PrendaBD.levantarColor(ViewBag.prenda.Color).Nombre</span>
               <span style="margin-left:12px;"><strong>Talle:</strong> @PrendaBD.levantarTalle(ViewBag.prenda.IdTalle).Nombre</span>
               <span style="margin-left:12px;"><strong>Stock:</strong> @PrendaBD.levantarStock(ViewBag.prenda.IdPrenda)</span>
             </div>
@@ -67,7 +67,7 @@
                    <span class="tag">@estilito.Nombre</span>
               }
             </div>
- <div class="section-title">COLORES</div>
+ <div class="section-title">OTROS COLORES:</div>
             <div class="color-options @(esPoseida ? "color-options-disabled" : string.Empty)">
               @foreach(Prenda prenda in ViewBag.Similares){
                 var colorHex = PrendaBD.levantarColor(prenda.Color).codigoHexa;

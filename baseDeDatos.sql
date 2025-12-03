@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Opa]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Database [Opa]    Script Date: 3/12/2025 19:58:24 ******/
 CREATE DATABASE [Opa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -77,7 +77,7 @@ ALTER DATABASE [Opa] SET QUERY_STORE = OFF
 GO
 USE [Opa]
 GO
-/****** Object:  Table [dbo].[Administrador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Administrador]    Script Date: 3/12/2025 19:58:24 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,7 +93,7 @@ CREATE TABLE [dbo].[Administrador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Color]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Color]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[Color](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ColorXComprador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[ColorXComprador]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -123,7 +123,7 @@ CREATE TABLE [dbo].[ColorXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Comprador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Comprador]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +147,7 @@ CREATE TABLE [dbo].[Comprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Deseado]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Deseado]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[Deseado](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Estilo]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Estilo]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -177,7 +177,7 @@ CREATE TABLE [dbo].[Estilo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[estiloXComprador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[estiloXComprador]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -192,7 +192,7 @@ CREATE TABLE [dbo].[estiloXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EstiloXPrenda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[EstiloXPrenda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +207,7 @@ CREATE TABLE [dbo].[EstiloXPrenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Genero]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Genero]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -221,7 +221,7 @@ CREATE TABLE [dbo].[Genero](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[MedioDePago]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[MedioDePago]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -235,7 +235,7 @@ CREATE TABLE [dbo].[MedioDePago](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Poseido]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Poseido]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -250,7 +250,7 @@ CREATE TABLE [dbo].[Poseido](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Prenda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Prenda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -273,7 +273,7 @@ CREATE TABLE [dbo].[Prenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Talle]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Talle]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -287,7 +287,7 @@ CREATE TABLE [dbo].[Talle](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TallesUsu]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[TallesUsu]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -306,7 +306,7 @@ CREATE TABLE [dbo].[TallesUsu](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Temporada]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Temporada]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -320,7 +320,7 @@ CREATE TABLE [dbo].[Temporada](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TemporadaXComprador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[TemporadaXComprador]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -335,7 +335,7 @@ CREATE TABLE [dbo].[TemporadaXComprador](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TemporadaXPrenda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[TemporadaXPrenda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -350,7 +350,7 @@ CREATE TABLE [dbo].[TemporadaXPrenda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tienda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Tienda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -370,7 +370,7 @@ CREATE TABLE [dbo].[Tienda](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tipos]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[Tipos]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -384,7 +384,7 @@ CREATE TABLE [dbo].[Tipos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TiposXComprador]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  Table [dbo].[TiposXComprador]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -404,6 +404,16 @@ GO
 INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (3, 3, N'admin', 1)
 GO
 INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (4, 4, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (5, 5, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (6, 6, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (7, 7, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (8, 8, N'admin', 1)
+GO
+INSERT [dbo].[Administrador] ([IdAdministrador], [IdTienda], [Usuario], [Permisos]) VALUES (9, 9, N'admin', 1)
 GO
 SET IDENTITY_INSERT [dbo].[Administrador] OFF
 GO
@@ -591,6 +601,8 @@ INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (94, 33, 15
 GO
 INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (95, 33, 20)
 GO
+INSERT [dbo].[EstiloXPrenda] ([idEP], [IdPrenda], [IdEstilo]) VALUES (96, 35, 8)
+GO
 SET IDENTITY_INSERT [dbo].[EstiloXPrenda] OFF
 GO
 INSERT [dbo].[Genero] ([IdGenero], [Nombre]) VALUES (1, N'Mujer')
@@ -610,6 +622,60 @@ GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 32, N'Jogging Ton', 3, N'Jogging comodo de algodon. NO APTO PARA CORRER.NO APTO PARA LAVAROPAS.NO APTO PARA TAREAS DOMESTICAS PESADAS/QUE MANCHAN.', CAST(23000.00 AS Decimal(15, 2)), N'OIP (2).webp', 1, 4, 0, 20)
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 33, N'Campera de cuero', 1, N'Campera de cuero azul marino', CAST(55000.00 AS Decimal(15, 2)), N'fc93c05f5823892b2b690c3d74fdd864.jpg', 10, 4, 1, 25)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 35, N'Remera Urbana Basic', 1, N'Remera oversize 100% algodón', CAST(15900.00 AS Decimal(15, 2)), N'Remera1.webp', 1, 5, 1, 15)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 36, N'Pantalón Cargo', 2, N'Pantalón cargo multifuncional', CAST(28900.00 AS Decimal(15, 2)), N'Pantalon1.png', 11, 5, 1, 8)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 37, N'Jogging Tech', 1, N'Jogging técnico con bolsillos', CAST(24900.00 AS Decimal(15, 2)), N'Jogging1.png', 41, 5, 1, 12)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 38, N'Campera Bomber', 2, N'Bomber con parches urbanos', CAST(42900.00 AS Decimal(15, 2)), N'Campera1.png', 6, 5, 1, 6)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 39, N'Buzo Hoodie', 3, N'Hoodie con capucha oversize', CAST(29900.00 AS Decimal(15, 2)), N'Buzo1.png', 9, 5, 1, 10)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 40, N'Remera Bandas 90s', 2, N'Remera vintage de bandas rock', CAST(18900.00 AS Decimal(15, 2)), N'Remera2.png', 5, 6, 1, 20)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 41, N'Pantalón Levi''s Style', 2, N'Jean recto estilo vintage', CAST(35900.00 AS Decimal(15, 2)), N'Pantalon2.png', 29, 6, 1, 5)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 42, N'Jogging Retro', 1, N'Jogging estilo años 80', CAST(21900.00 AS Decimal(15, 2)), N'Jogging2.png', 3, 6, 1, 18)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 43, N'Campera Denim', 2, N'Campera de jean lavada', CAST(49900.00 AS Decimal(15, 2)), N'Campera2.png', 1, 6, 1, 4)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 44, N'Buzo Grunge', 3, N'Buzo oversize desgastado', CAST(27900.00 AS Decimal(15, 2)), N'Buzo2.png', 42, 6, 1, 9)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 45, N'Remera Dry Fit', 1, N'Remera transpirable entrenamiento', CAST(12900.00 AS Decimal(15, 2)), N'Remera3.png', 14, 7, 1, 25)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 46, N'Pantalón Training', 2, N'Pantalón elástico gym', CAST(26900.00 AS Decimal(15, 2)), N'Pantalon3.png', 37, 7, 1, 15)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 47, N'Jogging Performance', 2, N'Jogging con tecnología seca', CAST(25900.00 AS Decimal(15, 2)), N'Jogging3.png', 13, 7, 1, 12)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 48, N'Campera Windblock', 3, N'Campera cortaviento', CAST(38900.00 AS Decimal(15, 2)), N'Campera3.png', 10, 7, 1, 7)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 49, N'Buzo Training', 1, N'Buzo ligero entrenamiento', CAST(23900.00 AS Decimal(15, 2)), N'Buzo3.png', 17, 7, 1, 16)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 50, N'Remera Oxford', 2, N'Polo oxford elegante', CAST(19900.00 AS Decimal(15, 2)), N'Remera4.png', 30, 8, 1, 22)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 51, N'Pantalón Chino', 2, N'Pantalón chino slim fit', CAST(32900.00 AS Decimal(15, 2)), N'Pantalon4.png', 40, 8, 1, 10)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 52, N'Jogging Smart', 1, N'Jogging elegante casual', CAST(27900.00 AS Decimal(15, 2)), N'Jogging4.png', 46, 8, 1, 14)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 53, N'Campera Blazer', 2, N'Blazer ligero moderno', CAST(59900.00 AS Decimal(15, 2)), N'Campera4.png', 33, 8, 1, 3)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 54, N'Buzo V-Neck', 3, N'Buzo cuello V fino', CAST(25900.00 AS Decimal(15, 2)), N'Buzo4.png', 24, 8, 1, 11)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 55, N'Remera Basic Solid', 1, N'Remera básica diaria', CAST(10900.00 AS Decimal(15, 2)), N'Remera5.png', 2, 9, 1, 30)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 56, N'Pantalón Jogger', 2, N'Jogger casual elástico', CAST(22900.00 AS Decimal(15, 2)), N'Pantalon5.png', 32, 9, 1, 20)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 57, N'Jogging Comfort', 3, N'Jogging ultra cómodo', CAST(19900.00 AS Decimal(15, 2)), N'Jogging5.png', 4, 9, 1, 25)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 58, N'Campera Softshell', 2, N'Campera casual impermeable', CAST(34900.00 AS Decimal(15, 2)), N'Campera5.png', 36, 9, 1, 8)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 59, N'Buzo Crewneck', 1, N'Crewneck clásico', CAST(18900.00 AS Decimal(15, 2)), N'Buzo5.png', 31, 9, 1, 18)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 60, N'Remera Urbana Basic', 1, N'Remera oversize 100% algodón', CAST(15900.00 AS Decimal(15, 2)), N'Remera1.webp', 2, 5, 0, 20)
+GO
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 61, N'Remera Urbana Basic', 1, N'Remera oversize 100% algodón', CAST(15900.00 AS Decimal(15, 2)), N'Remera1.webp', 3, 5, 0, 10)
 GO
 SET IDENTITY_INSERT [dbo].[Prenda] OFF
 GO
@@ -655,6 +721,8 @@ INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (33, 
 GO
 INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (35, 5, 33)
 GO
+INSERT [dbo].[TemporadaXPrenda] ([IdTP], [IdTemporada], [IdPrenda]) VALUES (36, 1, 35)
+GO
 SET IDENTITY_INSERT [dbo].[TemporadaXPrenda] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Tienda] ON 
@@ -662,6 +730,16 @@ GO
 INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (3, N'Air', N'Buenos aires', N'buenosair@gm.com', N'25472458', N'Ropa para aire', N'OIP.webp', N'Visita nuestro tiktok @air')
 GO
 INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (4, N'Tonica', N'Chubut', N'Fash@com.com', N'28493749', N'Moda fashion de parte de una boutique, tonica', N'logo.png', N'@FashBou')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (5, N'Urban Style', N'Cordoba', N'urbanstyle@shop.com', N'3514928374', N'Tienda de moda urbana moderna', N'urban1.png', N'IG: urbanstyle_ok')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (6, N'Vintage Corner', N'Rosario', N'vintage@corner.com', N'3415839201', N'Ropa vintage y retro seleccionada', N'vintage1.png', N'TikTok: vintagecorner')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (7, N'Sport Life', N'Mendoza', N'sportlife@active.com', N'2617483920', N'Indumentaria deportiva y casual', N'sport1.png', N'Web: sportlife.com.ar')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (8, N'Elegance Shop', N'La Plata', N'elegance@shop.com', N'2214567890', N'Moda elegante y formal', N'elegance1.png', N'WP: +54 221 456-7890')
+GO
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (9, N'Casual Wear', N'Salta', N'casual@wear.com', N'3874928374', N'Ropa casual para el dia a dia', N'casual1.png', N'FB: casualwear_salta')
 GO
 SET IDENTITY_INSERT [dbo].[Tienda] OFF
 GO
@@ -822,7 +900,7 @@ REFERENCES [dbo].[Tipos] ([idTipo])
 GO
 ALTER TABLE [dbo].[TiposXComprador] CHECK CONSTRAINT [FK_TiposXComprador_Tipos]
 GO
-/****** Object:  StoredProcedure [dbo].[agregarPrenda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  StoredProcedure [dbo].[agregarPrenda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -880,7 +958,7 @@ BEGIN
 
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[cargarMedidas]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  StoredProcedure [dbo].[cargarMedidas]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -931,7 +1009,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[crearTienda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  StoredProcedure [dbo].[crearTienda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -965,7 +1043,7 @@ BEGIN
     SELECT @NuevoIdTienda AS IdTiendaCreada;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[EliminarPrenda]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  StoredProcedure [dbo].[EliminarPrenda]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1002,7 +1080,7 @@ END
 END
 END
 GO
-/****** Object:  StoredProcedure [dbo].[levantarRecomendados]    Script Date: 2/12/2025 19:21:04 ******/
+/****** Object:  StoredProcedure [dbo].[levantarRecomendados]    Script Date: 3/12/2025 19:58:25 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

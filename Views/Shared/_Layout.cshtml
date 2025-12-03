@@ -51,70 +51,76 @@
         display: flex;
         width: 100%;
         margin-top: 0.5%;
-        padding: 2rem 1rem;
-        padding-bottom: 3rem;
+        padding: 3% !important;
+        padding-bottom: 2rem;
         background: #111;
         color: #e9e7da;
         box-sizing: border-box;
+        gap: 3rem;
+        align-items: flex-start;
+      }
+      
+      footer .footer-logo {
+        flex-shrink: 0;
       }
       
       footer img {
-        margin-left: 1%;
-        margin-right: 5%;
-        margin-top: 5%;
         width: 80px;
         height: 80px;
         object-fit: cover;
         border-radius: 8px;
       }
       
-      footer section {
+      footer .footer-content {
         display: flex;
-        gap: 8%;
-        margin-left: auto;
-        margin-top: 3%;
+        flex: 1;
+        gap: 3rem;
+        flex-wrap: wrap;
       }
-      footer li{
-        width:120%;
-        margin-right: 3%;
-      }
-      footer a {
-    border-radius: 10px;
-    text-decoration: none;
-    color: #e9e7da;
-    display: block;
-    margin-bottom: 5%;
-    font-size: 0.9rem;
-}
       
-      footer .links {
-        margin-top: 5%;
+      footer .footer-column {
+        flex: 1;
+        min-width: 150px;
+      }
+      
+      footer .footer-column h4 {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      footer ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      footer ul li {
+        margin-bottom: 0.5rem;
+      }
+      
+      footer a {
+        text-decoration: none;
+        color: #e9e7da;
+        display: block;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
       }
       
       footer a:hover {
-        border: none;
-      }
-      
-  footer ul {
-    list-style-type: none;
-    padding: 10%;
-    padding-right: 15%;
-    margin: 0;
-    border-right: 2px #FF0088 solid;
-}
-      
-      footer h4 {
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
+        opacity: 0.7;
       }
       
       footer p {
         margin: 0.5rem 0;
         font-size: 0.85rem;
+        line-height: 1.5;
       }
       
-      footer section div {
-        min-width: 150px;
+      footer p a {
+        display: inline;
       }
       
       @@media (max-width: 320px) {
@@ -126,6 +132,11 @@
           width: 100%;
           max-width: 100%;
           box-sizing: border-box;
+          gap: 1.5rem;
+        }
+        
+        footer .footer-logo {
+          text-align: center;
         }
         
         footer img {
@@ -133,81 +144,45 @@
           height: 60px;
           object-fit: cover;
           border-radius: 8px;
-          margin: 0 auto 1rem auto;
-          display: block;
+          margin: 0 auto;
         }
         
-        footer .links {
-          margin-left: 0;
-          margin-top: 0;
-          margin-bottom: 1.5rem;
+        footer .footer-content {
+          flex-direction: column;
+          gap: 1.5rem;
           width: 100%;
         }
         
-        footer .links ul {
+        footer .footer-column {
+          width: 100%;
+          text-align: center;
+        }
+        
+        footer .footer-column h4 {
+          font-size: 0.9rem;
+          margin-bottom: 0.75rem;
+        }
+        
+        footer ul {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem;
           justify-content: center;
         }
         
-        footer .links li {
+        footer ul li {
           flex: 0 0 auto;
-        }
-        
-        footer .links a {
-          padding: 0.5rem 0.75rem;
           margin-bottom: 0;
+        }
+        
+        footer a {
           font-size: 0.75rem;
-          border-width: 1px;
+          padding: 0.25rem 0.5rem;
         }
         
-        footer section {
-          flex-direction: column;
-          gap: 1.5rem;
-          margin-left: 0;
-          margin-top: 0;
-          width: 100%;
-        }
-        
-        footer section div {
-          min-width: 100%;
-          width: 100%;
-        }
-        
-        footer section h4 {
-          font-size: 0.9rem;
-          margin-bottom: 0.5rem;
-        }
-        
-        footer section ul {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        footer section ul li {
-          flex: 0 0 auto;
-        }
-        
-        footer section a {
-          padding: 0.4rem 0.6rem;
-          margin-bottom: 0;
+        footer p {
           font-size: 0.75rem;
-          border-width: 1px;
-        }
-        
-        footer section p {
-          font-size: 0.75rem;
-          line-height: 1.4;
-          margin: 0.4rem 0;
-        }
-        
-        footer section p a {
-          display: inline;
-          padding: 0;
-          border: none;
-          text-decoration: underline;
+          text-align: center;
         }
       }
     </style>
@@ -263,7 +238,7 @@
             </a>
 
             <a href="/Armario/Armario" class="d-flex align-items-center mb-3 text-decoration-none">
-              <img src="~/img/armarioBlack .png" class="me-2" width="24" alt="Armario" />
+              <img src="~/img/armarioBlack.png" class="me-2" width="24" alt="Armario" />
               <span>MI ARMARIO</span>
             </a>
 
@@ -333,35 +308,47 @@
 
 
     <footer>
-      <img src="/img/logoOPA-03.png" alt="" />
-     
-        <div class="links">
-      <ul>
-        <li><a href="/Home/Index">Catálogo</a></li>
-        <li><a href="/Home/LandingPage">Nosotros</a></li>
-<li><a href="/Comprador/IniciarSesion" style="
-    width: 120%;
-">Iniciar sesión</a></li>
-        <li><a href="/Comprador/Registrarse">Registrarse</a></li>
-      </ul>
-    </div>
-    <section>
-    <div>
-      <h4>Seguinos</h4>
-       <ul>
-      <li><a href="#">Facebook</a></li>
-       <li><a href="#">Instagram</a></li>
-       <li><a href="#">Twitter</a></li>
-       <li><a href="#">YouTube</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Información</h4>
-      <p><a href="#">Política de privacidad</a></p>
-      <p><a href="#">Términos y condiciones</a></p>
-      <p>Email: contacto@Opa.com</p>
-    </div>
-</section>
+      <div class="footer-logo">
+        <img src="/img/logoOPA-03.png" alt="OPA" />
+      </div>
+      
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Catálogo</h4>
+          <ul>
+            <li><a href="/Home/Index">Inicio</a></li>
+            <li><a href="/Home/Explorar">Explorar</a></li>
+            <li><a href="/Home/LandingPage">Nosotros</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Cuenta</h4>
+          <ul>
+            <li><a href="/Comprador/IniciarSesion">Iniciar sesión</a></li>
+            <li><a href="/Comprador/Registrarse">Registrarse</a></li>
+            <li><a href="/Comprador/VistaUsuario">Mi perfil</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Seguinos</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Información</h4>
+          <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><p>Email: contacto@Opa.com</p></li>
+          </ul>
+        </div>
+      </div>
     </footer>
 
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

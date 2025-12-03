@@ -2,7 +2,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using System.Text.Json;
 public class PrendaBD{
-    public static string connectionString = @"Server=localhost; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
+    public static string connectionString = @"Server=localhost\SQLEXPRESS01; DataBase=OPA; Integrated Security=True; TrustServerCertificate=True;";
 
     static public void agregarPrenda(int idTienda, int tipoInt, string modelo, string Descripcion, double precio, List<int> Estilos, List<int> colores, List<int> talles, int temporada, string Foto, string variantStockJson){
         while (Estilos.Count < 3) {
