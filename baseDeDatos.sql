@@ -625,11 +625,11 @@ INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (1, 35, N'Remera Urbana Basic', 1, N'Remera oversize 100% algodón', CAST(15900.00 AS Decimal(15, 2)), N'Remera1.webp', 1, 5, 1, 15)
 GO
-INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 36, N'Pantalón Cargo', 2, N'Pantalón cargo multifuncional', CAST(28900.00 AS Decimal(15, 2)), N'Pantalon1.png', 11, 5, 1, 8)
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 36, N'Pantalón Cargo', 2, N'Pantalón cargo multifuncional', CAST(28900.00 AS Decimal(15, 2)), N'Pantalon1.jpg', 11, 5, 1, 8)
 GO
-INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 37, N'Jogging Tech', 1, N'Jogging técnico con bolsillos', CAST(24900.00 AS Decimal(15, 2)), N'Jogging1.png', 41, 5, 1, 12)
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 37, N'Jogging Tech', 1, N'Jogging técnico con bolsillos', CAST(24900.00 AS Decimal(15, 2)), N'pantalon2.jpg', 41, 5, 1, 12)
 GO
-INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 38, N'Campera Bomber', 2, N'Bomber con parches urbanos', CAST(42900.00 AS Decimal(15, 2)), N'Campera1.png', 6, 5, 1, 6)
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 38, N'Campera Bomber', 2, N'Bomber con parches urbanos', CAST(42900.00 AS Decimal(15, 2)), N'Campera1.jpg', 6, 5, 1, 6)
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (5, 39, N'Buzo Hoodie', 3, N'Hoodie con capucha oversize', CAST(29900.00 AS Decimal(15, 2)), N'Buzo1.png', 9, 5, 1, 10)
 GO
@@ -731,15 +731,15 @@ INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [D
 GO
 INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (4, N'Tonica', N'Chubut', N'Fash@com.com', N'28493749', N'Moda fashion de parte de una boutique, tonica', N'logo.png', N'@FashBou')
 GO
-INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (5, N'Urban Style', N'Cordoba', N'urbanstyle@shop.com', N'3514928374', N'Tienda de moda urbana moderna', N'urban1.png', N'IG: urbanstyle_ok')
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (5, N'Urban Style', N'Cordoba', N'urbanstyle@shop.com', N'3514928374', N'Tienda de moda urbana moderna', N'urban1.jpg', N'IG: urbanstyle_ok')
 GO
-INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (6, N'Vintage Corner', N'Rosario', N'vintage@corner.com', N'3415839201', N'Ropa vintage y retro seleccionada', N'vintage1.png', N'TikTok: vintagecorner')
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (6, N'Vintage Corner', N'Rosario', N'vintage@corner.com', N'3415839201', N'Ropa vintage y retro seleccionada', N'vintage1.jpg', N'TikTok: vintagecorner')
 GO
-INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (7, N'Sport Life', N'Mendoza', N'sportlife@active.com', N'2617483920', N'Indumentaria deportiva y casual', N'sport1.png', N'Web: sportlife.com.ar')
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (7, N'Sport Life', N'Mendoza', N'sportlife@active.com', N'2617483920', N'Indumentaria deportiva y casual', N'sport1.jpg', N'Web: sportlife.com.ar')
 GO
-INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (8, N'Elegance Shop', N'La Plata', N'elegance@shop.com', N'2214567890', N'Moda elegante y formal', N'elegance1.png', N'WP: +54 221 456-7890')
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (8, N'Elegance Shop', N'La Plata', N'elegance@shop.com', N'2214567890', N'Moda elegante y formal', N'elegance1.jpg', N'WP: +54 221 456-7890')
 GO
-INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (9, N'Casual Wear', N'Salta', N'casual@wear.com', N'3874928374', N'Ropa casual para el dia a dia', N'casual1.png', N'FB: casualwear_salta')
+INSERT [dbo].[Tienda] ([IdTienda], [Nombre], [Ubicacion], [Mail], [Telefono], [Descripcion], [FotoDePerfil], [Contacto]) VALUES (9, N'Casual Wear', N'Salta', N'casual@wear.com', N'3874928374', N'Ropa casual para el dia a dia', N'casual1.jpg', N'FB: casualwear_salta')
 GO
 SET IDENTITY_INSERT [dbo].[Tienda] OFF
 GO
