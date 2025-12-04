@@ -1,219 +1,291 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\index.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\index.css",
       "PackagePath": "staticwebassets\\css\\index.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\iniciarSesion.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\iniciarSesion.css",
       "PackagePath": "staticwebassets\\css\\iniciarSesion.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\prenda.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\prenda.css",
       "PackagePath": "staticwebassets\\css\\prenda.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\tiendas.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\tiendas.css",
       "PackagePath": "staticwebassets\\css\\tiendas.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\vistaprenda.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\vistaprenda.css",
       "PackagePath": "staticwebassets\\css\\vistaprenda.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\css\\vistausuario.css",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\css\\vistausuario.css",
       "PackagePath": "staticwebassets\\css\\vistausuario.css"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\2bbeffc4126788e2d33e1ad2bbaf1b4c.jpg",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\2bbeffc4126788e2d33e1ad2bbaf1b4c.jpg",
       "PackagePath": "staticwebassets\\img\\2bbeffc4126788e2d33e1ad2bbaf1b4c.jpg"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\OIP (1).webp",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\OIP (1).webp",
       "PackagePath": "staticwebassets\\img\\OIP (1).webp"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\OIP (2).webp",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\OIP (2).webp",
       "PackagePath": "staticwebassets\\img\\OIP (2).webp"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\OIP.webp",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\OIP.webp",
       "PackagePath": "staticwebassets\\img\\OIP.webp"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\R.jfif",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\R.jfif",
       "PackagePath": "staticwebassets\\img\\R.jfif"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\R.jpg",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\R.jpg",
       "PackagePath": "staticwebassets\\img\\R.jpg"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\R.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\R.png",
       "PackagePath": "staticwebassets\\img\\R.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\Remera1.webp",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\Remera1.webp",
       "PackagePath": "staticwebassets\\img\\Remera1.webp"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\Yalike.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\Yalike.png",
       "PackagePath": "staticwebassets\\img\\Yalike.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\armario.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\altaPinta.jpg",
+      "PackagePath": "staticwebassets\\img\\altaPinta.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\armario.png",
       "PackagePath": "staticwebassets\\img\\armario.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\armarioBlack.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\armarioBlack.png",
       "PackagePath": "staticwebassets\\img\\armarioBlack.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\ayuda.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\ayuda.png",
       "PackagePath": "staticwebassets\\img\\ayuda.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\bfofmclg2yl71.jpg",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\bfofmclg2yl71.jpg",
       "PackagePath": "staticwebassets\\img\\bfofmclg2yl71.jpg"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\billetera.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\billetera.png",
       "PackagePath": "staticwebassets\\img\\billetera.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\cruz.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\buzo1.jpg",
+      "PackagePath": "staticwebassets\\img\\buzo1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\campera1.jpg",
+      "PackagePath": "staticwebassets\\img\\campera1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\campera2.webp",
+      "PackagePath": "staticwebassets\\img\\campera2.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\casual1.jpg",
+      "PackagePath": "staticwebassets\\img\\casual1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\crowneck.webp",
+      "PackagePath": "staticwebassets\\img\\crowneck.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\cruz.png",
       "PackagePath": "staticwebassets\\img\\cruz.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\fc93c05f5823892b2b690c3d74fdd864.jpg",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\elegance1.jpg",
+      "PackagePath": "staticwebassets\\img\\elegance1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\emilia.webp",
+      "PackagePath": "staticwebassets\\img\\emilia.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\fc93c05f5823892b2b690c3d74fdd864.jpg",
       "PackagePath": "staticwebassets\\img\\fc93c05f5823892b2b690c3d74fdd864.jpg"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\fondo-opa.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\fondo-opa.png",
       "PackagePath": "staticwebassets\\img\\fondo-opa.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\formulario.png",
       "PackagePath": "staticwebassets\\img\\formulario.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\home.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\home.png",
       "PackagePath": "staticwebassets\\img\\home.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\like.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\joggin3.webp",
+      "PackagePath": "staticwebassets\\img\\joggin3.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\jogging2.webp",
+      "PackagePath": "staticwebassets\\img\\jogging2.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\jogging4.webp",
+      "PackagePath": "staticwebassets\\img\\jogging4.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\like.png",
       "PackagePath": "staticwebassets\\img\\like.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\logo.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-01.png",
       "PackagePath": "staticwebassets\\img\\logoOPA-01.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\logoOPA-02.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-02.png",
       "PackagePath": "staticwebassets\\img\\logoOPA-02.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\logoOPA-03.png",
       "PackagePath": "staticwebassets\\img\\logoOPA-03.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\mencloth.webp",
+      "PackagePath": "staticwebassets\\img\\mencloth.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\outfit.png",
       "PackagePath": "staticwebassets\\img\\outfit.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\pantalon1.jpg",
+      "PackagePath": "staticwebassets\\img\\pantalon1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\pantalon2.webp",
+      "PackagePath": "staticwebassets\\img\\pantalon2.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\perfil.png",
       "PackagePath": "staticwebassets\\img\\perfil.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\pregunta.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\pregunta.png",
       "PackagePath": "staticwebassets\\img\\pregunta.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\pregunti.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\pregunti.png",
       "PackagePath": "staticwebassets\\img\\pregunti.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\search.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\remera2.webp",
+      "PackagePath": "staticwebassets\\img\\remera2.webp"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\search.png",
       "PackagePath": "staticwebassets\\img\\search.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\tacho.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\sport1.jpg",
+      "PackagePath": "staticwebassets\\img\\sport1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\tacho.png",
       "PackagePath": "staticwebassets\\img\\tacho.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\tienda.png",
       "PackagePath": "staticwebassets\\img\\tienda.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\whiteMenu.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\urban1.jpg",
+      "PackagePath": "staticwebassets\\img\\urban1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\vintage1.jpg",
+      "PackagePath": "staticwebassets\\img\\vintage1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteMenu.png",
       "PackagePath": "staticwebassets\\img\\whiteMenu.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\whiteSearch.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteSearch.png",
       "PackagePath": "staticwebassets\\img\\whiteSearch.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\img\\whiteTienda.png",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\img\\whiteTienda.png",
       "PackagePath": "staticwebassets\\img\\whiteTienda.png"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\iarit\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\49193480\\Downloads\\OPA\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
