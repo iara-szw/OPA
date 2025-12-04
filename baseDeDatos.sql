@@ -627,7 +627,7 @@ INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 36, N'Pantalón Cargo', 2, N'Pantalón cargo multifuncional', CAST(28900.00 AS Decimal(15, 2)), N'Pantalon1.jpg', 11, 5, 1, 8)
 GO
-INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 37, N'Jogging Tech', 1, N'Jogging técnico con bolsillos', CAST(24900.00 AS Decimal(15, 2)), N'pantalon2.jpg', 41, 5, 1, 12)
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 37, N'Jogging Tech', 1, N'Jogging técnico con bolsillos', CAST(24900.00 AS Decimal(15, 2)), N'pantalon2.webp', 41, 5, 1, 12)
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 38, N'Campera Bomber', 2, N'Bomber con parches urbanos', CAST(42900.00 AS Decimal(15, 2)), N'Campera1.jpg', 6, 5, 1, 6)
 GO
@@ -637,7 +637,7 @@ INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (2, 41, N'Pantalón Levi''s Style', 2, N'Jean recto estilo vintage', CAST(35900.00 AS Decimal(15, 2)), N'Pantalon2.png', 29, 6, 1, 5)
 GO
-INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 42, N'Jogging Retro', 1, N'Jogging estilo años 80', CAST(21900.00 AS Decimal(15, 2)), N'Jogging2.png', 3, 6, 1, 18)
+INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (3, 42, N'Jogging Retro', 1, N'Jogging estilo años 80', CAST(21900.00 AS Decimal(15, 2)), N'Jogging2.wenp', 3, 6, 1, 18)
 GO
 INSERT [dbo].[Prenda] ([Tipo], [IdPrenda], [Modelo], [IdTalle], [Descripcion], [Precio], [foto], [Color], [IdTienda], [mostrar], [stock]) VALUES (4, 43, N'Campera Denim', 2, N'Campera de jean lavada', CAST(49900.00 AS Decimal(15, 2)), N'Campera2.png', 1, 6, 1, 4)
 GO
