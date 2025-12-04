@@ -24,6 +24,10 @@ public class ArmarioController : Controller
             ViewBag.estado="Tenes que iniciar sesión para ver tu armario";
             return RedirectToAction("iniciarSesion","Comprador");
         }
+        
+        // Registrar visita al armario
+        LogBD.RegistrarAccion(usu.Usuario, "VisitaArmario", null);
+        
         ViewBag.poseidos=ArmarioBD.levantarPoseidos(usu.Usuario);
         ViewBag.recomendados=BD.levantarRecomendados(usu.Usuario);
         ViewBag.deseados=ArmarioBD.levantarDeseados(usu.Usuario);

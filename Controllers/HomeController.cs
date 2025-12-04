@@ -37,9 +37,20 @@ public class HomeController : Controller
             return RedirectToAction ("LandingPage");
         }else{
             id = usu.Usuario;
+            // Registrar visita a home
+            LogBD.RegistrarAccion(usu.Usuario, "VisitaHome", null);
         }
+        
+        // Obtener recomendaciones personalizadas si hay usuario logueado
+        List<Prenda> recomendaciones = new List<Prenda>();
+        if (usu != null)
+        {
+            recomendaciones = RecomendadorBD.ObtenerRecomendaciones(usu.Usuario);
+        }
+        
         ViewBag.Ropa = BD.levantarRecomendados(id);
         ViewBag.tiendas = BD.levantarRecomendadosTienda();
+        ViewBag.Recomendadas = recomendaciones;
         return View();
     }
     public IActionResult LandingPage()
@@ -59,6 +70,9 @@ public class HomeController : Controller
         ViewBag.Poseido=CompradorBD.verSiPoseido(IdPrenda, Usu.Usuario);
         ViewBag.Deseado=CompradorBD.verSiDeseado(IdPrenda, Usu.Usuario);
         ViewBag.recomendados=BD.levantarRecomendados(Usu.Usuario);
+        
+        // Registrar visita a prenda
+        LogBD.RegistrarAccion(Usu.Usuario, "VisitaPrenda", new { IdPrenda = IdPrenda });
         
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
             if (prendas != null)

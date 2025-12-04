@@ -142,6 +142,12 @@ FotoDePerfil.CopyTo(stream);
         if (idNuevo == -1){
             return RedirectToAction("nuevaTienda");
         }
+        
+        // Registrar creación de tienda
+        if(usu != null){
+            LogBD.RegistrarAccion(usu.Usuario, "CreaTienda", new { Nombre = Nombre });
+        }
+        
         Tienda tiendaActual = TiendaBD.levantarTienda(idNuevo);
         HttpContext.Session.SetString("tienda", Objeto.ObjectToString(tiendaActual));
         // Nuevo modo vendedor y tienda seleccionada
@@ -179,6 +185,12 @@ FotoDePerfil.CopyTo(stream);
         if(tienda == null){
             return RedirectToAction("verTiendasAdministrador");
         }
+        
+        // Registrar visita a tienda si hay usuario
+        if(usu != null){
+            LogBD.RegistrarAccion(usu.Usuario, "VisitaTienda", new { IdTienda = tienda.IdTienda });
+        }
+        
         ViewBag.permisos=AdministradorBD.verPermisos(tienda.IdTienda,usu.Usuario);
         ViewBag.tienda=tienda;
         ViewBag.productos=TiendaBD.levantarProductos(tienda.IdTienda);
@@ -227,6 +239,8 @@ FotoDePerfil.CopyTo(stream);
             if(esVendedor){
                 return RedirectToAction("vistaTienda");
             }
+            // Registrar visita a tienda desde vista de comprador
+            LogBD.RegistrarAccion(usu.Usuario, "VisitaTienda", new { IdTienda = IdTienda });
         }
         
         ViewBag.tienda = tienda;

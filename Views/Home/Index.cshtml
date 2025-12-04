@@ -19,6 +19,21 @@
     </section>
   
 <section class="ver">
+    @if (ViewBag.Recomendadas != null && ((List<Prenda>)ViewBag.Recomendadas).Any())
+    {
+    <section class="recomendado">
+      <h3>Recomendado para vos</h3>
+      <div class="ropaRecomendada" >
+      @foreach(Prenda prendita in ViewBag.Recomendadas){
+        <div>
+        <a href='@Url.Action("VistaPrenda",new{idPrenda=@prendita.IdPrenda})'><img src="/img/@prendita.foto"></a>
+          <h4>@prendita.Modelo</h4>
+          <p>$@prendita.Precio</p>
+        </div>
+      }
+      </div>
+    </section>
+    }
     <section class="recomendado">
       <a href='@Url.Action("Explorar")'><h3>Recomendado para vos ></h3></a>
       <div class="ropaRecomendada" >

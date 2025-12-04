@@ -189,7 +189,11 @@ if (Usu==null)
 
     public IActionResult agregarDeseado(int idPrenda){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
-        CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
+        if(Usu != null){
+            CompradorBD.agregarDeseado(idPrenda, Usu.Usuario);
+            // Registrar acción
+            LogBD.RegistrarAccion(Usu.Usuario, "AgregaDeseado", new { IdPrenda = idPrenda });
+        }
 
         return RedirectToAction("vistaPrenda","Home",new{idPrenda=idPrenda});
     }
@@ -202,10 +206,13 @@ if (Usu==null)
     public IActionResult comprarPrenda(){
         Comprador Usu=Objeto.StringToobject<Comprador>(HttpContext.Session.GetString("usuario"));
         List<int> prendas=Objeto.StringToList<int>(HttpContext.Session.GetString("carrito"));
-        foreach(int prenda in prendas){
-            CompradorBD.comprarPrenda(prenda, Usu.Usuario);
-                    PrendaBD.restarStock(prenda);
-
+        if(Usu != null && prendas != null){
+            foreach(int prenda in prendas){
+                CompradorBD.comprarPrenda(prenda, Usu.Usuario);
+                PrendaBD.restarStock(prenda);
+                // Registrar acción de poseído
+                LogBD.RegistrarAccion(Usu.Usuario, "AgregaPoseido", new { IdPrenda = prenda });
+            }
         }
         return RedirectToAction("limpiarCarrito","Compra");
 
